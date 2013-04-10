@@ -1,0 +1,35 @@
+Thread bd8 : begin ...
+Thread bd8 : Ref 0x1f18f80: Create Window [title=Moba, width=800, height=600]
+Thread bd8 : Ref 0x3460ae0: Create Container
+Thread bd8 : thread launched ID=bec in graphics::Window::Window(int, int, std::string)
+Thread bd8 : Ask for load ressources/gui/button_2.png
+Thread bec : [ImageLoader] ressources/gui/button_2.png loaded
+Thread bd8 : Ask for load ressources/gui/button_2_center.png
+Thread bec : [ImageLoader] ressources/gui/button_2_center.png loaded
+Thread bd8 : Ask for load ressources/gui/textfield_2.png
+Thread bec : [ImageLoader] ressources/gui/textfield_2.png loaded
+Thread bd8 : Ask for load ressources/gui/textfield_center.png
+Thread bec : [ImageLoader] ressources/gui/textfield_center.png loaded
+Thread bd8 : Ask for load ressources/gui/window_bot.png
+Thread bec : [ImageLoader] ressources/gui/window_bot.png loaded
+Thread bd8 : Ask for load ressources/gui/window_top.png
+Thread bec : [ImageLoader] ressources/gui/window_top.png loaded
+Thread bd8 : Ask for load ressources/gui/window_center.png
+Thread bec : [ImageLoader] ressources/gui/window_center.png loaded
+Thread bd8 : Ask for load ressources/gui/window_close.png
+Thread bec : [ImageLoader] ressources/gui/window_close.png loaded
+Thread bd8 : Ref 0x346e678: Create Container
+Thread bd8 : Ref 0x346e6d8: Create Container
+Thread bd8 : Ref 0x346e678: Add Container (ref 0x346e6d8) in Container
+Thread bd8 : Ref 0x346e750: Create Label [text=Pseudo : , style=0x346a808]
+Thread bd8 : Ref 0x346e6d8: Add Label (ref 0x346e750) in Container
+Thread bd8 : Ref 0x346e7a8: Create TextField [text=, style=0x34677e8]
+Thread bd8 : Ref 0x346e6d8: Add TextField (ref 0x346e7a8) in Container
+Thread bd8 : Ref 0x346ebf0: Create Label [text=Password : , style=0x346a808]
+Thread bd8 : Ref 0x346e6d8: Add Label (ref 0x346ebf0) in Container
+Thread bd8 : Ref 0x346ec38: Create TextField [text=, style=0x34677e8]
+Thread bd8 : Ref 0x346e6d8: Add TextField (ref 0x346ec38) in Container
+Thread bd8 : Ref 0x346ec80: Create Button [text=Connection, style=0x1f18fc8]
+Thread bd8 : Ref 0x346ec80: Add listener 0x346e808 in Button
+Thread bd8 : Ref 0x346e6d8: Add Button (ref 0x346ec80) in Container
+Thread bd8 : Ref 0x1f18f80: New ContentPane in Window (ref 0x346e678)
