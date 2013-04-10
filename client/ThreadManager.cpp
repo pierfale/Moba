@@ -21,6 +21,7 @@ ThreadManager* ThreadManager::getInstance() {
 }
 
 void ThreadManager::add(const boost::function0<void>& fun, std::string funName) {
+	std::cout << "oki1" << std::endl;
 	boost::thread* t = getInstance()->m_threads.create_thread(fun);
 	std::stringstream ss;
 	ss << t->get_id();

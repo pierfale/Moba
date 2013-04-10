@@ -21,6 +21,7 @@ namespace graphics {
 
 	public:
 		ConnectionScreen(Window* window);
+		void load();
 		void startConnection();
 
 	private:

@@ -28,7 +28,7 @@ namespace graphics {
 			if(!used && event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_height) {
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				used = true;
 			}
 		}

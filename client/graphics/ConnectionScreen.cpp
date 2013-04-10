@@ -11,6 +11,10 @@
 namespace graphics {
 
 	ConnectionScreen::ConnectionScreen(Window* window) : m_window(window) {
+
+	}
+
+	void ConnectionScreen::load() {
 		this->setLayout(new CenterLayout());
 
 		Container* c2 = new Container();
@@ -48,9 +52,6 @@ namespace graphics {
 
 	void ConnectionScreen::startConnection() {
 
-
-
-
 		InnerWindow* w1 = new InnerWindow("login...", 300, 100, GUIStyle::innerwindow());
 		w1->setCloseable(false);
 		this->add(w1);
@@ -70,7 +71,9 @@ namespace graphics {
 		boost::this_thread::sleep(boost::posix_time::milliseconds(500));
 		l3->setText("Loggin in !");
 		boost::this_thread::sleep(boost::posix_time::milliseconds(500));
-		m_window->setContentPane(new CharacterScreen(m_window));
+		CharacterScreen* characterScreen = new CharacterScreen(m_window);
+		m_window->setContentPane(characterScreen);
+		characterScreen->load();
 	}
 
 };

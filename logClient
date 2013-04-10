@@ -1,7 +1,0 @@
-Thread 12c : begin ...
-Thread 12c : Ref 0x2130eb8: Create Window [title=Moba, width=800, height=600]
-Thread 12c : Ref 0x2131540: Create Container
-Thread 12c : thread launched ID=ec4 in graphics::Window::Window(int, int, std::string)
-Thread 12c : Ask for load ressources/gui/button_2.png
-Thread 12c : Ask for load ressources/gui/button_2_center.png
-Thread ec4 : [ImageLoader]   loaded
