@@ -31,8 +31,7 @@ namespace graphics {
 
 	//init
 	void Gameboard::load(Player* p) {
-		m_window->getImageLoader()->add("ressources/game/Tiles.png");
-		m_texture = m_window->getImageLoader()->get("ressources/game/Tiles.png");
+		m_texture = ImageLoader::get("ressources/game/Tiles.png");
 		m_spriteOfGameBoard = new sf::Sprite();
 		m_gameboard = NULL;
 		m_player = p;

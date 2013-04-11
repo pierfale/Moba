@@ -20,7 +20,7 @@ void ConfigDefault::init() {
 	getInstance()->m_values["dbpass"] = "";
 	getInstance()->m_values["dbname"] = "db";
 
-	getInstance()->m_values["log"] = "log.txt";
+	getInstance()->m_values["log"] = "server.log";
 }
 
 void ConfigDefault::fillIn(std::map<std::string, std::string>* values) {

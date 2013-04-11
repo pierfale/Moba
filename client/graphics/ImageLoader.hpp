@@ -16,20 +16,20 @@
 #include <SFML/Graphics.hpp>
 #include "../log/Log.hpp"
 
+
 namespace graphics {
 
 	class ImageLoader {
 
 	public:
 		ImageLoader();
-		void add(std::string path);
-		void process();
-		sf::Texture* get(std::string path);
+		static sf::Texture* get(std::string path);
 
 	private:
 		std::map<std::string,sf::Texture> m_textures;
-		std::vector<std::string> m_wait;
-		boost::mutex m_guard;
+		static ImageLoader* getInstance();
+		static ImageLoader* m_instance;
+
 	};
 
 }

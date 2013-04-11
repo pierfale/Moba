@@ -19,6 +19,7 @@ namespace graphics {
 
 	public:
 		CharacterScreen(Window* window);
+		void load();
 
 	private:
 		Window* m_window;

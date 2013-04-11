@@ -37,11 +37,11 @@ namespace graphics {
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_style->topleft()->getGlobalBounds().height) {
 				if(!m_pressed) {
 					for(boost::ptr_vector<InnerWindowListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->pressed(this);
+						m_window->addCallFunction(boost::bind(&InnerWindowListener::pressed, &(*it), this));
 					}
 				}
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				m_originCoord = m_coord;
 				m_originMouseCoord = util::Coordinates(event->mouseButton.x, event->mouseButton.y);
 				used = true;
@@ -54,7 +54,7 @@ namespace graphics {
 		else if(event->type == sf::Event::MouseButtonReleased) {
 			if(m_pressed) {
 				for(boost::ptr_vector<InnerWindowListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					it->released(this);
+					m_window->addCallFunction(boost::bind(&InnerWindowListener::released, &(*it), this));
 				}
 			}
 			m_pressed = false;
@@ -76,7 +76,7 @@ namespace graphics {
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
 				if(!m_focus) {
 					for(boost::ptr_vector<InnerWindowListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseEntered(this);
+						m_window->addCallFunction(boost::bind(&InnerWindowListener::mouseEntered, &(*it), this));
 					}
 				}
 				m_focus = true;
@@ -86,7 +86,7 @@ namespace graphics {
 			else {
 				if(m_focus) {
 					for(boost::ptr_vector<InnerWindowListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseLeft(this);
+						m_window->addCallFunction(boost::bind(&InnerWindowListener::mouseLeft, &(*it), this));
 					}
 				}
 				m_focus = false;

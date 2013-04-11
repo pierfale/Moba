@@ -28,7 +28,7 @@ namespace graphics {
 			if(!used && event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_height) {
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				used = true;
 			}
 		}
@@ -40,7 +40,7 @@ namespace graphics {
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
 				if(!m_focus) {
 					for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseEntered(this);
+						m_window->addCallFunction(boost::bind(&TextFieldListener::mouseEntered, &(*it), this));
 					}
 				}
 				m_focus = true;
@@ -49,7 +49,7 @@ namespace graphics {
 			else {
 				if(m_focus) {
 					for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseLeft(this);
+						m_window->addCallFunction(boost::bind(&TextFieldListener::mouseLeft, &(*it), this));
 					}
 				}
 				m_focus = false;
@@ -58,7 +58,7 @@ namespace graphics {
 		else if(event->type == sf::Event::MouseLeft) {
 			if(m_focus) {
 				for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					it->mouseLeft(this);
+					m_window->addCallFunction(boost::bind(&TextFieldListener::mouseLeft, &(*it), this));
 				}
 			}
 			m_focus = false;
@@ -71,7 +71,7 @@ namespace graphics {
 			}
 			else if(event->text.unicode == 13) {
 				for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					it->enter(this);
+					m_window->addCallFunction(boost::bind(&TextFieldListener::enter, &(*it), this));
 				}
 			}
 			else
@@ -83,12 +83,12 @@ namespace graphics {
 	void TextField::setSelected(bool state) {
 		if(state && !m_selected) {
 			for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-				it->selected(this);
+				m_window->addCallFunction(boost::bind(&TextFieldListener::selected, &(*it), this));
 			}
 		}
 		else if(!state && m_selected) {
 			for(boost::ptr_vector<TextFieldListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-				it->unselected(this);
+				m_window->addCallFunction(boost::bind(&TextFieldListener::unselected, &(*it), this));
 			}
 		}
 		m_selected = state;

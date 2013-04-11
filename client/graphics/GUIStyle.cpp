@@ -18,20 +18,20 @@ namespace graphics {
 		m_innerwindow = NULL;
 	}
 
-	void GUIStyle::init(Window* window) {
+	void GUIStyle::init() {
 		m_instance = new GUIStyle();
-		getInstance()->m_button = new BasicStyle(window);
+		getInstance()->m_button = new BasicStyle();
 		getInstance()->m_button->setBorderImage("ressources/gui/button_2.png");
 		getInstance()->m_button->setCenterImage("ressources/gui/button_2_center.png");
 		getInstance()->m_button->setFontColor(sf::Color(226, 233, 40));
 
-		getInstance()->m_textfield = new BasicStyle(window);
+		getInstance()->m_textfield = new BasicStyle();
 		getInstance()->m_textfield->setBorderImage("ressources/gui/textfield_2.png");
 		getInstance()->m_textfield->setCenterImage("ressources/gui/textfield_center.png");
 
-		getInstance()->m_label = new BasicStyle(window);
+		getInstance()->m_label = new BasicStyle();
 
-		getInstance()->m_innerwindow = new WindowStyle(window);
+		getInstance()->m_innerwindow = new WindowStyle();
 		getInstance()->m_innerwindow->setBotImage("ressources/gui/window_bot.png");
 		getInstance()->m_innerwindow->setTopImage("ressources/gui/window_top.png");
 		getInstance()->m_innerwindow->setCenterImage("ressources/gui/window_center.png");

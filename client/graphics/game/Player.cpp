@@ -25,6 +25,6 @@ namespace graphics {
 
 	}
 
-	void Player::setTarget(int x, int y){m_xTarget = x; m_yTarget = y;}
+	void Player::setTarget(int x, int y){m_target.x = x ; m_target.y = y;}
 
 } /* namespace graphics */

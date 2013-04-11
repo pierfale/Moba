@@ -54,7 +54,7 @@ class Character {
 		util::Coordinates m_coord, m_target;
 		sf::Sprite* m_sprite;
 		sf::Texture* m_texture;
-		std::vector<util::Coordinates> path;
+		//std::vector<util::Coordinates> path;
 	};
 
 } /* namespace graphics */

@@ -10,15 +10,15 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../component/Window.hpp"
 #include "../../util/Util.hpp"
+#include "../ImageLoader.hpp"
 
 namespace graphics {
 
 	class WindowStyle {
 	public:
 		enum State {normal, focus, press, StateCount};
-		WindowStyle(Window* window);
+		WindowStyle();
 		void setBotImage(std::string path);
 		void setTopImage(std::string path);
 		void setCenterImage(std::string path);
@@ -49,7 +49,6 @@ namespace graphics {
 		util::Coordinates headerOffset();
 
 	private:
-		Window* m_window;
 		sf::Texture* m_botImage;
 		sf::Texture* m_topImage;
 		sf::Texture* m_centerImage;

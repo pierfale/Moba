@@ -10,15 +10,18 @@
 namespace graphics {
 
 	CharacterScreen::CharacterScreen(Window* window) : m_window(window) {
+		load();
+	}
 
+	void CharacterScreen::load() {
 		Container* containerChar = new Container();
-		containerChar->setBackground("ressources/gui/background1.png", full);
 		this->add(containerChar);
-
+		containerChar->setBackground("ressources/gui/background1.png", full);
 		Container* containerInfo = new Container();
 		this->add(containerInfo);
-
 		this->setLayout(new SplitFixedLayout(SplitFixedLayout::vertical, SplitFixedLayout::first, 250));
+		client::Log::out("CharacterScreen Loaded");
+
 
 	}
 }

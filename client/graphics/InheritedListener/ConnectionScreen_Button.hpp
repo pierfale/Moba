@@ -19,7 +19,7 @@ namespace graphics {
 	public:
 		ConnectionScreen_Button(ConnectionScreen* view);
 		void enter(void* origin);
-		void pressed();
+		void pressed(void* origin);
 
 	private:
 		ConnectionScreen* m_view;

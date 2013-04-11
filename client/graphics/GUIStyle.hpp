@@ -11,14 +11,13 @@
 #include <string>
 #include "style/StyleInclude.hpp"
 #include "../log/Log.hpp"
-#include "component/Window.hpp"
 
 namespace graphics {
 
 	class GUIStyle {
 
 	public:
-		static void init(Window* window);
+		static void init();
 		static BasicStyle* button();
 		static BasicStyle* label();
 		static BasicStyle* textfield();

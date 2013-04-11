@@ -10,7 +10,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../component/Window.hpp"
+#include "../ImageLoader.hpp"
 
 namespace graphics {
 
@@ -18,7 +18,7 @@ namespace graphics {
 
 	public:
 		enum State {normal, focus, select, press, disable, StateCount};
-		BasicStyle(Window* window);
+		BasicStyle();
 		void setBorderImage(std::string path);
 		void setCenterImage(std::string path);
 		void setFont(sf::Font font);
@@ -39,7 +39,6 @@ namespace graphics {
 		sf::Color* fontColor();
 
 	private:
-		Window* m_window;
 		sf::Texture* m_borderImage;
 		sf::Texture* m_centerImage;
 		sf::Font m_font;

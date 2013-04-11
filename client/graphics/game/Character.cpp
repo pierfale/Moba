@@ -9,7 +9,7 @@
 
 namespace graphics {
 
-	Character::Character(std::string name) : m_name(name) , m_nbFrame(0), m_xTarget(0), m_yTarget(0), m_onMove(false), m_direction(SOUTH), m_coord(5,5) {
+	Character::Character(std::string name) : m_name(name) , m_nbFrame(0),  m_onMove(false), m_direction(SOUTH), m_coord(5,5), m_target(0,0) {
 		m_texture = NULL; m_sprite = NULL;
 	}
 	Character::~Character() { free(m_sprite); }
@@ -17,8 +17,7 @@ namespace graphics {
 
 	//graphics manage
 	void Character::load(Window* window) {
-		window->getImageLoader()->add("ressources/game/1.png");
-		m_texture = window->getImageLoader()->get("ressources/game/1.png");
+		m_texture  = ImageLoader::get("ressources/game/1.png");
 		m_sprite = new sf::Sprite();
 	}
 	void Character::incFrame() {if (m_nbFrame == 3) m_nbFrame = 0; else m_nbFrame++;}
@@ -37,6 +36,6 @@ namespace graphics {
 	void Character::setDirection(int dir) { m_direction = Direction(dir); }
 
 	//pathfinding
-	std::vector<util::Coordinates> Character::getPathAs() { return NULL;}
+	//std::vector<util::Coordinates> Character::getPathAs() { return std::vector<util::Coordinates>;}
 
 } /* namespace graphics */

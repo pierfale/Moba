@@ -88,6 +88,18 @@ namespace graphics {
 		return m_width;
 	}
 
+	Window* Component::getWindow() {
+		if(m_window == NULL)
+			client::Log::err("Window is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToInt(this)+")");
+		return m_window;
+	}
+
+	Component* Component::getParent() {
+		if(m_parent == NULL)
+			client::Log::err("Parent is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToInt(this)+")");
+		return m_parent;
+	}
+
 	std::string Component::getComponentName() {
 		return "Component";
 	}

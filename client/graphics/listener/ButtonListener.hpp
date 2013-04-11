@@ -14,7 +14,7 @@ namespace graphics {
 
 	public:
 		virtual ~ButtonListener();
-		virtual void pressed();
+		virtual void pressed(void* origin);
 		virtual void released(void* origin);
 		virtual void mouseEntered(void* origin);
 		virtual void mouseLeft(void* origin);
