@@ -7,38 +7,31 @@
 
 #include "ImageLoader.hpp"
 
-
-
 namespace graphics {
 
-	boost::mutex ImageLoader::m_guard;
+
+	ImageLoader* ImageLoader::m_instance = NULL;
 
 	ImageLoader::ImageLoader() {
 
 	}
 
-	void ImageLoader::add(std::string path) {
-		boost::mutex::scoped_lock lock(m_guard);
-		if(m_textures.find(path) == m_textures.end())
-			m_wait.push_back(path);
-	}
-
-	void  ImageLoader::process() {
-		boost::mutex::scoped_lock lock(m_guard);
-		for(std::vector<std::string>::iterator it = m_wait.begin() ; it != m_wait.end(); ++it) {
-			sf::Texture curr;
-			curr.loadFromFile(*it);
-			m_textures[*it] = curr;
-			client::Log::out("[ImageLoader] "+(*it)+" loaded");
-		}
-		m_wait.clear();
-	}
 
 	sf::Texture* ImageLoader::get(std::string path) {
-		while(m_textures.find(path) == m_textures.end()) {
-			boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+
+		client::Log::out("[ImageLoader] get "+path);
+		if(getInstance()->m_textures.find(path) == getInstance()->m_textures.end()) {
+			sf::Texture curr;
+			curr.loadFromFile(path);
+			getInstance()->m_textures[path] = curr;
 		}
-		return &m_textures[path];
+		return &getInstance()->m_textures[path];
+	}
+
+	ImageLoader* ImageLoader::getInstance() {
+		if(m_instance == NULL)
+			m_instance = new ImageLoader();
+		return m_instance;
 	}
 }
 

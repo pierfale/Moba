@@ -25,7 +25,7 @@ namespace graphics {
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
 				if(!m_focus) {
 					for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseEntered(this);
+						m_window->addCallFunction(boost::bind(&LabelListener::mouseEntered, &(*it), this));
 					}
 				}
 				m_focus = true;
@@ -34,7 +34,7 @@ namespace graphics {
 			else {
 				if(m_focus) {
 					for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseLeft(this);
+						m_window->addCallFunction(boost::bind(&LabelListener::mouseLeft, &(*it), this));
 					}
 				}
 				m_focus = false;
@@ -43,7 +43,7 @@ namespace graphics {
 		else if(event->type == sf::Event::MouseLeft) {
 			if(m_focus) {
 				for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					it->mouseLeft(this);
+					m_window->addCallFunction(boost::bind(&LabelListener::mouseLeft, &(*it), this));
 				}
 			}
 			m_focus = false;

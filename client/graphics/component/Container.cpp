@@ -57,8 +57,7 @@ namespace graphics {
 	}
 
 	void Container::setBackground(std::string path, Repeat repeat) {
-		getWindow()->getImageLoader()->add(path);
-		m_background = getWindow()->getImageLoader()->get(path);
+		m_background = ImageLoader::get(path);
 		m_repeat = repeat;
 	}
 

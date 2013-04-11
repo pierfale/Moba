@@ -11,7 +11,7 @@
 namespace graphics {
 
 	ConnectionScreen::ConnectionScreen(Window* window) : m_window(window) {
-
+		load();
 	}
 
 	void ConnectionScreen::load() {
@@ -47,6 +47,7 @@ namespace graphics {
 		m_bConnection->setCoord(util::Coordinates(50, 220));
 		m_bConnection->addListener(new ConnectionScreen_Button(this));
 		c2->add(m_bConnection);
+		client::Log::out("ConnectionScreen Loaded");
 
 	}
 
@@ -65,15 +66,8 @@ namespace graphics {
 		w1->add(l3);
 
 		m_bConnection->setEnable(false);
-
-		boost::this_thread::sleep(boost::posix_time::milliseconds(500));
-		l3->setText("Receive information...");
-		boost::this_thread::sleep(boost::posix_time::milliseconds(500));
-		l3->setText("Loggin in !");
-		boost::this_thread::sleep(boost::posix_time::milliseconds(500));
 		CharacterScreen* characterScreen = new CharacterScreen(m_window);
 		m_window->setContentPane(characterScreen);
-		characterScreen->load();
 	}
 
 };

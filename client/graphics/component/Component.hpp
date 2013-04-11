@@ -52,6 +52,7 @@ namespace graphics {
 
 	protected:
 		Window* getWindow();
+		Component* getParent();
 		util::Coordinates m_coord;
 		int m_width;
 		int m_height;

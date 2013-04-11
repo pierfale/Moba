@@ -13,7 +13,7 @@ namespace graphics {
 
 	}
 
-	void ButtonListener::pressed() {
+	void ButtonListener::pressed(void* origin) {
 
 	}
 

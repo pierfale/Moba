@@ -9,14 +9,13 @@
 
 namespace graphics {
 
-	BasicStyle::BasicStyle(Window* window) : m_window(window), m_font(sf::Font::getDefaultFont()), m_fontSize(20), m_fontColor(sf::Color::Black) {
+	BasicStyle::BasicStyle() :  m_font(sf::Font::getDefaultFont()), m_fontSize(20), m_fontColor(sf::Color::Black) {
 		m_borderImage = NULL;
 		m_centerImage = NULL;
 	}
 
 	void BasicStyle::setBorderImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_borderImage = m_window->getImageLoader()->get(path);
+		m_borderImage = ImageLoader::get(path);
 		int width = m_borderImage->getSize().x/StateCount;
 		int height = m_borderImage->getSize().y;
 		for(int i=0; i<StateCount; i++) {
@@ -40,8 +39,7 @@ namespace graphics {
 	}
 
 	void BasicStyle::setCenterImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_centerImage = m_window->getImageLoader()->get(path);
+		m_centerImage = ImageLoader::get(path);
 		for(int i=0; i<StateCount; i++) {
 			m_center[i].setTexture(*m_centerImage);
 			m_center[i].setTextureRect(sf::IntRect(i*(m_centerImage->getSize().x/4), 0, m_centerImage->getSize().x/4, m_centerImage->getSize().y));

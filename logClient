@@ -1,42 +1,42 @@
-Thread aa4 : begin ...
-Thread aa4 : Ref 0x1f01dd8: Create Window [title=Moba, width=800, height=600]
-Thread aa4 : Ref 0x1f01e18: Create Container
-Thread aa4 : thread launched ID=1658 in graphics::Window::Window(int, int, std::string)
-Thread 1658 : [ImageLoader] ressources/gui/button_2.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/button_2_center.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/textfield_2.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/textfield_center.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/window_bot.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/window_top.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/window_center.png loaded
-Thread 1658 : [ImageLoader] ressources/gui/window_close.png loaded
-Thread aa4 : Ref 0x330e260: Create Container
-Thread aa4 : Ref 0x1f01dd8: New ContentPane in Window (ref 0x330e260)
-[Error] Center layout can't work with multiple components [Container 0x330e260]
-Thread aa4 : Ref 0x330e2b0: Create Container
-Thread aa4 : Ref 0x330e260: Add Container (ref 0x330e2b0) in Container
-Thread aa4 : Ref 0x330e318: Create Label [text=Pseudo : , style=0x330a340]
-Thread aa4 : Ref 0x330e2b0: Add Label (ref 0x330e318) in Container
-Thread aa4 : Ref 0x330e370: Create TextField [text=, style=0x3307230]
-Thread aa4 : Ref 0x330e2b0: Add TextField (ref 0x330e370) in Container
-Thread aa4 : Ref 0x330e7b8: Create Label [text=Password : , style=0x330a340]
-Thread aa4 : Ref 0x330e2b0: Add Label (ref 0x330e7b8) in Container
-Thread aa4 : Ref 0x330e818: Create TextField [text=, style=0x3307230]
-Thread aa4 : Ref 0x330e2b0: Add TextField (ref 0x330e818) in Container
-Thread aa4 : Ref 0x330e860: Create Button [text=Connection, style=0x1f08fe8]
-Thread aa4 : Ref 0x330e860: Add listener 0x330e3d0 in Button
-Thread aa4 : Ref 0x330e2b0: Add Button (ref 0x330e860) in Container
-Thread 1658 : thread launched ID=16f0 in virtual bool graphics::Button::event(sf::Event*, bool)
-Thread 16f0 : Ref 0x3313c80: Create Container
-Thread 16f0 : Ref 0x3313c80: Create InnerWindow [name=login..., width=300, height=100, style=0x330d360]
-[Error] Center layout can't work with multiple components [Container 0x330e260]
-Thread 16f0 : Ref 0x330e260: Add InnerWindow (ref 0x3313c80) in Container
-Thread 16f0 : Ref 0x3314fa8: Create Label [text=Connection... , style=0x330a340]
-Thread 16f0 : Ref 0x3313c80: Add Label (ref 0x3314fa8) in InnerWindow
-Thread 16f0 : Ref 0x3317048: Create Container
-Thread 16f0 : Ref 0x1f01dd8: New ContentPane in Window (ref 0x3317048)
-Thread 16f0 : Ref 0x3317090: Create Container
-Thread 16f0 : Ref 0x3317048: Add Container (ref 0x3317090) in Container
-Thread 1658 : [ImageLoader] ressources/gui/background1.png loaded
-Thread 16f0 : Ref 0x3317120: Create Container
-Thread 16f0 : Ref 0x3317048: Add Container (ref 0x3317120) in Container
+Thread 17a4 : begin ...
+Thread 17a4 : Ref 0x3a1dd8: Create Window [title=Moba, width=800, height=600]
+Thread 17a4 : Ref 0x3a1e18: Create Container
+Thread 17a4 : thread launched ID=1730 in graphics::Window::Window(int, int, std::string)
+Thread 1730 : [ImageLoader] ressources/gui/button_2.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/button_2_center.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/textfield_2.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/textfield_center.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/window_bot.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/window_top.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/window_center.png loaded
+Thread 1730 : [ImageLoader] ressources/gui/window_close.png loaded
+Thread 17a4 : Ref 0x349e260: Create Container
+Thread 17a4 : Ref 0x3a1dd8: New ContentPane in Window (ref 0x349e260)
+[Error] Center layout can't work with multiple components [Container 0x349e260]
+Thread 17a4 : Ref 0x349e2b0: Create Container
+Thread 17a4 : Ref 0x349e260: Add Container (ref 0x349e2b0) in Container
+Thread 17a4 : Ref 0x349e318: Create Label [text=Pseudo : , style=0x349a340]
+Thread 17a4 : Ref 0x349e2b0: Add Label (ref 0x349e318) in Container
+Thread 17a4 : Ref 0x349e370: Create TextField [text=, style=0x3497230]
+Thread 17a4 : Ref 0x349e2b0: Add TextField (ref 0x349e370) in Container
+Thread 17a4 : Ref 0x349e7b8: Create Label [text=Password : , style=0x349a340]
+Thread 17a4 : Ref 0x349e2b0: Add Label (ref 0x349e7b8) in Container
+Thread 17a4 : Ref 0x349e818: Create TextField [text=, style=0x3497230]
+Thread 17a4 : Ref 0x349e2b0: Add TextField (ref 0x349e818) in Container
+Thread 17a4 : Ref 0x349e860: Create Button [text=Connection, style=0x3a8fe8]
+Thread 17a4 : Ref 0x349e860: Add listener 0x349e3d0 in Button
+Thread 17a4 : Ref 0x349e2b0: Add Button (ref 0x349e860) in Container
+Thread 1730 : thread launched ID=16bc in virtual bool graphics::Button::event(sf::Event*, bool)
+Thread 16bc : Ref 0x34a1e28: Create Container
+Thread 16bc : Ref 0x34a1e28: Create InnerWindow [name=login..., width=300, height=100, style=0x349d360]
+[Error] Center layout can't work with multiple components [Container 0x349e260]
+Thread 16bc : Ref 0x349e260: Add InnerWindow (ref 0x34a1e28) in Container
+Thread 16bc : Ref 0x34a1ab0: Create Label [text=Connection... , style=0x349a340]
+Thread 16bc : Ref 0x34a1e28: Add Label (ref 0x34a1ab0) in InnerWindow
+Thread 16bc : Ref 0x34a1ee0: Create Container
+Thread 16bc : Ref 0x3a1dd8: New ContentPane in Window (ref 0x34a1ee0)
+Thread 16bc : Ref 0x34a1e98: Create Container
+Thread 16bc : Ref 0x34a1ee0: Add Container (ref 0x34a1e98) in Container
+Thread 1730 : [ImageLoader] ressources/gui/background1.png loaded
+Thread 16bc : Ref 0x34a1f90: Create Container
+Thread 16bc : Ref 0x34a1ee0: Add Container (ref 0x34a1f90) in Container

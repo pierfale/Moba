@@ -11,7 +11,7 @@
 class Client {
 public:
 	Client() {
-		std::string log("logClient");
+		std::string log("client.log");
 		client::Log::init(log);
 		client::Log::out("begin ...");
 		graphics::Graphics graphics;
