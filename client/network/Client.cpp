@@ -17,26 +17,14 @@ using boost::asio::ip::tcp;
 
 namespace network {
 
-Client::Client(){
-}
-
-Client::~Client() {
-	BOOST_FOREACH(tcp::socket& sock, connections){
-		sock.close();
-		std::cout << "connection closed" << std::endl;
-	}
-}
+Client::Client(){}
+Client::~Client() {}
 
 boost::shared_ptr<tcp::socket> Client::connect(boost::asio::ip::tcp::endpoint& ep, boost::system::error_code& ec){
 	boost::asio::io_service io_service;
 	boost::shared_ptr<tcp::socket> sock(new tcp::socket(io_service));
 
 	sock.get()->connect(ep, ec);
-
-	if(!ec)
-		connections.push_back(sock.get());
-	// else no connection established
-
 	return sock;
 }
 
