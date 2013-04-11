@@ -18,6 +18,7 @@ namespace graphics {
 		GUIStyle::init(window);
 		ConnectionScreen* screen_con = new ConnectionScreen(window);
 		window->setContentPane(screen_con);
+		screen_con->load();
 	}
 
 }

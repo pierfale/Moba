@@ -7,22 +7,23 @@
 
 #include "ImageLoader.hpp"
 
+
+
 namespace graphics {
+
+	boost::mutex ImageLoader::m_guard;
 
 	ImageLoader::ImageLoader() {
 
 	}
 
 	void ImageLoader::add(std::string path) {
-		client::Log::out("Ask for load "+path);
+		boost::mutex::scoped_lock lock(m_guard);
 		if(m_textures.find(path) == m_textures.end())
 			m_wait.push_back(path);
 	}
 
 	void  ImageLoader::process() {
-		boost::mutex test;
-		test.lock();
-		test.unlock();
 		boost::mutex::scoped_lock lock(m_guard);
 		for(std::vector<std::string>::iterator it = m_wait.begin() ; it != m_wait.end(); ++it) {
 			sf::Texture curr;

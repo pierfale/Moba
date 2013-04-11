@@ -32,7 +32,7 @@ namespace graphics {
 					}
 				}
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				used = true;
 			}
 		}
@@ -83,7 +83,7 @@ namespace graphics {
 				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
 					boost::thread t(&ButtonListener::enter, &(*it), this);
 				}
-				m_window->selectNext();
+				getWindow()->selectNext();
 			}
 		}
 		return used;

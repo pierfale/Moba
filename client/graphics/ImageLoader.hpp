@@ -29,7 +29,7 @@ namespace graphics {
 	private:
 		std::map<std::string,sf::Texture> m_textures;
 		std::vector<std::string> m_wait;
-		boost::mutex m_guard;
+		static  boost::mutex m_guard;
 	};
 
 }

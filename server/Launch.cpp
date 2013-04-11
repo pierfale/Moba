@@ -18,11 +18,10 @@
 
 int main() {
 	//tmp
-	Client c;/*
+	Client c;
 	while(ThreadManager::number() > 0) {
 		boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-	}*/
-	ThreadManager::getThreads()->join_all();
+	}
 	exit(0);
 
 	std::cout << "Launch server ..." << std::endl;

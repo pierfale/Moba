@@ -18,6 +18,7 @@ namespace graphics {
 	}
 
 	void ConnectionScreen_Button::pressed() {
+		std::cout << "ok" << std::endl;
 		m_view->startConnection();
 	}
 }

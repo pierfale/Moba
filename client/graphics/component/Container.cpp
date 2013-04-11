@@ -39,6 +39,7 @@ namespace graphics {
 	void Container::setLayout(Layout* layout) {
 		m_layout = layout;
 		m_layout->setContainer(this);
+		m_layout->validate();
 	}
 
 	void Container::setSelected(bool state) {
@@ -56,8 +57,8 @@ namespace graphics {
 	}
 
 	void Container::setBackground(std::string path, Repeat repeat) {
-		m_window->getImageLoader()->add(path);
-		m_background = m_window->getImageLoader()->get(path);
+		getWindow()->getImageLoader()->add(path);
+		m_background = getWindow()->getImageLoader()->get(path);
 		m_repeat = repeat;
 	}
 

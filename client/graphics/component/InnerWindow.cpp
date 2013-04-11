@@ -41,7 +41,7 @@ namespace graphics {
 					}
 				}
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				m_originCoord = m_coord;
 				m_originMouseCoord = util::Coordinates(event->mouseButton.x, event->mouseButton.y);
 				used = true;

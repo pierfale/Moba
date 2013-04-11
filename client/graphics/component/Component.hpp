@@ -51,6 +51,7 @@ namespace graphics {
 		virtual std::string toString();
 
 	protected:
+		Window* getWindow();
 		util::Coordinates m_coord;
 		int m_width;
 		int m_height;
