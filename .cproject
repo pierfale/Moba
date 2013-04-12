@@ -28,7 +28,7 @@
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\include&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.214445261" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+								<option id="gnu.cpp.compiler.option.preprocessor.def.214445261" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="_WIN32_WINNT=0x0501"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1942511099" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -36,7 +36,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1954730818" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.mingw.exe.debug.option.optimization.level.1015739420" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.exe.debug.option.debugging.level.2010597590" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.include.paths.35000346" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.c.compiler.option.include.paths.35000346" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\include&quot;"/>
 								</option>
@@ -47,6 +47,7 @@
 								<option id="gnu.cpp.link.option.libs.1985017782" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-1_53"/>
 									<listOptionValue builtIn="false" value="ws2_32"/>
+									<listOptionValue builtIn="false" value="wsock32"/>
 									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-1_53"/>
 									<listOptionValue builtIn="false" value="mysqlclient"/>
 									<listOptionValue builtIn="false" value="sfml-graphics"/>
