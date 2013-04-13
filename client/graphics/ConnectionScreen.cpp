@@ -10,7 +10,7 @@
 
 namespace graphics {
 
-	ConnectionScreen::ConnectionScreen(Window* window) : m_window(window) {
+	ConnectionScreen::ConnectionScreen() {
 		load();
 	}
 
@@ -66,7 +66,7 @@ namespace graphics {
 		w1->add(l3);
 
 		m_bConnection->setEnable(false);
-		CharacterScreen* characterScreen = new CharacterScreen(m_window);
+		CharacterScreen* characterScreen = new CharacterScreen();
 		m_window->setContentPane(characterScreen);
 	}
 

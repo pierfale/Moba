@@ -17,4 +17,8 @@ namespace graphics {
 		}
 	}
 
+	std::string VerticalLayout::getLayoutName() {
+		return "VerticalLayout";
+	}
+
 }

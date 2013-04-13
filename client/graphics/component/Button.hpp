@@ -33,7 +33,7 @@ namespace graphics {
 
 		std::string getText();
 
-	private:
+	protected:
 		std::string m_text;
 		BasicStyle* m_style;
 		boost::ptr_vector<ButtonListener> m_listener;

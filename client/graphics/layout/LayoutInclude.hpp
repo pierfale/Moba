@@ -10,8 +10,10 @@
 
 #include "Layout.hpp"
 #include "CenterLayout.hpp"
+#include "HorizontalFixedLayout.hpp"
 #include "PassivLayout.hpp"
 #include "SplitFixedLayout.hpp"
+#include "VerticalFixedLayout.hpp"
 #include "VerticalLayout.hpp"
 
 

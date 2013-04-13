@@ -12,17 +12,32 @@
 #include "component/ComponentInclude.hpp"
 #include "GUIStyle.hpp"
 #include "layout/LayoutInclude.hpp"
+#include "inheritedComponent/CharacterFrame.hpp"
+#include "../game/menu/PlayerList.hpp"
+#include "inheritedComponent/CharacterInfo.hpp"
+#include "inheritedComponent/CharacterSkill.hpp"
+
 
 namespace graphics {
 
 	class CharacterScreen : public Container {
 
 	public:
-		CharacterScreen(Window* window);
+		CharacterScreen();
 		void load();
 
+		void viewChanged(void* origin);
+		void characterChanged(void* origin);
+		void loadMainContent();
+
 	private:
-		Window* m_window;
+		Button* m_statButton;
+		Button* m_skillButton;
+		Button* m_launchButton;
+		Container* m_containerMainContent;
+		Container* m_containerInfo;
+		game::Player* m_playerSelected;
+		boost::ptr_vector<CharacterFrame> m_chars;
 
 	};
 

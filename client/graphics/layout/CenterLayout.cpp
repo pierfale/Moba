@@ -19,6 +19,10 @@ namespace graphics {
 		}
 	}
 
+	std::string CenterLayout::getLayoutName() {
+		return "CenterLayout";
+	}
+
 }
 
 

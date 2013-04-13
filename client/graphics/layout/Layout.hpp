@@ -22,6 +22,7 @@ namespace graphics {
 		virtual ~Layout();
 		virtual void validate() = 0;
 		void setContainer(graphics::Container* container);
+		virtual std::string getLayoutName();
 
 	protected:
 		graphics::Container* m_container;

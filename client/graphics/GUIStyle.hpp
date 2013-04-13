@@ -22,6 +22,7 @@ namespace graphics {
 		static BasicStyle* label();
 		static BasicStyle* textfield();
 		static WindowStyle* innerwindow();
+		static LineStyle* line();
 
 	private:
 		GUIStyle();
@@ -32,6 +33,7 @@ namespace graphics {
 		BasicStyle* m_label;
 		BasicStyle* m_textfield;
 		WindowStyle* m_innerwindow;
+		LineStyle* m_line;
 	};
 }
 

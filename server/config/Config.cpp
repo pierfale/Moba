@@ -19,13 +19,11 @@ bool Config::load(std::string path) {
 		ConfigDefault::fillIn(&m_values);
 		return false;
 	}
-	boost::char_separator<char> sep(" ");
-
-
 	std::string line;
 	while(std::getline(file, line))  {
 		evalLine(line);
 	}
+	file.close();
 	ConfigDefault::fillIn(&m_values);
 	return true;
 }

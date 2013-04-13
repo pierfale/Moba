@@ -16,6 +16,7 @@ namespace graphics {
 		m_textfield = NULL;
 		m_label = NULL;
 		m_innerwindow = NULL;
+		m_line = NULL;
 	}
 
 	void GUIStyle::init() {
@@ -39,6 +40,9 @@ namespace graphics {
 		getInstance()->m_innerwindow->setHeaderOffset(util::Coordinates(10, 5));
 		getInstance()->m_innerwindow->setFontColor(sf::Color(226, 233, 40));
 		getInstance()->m_innerwindow->setFontSize(18);
+
+		getInstance()->m_line = new LineStyle();
+		getInstance()->m_line->setLineImage("ressources/gui/line.png");
 	}
 
 	BasicStyle* GUIStyle::button() {
@@ -55,6 +59,10 @@ namespace graphics {
 
 	WindowStyle* GUIStyle::innerwindow() {
 		return getInstance()->m_innerwindow;
+	}
+
+	LineStyle* GUIStyle::line() {
+		return getInstance()->m_line;
 	}
 
 	GUIStyle* GUIStyle::getInstance() {

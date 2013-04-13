@@ -120,9 +120,9 @@ namespace graphics {
 
 	}
 
-	std::string Component::toString() {
-		return "[component:width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
-				",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+"]";
+	std::string Component::toString(bool recursive) {
+		return "["+util::Cast::ptrToInt(this)+":"+getComponentName()+":width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
+				",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+", parent="+util::Cast::ptrToInt(m_parent)+"]";
 	}
 }
 

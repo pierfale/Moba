@@ -37,6 +37,7 @@ namespace graphics {
 			m_root->setSize(m_width, m_height);
 			m_root->validate();
 			client::Log::out("Ref "+util::Cast::ptrToInt(this)+": New ContentPane in "+getComponentName()+" (ref "+util::Cast::ptrToInt(m_root)+")");
+			std::cout << m_root->toString() << std::endl;
 			m_rootTmp = NULL;
 		}
 	}
@@ -103,7 +104,7 @@ namespace graphics {
 	void Window::run() {
 		m_window = new sf::RenderWindow(sf::VideoMode(m_width, m_height), m_title);
 		GUIStyle::init();
-		setContentPane(new ConnectionScreen(this));
+		setContentPane(new ConnectionScreen());
 		while (m_window->isOpen()) {
 			checkNewContentPane();
 			checkFunctionCall();

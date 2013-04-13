@@ -1,0 +1,98 @@
+Thread 1ea8 : begin ...
+Thread 1ea8 : Ref 0x3dc1d00: Create Window [title=Moba, width=800, height=600]
+Thread 1ea8 : [ImageLoader] get ressources/gui/button_2.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/button_2_center.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/textfield_2.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/textfield_center.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/window_bot.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/window_top.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/window_center.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/window_close.png
+Thread 1ea8 : [ImageLoader] get ressources/gui/line.png
+Thread 1ea8 : Ref 0x3dce8e8: Create Container
+[Error] Center layout can't work with multiple components [Container 0x3dce8e8]
+Thread 1ea8 : Ref 0x3dce938: Create Container
+Thread 1ea8 : Ref 0x3dce8e8: Add Container (ref 0x3dce938) in Container
+Thread 1ea8 : Ref 0x3dce980: Create Label [text=Pseudo : , style=0x3dca988]
+Thread 1ea8 : Ref 0x3dce938: Add Label (ref 0x3dce980) in Container
+Thread 1ea8 : Ref 0x3dce9c8: Create TextField [text=, style=0x3dc7878]
+Thread 1ea8 : Ref 0x3dce938: Add TextField (ref 0x3dce9c8) in Container
+Thread 1ea8 : Ref 0x3dcea10: Create Label [text=Password : , style=0x3dca988]
+Thread 1ea8 : Ref 0x3dce938: Add Label (ref 0x3dcea10) in Container
+Thread 1ea8 : Ref 0x3dcea58: Create TextField [text=, style=0x3dc7878]
+Thread 1ea8 : Ref 0x3dce938: Add TextField (ref 0x3dcea58) in Container
+Thread 1ea8 : Ref 0x3dceaa0: Create Button [text=Connection, style=0x2939e00]
+Thread 1ea8 : Ref 0x3dceaa0: Add listener 0x3dcf880 in Button
+Thread 1ea8 : Ref 0x3dce938: Add Button (ref 0x3dceaa0) in Container
+Thread 1ea8 : ConnectionScreen Loaded
+Thread 1ea8 : Ref 0x3dc1d00: New ContentPane in Window (ref 0x3dce8e8)
+Thread 1ea8 : Ref 0x3dcf510: Create Container
+Thread 1ea8 : Ref 0x3dcf510: Create InnerWindow [name=login..., width=300, height=100, style=0x3dcd9a8]
+[Error] Center layout can't work with multiple components [Container 0x3dce8e8]
+Thread 1ea8 : Ref 0x3dce8e8: Add InnerWindow (ref 0x3dcf510) in Container
+Thread 1ea8 : Ref 0x3dd32b0: Create Label [text=Connection... , style=0x3dca988]
+Thread 1ea8 : Ref 0x3dcf510: Add Label (ref 0x3dd32b0) in InnerWindow
+Thread 1ea8 : Ref 0x3dd3d28: Create Container
+Thread 1ea8 : Ref 0x3dd3228: Create Container
+Thread 1ea8 : Ref 0x3dd3d28: Add Container (ref 0x3dd3228) in Container
+Thread 1ea8 : [ImageLoader] get ressources/gui/background1.png
+Thread 1ea8 : Ref 0x3dcf580: Create Container
+Thread 1ea8 : Ref 0x3dd3d28: Add Container (ref 0x3dcf580) in Container
+Thread 1ea8 : CharacterScreen Loaded
+Thread 1ea8 : Ref 0x3dd3d98: Create Button [text=, style=0]
+Thread 1ea8 : Ref 0x3dd3228: Add Button (ref 0x3dd3d98) in Container
+Thread 1ea8 : Ref 0x3dd3d98: Add listener 0x3dcf930 in Button
+Thread 1ea8 : Ref 0x3dd3de0: Create Button [text=, style=0]
+Thread 1ea8 : Ref 0x3dd3228: Add Button (ref 0x3dd3de0) in Container
+Thread 1ea8 : Ref 0x3dd3de0: Add listener 0x3dcf920 in Button
+Thread 1ea8 : Ref 0x29399b8: Create Container
+Thread 1ea8 : Ref 0x3dcf580: Add Container (ref 0x29399b8) in Container
+Thread 1ea8 : Ref 0x2939a00: Create Container
+Thread 1ea8 : Ref 0x3dcf580: Add Container (ref 0x2939a00) in Container
+Thread 1ea8 : [ImageLoader] get ressources/gui/background1.png
+Thread 1ea8 : Ref 0x3dd4d00: Create Button [text=Statistic, style=0x2939e00]
+Thread 1ea8 : Ref 0x3dd4d00: Add listener 0x3dcf980 in Button
+Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d00) in Container
+Thread 1ea8 : Ref 0x3dd4d40: Create Button [text=Skill, style=0x2939e00]
+Thread 1ea8 : Ref 0x3dd4d40: Add listener 0x3dcf980 in Button
+Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d40) in Container
+Thread 1ea8 : Ref 0x3dd4d80: Create Button [text=Launch, style=0x2939e00]
+Thread 1ea8 : Ref 0x3dd4d80: Add listener 0x3dcf980 in Button
+Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d80) in Container
+Thread 1ea8 : Ref 0x3dc1d00: New ContentPane in Window (ref 0x3dd3d28)
+Thread 1ea8 : Ref 0x3dd88c0: Create Container
+Thread 1ea8 : Ref 0x3dd9908: Create Label [text=pierfale, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9908) in Container
+Thread 1ea8 : Ref 0x3dd9950: Create Label [text=Physical Attack : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9950) in Container
+Thread 1ea8 : Ref 0x3dd9998: Create Label [text=Magical Attack : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9998) in Container
+Thread 1ea8 : Ref 0x3dd99e0: Create Label [text=Physical Armor : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd99e0) in Container
+Thread 1ea8 : Ref 0x3dd9a28: Create Label [text=Magical Armor : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9a28) in Container
+Thread 1ea8 : Ref 0x3dd9a70: Create Label [text=Attack Speed : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9a70) in Container
+Thread 1ea8 : Ref 0x3dd9ab8: Create Label [text=Speed : 0, style=0x3dde3f8]
+Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9ab8) in Container
+Thread 1ea8 : Ref 0x3dd8960: Create Container
+Thread 1ea8 : Ref 0x3dd9ab8: Create Button [text=, style=0x2939e00]
+Thread 1ea8 : [ImageLoader] get ressources/game/skill/1.png
+Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9ab8) in Container
+Thread 1ea8 : Ref 0x3dd9a70: Create Button [text=, style=0x2939e00]
+Thread 1ea8 : [ImageLoader] get ressources/game/skill/2.png
+Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9a70) in Container
+Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0820) in Container
+Thread 1ea8 : Ref 0x3dd9a28: Create Button [text=, style=0x2939e00]
+Thread 1ea8 : [ImageLoader] get ressources/game/skill/3.png
+Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9a28) in Container
+Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b08a0) in Container
+Thread 1ea8 : Ref 0x3dd99e0: Create Button [text=, style=0x2939e00]
+Thread 1ea8 : [ImageLoader] get ressources/game/skill/4.png
+Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd99e0) in Container
+Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0920) in Container
+Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0960) in Container
+Thread 1ea8 : Ref 0x3dd9998: Create Button [text=, style=0x2939e00]
+Thread 1ea8 : [ImageLoader] get ressources/game/skill/5.png
+Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9998) in Container
+Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b09e0) in Container

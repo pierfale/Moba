@@ -10,7 +10,7 @@
 
 namespace graphics {
 
-	Container::Container() : m_background(NULL) {
+	Container::Container() : m_background(NULL), m_backgroundColor(sf::Color::Transparent) {
 		m_layout = new VerticalLayout();
 		m_layout->setContainer(this);
 		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName());
@@ -26,6 +26,18 @@ namespace graphics {
 		m_components.push_back(component);
 		m_layout->validate();
 		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Add "+component->getComponentName()+" (ref "+util::Cast::ptrToInt(component)+") in "+getComponentName());
+	}
+
+	void Container::replace(Component* old, Component* nw) {
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			if(&(*it) == old) {
+				m_components.replace(it, nw);
+				nw->setParent(this);
+				nw->setWindow(m_window);
+				validate();
+				break;
+			}
+		}
 	}
 
 	int Container::childSize() {
@@ -61,6 +73,10 @@ namespace graphics {
 		m_repeat = repeat;
 	}
 
+	void Container::setBackgroundColor(sf::Color color) {
+		m_backgroundColor = color;
+	}
+
 	bool Container::isSelectable() {
 		return false;
 	}
@@ -75,6 +91,9 @@ namespace graphics {
 
 	void Container::validate() {
 		m_layout->validate();
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			it->validate();
+		}
 	}
 
 	bool Container::event(sf::Event* event, bool used) {
@@ -86,11 +105,24 @@ namespace graphics {
 
 	void Container::draw(sf::RenderWindow* render) {
 		util::Coordinates coord = getRealCoord();
+		sf::RectangleShape rect(sf::Vector2f(m_width, m_height));
+		rect.setPosition(coord.x, coord.y);
+		rect.setFillColor(m_backgroundColor);
+		render->draw(rect);
 		if(m_background != NULL)
 			util::Graphics::repeat(render, m_background, sf::IntRect(coord.x, coord.y, m_width, m_height), m_repeat);
 		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
 			it->draw(render);
 		}
+	}
+
+	std::string Container::toString(bool recursive) {
+		std::string r = "["+util::Cast::ptrToInt(this)+":"+getComponentName()+":width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
+						",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+", layout="+m_layout->getLayoutName()+", parent="+util::Cast::ptrToInt(m_parent)+"]\n";
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			r += "   "+it->toString()+"\n";
+		}
+		return r;
 	}
 
 }

@@ -20,6 +20,13 @@ namespace util {
 		ss << ptr;
 		return ss.str();
 	}
+
+	int Cast::stringToInt(std::string s) {
+		int n;
+		std::istringstream ss(s);
+		ss >> n;
+		return n;
+	}
 }
 
 

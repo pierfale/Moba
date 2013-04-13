@@ -17,6 +17,7 @@ namespace graphics {
 
 	public:
 		void validate();
+		std::string getLayoutName();
 
 	};
 

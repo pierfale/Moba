@@ -8,7 +8,6 @@
 #ifndef CONFIG_HPP_
 #define CONFIG_HPP_
 
-#include <boost/tokenizer.hpp>
 #include <fstream>
 #include <map>
 

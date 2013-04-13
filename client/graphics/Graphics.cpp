@@ -15,10 +15,8 @@ namespace graphics {
 	Graphics::Graphics() {
 
 		Window* window = new Window(800, 600, "Moba");
+		delete window;
 
-		ConnectionScreen* screen_con = new ConnectionScreen(window);
-		window->setContentPane(screen_con);
-		screen_con->load();
 	}
 
 }

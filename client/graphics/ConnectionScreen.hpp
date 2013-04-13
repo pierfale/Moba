@@ -20,12 +20,11 @@ namespace graphics {
 	class ConnectionScreen : public Container {
 
 	public:
-		ConnectionScreen(Window* window);
+		ConnectionScreen();
 		void load();
 		void startConnection();
 
 	private:
-		Window* m_window;
 		Button* m_bConnection;
 
 	};

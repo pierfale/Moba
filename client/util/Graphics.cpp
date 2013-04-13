@@ -18,10 +18,10 @@ namespace util {
 					sf::Sprite sprite;
 					sprite.setTexture(*texture);
 					if(i+(unsigned int)texture->getSize().x > (unsigned int)rect.width)
-						sprite.setTextureRect(sf::IntRect(0, 0, i+texture->getSize().x-rect.width, texture->getSize().y));
+						sprite.setTextureRect(sf::IntRect(0, 0, rect.width-i, texture->getSize().y));
 					if(j+(unsigned int)texture->getSize().y > (unsigned int)rect.height)
-						sprite.setTextureRect(sf::IntRect(0, 0, sprite.getGlobalBounds().width, j+texture->getSize().y-rect.height));
-					sprite.setPosition(i, j);
+						sprite.setTextureRect(sf::IntRect(0, 0, sprite.getGlobalBounds().width, rect.height-j));
+					sprite.setPosition(i+rect.left, j+rect.top);
 					render->draw(sprite);
 				}
 			}

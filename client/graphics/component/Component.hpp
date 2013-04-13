@@ -48,7 +48,7 @@ namespace graphics {
 		virtual void draw(sf::RenderWindow* render) = 0;
 		virtual bool event(sf::Event* event, bool used) = 0;
 		virtual void validate();
-		virtual std::string toString();
+		virtual std::string toString(bool recursive = false);
 
 	protected:
 		Window* getWindow();

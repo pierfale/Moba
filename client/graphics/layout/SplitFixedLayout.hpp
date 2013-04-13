@@ -20,6 +20,7 @@ namespace graphics {
 		enum Fixed {first, second};
 		SplitFixedLayout(Direction direction, Fixed fixed, int fixedSize);
 		void validate();
+		std::string getLayoutName();
 
 	private:
 
