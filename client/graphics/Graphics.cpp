@@ -9,6 +9,8 @@
 #include "component/Window.hpp"
 #include "ConnectionScreen.hpp"
 #include "GuiStyle.hpp"
+#include "game/Gameboard.h"
+#include "game/Player.h"
 
 namespace graphics {
 
