@@ -18,6 +18,9 @@
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.1276449828" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
 							<builder buildPath="${workspace_loc:/Moba}/Debug" id="cdt.managedbuild.tool.gnu.builder.mingw.base.46024674" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.180612030" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.1838391388" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/network}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.941349463" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.731887110" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -25,6 +28,7 @@
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.133721930" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.939610804" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1365755944" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\include&quot;"/>
 								</option>
@@ -37,6 +41,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.mingw.exe.debug.option.optimization.level.1015739420" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.exe.debug.option.debugging.level.2010597590" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.35000346" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\include&quot;"/>
 								</option>
@@ -45,6 +50,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.1927866439" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.15185914" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 								<option id="gnu.cpp.link.option.libs.1985017782" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="network"/>
 									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-1_53"/>
 									<listOptionValue builtIn="false" value="ws2_32"/>
 									<listOptionValue builtIn="false" value="wsock32"/>
@@ -55,7 +61,9 @@
 									<listOptionValue builtIn="false" value="sfml-system"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.163770261" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/network/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\dev\c++\network\Debug&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\lib&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.642696293" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -67,7 +75,15 @@
 					</folderInfo>
 				</configuration>
 			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="network;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/network"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/network/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="network" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.exe.release.1051371203">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.exe.release.1051371203" moduleId="org.eclipse.cdt.core.settings" name="Release">
