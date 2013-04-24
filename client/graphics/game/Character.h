@@ -8,8 +8,9 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 
-#include "../component/Component.hpp"
 #include <string>
+
+#include "../component/Component.hpp"
 #include "../../util/Coordinates.hpp"
 
 namespace graphics {

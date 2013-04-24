@@ -13,6 +13,11 @@
 
 #include "../../util/Util.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace game {
 
 	class Skill {

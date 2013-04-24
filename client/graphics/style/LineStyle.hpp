@@ -10,7 +10,13 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+
 #include "../ImageLoader.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 

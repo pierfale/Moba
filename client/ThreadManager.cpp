@@ -24,7 +24,7 @@ void ThreadManager::add(const boost::function0<void>& fun, std::string funName) 
 	boost::thread* t = getInstance()->m_threads.create_thread(fun);
 	std::stringstream ss;
 	ss << t->get_id();
-	client::Log::out("thread launched ID="+ss.str()+" in "+funName);
+	log_out "thread launched ID="+ss.str()+" in "+funName end_log_out;
 }
 
 boost::thread_group* ThreadManager::getThreads() {

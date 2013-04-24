@@ -20,7 +20,7 @@ namespace graphics {
 
 		for(unsigned int i=0; i<key.size(); i++) {
 			game::Skill* skill = game::SkillReader::get(key.at(i));
-			ButtonImage* tmp = new ButtonImage(skill->getImage(), GUIStyle::button());
+			ButtonImage* tmp = new ButtonImage(skill->getImage(), GUIStyle::buttonImage());
 			tmp->setCoord(util::Coordinates(skill->getCoord()));
 			this->add(tmp);
 			std::vector<int> parent = skill->getParents();

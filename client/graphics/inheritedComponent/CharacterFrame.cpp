@@ -10,10 +10,14 @@
 namespace graphics {
 
 	CharacterFrame::CharacterFrame(game::Player* player) : Button(""), m_player(player), m_select(false) {
-		m_height = 45;
+		m_height = 55;
+		m_style = new BasicStyle();
+		m_style->setBorderImage("ressources/gui/button_character.png");
+		m_style->setCenterImage("ressources/gui/button_character_center.png");
+		m_style->setFontColor(sf::Color(255,255,255));
 	}
 
-	void CharacterFrame::setSelect(bool state) {
+	void CharacterFrame::setSelect(bool state, bool force) {
 		m_select = state;
 	}
 
@@ -27,35 +31,34 @@ namespace graphics {
 
 	void CharacterFrame::draw(sf::RenderWindow* render) {
 		util::Coordinates coord = getRealCoord();
-		int border = 1;
-		sf::RectangleShape background(sf::Vector2f(m_width-2*border, m_height-2*border));
-
-		background.setPosition(sf::Vector2f(coord.x+border, coord.y+border));
-
-		if(m_focus)
-			background.setFillColor(sf::Color(100, 100, 100, 150));
-		else
-			background.setFillColor(sf::Color(80, 80, 80, 150));
-
-		background.setOutlineThickness(border);
 		if(m_select)
-			background.setOutlineColor(sf::Color::Red);
-		else
-			background.setOutlineColor(sf::Color::Black);
-		render->draw(background);
+			m_selected = true;
 
+		m_width -= 10;
+		m_height -= 4;
+		m_coord.x += 5;
+		m_coord.y += 2;
+
+		Button::draw(render);
+
+		m_width += 10;
+		m_height += 4;
+		m_coord.x -= 5;
+		m_coord.y -= 2;
+
+		m_selected = false;
 		sf::Text name(m_player->getName());
 		name.setCharacterSize(18);
 		name.setColor(sf::Color::White);
 		sf::FloatRect textSize = name.getGlobalBounds();
-		name.setPosition(coord.x+5,coord.y);
+		name.setPosition(coord.x+13,coord.y+5);
 		render->draw(name);
 
 		sf::Text level("level "+util::Cast::intToString(m_player->getLevel()));
 		level.setCharacterSize(14);
 		level.setColor(sf::Color::White);
 		textSize = level.getGlobalBounds();
-		level.setPosition(coord.x+5,coord.y+25);
+		level.setPosition(coord.x+13,coord.y+30);
 		render->draw(level);
 
 	}

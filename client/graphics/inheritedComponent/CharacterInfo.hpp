@@ -12,6 +12,11 @@
 #include "../layout/LayoutInclude.hpp"
 #include "../../game/character/Player.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class CharacterInfo : public Container {

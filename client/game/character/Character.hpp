@@ -10,6 +10,11 @@
 
 #include <string>
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace game {
 
 	class Character {

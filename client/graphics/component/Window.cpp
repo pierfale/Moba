@@ -8,16 +8,16 @@
 #include "Window.hpp"
 #include "Component.hpp"
 #include "Container.hpp"
-#include "../ConnectionScreen.hpp"
+#include "../screen/ScreenManager.hpp"
 
 namespace graphics {
 
 	Window::Window(int width, int height, std::string title) : m_width(width), m_height(height), m_title(title) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [title="+title+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+"]");
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [title="+title+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+"]" end_log_out;
 		m_window = NULL;
 		m_root = NULL;
 		m_rootTmp = NULL;
-		run();
+		m_framesCount = 0;
 	}
 
 	void Window::setContentPane(Container* pane) {
@@ -30,14 +30,16 @@ namespace graphics {
 
 	void Window::checkNewContentPane() {
 		if(m_rootTmp != NULL) {
+			Container* old = m_root;
 			m_root = m_rootTmp;
 			m_root->setParent(NULL);
 			m_root->setWindow(this);
 			m_root->setCoord(util::Coordinates(0,0));
 			m_root->setSize(m_width, m_height);
 			m_root->validate();
-			client::Log::out("Ref "+util::Cast::ptrToInt(this)+": New ContentPane in "+getComponentName()+" (ref "+util::Cast::ptrToInt(m_root)+")");
-			std::cout << m_root->toString() << std::endl;
+			log_out "Ref "+util::Cast::ptrToString(this)+": New ContentPane in "+getComponentName()+" (ref "+util::Cast::ptrToString(m_root)+")" end_log_out;
+			//std::cout << m_root->toString(true) << std::endl;
+			delete old;
 			m_rootTmp = NULL;
 		}
 	}
@@ -48,9 +50,12 @@ namespace graphics {
 		 m_callFunction.clear();
 	}
 	void Window::setSelectedComponent(Component* component) {
-		if(component->isSelectable()) {
-			m_root->setSelected(false);
-			component->setSelected(true);
+		if(component == NULL) {
+			m_root->setSelected(false, true);
+		}
+		else if(component->isSelectable()) {
+			m_root->setSelected(false, true);
+			component->setSelected(true, true);
 		}
 	}
 
@@ -101,10 +106,16 @@ namespace graphics {
 		return "Window";
 	}
 
+	Container* Window::getContentPane() {
+		if(m_rootTmp != NULL)
+			return m_rootTmp;
+		return m_root;
+	}
+
 	void Window::run() {
 		m_window = new sf::RenderWindow(sf::VideoMode(m_width, m_height), m_title);
 		GUIStyle::init();
-		setContentPane(new ConnectionScreen());
+		setContentPane(ScreenManager::connection());
 		while (m_window->isOpen()) {
 			checkNewContentPane();
 			checkFunctionCall();
@@ -126,12 +137,18 @@ namespace graphics {
 					m_root->event(&event, false);
 
 			}
+			//ImageLoader::process();
 			m_window->clear(sf::Color::White);
 			m_root->draw(m_window);
 			m_window->display();
 			boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+			m_framesCount++;
+			if(m_framesTime.elapsed() >= 1.0) {
+				m_window->setTitle(m_title+" | fps : "+util::Cast::intToString(m_framesCount));
+				m_framesTime.restart();
+				m_framesCount = 0;
+			}
 		}
-
 
 	}
 

@@ -14,7 +14,6 @@ namespace graphics {
 		m_target = target;
 		m_width = origin.x > target.x ? origin.x - target.x : target.x - origin.x;
 		m_height = origin.y > target.y ? origin.y - target.y : target.y - origin.y;
-		std::cout << "o" << origin.y << "t" << target.y << std::endl;
 	}
 
 	bool Line::event(sf::Event* event, bool used) {
@@ -23,7 +22,7 @@ namespace graphics {
 
 	void Line::draw(sf::RenderWindow* render) {
 		if(m_style == NULL) {
-			client::Log::err("No style has been applied to the component "+getComponentName());
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
 			return;
 		}
 

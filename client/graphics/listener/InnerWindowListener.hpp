@@ -8,6 +8,11 @@
 #ifndef INNERWINDOWLISTENER_HPP_
 #define INNERWINDOWLISTENER_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class InnerWindowListener {

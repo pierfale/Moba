@@ -8,6 +8,11 @@
 #ifndef PLAYERSTAT_HPP_
 #define PLAYERSTAT_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace game {
 
 	class PlayerStat {
@@ -16,7 +21,7 @@ namespace game {
 		PlayerStat();
 
 		float attackSpeed();
-		float speed();
+		float movementSpeed();
 
 		int physicalAttack();
 		int magicalAttack();
@@ -26,7 +31,7 @@ namespace game {
 
 	private:
 		float m_attackSpeed;
-		float m_speed;
+		float m_movementSpeed;
 
 		int m_physicalAttack;
 		int m_magicalAttack;

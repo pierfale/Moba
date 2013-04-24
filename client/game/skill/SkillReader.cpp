@@ -9,7 +9,7 @@
 
 namespace game {
 
-	SkillReader* SkillReader::m_instance = NULL;
+	boost::shared_ptr<SkillReader> SkillReader::m_instance;
 
 	SkillReader::SkillReader() {
 
@@ -18,7 +18,7 @@ namespace game {
 	bool SkillReader::load(std::string path) {
 		std::ifstream file(path.c_str(), std::ios::in);
 		if(!file) {
-			client::Log::err("Unable to open "+path);
+			log_err "Unable to open "+path end_log_err;
 			return false;
 		}
 		std::string line;
@@ -105,9 +105,9 @@ namespace game {
 	}
 
 	SkillReader* SkillReader::getInstance() {
-		if(m_instance == NULL)
-			m_instance = new SkillReader();
-		return m_instance;
+		if(m_instance.get() == NULL)
+			m_instance.reset(new SkillReader());
+		return m_instance.get();
 	}
 
 }

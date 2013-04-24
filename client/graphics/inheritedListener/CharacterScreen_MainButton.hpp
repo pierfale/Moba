@@ -9,7 +9,12 @@
 #define CHARACTERSCREEN_MAINBUTTON_HPP_
 
 #include "../listener/ButtonListener.hpp"
-#include "../CharacterScreen.hpp"
+#include "../screen/CharacterScreen.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 

@@ -54,7 +54,7 @@ namespace graphics {
 			}
 		}
 		else {
-			client::Log::err("SplitFixedLayout work only with 2 components  [Container "+util::Cast::ptrToInt(m_container)+"]");
+			log_err "SplitFixedLayout work only with 2 components  [Container "+util::Cast::ptrToString(m_container)+"]" end_log_err;
 		}
 	}
 

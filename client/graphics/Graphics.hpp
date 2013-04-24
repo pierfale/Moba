@@ -5,10 +5,30 @@
  *      Author: pierre
  */
 
+#include <boost/shared_ptr.hpp>
+#include "component/Window.hpp"
+#include "GuiStyle.hpp"
+#include "game/Gameboard.h"
+#include "game/Player.h"
+
+//Log
+#include "../log/Log.hpp"
+//Debug
+#include "../debug/Alloc.hpp"
+
 namespace graphics {
 	class Graphics {
 	public:
+		~Graphics();
+		static void init();
+		static void run();
+		static Window* getWindow();
+
+	private:
 		Graphics();
+		static Graphics* getInstance();
+		static boost::shared_ptr<Graphics> m_instance;
+		Window* m_window;
 
 	};
 }

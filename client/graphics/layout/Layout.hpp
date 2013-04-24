@@ -10,7 +10,10 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
-
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 

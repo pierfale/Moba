@@ -11,6 +11,11 @@
 #include "Component.hpp"
 #include "../style/LineStyle.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class Line : public Component {

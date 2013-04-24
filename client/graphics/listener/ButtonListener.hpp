@@ -8,6 +8,11 @@
 #ifndef BUTTONLISTENER_HPP_
 #define BUTTONLISTENER_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class ButtonListener {

@@ -11,6 +11,11 @@
 #include "../component/Button.hpp"
 #include "../ImageLoader.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class ButtonImage : public Button {

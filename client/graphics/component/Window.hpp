@@ -10,15 +10,21 @@
 
 #include <boost/ptr_container/ptr_deque.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/thread.hpp>
 #include <boost/current_function.hpp>
+#include <boost/timer.hpp>
 #include <string>
 #include <vector>
 #include <stack>
 #include <SFML/Graphics.hpp>
+
 #include "../ImageLoader.hpp"
 #include "../../ThreadManager.hpp"
 #include "../GuiStyle.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
@@ -36,6 +42,8 @@ namespace graphics {
 		std::string getComponentName();
 		void run();
 
+		Container* getContentPane();
+
 	private:
 		void checkNewContentPane();
 		void checkFunctionCall();
@@ -43,6 +51,8 @@ namespace graphics {
 		int m_height;
 		std::string m_title;
 		sf::RenderWindow* m_window;
+		boost::timer m_framesTime;
+		int m_framesCount;
 		Container* m_root;
 		Container* m_rootTmp;
 		std::vector<boost::function<void()> > m_callFunction;

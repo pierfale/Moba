@@ -8,22 +8,29 @@
 #ifndef PLAYERLIST_HPP_
 #define PLAYERLIST_HPP_
 
-#include "../character/Player.hpp"
+#include <boost/shared_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include "../character/Player.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace game {
 
 	class PlayerList {
 
 	public:
-		static void add(Player* player);
+		static bool add(Player* player);
 		static Player* get(int i);
 		static int size();
+		static void clear();
 
 	private:
 		PlayerList();
 		static PlayerList* getInstance();
-		static PlayerList* m_instance;
+		static boost::shared_ptr<PlayerList> m_instance;
 		boost::ptr_vector<Player> m_players;
 	};
 }

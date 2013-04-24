@@ -10,6 +10,11 @@
 
 #include "Layout.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class CenterLayout : public Layout {

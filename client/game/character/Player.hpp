@@ -11,19 +11,25 @@
 #include "Character.hpp"
 #include "PlayerStat.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace game {
 
 	class Player : public Character {
 
 	public:
 		Player(int id, std::string name, int level);
+		int getID();
 		PlayerStat* getStat();
 		int getLevel();
 
 	private:
 		int m_id;
 		int m_level;
-		PlayerStat* m_stat;
+		PlayerStat m_stat;
 
 	};
 }

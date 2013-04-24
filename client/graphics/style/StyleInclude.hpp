@@ -10,6 +10,7 @@
 
 #include "BasicStyle.hpp"
 #include "LineStyle.hpp"
+#include "TableStyle.hpp"
 #include "WindowStyle.hpp"
 
 

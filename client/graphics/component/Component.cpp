@@ -49,8 +49,11 @@ namespace graphics {
 
 	}
 
-	void Component::setSelected(bool state) {
-		m_selected = state;
+	void Component::setSelected(bool state, bool force) {
+		if(force)
+			m_selected = state;
+		else
+			m_window->setSelectedComponent(this);
 	}
 
 	void Component::setVisible(bool state) {
@@ -59,6 +62,12 @@ namespace graphics {
 
 	void Component::setEnable(bool state) {
 		m_enable = state;
+		if(!m_enable) {
+			if(m_selected)
+				m_window->setSelectedComponent(NULL);
+			m_focus = false;
+			m_pressed = false;
+		}
 	}
 
 	void Component::setWidthCenter() {
@@ -90,13 +99,13 @@ namespace graphics {
 
 	Window* Component::getWindow() {
 		if(m_window == NULL)
-			client::Log::err("Window is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToInt(this)+")");
+			log_err "Window is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToString(this)+")" end_log_err;
 		return m_window;
 	}
 
 	Component* Component::getParent() {
 		if(m_parent == NULL)
-			client::Log::err("Parent is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToInt(this)+")");
+			log_err "Parent is NULL in "+getComponentName()+" (ref "+util::Cast::ptrToString(this)+")" end_log_err;
 		return m_parent;
 	}
 
@@ -121,8 +130,8 @@ namespace graphics {
 	}
 
 	std::string Component::toString(bool recursive) {
-		return "["+util::Cast::ptrToInt(this)+":"+getComponentName()+":width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
-				",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+", parent="+util::Cast::ptrToInt(m_parent)+"]";
+		return "["+util::Cast::ptrToString(this)+":"+getComponentName()+":width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
+				",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+", parent="+util::Cast::ptrToString(m_parent)+"]";
 	}
 }
 

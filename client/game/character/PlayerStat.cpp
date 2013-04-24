@@ -11,7 +11,7 @@ namespace game {
 
 	PlayerStat::PlayerStat() {
 		m_attackSpeed = 0;
-		m_speed = 0;
+		m_movementSpeed = 0;
 
 		m_physicalAttack = 0;
 		m_magicalAttack = 0;
@@ -24,8 +24,8 @@ namespace game {
 		return m_attackSpeed;
 	}
 
-	float PlayerStat::speed() {
-		return m_speed;
+	float PlayerStat::movementSpeed() {
+		return m_movementSpeed;
 	}
 
 	int PlayerStat::physicalAttack() {

@@ -9,17 +9,19 @@
 
 namespace game {
 
-	PlayerList* PlayerList::m_instance = NULL;
+	boost::shared_ptr<PlayerList> PlayerList::m_instance;
 
 	PlayerList::PlayerList() {
-		//tmp
-		m_players.push_back(new Player(1, "pierfale", 100));
-		m_players.push_back(new Player(2, "béni", 50));
+
 	}
 
-	void PlayerList::add(Player* player) {
+	bool PlayerList::add(Player* player) {
+		for(int i=0; i<getInstance()->m_players.size(); i++) {
+			if(getInstance()->m_players.at(i).getID() == player->getID())
+				return false;
+		}
 		getInstance()->m_players.push_back(player);
-
+		return true;
 	}
 	Player* PlayerList::get(int i) {
 		return &getInstance()->m_players.at(i);
@@ -29,10 +31,14 @@ namespace game {
 		return getInstance()->m_players.size();
 	}
 
+	void PlayerList::clear() {
+		getInstance()->m_players.clear();
+	}
+
 	PlayerList* PlayerList::getInstance() {
-		if(m_instance == NULL)
-			m_instance = new PlayerList();
-		return m_instance;
+		if(m_instance.get() == NULL)
+			m_instance.reset(new PlayerList());
+		return m_instance.get();
 	}
 
 }

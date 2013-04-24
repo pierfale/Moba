@@ -9,31 +9,44 @@
 #define GUISTYLE_HPP_
 
 #include <string>
+
 #include "style/StyleInclude.hpp"
+
+//Log
 #include "../log/Log.hpp"
+//Debug
+#include "../debug/Alloc.hpp"
 
 namespace graphics {
 
 	class GUIStyle {
 
 	public:
+		~GUIStyle();
 		static void init();
 		static BasicStyle* button();
 		static BasicStyle* label();
 		static BasicStyle* textfield();
 		static WindowStyle* innerwindow();
 		static LineStyle* line();
+		static TableStyle* table();
+		static BasicStyle* characterFrame();
+		static BasicStyle* buttonImage();
 
 	private:
 		GUIStyle();
-		static GUIStyle* getInstance();
-		static GUIStyle* m_instance;
 
-		BasicStyle* m_button;
-		BasicStyle* m_label;
-		BasicStyle* m_textfield;
-		WindowStyle* m_innerwindow;
-		LineStyle* m_line;
+		static GUIStyle* getInstance();
+		static boost::shared_ptr<GUIStyle> m_instance;
+
+		boost::shared_ptr<BasicStyle> m_button;
+		boost::shared_ptr<BasicStyle> m_label;
+		boost::shared_ptr<BasicStyle> m_textfield;
+		boost::shared_ptr<WindowStyle> m_innerwindow;
+		boost::shared_ptr<LineStyle> m_line;
+		boost::shared_ptr<TableStyle> m_table;
+		boost::shared_ptr<BasicStyle> m_characterFrame;
+		boost::shared_ptr<BasicStyle> m_buttonImage;
 	};
 }
 

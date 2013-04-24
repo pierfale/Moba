@@ -50,7 +50,7 @@ namespace graphics {
 		attackSpeed->setMinimalSize();
 		this->add(attackSpeed);
 
-		Label* speed = new Label("Speed : "+util::Cast::intToString(m_player->getStat()->speed()), labelstyle);
+		Label* speed = new Label("Movement Speed : "+util::Cast::intToString(m_player->getStat()->movementSpeed()), labelstyle);
 		speed->setCoord(util::Coordinates(10, 190));
 		speed->setMinimalSize();
 		this->add(speed);

@@ -16,7 +16,7 @@ namespace graphics {
 		m_buttonFocus = false;
 		m_buttonPressed = false;
 		m_closeable = true;
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [name="+name+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+", style="+util::Cast::ptrToInt(style)+"]");
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [name="+name+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
 	}
 
 	void InnerWindow::addListener(InnerWindowListener* listener) {
@@ -24,6 +24,8 @@ namespace graphics {
 	}
 
 	bool InnerWindow::event(sf::Event* event, bool used) {
+		if(m_style == NULL || !m_visible)
+			return used;
 		util::Coordinates coord = Component::getRealCoord();
 		if(event->type == sf::Event::MouseButtonPressed) {
 			if(m_closeable && event->mouseButton.x >= coord.x+m_width-m_style->topleft()->getGlobalBounds().width-m_style->headerOffset().x &&
@@ -134,7 +136,11 @@ namespace graphics {
 	}
 
 	void InnerWindow::draw(sf::RenderWindow* render) {
-		if(m_style == NULL)
+		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
+			return;
+		}
+		if(!m_visible)
 			return;
 
 		util::Coordinates coord = Component::getRealCoord();

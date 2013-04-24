@@ -1,98 +1,222 @@
-Thread 1ea8 : begin ...
-Thread 1ea8 : Ref 0x3dc1d00: Create Window [title=Moba, width=800, height=600]
-Thread 1ea8 : [ImageLoader] get ressources/gui/button_2.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/button_2_center.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/textfield_2.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/textfield_center.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/window_bot.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/window_top.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/window_center.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/window_close.png
-Thread 1ea8 : [ImageLoader] get ressources/gui/line.png
-Thread 1ea8 : Ref 0x3dce8e8: Create Container
-[Error] Center layout can't work with multiple components [Container 0x3dce8e8]
-Thread 1ea8 : Ref 0x3dce938: Create Container
-Thread 1ea8 : Ref 0x3dce8e8: Add Container (ref 0x3dce938) in Container
-Thread 1ea8 : Ref 0x3dce980: Create Label [text=Pseudo : , style=0x3dca988]
-Thread 1ea8 : Ref 0x3dce938: Add Label (ref 0x3dce980) in Container
-Thread 1ea8 : Ref 0x3dce9c8: Create TextField [text=, style=0x3dc7878]
-Thread 1ea8 : Ref 0x3dce938: Add TextField (ref 0x3dce9c8) in Container
-Thread 1ea8 : Ref 0x3dcea10: Create Label [text=Password : , style=0x3dca988]
-Thread 1ea8 : Ref 0x3dce938: Add Label (ref 0x3dcea10) in Container
-Thread 1ea8 : Ref 0x3dcea58: Create TextField [text=, style=0x3dc7878]
-Thread 1ea8 : Ref 0x3dce938: Add TextField (ref 0x3dcea58) in Container
-Thread 1ea8 : Ref 0x3dceaa0: Create Button [text=Connection, style=0x2939e00]
-Thread 1ea8 : Ref 0x3dceaa0: Add listener 0x3dcf880 in Button
-Thread 1ea8 : Ref 0x3dce938: Add Button (ref 0x3dceaa0) in Container
-Thread 1ea8 : ConnectionScreen Loaded
-Thread 1ea8 : Ref 0x3dc1d00: New ContentPane in Window (ref 0x3dce8e8)
-Thread 1ea8 : Ref 0x3dcf510: Create Container
-Thread 1ea8 : Ref 0x3dcf510: Create InnerWindow [name=login..., width=300, height=100, style=0x3dcd9a8]
-[Error] Center layout can't work with multiple components [Container 0x3dce8e8]
-Thread 1ea8 : Ref 0x3dce8e8: Add InnerWindow (ref 0x3dcf510) in Container
-Thread 1ea8 : Ref 0x3dd32b0: Create Label [text=Connection... , style=0x3dca988]
-Thread 1ea8 : Ref 0x3dcf510: Add Label (ref 0x3dd32b0) in InnerWindow
-Thread 1ea8 : Ref 0x3dd3d28: Create Container
-Thread 1ea8 : Ref 0x3dd3228: Create Container
-Thread 1ea8 : Ref 0x3dd3d28: Add Container (ref 0x3dd3228) in Container
-Thread 1ea8 : [ImageLoader] get ressources/gui/background1.png
-Thread 1ea8 : Ref 0x3dcf580: Create Container
-Thread 1ea8 : Ref 0x3dd3d28: Add Container (ref 0x3dcf580) in Container
-Thread 1ea8 : CharacterScreen Loaded
-Thread 1ea8 : Ref 0x3dd3d98: Create Button [text=, style=0]
-Thread 1ea8 : Ref 0x3dd3228: Add Button (ref 0x3dd3d98) in Container
-Thread 1ea8 : Ref 0x3dd3d98: Add listener 0x3dcf930 in Button
-Thread 1ea8 : Ref 0x3dd3de0: Create Button [text=, style=0]
-Thread 1ea8 : Ref 0x3dd3228: Add Button (ref 0x3dd3de0) in Container
-Thread 1ea8 : Ref 0x3dd3de0: Add listener 0x3dcf920 in Button
-Thread 1ea8 : Ref 0x29399b8: Create Container
-Thread 1ea8 : Ref 0x3dcf580: Add Container (ref 0x29399b8) in Container
-Thread 1ea8 : Ref 0x2939a00: Create Container
-Thread 1ea8 : Ref 0x3dcf580: Add Container (ref 0x2939a00) in Container
-Thread 1ea8 : [ImageLoader] get ressources/gui/background1.png
-Thread 1ea8 : Ref 0x3dd4d00: Create Button [text=Statistic, style=0x2939e00]
-Thread 1ea8 : Ref 0x3dd4d00: Add listener 0x3dcf980 in Button
-Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d00) in Container
-Thread 1ea8 : Ref 0x3dd4d40: Create Button [text=Skill, style=0x2939e00]
-Thread 1ea8 : Ref 0x3dd4d40: Add listener 0x3dcf980 in Button
-Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d40) in Container
-Thread 1ea8 : Ref 0x3dd4d80: Create Button [text=Launch, style=0x2939e00]
-Thread 1ea8 : Ref 0x3dd4d80: Add listener 0x3dcf980 in Button
-Thread 1ea8 : Ref 0x29399b8: Add Button (ref 0x3dd4d80) in Container
-Thread 1ea8 : Ref 0x3dc1d00: New ContentPane in Window (ref 0x3dd3d28)
-Thread 1ea8 : Ref 0x3dd88c0: Create Container
-Thread 1ea8 : Ref 0x3dd9908: Create Label [text=pierfale, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9908) in Container
-Thread 1ea8 : Ref 0x3dd9950: Create Label [text=Physical Attack : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9950) in Container
-Thread 1ea8 : Ref 0x3dd9998: Create Label [text=Magical Attack : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9998) in Container
-Thread 1ea8 : Ref 0x3dd99e0: Create Label [text=Physical Armor : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd99e0) in Container
-Thread 1ea8 : Ref 0x3dd9a28: Create Label [text=Magical Armor : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9a28) in Container
-Thread 1ea8 : Ref 0x3dd9a70: Create Label [text=Attack Speed : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9a70) in Container
-Thread 1ea8 : Ref 0x3dd9ab8: Create Label [text=Speed : 0, style=0x3dde3f8]
-Thread 1ea8 : Ref 0x3dd88c0: Add Label (ref 0x3dd9ab8) in Container
-Thread 1ea8 : Ref 0x3dd8960: Create Container
-Thread 1ea8 : Ref 0x3dd9ab8: Create Button [text=, style=0x2939e00]
-Thread 1ea8 : [ImageLoader] get ressources/game/skill/1.png
-Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9ab8) in Container
-Thread 1ea8 : Ref 0x3dd9a70: Create Button [text=, style=0x2939e00]
-Thread 1ea8 : [ImageLoader] get ressources/game/skill/2.png
-Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9a70) in Container
-Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0820) in Container
-Thread 1ea8 : Ref 0x3dd9a28: Create Button [text=, style=0x2939e00]
-Thread 1ea8 : [ImageLoader] get ressources/game/skill/3.png
-Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9a28) in Container
-Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b08a0) in Container
-Thread 1ea8 : Ref 0x3dd99e0: Create Button [text=, style=0x2939e00]
-Thread 1ea8 : [ImageLoader] get ressources/game/skill/4.png
-Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd99e0) in Container
-Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0920) in Container
-Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b0960) in Container
-Thread 1ea8 : Ref 0x3dd9998: Create Button [text=, style=0x2939e00]
-Thread 1ea8 : [ImageLoader] get ressources/game/skill/5.png
-Thread 1ea8 : Ref 0x3dd8960: Add Button (ref 0x3dd9998) in Container
-Thread 1ea8 : Ref 0x3dd8960: Add Component (ref 0x86b09e0) in Container
+Thread 147c : Ref 0x55b11d8: Create Window [title=Moba, width=800, height=600]
+Thread 147c : Ref 0x55c6228: Create Container
+[Error] Center layout can't work with multiple components [Container 0x55c6228] | file : ..\client\graphics\layout\CenterLayout.cpp, line 18
+Thread 147c : Ref 0x55c6290: Create Container
+Thread 147c : Ref 0x55c6228: Add Container (ref 0x55c6290) in ConnectionScreen
+Thread 147c : Ref 0x55c62e8: Create Label [text=Pseudo : , style=0x55bbd70]
+Thread 147c : Ref 0x55c6290: Add Label (ref 0x55c62e8) in Container
+Thread 147c : Ref 0x55c6828: Create TextField [text=, style=0x55b8d50]
+Thread 147c : Ref 0x55c6290: Add TextField (ref 0x55c6828) in Container
+Thread 147c : Ref 0x55c6330: Create Label [text=Password : , style=0x55bbd70]
+Thread 147c : Ref 0x55c6290: Add Label (ref 0x55c6330) in Container
+Thread 147c : Ref 0x55c7870: Create TextField [text=, style=0x55b8d50]
+Thread 147c : Ref 0x55c6290: Add TextField (ref 0x55c7870) in Container
+Thread 147c : Ref 0x55c6888: Create Button [text=Connection, style=0x42b9ff0]
+Thread 147c : Ref 0x55c6888: Add listener 0x55c6470 in Button
+Thread 147c : Ref 0x55c6290: Add Button (ref 0x55c6888) in Container
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x55c6228)
+Thread 147c : Ref 0x55c7ae8: Create Container
+Thread 147c : Ref 0x55c7ae8: Create InnerWindow [name=login..., width=300, height=100, style=0x42bf238]
+[Error] Center layout can't work with multiple components [Container 0x55c6228] | file : ..\client\graphics\layout\CenterLayout.cpp, line 18
+Thread 147c : Ref 0x55c6228: Add InnerWindow (ref 0x55c7ae8) in ConnectionScreen
+Thread 147c : Ref 0x55cb0f0: Create Label [text=Connection... , style=0x55bbd70]
+Thread 147c : Ref 0x55c7ae8: Add Label (ref 0x55cb0f0) in InnerWindow
+Thread 147c : Connected to the server!
+Thread 1078 : packet receive! type=2
+Thread 1078 : Ref 0x42b71b0: Create Container
+Thread 1078 : Ref 0x55cb038: Create Container
+Thread 1078 : Ref 0x42b71b0: Add Container (ref 0x55cb038) in CharacterScreen
+Thread 1078 : Ref 0x55cafb8: Create Container
+Thread 1078 : Ref 0x55cb038: Add Container (ref 0x55cafb8) in Container
+Thread 1078 : Ref 0x55e5358: Create Container
+Thread 1078 : Ref 0x55cb038: Add Container (ref 0x55e5358) in Container
+Thread 1078 : Ref 0x55cdeb0: Create Button [text=New Character, style=0x42b9ff0]
+Thread 1078 : Ref 0x55cdeb0: Add listener 0x55c64f0 in Button
+Thread 1078 : Ref 0x55e5358: Add Button (ref 0x55cdeb0) in Container
+Thread 1078 : Ref 0x55cdef0: Create Button [text=Return, style=0x42b9ff0]
+Thread 1078 : Ref 0x55cdef0: Add listener 0x55c6560 in Button
+Thread 1078 : Ref 0x55e5358: Add Button (ref 0x55cdef0) in Container
+Thread 1078 : Ref 0x55e53e8: Create Container
+Thread 1078 : Ref 0x42b71b0: Add Container (ref 0x55e53e8) in CharacterScreen
+Thread 1078 : Ref 0x55e5430: Create Container
+Thread 1078 : Ref 0x55e53e8: Add Container (ref 0x55e5430) in Container
+Thread 1078 : Ref 0x55e5478: Create Container
+Thread 1078 : Ref 0x55e53e8: Add Container (ref 0x55e5478) in Container
+Thread 1078 : Ref 0x55cdf70: Create Button [text=Statistic, style=0x42b9ff0]
+Thread 1078 : Ref 0x55cdf70: Add listener 0x55c65a0 in Button
+Thread 1078 : Ref 0x55e5430: Add Button (ref 0x55cdf70) in Container
+Thread 1078 : Ref 0x55cdfb0: Create Button [text=Skill, style=0x42b9ff0]
+Thread 1078 : Ref 0x55cdfb0: Add listener 0x55c65f0 in Button
+Thread 1078 : Ref 0x55e5430: Add Button (ref 0x55cdfb0) in Container
+Thread 1078 : Ref 0x55cdff0: Create Button [text=Launch, style=0x42b9ff0]
+Thread 1078 : Ref 0x55cdff0: Add listener 0x55c65e0 in Button
+Thread 1078 : Ref 0x55e5430: Add Button (ref 0x55cdff0) in Container
+Thread 1078 : packet receive! type=4
+Thread 1078 : Ref 0x55e54c0: Create Button [text=, style=0]
+Thread 1078 : Ref 0x55cafb8: Add Button (ref 0x55e54c0) in Container
+Thread 1078 : Ref 0x55e54c0: Add listener 0x55c6660 in Button
+Thread 1078 : packet receive! type=4
+Thread 1078 : Ref 0x55e54c0: Create Button [text=, style=0]
+Thread 1078 : Ref 0x55cafb8: Add Button (ref 0x55e54c0) in Container
+Thread 1078 : Ref 0x55e54c0: Add listener 0x55c6670 in Button
+Thread 1078 : Ref 0x55e5508: Create Button [text=, style=0]
+Thread 1078 : Ref 0x55cafb8: Add Button (ref 0x55e5508) in Container
+Thread 1078 : Ref 0x55e5508: Add listener 0x55c6640 in Button
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x42b71b0)
+Thread 147c : Ref 0x55b1ce0: Create Container
+Thread 147c : Ref 0x55e5478: Create Label [text=pierfale, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e5478) in Container
+Thread 147c : Ref 0x55e5550: Create Label [text=Physical Attack : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e5550) in Container
+Thread 147c : Ref 0x55e5598: Create Label [text=Magical Attack : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e5598) in Container
+Thread 147c : Ref 0x55e55e0: Create Label [text=Physical Armor : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e55e0) in Container
+Thread 147c : Ref 0x55e5628: Create Label [text=Magical Armor : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e5628) in Container
+Thread 147c : Ref 0x55e5670: Create Label [text=Attack Speed : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e5670) in Container
+Thread 147c : Ref 0x55e56b8: Create Label [text=Movement Speed : 0, style=0x55f3e00]
+Thread 147c : Ref 0x55b1ce0: Add Label (ref 0x55e56b8) in Container
+Thread 147c : Ref 0x55c62e8: Create Container
+Thread 147c : Ref 0x55e5700: Create Container
+Thread 147c : Ref 0x55c62e8: Add Container (ref 0x55e5700) in GameListScreen
+Thread 147c : Ref 0x55e5748: Create Container
+Thread 147c : Ref 0x55e5700: Add Container (ref 0x55e5748) in Container
+Thread 147c : Ref 0x55e5790: Create Container
+Thread 147c : Ref 0x55e5700: Add Container (ref 0x55e5790) in Container
+Thread 147c : Ref 0x55e57d8: Create Container
+Thread 147c : Ref 0x55c62e8: Add Container (ref 0x55e57d8) in GameListScreen
+Thread 147c : Ref 0x55f3110: Create Button [text=Matchmaking, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3110: Add listener 0x55c64a0 in Button
+Thread 147c : Ref 0x55e5748: Add Button (ref 0x55f3110) in Container
+Thread 147c : Ref 0x55f30d0: Create Button [text=Join Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55f30d0: Add listener 0x55c6710 in Button
+Thread 147c : Ref 0x55e5748: Add Button (ref 0x55f30d0) in Container
+Thread 147c : Ref 0x55f3150: Create Button [text=Create Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3150: Add listener 0x55c6700 in Button
+Thread 147c : Ref 0x55e5748: Add Button (ref 0x55f3150) in Container
+Thread 147c : Ref 0x55f3190: Create Button [text=Return, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3190: Add listener 0x55c6730 in Button
+Thread 147c : Ref 0x55e5790: Add Button (ref 0x55f3190) in Container
+Thread 147c : Ref 0x22fa78: Create Label [text=Name, style=0x55bbd70]
+Thread 147c : Ref 0x22fa78: Create Label [text=Creator, style=0x55bbd70]
+Thread 147c : Ref 0x22fa78: Create Label [text=Players, style=0x55bbd70]
+Thread 147c : Ref 0x55e57d8: Add Component (ref 0x55f07a8) in Container
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x55c62e8)
+Thread 147c : Ref 0x55ced68: Create Container
+Thread 147c : Ref 0x55e5508: Create Container
+Thread 147c : Ref 0x55ced68: Add Container (ref 0x55e5508) in Container
+Thread 147c : Ref 0x55e54c0: Create Container
+Thread 147c : Ref 0x55ced68: Add Container (ref 0x55e54c0) in Container
+Thread 147c : Ref 0x55e5430: Create Container
+[Error] Center layout can't work with multiple components [Container 0x55e5430] | file : ..\client\graphics\layout\CenterLayout.cpp, line 18
+Thread 147c : Ref 0x55e54c0: Add Container (ref 0x55e5430) in Container
+Thread 147c : Ref 0x55e53e8: Create Container
+Thread 147c : Ref 0x55e54c0: Add Container (ref 0x55e53e8) in Container
+Thread 147c : Ref 0x55e5358: Create TextField [text=, style=0x55b8d50]
+Thread 147c : Ref 0x55e5430: Add TextField (ref 0x55e5358) in Container
+Thread 147c : Ref 0x55ff230: Create Button [text=Return, style=0x42b9ff0]
+Thread 147c : Ref 0x55ff230: Add listener 0x55c65f0 in Button
+Thread 147c : Ref 0x55e53e8: Add Button (ref 0x55ff230) in Container
+Thread 147c : Ref 0x55ff1b0: Create Button [text=Create, style=0x42b9ff0]
+Thread 147c : Ref 0x55ff1b0: Add listener 0x55c65b0 in Button
+Thread 147c : Ref 0x55e53e8: Add Button (ref 0x55ff1b0) in Container
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x55ced68)
+Thread 147c : Ref 0x5607a50: Create Container
+Thread 147c : Ref 0x55e57d8: Create Container
+Thread 147c : Ref 0x5607a50: Add Container (ref 0x55e57d8) in GameListScreen
+Thread 147c : Ref 0x55e5790: Create Container
+Thread 147c : Ref 0x55e57d8: Add Container (ref 0x55e5790) in Container
+Thread 147c : Ref 0x55e5748: Create Container
+Thread 147c : Ref 0x55e57d8: Add Container (ref 0x55e5748) in Container
+Thread 147c : Ref 0x55e5700: Create Container
+Thread 147c : Ref 0x5607a50: Add Container (ref 0x55e5700) in GameListScreen
+Thread 147c : Ref 0x55fef30: Create Button [text=Matchmaking, style=0x42b9ff0]
+Thread 147c : Ref 0x55fef30: Create Button [text=Matchmaking, style=0x42b9ff0]
+Thread 1078 : packet receive! type=10
+Thread 147c : Ref 0x55fef30: Add listener 0x55c6780 in Button
+Thread 147c : Ref 0x55fef30: Add listener 0x55c6780 in Button
+Thread 1078 : packet receive! type=6
+Thread 147c : Ref 0x55e5790: Add Button (ref 0x55fef30) in Container
+Thread 147c : Ref 0x55fedf0: Create Button [text=Join Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55fedf0: Add listener 0x55c6770 in Button
+Thread 147c : Ref 0x55e5790: Add Button (ref 0x55fedf0) in Container
+Thread 147c : Ref 0x55fee30: Create Button [text=Create Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55fee30: Add listener 0x55c66f0 in Button
+Thread 147c : Ref 0x55e5790: Add Button (ref 0x55fee30) in Container
+Thread 147c : Ref 0x55fee70: Create Button [text=Return, style=0x42b9ff0]
+Thread 147c : Ref 0x55fee70: Add listener 0x55c6760 in Button
+Thread 147c : Ref 0x55e5748: Add Button (ref 0x55fee70) in Container
+Thread 147c : Ref 0x22fa58: Create Label [text=Name, style=0x55bbd70]
+Thread 147c : Ref 0x22fa58: Create Label [text=Creator, style=0x55bbd70]
+Thread 147c : Ref 0x22fa58: Create Label [text=Players, style=0x55bbd70]
+Thread 147c : Ref 0x55e5700: Add Component (ref 0x55c62e8) in Container
+Thread 147c : Ref 0x55e5820: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e5868: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e58b0: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e58f8: Create Label [text=aaaa, style=0x5601a18]
+Thread 147c : Ref 0x55e5820: Create Label [text=pierfale, style=0x5601a18]
+Thread 147c : Ref 0x55e5868: Create Label [text=0/0, style=0x5601a18]
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x5607a50)
+Thread 147c : Ref 0x55ced68: Create Container
+Thread 147c : Ref 0x55e5358: Create Container
+Thread 147c : Ref 0x55ced68: Add Container (ref 0x55e5358) in Container
+Thread 147c : Ref 0x55e53e8: Create Container
+Thread 147c : Ref 0x55ced68: Add Container (ref 0x55e53e8) in Container
+Thread 147c : Ref 0x55e5430: Create Container
+[Error] Center layout can't work with multiple components [Container 0x55e5430] | file : ..\client\graphics\layout\CenterLayout.cpp, line 18
+Thread 147c : Ref 0x55e53e8: Add Container (ref 0x55e5430) in Container
+Thread 147c : Ref 0x55e54c0: Create Container
+Thread 147c : Ref 0x55e53e8: Add Container (ref 0x55e54c0) in Container
+Thread 147c : Ref 0x55e5508: Create TextField [text=, style=0x55b8d50]
+Thread 147c : Ref 0x55e5430: Add TextField (ref 0x55e5508) in Container
+Thread 147c : Ref 0x560a4d0: Create Button [text=Return, style=0x42b9ff0]
+Thread 147c : Ref 0x560a4d0: Add listener 0x55c6640 in Button
+Thread 147c : Ref 0x55e54c0: Add Button (ref 0x560a4d0) in Container
+Thread 147c : Ref 0x5609f10: Create Button [text=Create, style=0x42b9ff0]
+Thread 147c : Ref 0x5609f10: Add listener 0x55c6610 in Button
+Thread 147c : Ref 0x55e54c0: Add Button (ref 0x5609f10) in Container
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x55ced68)
+Thread 147c : Ref 0x5604a50: Create Container
+Thread 1078 : packet receive! type=10
+Thread 147c : Ref 0x55e5868: Create Container
+Thread 147c : Ref 0x5604a50: Add Container (ref 0x55e5868) in GameListScreen
+Thread 147c : Ref 0x55e5820: Create Container
+Thread 147c : Ref 0x55e5868: Add Container (ref 0x55e5820) in Container
+Thread 147c : Ref 0x55e58f8: Create Container
+Thread 147c : Ref 0x55e5868: Add Container (ref 0x55e58f8) in Container
+Thread 147c : Ref 0x55e5700: Create Container
+Thread 147c : Ref 0x5604a50: Add Container (ref 0x55e5700) in GameListScreen
+Thread 147c : Ref 0x55f3250: Create Button [text=Matchmaking, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3250: Add listener 0x55c64f0 in Button
+Thread 147c : Ref 0x55e5820: Add Button (ref 0x55f3250) in Container
+Thread 147c : Ref 0x55f3290: Create Button [text=Join Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3290: Add listener 0x55c6780 in Button
+Thread 147c : Ref 0x55e5820: Add Button (ref 0x55f3290) in Container
+Thread 147c : Ref 0x55f3190: Create Button [text=Create Game, style=0x42b9ff0]
+Thread 147c : Ref 0x55f3190: Add listener 0x55c6710 in Button
+Thread 147c : Ref 0x55e5820: Add Button (ref 0x55f3190) in Container
+Thread 147c : Ref 0x55f31d0: Create Button [text=Return, style=0x42b9ff0]
+Thread 1078 : packet receive! type=6
+Thread 147c : Ref 0x55f31d0: Add listener 0x55c6730 in Button
+Thread 1078 : packet receive! type=6
+Thread 1078 : packet receive! type=6
+Thread 147c : Ref 0x55e58f8: Add Button (ref 0x55f31d0) in Container
+Thread 147c : Ref 0x22fa58: Create Label [text=Name, style=0x55bbd70]
+Thread 147c : Ref 0x22fa58: Create Label [text=Creator, style=0x55bbd70]
+Thread 147c : Ref 0x22fa58: Create Label [text=Players, style=0x55bbd70]
+Thread 147c : Ref 0x55e5700: Add Component (ref 0x55c62e8) in Container
+Thread 147c : Ref 0x55e5748: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e5790: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e57d8: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e58b0: Create Label [text=aaaa, style=0x560ea38]
+Thread 147c : Ref 0x55e5748: Create Label [text=pierfale, style=0x560ea38]
+Thread 147c : Ref 0x55e5790: Create Label [text=0/0, style=0x560ea38]
+Thread 147c : Ref 0x55e57d8: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e5940: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e5988: Create Label [text=, style=0]
+Thread 147c : Ref 0x55e59d0: Create Label [text=bbbb, style=0x560ea38]
+Thread 147c : Ref 0x55e57d8: Create Label [text=pierfale, style=0x560ea38]
+Thread 147c : Ref 0x55e5940: Create Label [text=0/0, style=0x560ea38]
+Thread 147c : Ref 0x55b11d8: New ContentPane in Window (ref 0x5604a50)

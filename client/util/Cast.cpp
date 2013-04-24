@@ -15,7 +15,7 @@ namespace util {
 		return ss.str();
 	}
 
-	std::string Cast::ptrToInt(void* ptr) {
+	std::string Cast::ptrToString(void* ptr) {
 		std::stringstream ss;
 		ss << ptr;
 		return ss.str();

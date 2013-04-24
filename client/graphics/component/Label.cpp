@@ -10,7 +10,11 @@
 namespace graphics {
 
 	Label::Label(std::string text, BasicStyle* style) : m_text(text), m_style(style), m_align(alignLeft) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToInt(style)+"]");
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
+	}
+
+	Label::~Label() {
+
 	}
 
 
@@ -89,8 +93,11 @@ namespace graphics {
 
 	void Label::draw(sf::RenderWindow* render) {
 		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
 			return;
 		}
+		if(!m_visible)
+			return;
 		util::Coordinates coord = getRealCoord();
 		sf::Text text(m_text);
 		text.setFont(*m_style->font());

@@ -8,11 +8,14 @@
 #ifndef GAMEBOARD_H_
 #define GAMEBOARD_H_
 
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <string>
+
 #include "Case.h"
 #include "../component/Component.hpp"
-#include <string>
+
 #include "Camera.h"
-#include "boost/ptr_container/ptr_vector.hpp"
+
 #include "Player.h"
 
 namespace graphics {

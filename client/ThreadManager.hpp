@@ -8,12 +8,23 @@
 #ifndef THREADMANAGER_HPP_
 #define THREADMANAGER_HPP_
 
+#ifdef DEBUG
+
+#undef new
+
+#endif
+
 #include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/function.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+
 #include <sstream>
+
+//Log
 #include "log/Log.hpp"
+//Debug
+#include "debug/Alloc.hpp"
 
 class ThreadManager {
 

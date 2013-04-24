@@ -8,16 +8,21 @@
 #ifndef SKILLREADER_HPP_
 #define SKILLREADER_HPP_
 
+#include <boost/shared_ptr.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/ptr_container/ptr_map.hpp>
 #include <string>
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/ptr_container/ptr_map.hpp>
+
 #include "Skill.hpp"
-#include "../../log/Log.hpp"
 #include "../../util/Util.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace game {
 
@@ -34,7 +39,7 @@ namespace game {
 		Skill* evalLine(std::string line);
 		bool isblank(char c);
 		static SkillReader* getInstance();
-		static SkillReader* m_instance;
+		static boost::shared_ptr<SkillReader> m_instance;
 		boost::ptr_vector<Skill> m_skills;
 	};
 }

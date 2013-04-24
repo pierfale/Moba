@@ -11,6 +11,11 @@
 #include "Layout.hpp"
 #include "../component/Component.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class HorizontalFixedLayout : public Layout {

@@ -15,6 +15,11 @@
 #include "../../game/skill/Skill.hpp"
 #include "../../game/skill/SkillReader.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class CharacterSkill : public Container {

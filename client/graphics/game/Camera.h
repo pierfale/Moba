@@ -8,9 +8,11 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
+#include <iostream>
+
 #include "../../util/Coordinates.hpp"
 #include "SFML/Window.hpp"
-#include <iostream>
+
 
 namespace graphics {
 

@@ -10,11 +10,14 @@
 namespace game {
 
 	Player::Player(int id, std::string name, int level) : Character(name), m_id(id), m_level(level) {
-		m_stat = new PlayerStat();
+	}
+
+	int Player::getID() {
+		return m_id;
 	}
 
 	PlayerStat* Player::getStat() {
-		return m_stat;
+		return &m_stat;
 	}
 
 	int Player::getLevel() {

@@ -6,19 +6,35 @@
  */
 
 #include "Graphics.hpp"
-#include "component/Window.hpp"
-#include "ConnectionScreen.hpp"
-#include "GuiStyle.hpp"
-#include "game/Gameboard.h"
-#include "game/Player.h"
 
 namespace graphics {
 
-	Graphics::Graphics() {
+	boost::shared_ptr<Graphics> Graphics::m_instance;
 
-		Window* window = new Window(800, 600, "Moba");
-		delete window;
+	Graphics::Graphics() : m_window(NULL) {
 
+	}
+
+	Graphics::~Graphics() {
+		delete m_window;
+	}
+
+	void Graphics::init() {
+		getInstance()->m_window = new Window(800, 600, "Moba");
+	}
+
+	void Graphics::run() {
+		getInstance()->m_window->run();
+	}
+
+	Window* Graphics::getWindow() {
+		return getInstance()->m_window;
+	}
+
+	Graphics* Graphics::getInstance() {
+		if(m_instance.get() == NULL)
+			m_instance.reset(new Graphics());
+		return m_instance.get();
 	}
 
 }

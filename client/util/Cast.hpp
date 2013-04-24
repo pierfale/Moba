@@ -17,7 +17,7 @@ namespace util {
 
 	public:
 		static std::string intToString(int n);
-		static std::string ptrToInt(void* ptr);
+		static std::string ptrToString(void* ptr);
 		static int stringToInt(std::string s);
 	};
 

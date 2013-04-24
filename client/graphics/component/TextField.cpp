@@ -10,12 +10,12 @@
 
 namespace graphics {
 
-	TextField::TextField(BasicStyle* style) : m_text(""), m_style(style) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [text=, style="+util::Cast::ptrToInt(style)+"]");
+	TextField::TextField(BasicStyle* style) : m_text(""), m_hide(false), m_style(style) {
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text=, style="+util::Cast::ptrToString(style)+"]" end_log_out;
 	}
 
-	TextField::TextField(std::string text, BasicStyle* style) :  m_text(text), m_style(style) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToInt(style)+"]");
+	TextField::TextField(std::string text, BasicStyle* style) :  m_text(text), m_hide(false), m_style(style) {
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
 	}
 
 	void TextField::addListener(TextFieldListener* listener) {
@@ -23,6 +23,8 @@ namespace graphics {
 	}
 
 	bool TextField::event(sf::Event* event, bool used) {
+		if(m_style == NULL || !m_visible)
+			return used;
 		util::Coordinates coord = getRealCoord();
 		if(event->type == sf::Event::MouseButtonPressed) {
 			if(!used && event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
@@ -122,10 +124,17 @@ namespace graphics {
 
 	}
 
+	void TextField::setHide(bool state) {
+		m_hide = state;
+	}
+
 	void TextField::draw(sf::RenderWindow* render) {
 		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
 			return;
 		}
+		if(!m_visible)
+			return;
 		util::Coordinates coord = getRealCoord();
 		BasicStyle::State state = BasicStyle::normal;
 
@@ -171,7 +180,14 @@ namespace graphics {
 		m_style->center(state)->setScale(m_width-borderWidth*2, m_height-borderHeight*2);
 		render->draw(*m_style->center(state));
 
-		sf::Text text(m_text+'|');
+		std::string str = m_text;
+		if(m_hide) {
+			str = "";
+			for(unsigned int i=0; i<m_text.size(); i++) {
+				str += '*';
+			}
+		}
+		sf::Text text(str+'|');
 		text.setFont(*m_style->font());
 		text.setCharacterSize(m_style->fontSize());
 		text.setColor(*m_style->fontColor());
@@ -180,7 +196,7 @@ namespace graphics {
 			m_frame.restart();
 		}
 		if(!m_selected || m_frame.elapsed() > FRAME_TIME) {
-			text.setString(m_text);
+			text.setString(str);
 		}
 		text.setPosition(coord.x+(m_width-textSize.width)/2,coord.y+(m_height-textSize.height*1.5)/2);
 		render->draw(text);

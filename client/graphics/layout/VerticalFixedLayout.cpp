@@ -10,7 +10,7 @@
 
 namespace graphics {
 
-	VerticalFixedLayout::VerticalFixedLayout(Length length) : m_length(length) {
+	VerticalFixedLayout::VerticalFixedLayout(Length length, Length horizontal) : m_length(length), m_horizontal(horizontal) {
 
 	}
 
@@ -23,16 +23,24 @@ namespace graphics {
 			int y = 0;
 			for(int i=0; i<m_container->childSize(); i++) {
 				y += ((m_container->getHeight()-total)/m_container->childSize())/2;
-				m_container->getChild(i)->setCoord(util::Coordinates(0, y));
-				m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
+				if(m_horizontal == full) {
+					m_container->getChild(i)->setCoord(util::Coordinates(0, y));
+					m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
+				}
+				else
+					m_container->getChild(i)->setCoord(util::Coordinates((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
 				y += m_container->getChild(i)->getHeight()+((m_container->getHeight()-total)/m_container->childSize())/2;
 			}
 		}
 		else {
 			int y = 0;
 			for(int i=0; i<m_container->childSize(); i++) {
-				m_container->getChild(i)->setCoord(util::Coordinates(0, y));
-				m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
+				if(m_horizontal == full) {
+					m_container->getChild(i)->setCoord(util::Coordinates(0, y));
+					m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
+				}
+				else
+					m_container->getChild(i)->setCoord(util::Coordinates((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
 				y += m_container->getChild(i)->getHeight();
 			}
 		}

@@ -4,23 +4,22 @@
  *  Created on: 6 avr. 2013
  *      Author: pierre
  */
+#include <boost/asio.hpp>
 
 #include "graphics/Graphics.hpp"
 #include "log/Log.hpp"
-
+#include "iomanager.cpp"
 #include "game/skill/SkillReader.hpp"
 
-class Client {
-public:
-	Client() {
-		std::string log("client.log");
-		client::Log::init(log);
-		client::Log::out("begin ...");
-		game::SkillReader sr;
-		sr.load("ressources/game/skill.dat");
-		graphics::Graphics graphics;
-	}
+int main() {
 
-};
+
+	std::string log("client.log");
+	Log::init(log);
+	game::SkillReader sr;
+	sr.load("ressources/game/skill.dat");
+	graphics::Graphics::init();
+	graphics::Graphics::run();
+}
 
 

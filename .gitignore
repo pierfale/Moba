@@ -12,4 +12,12 @@
 *.la
 *.a
 
+# Executable
 *.exe
+
+# Log
+
+*.log
+/Documentation
+/Release
+/Debug
