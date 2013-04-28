@@ -10,7 +10,10 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
-
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
@@ -22,6 +25,7 @@ namespace graphics {
 		virtual ~Layout();
 		virtual void validate() = 0;
 		void setContainer(graphics::Container* container);
+		virtual std::string getLayoutName();
 
 	protected:
 		graphics::Container* m_container;

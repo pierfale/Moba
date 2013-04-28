@@ -8,6 +8,11 @@
 #ifndef LABELLISTENER_HPP_
 #define LABELLISTENER_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class LabelListener {

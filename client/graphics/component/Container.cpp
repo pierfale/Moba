@@ -10,14 +10,17 @@
 
 namespace graphics {
 
-	Container::Container() : m_background(NULL) {
+	Container::Container() : m_background(NULL), m_backgroundColor(sf::Color::Transparent) {
 		m_layout = new VerticalLayout();
 		m_layout->setContainer(this);
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName());
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName() end_log_out;
 	}
 
 	Container::~Container() {
 		delete m_layout;
+		while(m_components.size() > 0) {
+			m_components.pop_back().release();
+		}
 	}
 
 	void  Container::add(Component* component) {
@@ -25,7 +28,36 @@ namespace graphics {
 		component->setWindow(m_window);
 		m_components.push_back(component);
 		m_layout->validate();
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Add "+component->getComponentName()+" (ref "+util::Cast::ptrToInt(component)+") in "+getComponentName());
+		log_out "Ref "+util::Cast::ptrToString(this)+": Add "+component->getComponentName()+" (ref "+util::Cast::ptrToString(component)+") in "+getComponentName() end_log_out;
+	}
+
+	void Container::remove(Component* component) {
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			if(&(*it) == component) {
+				m_components.release(it).release();
+				validate();
+				break;
+			}
+		}
+	}
+
+	void Container::replace(Component* old, Component* nw) {
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			if(&(*it) == old) {
+				m_components.replace(it, nw).release();
+				nw->setParent(this);
+				nw->setWindow(m_window);
+				validate();
+				break;
+			}
+		}
+	}
+
+	void Container::clear() {
+		while(m_components.size() > 0) {
+			m_components.release(m_components.begin()).release();
+		}
+		validate();
 	}
 
 	int Container::childSize() {
@@ -39,12 +71,13 @@ namespace graphics {
 	void Container::setLayout(Layout* layout) {
 		m_layout = layout;
 		m_layout->setContainer(this);
+		m_layout->validate();
 	}
 
-	void Container::setSelected(bool state) {
+	void Container::setSelected(bool state, bool force) {
 		m_selected = state;
 		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
-			it->setSelected(state);
+			it->setSelected(state, force);
 		}
 	}
 
@@ -56,9 +89,12 @@ namespace graphics {
 	}
 
 	void Container::setBackground(std::string path, Repeat repeat) {
-		m_window->getImageLoader()->add(path);
-		m_background = m_window->getImageLoader()->get(path);
+		m_background = ImageLoader::get(path);
 		m_repeat = repeat;
+	}
+
+	void Container::setBackgroundColor(sf::Color color) {
+		m_backgroundColor = color;
 	}
 
 	bool Container::isSelectable() {
@@ -75,6 +111,9 @@ namespace graphics {
 
 	void Container::validate() {
 		m_layout->validate();
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			it->validate();
+		}
 	}
 
 	bool Container::event(sf::Event* event, bool used) {
@@ -86,11 +125,24 @@ namespace graphics {
 
 	void Container::draw(sf::RenderWindow* render) {
 		util::Coordinates coord = getRealCoord();
+		sf::RectangleShape rect(sf::Vector2f(m_width, m_height));
+		rect.setPosition(coord.x, coord.y);
+		rect.setFillColor(m_backgroundColor);
+		render->draw(rect);
 		if(m_background != NULL)
 			util::Graphics::repeat(render, m_background, sf::IntRect(coord.x, coord.y, m_width, m_height), m_repeat);
 		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
 			it->draw(render);
 		}
+	}
+
+	std::string Container::toString(bool recursive) {
+		std::string r = "["+util::Cast::ptrToString(this)+":"+getComponentName()+":width="+util::Cast::intToString(m_width)+", height="+util::Cast::intToString(m_height)+
+						",x="+util::Cast::intToString(m_coord.x)+",y="+util::Cast::intToString(m_coord.y)+", layout="+m_layout->getLayoutName()+", parent="+util::Cast::ptrToString(m_parent)+"]\n";
+		for(boost::ptr_vector<Component>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+			r += "   "+it->toString()+"\n";
+		}
+		return r;
 	}
 
 }

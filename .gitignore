@@ -12,10 +12,14 @@
 *.la
 *.a
 
+# Executable
 *.exe
 
-# LOL FO PA LÉ MÈTR CELA
-Debug/
-.settings/
+# Log
+*.log
 *.dll
+/Documentation
+/Release
+/Debug
+.settings/
 .cproject

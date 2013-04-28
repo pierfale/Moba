@@ -17,7 +17,7 @@ namespace graphics {
 		m_view->startConnection();
 	}
 
-	void ConnectionScreen_Button::pressed() {
+	void ConnectionScreen_Button::pressed(void* origin) {
 		m_view->startConnection();
 	}
 }

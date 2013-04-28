@@ -11,6 +11,11 @@
 #include "Layout.hpp"
 #include "../component/Component.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class SplitFixedLayout : public Layout {
@@ -20,6 +25,7 @@ namespace graphics {
 		enum Fixed {first, second};
 		SplitFixedLayout(Direction direction, Fixed fixed, int fixedSize);
 		void validate();
+		std::string getLayoutName();
 
 	private:
 

@@ -15,8 +15,12 @@ namespace graphics {
 			m_container->getChild(0)->setCoord(util::Coordinates((m_container->getWidth()-m_container->getChild(0)->getWidth())/2, (m_container->getHeight()-m_container->getChild(0)->getHeight())/2));
 		}
 		else {
-			client::Log::err("Center layout can't work with multiple components [Container "+util::Cast::ptrToInt(m_container)+"]");
+			log_err "Center layout can't work with multiple components [Container "+util::Cast::ptrToString(m_container)+"]" end_log_err;
 		}
+	}
+
+	std::string CenterLayout::getLayoutName() {
+		return "CenterLayout";
 	}
 
 }

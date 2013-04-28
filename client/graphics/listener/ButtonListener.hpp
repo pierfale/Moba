@@ -8,13 +8,18 @@
 #ifndef BUTTONLISTENER_HPP_
 #define BUTTONLISTENER_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class ButtonListener {
 
 	public:
 		virtual ~ButtonListener();
-		virtual void pressed();
+		virtual void pressed(void* origin);
 		virtual void released(void* origin);
 		virtual void mouseEntered(void* origin);
 		virtual void mouseLeft(void* origin);

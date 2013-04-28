@@ -10,16 +10,20 @@
 namespace graphics {
 
 	Button::Button(std::string text, BasicStyle* style) : m_text(text), m_style(style) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToInt(style)+"]");
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
+	}
+
+	Button::~Button() {
+
 	}
 
 	void Button::addListener(ButtonListener* listener) {
 		m_listener.push_back(listener);
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Add listener "+util::Cast::ptrToInt(listener)+" in "+getComponentName());
+		log_out "Ref "+util::Cast::ptrToString(this)+": Add listener "+util::Cast::ptrToString(listener)+" in "+getComponentName() end_log_out;
 	}
 
 	bool Button::event(sf::Event* event, bool used) {
-		if(!m_visible)
+		if(!m_visible || !m_enable)
 			return used;
 		util::Coordinates coord = getRealCoord();
 		if(event->type == sf::Event::MouseButtonPressed) {
@@ -27,19 +31,18 @@ namespace graphics {
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_height) {
 				if(!m_pressed && m_enable) {
 					for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						//boost::thread t(&ButtonListener::pressed, &(*it), this);
-						ThreadManager::add(boost::bind(&ButtonListener::pressed, &(*it)), BOOST_CURRENT_FUNCTION);
+						m_window->addCallFunction(boost::bind(&ButtonListener::pressed, &(*it), this));
 					}
 				}
 				m_pressed = true;
-				m_window->setSelectedComponent(this);
+				getWindow()->setSelectedComponent(this);
 				used = true;
 			}
 		}
 		else if(event->type == sf::Event::MouseButtonReleased) {
 			if(m_pressed && m_enable) {
 				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					boost::thread t(&ButtonListener::released, &(*it), this);
+					m_window->addCallFunction(boost::bind(&ButtonListener::released, &(*it), this));
 				}
 			}
 			m_pressed = false;
@@ -49,7 +52,7 @@ namespace graphics {
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
 				if(!m_focus && m_enable) {
 					for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						boost::thread t(&ButtonListener::mouseEntered, &(*it), this);
+						m_window->addCallFunction(boost::bind(&ButtonListener::mouseEntered, &(*it), this));
 					}
 				}
 				m_focus = true;
@@ -58,7 +61,7 @@ namespace graphics {
 			else {
 				if(m_focus && m_enable) {
 					for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						boost::thread t(&ButtonListener::mouseLeft, &(*it), this);
+						m_window->addCallFunction(boost::bind(&ButtonListener::mouseLeft, &(*it), this));
 					}
 				}
 				m_focus = false;
@@ -67,7 +70,7 @@ namespace graphics {
 		else if(event->type == sf::Event::MouseLeft) {
 			if(m_focus && m_enable) {
 				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					boost::thread t(&ButtonListener::mouseLeft, &(*it), this);
+					m_window->addCallFunction(boost::bind(&ButtonListener::mouseLeft, &(*it), this));
 				}
 			}
 			m_focus = false;
@@ -81,26 +84,30 @@ namespace graphics {
 		else if(event->type == sf::Event::TextEntered && m_selected) {
 			if(event->text.unicode == 13  && m_enable) {
 				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					boost::thread t(&ButtonListener::enter, &(*it), this);
+					m_window->addCallFunction(boost::bind(&ButtonListener::enter, &(*it), this));
 				}
-				m_window->selectNext();
+				getWindow()->selectNext();
 			}
 		}
 		return used;
 	}
 
-	void Button::setSelected(bool state) {
-		if(state && !m_selected  && m_enable) {
-			for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-				boost::thread t(&ButtonListener::selected, &(*it), this);
+	void Button::setSelected(bool state, bool force) {
+		if(force) {
+			m_selected = state;
+			if(state && !m_selected  && m_enable) {
+				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
+					m_window->addCallFunction(boost::bind(&ButtonListener::selected, &(*it), this));
+				}
+			}
+			else if(!state && m_selected  && m_enable) {
+				for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
+					m_window->addCallFunction(boost::bind(&ButtonListener::unselected, &(*it), this));
+				}
 			}
 		}
-		else if(!state && m_selected  && m_enable) {
-			for(boost::ptr_vector<ButtonListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-				boost::thread t(&ButtonListener::unselected, &(*it), this);
-			}
-		}
-		m_selected = state;
+		else
+			m_window->setSelectedComponent(this);
 	}
 
 	void Button::setStyle(BasicStyle* style) {
@@ -135,7 +142,11 @@ namespace graphics {
 	}
 
 	void Button::draw(sf::RenderWindow* render) {
-		if(m_style == NULL || !m_visible) {
+		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
+			return;
+		}
+		if(!m_visible) {
 			return;
 		}
 		util::Coordinates coord = getRealCoord();

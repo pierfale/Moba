@@ -9,6 +9,8 @@
 #define HEADERINCLUDE_HPP_
 
 #include "BasicStyle.hpp"
+#include "LineStyle.hpp"
+#include "TableStyle.hpp"
 #include "WindowStyle.hpp"
 
 

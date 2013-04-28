@@ -13,6 +13,11 @@
 #include "../layout/Layout.hpp"
 #include "../Define.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class Container : public Component {
@@ -21,12 +26,16 @@ namespace graphics {
 		Container();
 		~Container();
 		void add(Component* component);
+		void remove(Component* component);
+		void replace (Component* old, Component* nw);
+		void clear();
 		int childSize();
 		Component* getChild(int i);
 		void setWindow(Window* window);
 		void setLayout(Layout* layout);
-		void setSelected(bool state);
+		void setSelected(bool state, bool force = false);
 		void setBackground(std::string path, Repeat repeat);
+		void setBackgroundColor(sf::Color color);
 
 		bool isSelectable();
 		bool isContainer();
@@ -37,11 +46,14 @@ namespace graphics {
 		bool event(sf::Event* event, bool used);
 		void draw(sf::RenderWindow* render);
 
+		std::string toString(bool recursive = false);
+
 	protected:
 		boost::ptr_vector<Component> m_components;
 		Layout* m_layout;
 		sf::Texture* m_background;
 		Repeat m_repeat;
+		sf::Color m_backgroundColor;
 
 
 

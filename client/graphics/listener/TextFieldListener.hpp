@@ -8,6 +8,11 @@
 #ifndef TEXTFIELDLISTENER_HPP_
 #define TEXTFIELDLISTENER_HPP_
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 class TextFieldListener {

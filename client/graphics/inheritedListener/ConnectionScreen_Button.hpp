@@ -9,7 +9,12 @@
 #define CONNECTIONSCREEN_BUTTON_HPP_
 
 #include "../listener/ButtonListener.hpp"
-#include "../ConnectionScreen.hpp"
+#include "../screen/ConnectionScreen.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
@@ -19,7 +24,7 @@ namespace graphics {
 	public:
 		ConnectionScreen_Button(ConnectionScreen* view);
 		void enter(void* origin);
-		void pressed();
+		void pressed(void* origin);
 
 	private:
 		ConnectionScreen* m_view;

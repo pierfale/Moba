@@ -14,6 +14,10 @@ namespace graphics {
 
 	}
 
+	std::string PassivLayout::getLayoutName() {
+		return "PassivLayout";
+	}
+
 }
 
 

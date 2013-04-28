@@ -11,12 +11,18 @@
 #include "Layout.hpp"
 #include "../component/Component.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
+
 namespace graphics {
 
 	class PassivLayout : public Layout {
 
 	public:
 		void validate();
+		std::string getLayoutName();
 
 	};
 

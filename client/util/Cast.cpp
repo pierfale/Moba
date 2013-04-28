@@ -15,10 +15,17 @@ namespace util {
 		return ss.str();
 	}
 
-	std::string Cast::ptrToInt(void* ptr) {
+	std::string Cast::ptrToString(void* ptr) {
 		std::stringstream ss;
 		ss << ptr;
 		return ss.str();
+	}
+
+	int Cast::stringToInt(std::string s) {
+		int n;
+		std::istringstream ss(s);
+		ss >> n;
+		return n;
 	}
 }
 

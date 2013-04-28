@@ -10,10 +10,15 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+
 #include "../../util/Util.hpp"
 #include "Window.hpp"
 #include "../../ThreadManager.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
@@ -28,7 +33,7 @@ namespace graphics {
 		virtual void setWindow(Window* window);
 		void setCoord(util::Coordinates coord);
 		void setSize(int width, int height);
-		virtual void setSelected(bool state);
+		virtual void setSelected(bool state, bool force = false);
 		virtual void setMinimalSize();
 		void setVisible(bool state);
 		void setEnable(bool state);
@@ -48,9 +53,11 @@ namespace graphics {
 		virtual void draw(sf::RenderWindow* render) = 0;
 		virtual bool event(sf::Event* event, bool used) = 0;
 		virtual void validate();
-		virtual std::string toString();
+		virtual std::string toString(bool recursive = false);
 
 	protected:
+		Window* getWindow();
+		Component* getParent();
 		util::Coordinates m_coord;
 		int m_width;
 		int m_height;
