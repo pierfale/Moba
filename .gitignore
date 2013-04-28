@@ -13,3 +13,9 @@
 *.a
 
 *.exe
+
+# LOL FO PA LÉ MÈTR CELA
+Debug/
+.settings/
+*.dll
+.cproject
