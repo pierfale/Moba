@@ -22,10 +22,12 @@ namespace graphics {
 
 	public:
 		ButtonImage(std::string image, BasicStyle* style=NULL);
+		ButtonImage(std::string image, sf::Rect<int> spriteZone, BasicStyle* style=NULL);
 		void draw(sf::RenderWindow* render);
 
 	private:
 		sf::Texture* m_image;
+		sf::IntRect m_spriteZone;
 	};
 }
 

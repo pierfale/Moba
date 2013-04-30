@@ -64,6 +64,10 @@ namespace graphics {
 		m_connectionButton->addListener(new ConnectionScreen_Button(this));
 		m_mainContainer->add(m_connectionButton);
 
+
+		//Tmp
+		m_pseudoTextField->setText("test");
+		m_passwordTextField->setText("test");
 	}
 
 	std::string ConnectionScreen::getComponentName() {
@@ -127,10 +131,11 @@ namespace graphics {
 				ss << ((hash[i] & 0x000000F0) >> 4)
 					<< (hash[i] & 0x0000000F);
 			}
-			network::Network::init(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string("127.0.0.1"), 2342));
-			network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCONNECTION);
-			packet << m_pseudoTextField->getText() << ss.str();
-			packet.send();
+			if(network::Network::init(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(Config::get("server")), util::Cast::stringToInt(Config::get("port"))))) {
+				network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCONNECTION);
+				packet << m_pseudoTextField->getText() << ss.str();
+				packet.send();
+			}
 
 		}
 	}

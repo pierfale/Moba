@@ -24,6 +24,7 @@ namespace game {
 	public:
 		static bool add(Game* game);
 		static Game* get(int i);
+		static Game* getByID(int id);
 		static int size();
 
 	private:

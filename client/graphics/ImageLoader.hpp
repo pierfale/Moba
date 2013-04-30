@@ -26,15 +26,16 @@ namespace graphics {
 	public:
 		~ImageLoader();
 		static sf::Texture* get(std::string path);
+		static sf::Image* getImage(std::string path);
 		static void process();
 	private:
 		ImageLoader();
 		std::map<std::string,sf::Texture> m_textures;
+		std::map<std::string,sf::Image> m_images;
 		std::vector<std::string> m_wait;
 		static ImageLoader* getInstance();
 		static boost::shared_ptr<ImageLoader> m_instance;
 		boost::mutex m_guard;
-
 	};
 
 }

@@ -16,7 +16,7 @@ namespace game {
 	}
 
 	bool GameList::add(Game* game) {
-		for(int i=0; i<getInstance()->m_games.size(); i++) {
+		for(unsigned int i=0; i<getInstance()->m_games.size(); i++) {
 			if(getInstance()->m_games.at(i).getID() == game->getID())
 				return false;
 		}
@@ -26,6 +26,14 @@ namespace game {
 	}
 	Game* GameList::get(int i) {
 		return &getInstance()->m_games.at(i);
+	}
+
+	Game* GameList::getByID(int id) {
+		for(unsigned int i=0; i<getInstance()->m_games.size(); i++) {
+			if(getInstance()->m_games.at(i).getID() == id)
+				return &getInstance()->m_games.at(i);
+		}
+		return NULL;
 	}
 
 	int GameList::size() {

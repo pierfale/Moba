@@ -8,56 +8,47 @@
 #ifndef GAMEBOARD_H_
 #define GAMEBOARD_H_
 
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <time.h>
 
-#include "Case.h"
+#include "boost/ptr_container/ptr_vector.hpp"
+
+#include "../ImageLoader.hpp"
 #include "../component/Component.hpp"
-
+#include "../../game/game/Case.h"
 #include "Camera.h"
+#include "../../game/game/GameboardModel.h"
+#include "Character.h"
+#include "animation/Animation.h"
+#include "ui/UserInterface.h"
 
-#include "Player.h"
+#define SIZE_TILE 50
 
 namespace graphics {
 
-	class Gameboard : public Component{
+	class Gameboard : public Container{
 	public:
 		//standard
-		Gameboard(std::string="");
+		Gameboard();
 		virtual ~Gameboard();
-		std::string toString();
-
-		//init
-		void load(Player* p);
 
 		//graphics manage
 		void draw(sf::RenderWindow* render);
-		void drawCamera(sf::RenderWindow* render);
-		void drawPlayer(sf::RenderWindow* render, Player* player);
+		void drawGameboard(sf::RenderWindow* render, game::Case*** gameboard);
 		bool event(sf::Event* event, bool used);
 		void validate();
-
-		//vector manage
-		void addPlayer(Player* p);
-		void removePlayer(Player* p);
-		void removeAllPlayer(Player* p);
-
-		//IO manage
-		void read(std::string path);
-		static void write(std::string path);
-		static void full();
+		static void loadImage();
 
 	private:
-		Case*** m_gameboard;	//1rst Layer
-		Case*** m_gameboardLayer;	//2nd Layer
-		int m_widthGameBoard, m_heightGameBoard;
-		sf::Sprite* m_spriteOfGameBoard;
-		std::string m_path;
 		sf::Texture* m_texture;
 		Camera m_cam;
 		bool m_loaded;
-		boost::ptr_vector<Player> m_oPlayers;	//Other Player
-		Player* m_player;	//Client Player
+		Character* m_player; //graphics Client Player
+		boost::ptr_vector<Character> m_oPlayers; //graphics Other Players
+		UserInterface* m_interface;
 	};
 
 } /* namespace graphics */

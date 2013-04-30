@@ -61,12 +61,9 @@ namespace graphics {
 
 	void CreateGameScreen::buttonChanged(void* origin) {
 		if(origin == m_createButton && m_nameTextField->getText() != "") {
-
 			network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_CREATEGAME);
 			packet <<m_nameTextField->getText();
 			packet.send();
-
-			m_window->setContentPane(ScreenManager::gameList());
 
 		}
 		else if(origin == m_returnButton) {

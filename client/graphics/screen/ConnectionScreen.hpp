@@ -19,6 +19,8 @@
 
 //Log
 #include "../../log/Log.hpp"
+//Config
+#include "../../config/Config.hpp"
 //Debug
 #include "../../debug/Alloc.hpp"
 

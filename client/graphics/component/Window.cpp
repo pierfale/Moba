@@ -9,13 +9,14 @@
 #include "Component.hpp"
 #include "Container.hpp"
 #include "../screen/ScreenManager.hpp"
+#include "../../network/Network.hpp"
 
 namespace graphics {
 
 	Window::Window(int width, int height, std::string title) : m_width(width), m_height(height), m_title(title) {
 		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [title="+title+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+"]" end_log_out;
 		m_window = NULL;
-		m_root = NULL;
+		m_root = new Container();
 		m_rootTmp = NULL;
 		m_framesCount = 0;
 	}
@@ -117,8 +118,6 @@ namespace graphics {
 		GUIStyle::init();
 		setContentPane(ScreenManager::connection());
 		while (m_window->isOpen()) {
-			checkNewContentPane();
-			checkFunctionCall();
 			sf::Event event;
 			while (m_window->pollEvent(event)) {
 				if(event.type == sf::Event::Closed)
@@ -137,11 +136,17 @@ namespace graphics {
 					m_root->event(&event, false);
 
 			}
+			checkFunctionCall();
+			network::Network::process();
+			checkNewContentPane();
 			//ImageLoader::process();
+
 			m_window->clear(sf::Color::White);
 			m_root->draw(m_window);
 			m_window->display();
-			boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+			if(m_frame.elapsed() < 1.0/(float)util::Cast::stringToInt(Config::get("maxfps")))
+				boost::this_thread::sleep(boost::posix_time::milliseconds((1.0/(float)util::Cast::stringToInt(Config::get("maxfps"))-m_frame.elapsed())*1000.0));
+			m_frame.restart();
 			m_framesCount++;
 			if(m_framesTime.elapsed() >= 1.0) {
 				m_window->setTitle(m_title+" | fps : "+util::Cast::intToString(m_framesCount));

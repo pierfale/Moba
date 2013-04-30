@@ -100,6 +100,8 @@ namespace graphics {
 			m_table->set(id, 2, gPlayer);
 			m_table->setValueOnRow(id, game::GameList::get(i));
 		}
+
+		std::cout << "loaded gamelist" << std::endl;
 	}
 
 	std::string GameListScreen::getComponentName() {
@@ -115,7 +117,9 @@ namespace graphics {
 			m_window->setContentPane(ScreenManager::character());
 		}
 		else if(origin == m_joinButton && m_gameSelected != NULL) {
-			m_window->setContentPane(ScreenManager::selectTeam(m_gameSelected));
+			network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKJOINGAME);
+			packet << m_gameSelected->getID();
+			packet.send();
 		}
 		else if(origin == m_createButton) {
 			m_window->setContentPane(ScreenManager::createGameScreen());
@@ -132,8 +136,9 @@ namespace graphics {
 	}
 
 	void GameListScreen::refreshGame() {
+		std::cout << "refresh gamelist" << std::endl;
 		m_table->removeAllRow();
-		/*
+
 		for(int i=0; i<game::GameList::size(); i++) {
 			int id = m_table->addRow();
 			Label* gName = new Label(game::GameList::get(i)->getName(), m_tableStyle);
@@ -146,7 +151,9 @@ namespace graphics {
 			gPlayer->setAlign(Label::alignCenter);
 			m_table->set(id, 2, gPlayer);
 			m_table->setValueOnRow(id, game::GameList::get(i));
-		}*/
+		}
+		this->validate();
+		std::cout << "end refresh gamelist" << std::endl;
 	}
 }
 

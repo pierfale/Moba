@@ -16,7 +16,7 @@ namespace game {
 	}
 
 	bool PlayerList::add(Player* player) {
-		for(int i=0; i<getInstance()->m_players.size(); i++) {
+		for(unsigned int i=0; i<getInstance()->m_players.size(); i++) {
 			if(getInstance()->m_players.at(i).getID() == player->getID())
 				return false;
 		}

@@ -4,12 +4,12 @@
  *  Created on: 6 avr. 2013
  *      Author: pierre
  */
+#ifndef GRAPHICS_HPP_
+#define GRAPHICS_HPP_
 
 #include <boost/shared_ptr.hpp>
 #include "component/Window.hpp"
 #include "GuiStyle.hpp"
-#include "game/Gameboard.h"
-#include "game/Player.h"
 
 //Log
 #include "../log/Log.hpp"
@@ -29,8 +29,7 @@ namespace graphics {
 		static Graphics* getInstance();
 		static boost::shared_ptr<Graphics> m_instance;
 		Window* m_window;
-
 	};
 }
 
-
+#endif
