@@ -11,7 +11,7 @@
 #include "Coordinates.hpp"
 #include <boost/timer.hpp>
 #include <map>
-#include <queue>
+#include <stack>
 #include <iostream>
 #include "../game/game/GameboardModel.h"
 

@@ -11,7 +11,7 @@ namespace util {
 
 //pathfinding
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
-	std::queue<CoordInt> vector;
+	std::stack<CoordInt> vector;
 	std::map<CoordInt, CoordInt> parent;
 	parent[start] = start;
 	CoordInt curr = start;
@@ -28,32 +28,36 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 					counter++;
 					CoordInt coord(curr.x+i, curr.y+j);
 					if(parent.find(coord) == parent.end()) {
-						vector.push(coord);
+						tmp.push_back(coord);
 						parent[coord] = curr;
 					}
 				}
 			}
 		}
 		//bad tri
-		for(unsigned int i=0; i<tmp.size()-1;i++) {
-			for(unsigned int j=i; j<tmp.size()-1; j++) {/*
+		for(int i=0; i<(int)tmp.size()-1;i++) {
+			int min = i;
+			for(int j=i+1; j<(int)tmp.size(); j++) {
+				counter++;
 				if((tmp.at(j).x > goal.x ? tmp.at(j).x - goal.x : goal.x - tmp.at(j).x)
     				+(tmp.at(j).y > goal.y ? tmp.at(j).y - goal.y : goal.y - tmp.at(j).y)
-    				< (tmp.at(j+1).x > goal.x ? tmp.at(j+1).x - goal.x : goal.x - tmp.at(j+1).x)
-    				+(tmp.at(j+1).y > goal.y ? tmp.at(j+1).y - goal.y : goal.y - tmp.at(j+1).y)) {
+    				< (tmp.at(min).x > goal.x ? tmp.at(min).x - goal.x : goal.x - tmp.at(min).x)
+    				+(tmp.at(min).y > goal.y ? tmp.at(min).y - goal.y : goal.y - tmp.at(min).y)) {
+					min = j;
+				}
+				if(min != i) {
+					std::swap(tmp[j], tmp[min]);
 
-					Coordinates c = tmp.at(i);
-					tmp.erase(tmp.begin()+i);
-					tmp.insert(tmp.begin()+i+1, c);
-				}*/
+				}
 			}
 		}
-/*
-		for(unsigned int i=0; i<tmp.size(); i++)
-			vector.push(tmp.at(i));*/
-		curr = vector.front();
+
+
+		for(unsigned int i=0; i<tmp.size(); i++) {
+			vector.push(tmp.at(i));
+		}
+		curr = vector.top();
 		vector.pop();
-		std::cout << "CURR : " << curr.toString() << std::endl;
 	}
 	std::cout << "COUNTER : " << counter << std::endl;
 	std::cout << "TIMER : " << t.elapsed() << std::endl;
