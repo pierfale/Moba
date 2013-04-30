@@ -25,12 +25,19 @@ namespace util {
 			y = copy.y;
 		}
 
-		bool operator==(Coordinates coord) {
+		bool operator==(Coordinates<T> coord) {
 			return (coord.x == x && coord.y == y);
 		}
 
-		bool operator!=(Coordinates coord) {
+		bool operator!=(Coordinates<T> coord) {
 			return !operator==(coord);
+		}
+
+		bool operator <(const Coordinates<T>& coord) const {
+			if(x != coord.x)
+				return x < coord.x;
+			else
+				return y < coord.y;
 		}
 
 		std::string toString() {

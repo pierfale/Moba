@@ -12,6 +12,7 @@
 #include <boost/timer.hpp>
 #include <map>
 #include <queue>
+#include <iostream>
 #include "../game/game/GameboardModel.h"
 
 namespace util {

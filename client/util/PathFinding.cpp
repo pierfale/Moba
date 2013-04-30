@@ -18,6 +18,7 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 	int counter = 0;
 	boost::timer t;
 	while(curr != goal) {
+
 		std::vector<CoordInt> tmp;
 		for(int i=-1; i<2; i++) {
 			for(int j=-1; j<2; j++) {
@@ -27,15 +28,15 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 					counter++;
 					CoordInt coord(curr.x+i, curr.y+j);
 					if(parent.find(coord) == parent.end()) {
-						tmp.push_back(coord);
+						vector.push(coord);
 						parent[coord] = curr;
 					}
 				}
 			}
-		}/*
+		}
 		//bad tri
 		for(unsigned int i=0; i<tmp.size()-1;i++) {
-			for(unsigned int j=i; j<tmp.size()-1; j++) {
+			for(unsigned int j=i; j<tmp.size()-1; j++) {/*
 				if((tmp.at(j).x > goal.x ? tmp.at(j).x - goal.x : goal.x - tmp.at(j).x)
     				+(tmp.at(j).y > goal.y ? tmp.at(j).y - goal.y : goal.y - tmp.at(j).y)
     				< (tmp.at(j+1).x > goal.x ? tmp.at(j+1).x - goal.x : goal.x - tmp.at(j+1).x)
@@ -44,14 +45,15 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 					Coordinates c = tmp.at(i);
 					tmp.erase(tmp.begin()+i);
 					tmp.insert(tmp.begin()+i+1, c);
-				}
+				}*/
 			}
-		}*/
-
+		}
+/*
 		for(unsigned int i=0; i<tmp.size(); i++)
-			vector.push(tmp.at(i));
+			vector.push(tmp.at(i));*/
 		curr = vector.front();
 		vector.pop();
+		std::cout << "CURR : " << curr.toString() << std::endl;
 	}
 	std::cout << "COUNTER : " << counter << std::endl;
 	std::cout << "TIMER : " << t.elapsed() << std::endl;
