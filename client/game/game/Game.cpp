@@ -9,10 +9,11 @@
 
 namespace game {
 
-	Game::Game(int id, std::string name, std::string creator) {
+	Game::Game(int id, std::string name, std::string creator, int nPlayer) {
 		m_id = id;
 		m_name = name;
 		m_creator = creator;
+		m_nPlayer = nPlayer;
 	}
 
 	int Game::getID() {
@@ -25,6 +26,14 @@ namespace game {
 
 	std::string Game::getCreator() {
 		return m_creator;
+	}
+
+	int Game::getNPlayer() {
+		return m_nPlayer;
+	}
+
+	void Game::setNPlayer(int n) {
+		m_nPlayer = n;
 	}
 }
 

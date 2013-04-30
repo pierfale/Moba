@@ -30,40 +30,44 @@ namespace graphics {
 	}
 
 	void ConnectionScreen::load() {
-		this->setLayout(new CenterLayout());
 
 		m_mainContainer = new Container();
 		m_mainContainer->setLayout(new PassivLayout());
-		m_mainContainer->setSize(300, 300);
 		this->add(m_mainContainer);
 
 		m_pseudoLabel = new Label("Pseudo : ", GUIStyle::label());
 		m_pseudoLabel->setSize(200, 40);
-		m_pseudoLabel->setCoord(util::Coordinates(50, 20));
+		m_pseudoLabel->setCoord(util::CoordInt(50, 20));
 		m_mainContainer->add(m_pseudoLabel);
 
 		m_pseudoTextField = new TextField(GUIStyle::textfield());
 		m_pseudoTextField->setSize(200, 50);
-		m_pseudoTextField->setCoord(util::Coordinates(50, 60));
+		m_pseudoTextField->setCoord(util::CoordInt(50, 60));
 		m_mainContainer->add(m_pseudoTextField);
 
 		m_passwordLabel = new Label("Password : ", GUIStyle::label());
 		m_passwordLabel->setSize(200, 40);
-		m_passwordLabel->setCoord(util::Coordinates(50, 120));
+		m_passwordLabel->setCoord(util::CoordInt(50, 120));
 		m_mainContainer->add(m_passwordLabel);
 
 		m_passwordTextField = new TextField(GUIStyle::textfield());
 		m_passwordTextField->setSize(200, 50);
-		m_passwordTextField->setCoord(util::Coordinates(50, 160));
+		m_passwordTextField->setCoord(util::CoordInt(50, 160));
 		m_passwordTextField->setHide(true);
 		m_mainContainer->add(m_passwordTextField);
 
 		m_connectionButton = new Button("Connection", GUIStyle::button());
 		m_connectionButton->setSize(200, 50);
-		m_connectionButton->setCoord(util::Coordinates(50, 220));
+		m_connectionButton->setCoord(util::CoordInt(50, 220));
 		m_connectionButton->addListener(new ConnectionScreen_Button(this));
 		m_mainContainer->add(m_connectionButton);
 
+		this->setLayout(new CenterLayout());
+		m_mainContainer->setSize(300, 300);
+
+		//Tmp
+		m_pseudoTextField->setText("test");
+		m_passwordTextField->setText("test");
 	}
 
 	std::string ConnectionScreen::getComponentName() {
@@ -97,9 +101,10 @@ namespace graphics {
 
 		m_messageLabel = new Label("Connection... ", GUIStyle::label());
 		m_messageLabel->setAlign(Label::alignCenter);
-		m_messageLabel->setSize(200, 40);
-		m_messageLabel->setCoord(util::Coordinates(0, 0));
+		m_messageLabel->setCoord(util::CoordInt(0, 0));
+		m_messageLabel->setMinimalSize();
 		m_messageInnerWindow->add(m_messageLabel);
+		m_messageInnerWindow->setMinimalSize();
 		m_connectionButton->setEnable(false);
 
 		if(m_pseudoTextField->getText() == "" || m_passwordTextField->getText() == "") {
@@ -127,10 +132,11 @@ namespace graphics {
 				ss << ((hash[i] & 0x000000F0) >> 4)
 					<< (hash[i] & 0x0000000F);
 			}
-			network::Network::init(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string("127.0.0.1"), 2342));
-			network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCONNECTION);
-			packet << m_pseudoTextField->getText() << ss.str();
-			packet.send();
+			if(network::Network::init(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(Config::get("server")), util::Cast::stringToInt(Config::get("port"))))) {
+				network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCONNECTION);
+				packet << m_pseudoTextField->getText() << ss.str();
+				packet.send();
+			}
 
 		}
 	}
@@ -138,6 +144,8 @@ namespace graphics {
 	void ConnectionScreen::setMessage(std::string message) {
 		if(m_messageLabel != NULL) {
 			m_messageLabel->setText(message);
+			m_messageLabel->setMinimalSize();
+			m_messageInnerWindow->setMinimalSize();
 		}
 		else {
 			m_messageInnerWindow = new InnerWindow("login...", 300, 100, GUIStyle::innerwindow());
@@ -148,9 +156,10 @@ namespace graphics {
 
 			m_messageLabel = new Label(message, GUIStyle::label());
 			m_messageLabel->setAlign(Label::alignCenter);
-			m_messageLabel->setSize(200, 40);
-			m_messageLabel->setCoord(util::Coordinates(0, 0));
+			m_messageLabel->setCoord(util::CoordInt(0, 0));
+			m_messageLabel->setMinimalSize();
 			m_messageInnerWindow->add(m_messageLabel);
+			m_messageInnerWindow->setMinimalSize();
 		}
 	}
 

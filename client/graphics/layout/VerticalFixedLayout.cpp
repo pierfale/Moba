@@ -24,11 +24,11 @@ namespace graphics {
 			for(int i=0; i<m_container->childSize(); i++) {
 				y += ((m_container->getHeight()-total)/m_container->childSize())/2;
 				if(m_horizontal == full) {
-					m_container->getChild(i)->setCoord(util::Coordinates(0, y));
+					m_container->getChild(i)->setCoord(util::CoordInt(0, y));
 					m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
 				}
 				else
-					m_container->getChild(i)->setCoord(util::Coordinates((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
+					m_container->getChild(i)->setCoord(util::CoordInt((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
 				y += m_container->getChild(i)->getHeight()+((m_container->getHeight()-total)/m_container->childSize())/2;
 			}
 		}
@@ -36,11 +36,11 @@ namespace graphics {
 			int y = 0;
 			for(int i=0; i<m_container->childSize(); i++) {
 				if(m_horizontal == full) {
-					m_container->getChild(i)->setCoord(util::Coordinates(0, y));
+					m_container->getChild(i)->setCoord(util::CoordInt(0, y));
 					m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getChild(i)->getHeight());
 				}
 				else
-					m_container->getChild(i)->setCoord(util::Coordinates((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
+					m_container->getChild(i)->setCoord(util::CoordInt((m_container->getWidth()-m_container->getChild(i)->getWidth())/2, y));
 				y += m_container->getChild(i)->getHeight();
 			}
 		}

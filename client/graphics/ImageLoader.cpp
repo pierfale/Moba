@@ -22,15 +22,22 @@ namespace graphics {
 
 
 	sf::Texture* ImageLoader::get(std::string path) {
-		boost::mutex::scoped_lock lock(getInstance()->m_guard);
+
+		log_out "[ImageLoader] get "+path end_log_out;
 		if(getInstance()->m_textures.find(path) == getInstance()->m_textures.end()) {
 			sf::Texture curr;
 			curr.loadFromFile(path);
 			getInstance()->m_textures[path] = curr;
-			getInstance()->m_wait.push_back(path);
-
+			getInstance()->m_images[path] = curr.copyToImage();
 		}
 		return &getInstance()->m_textures[path];
+	}
+
+	sf::Image* ImageLoader::getImage(std::string path) {
+		if(getInstance()->m_images.find(path) == getInstance()->m_images.end())
+			return NULL;
+		else
+			return &getInstance()->m_images[path];
 	}
 
 	void ImageLoader::process() {

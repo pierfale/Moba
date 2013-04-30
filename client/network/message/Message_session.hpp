@@ -19,6 +19,7 @@
 #include "../../game/character/Player.hpp"
 #include "../../game/menu/PlayerList.hpp"
 #include "../../game/game/Game.hpp"
+#include "../../game/game/GamePlayerList.hpp"
 #include "../../game/menu/GameList.hpp"
 
 namespace network {

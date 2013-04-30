@@ -23,7 +23,7 @@ namespace graphics {
 	}
 
 	bool Label::event(sf::Event* event, bool used) {
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		if(event->type == sf::Event::MouseMoved) {
 			if(!used && event->mouseMove.x > coord.x && event->mouseMove.x < coord.x+m_width
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
@@ -98,7 +98,7 @@ namespace graphics {
 		}
 		if(!m_visible)
 			return;
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		sf::Text text(m_text);
 		text.setFont(*m_style->font());
 		text.setCharacterSize(m_style->fontSize());

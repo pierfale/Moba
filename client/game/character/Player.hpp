@@ -10,6 +10,8 @@
 
 #include "Character.hpp"
 #include "PlayerStat.hpp"
+#include "../spell/Spell.h"
+#include "../../util/Coordinates.hpp"
 
 //Log
 #include "../../log/Log.hpp"
@@ -25,12 +27,23 @@ namespace game {
 		int getID();
 		PlayerStat* getStat();
 		int getLevel();
+		int getTeam();
+		void setTeam(int team);
+		Spell* getSpell();
+		util::CoordFloat getCoord();
+		std::vector<int> getIDSpell();
+
+		//setters
+		void setCoord(int x, int y);
 
 	private:
 		int m_id;
 		int m_level;
 		PlayerStat m_stat;
-
+		int m_team;
+		util::CoordFloat m_coord;
+		Spell* m_spell;
+		std::vector<int> m_idSpell;
 	};
 }
 

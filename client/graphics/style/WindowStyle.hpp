@@ -33,7 +33,7 @@ namespace graphics {
 		void setFont(sf::Font font);
 		void setFontSize(int fontSize);
 		void setFontColor(sf::Color color);
-		void setHeaderOffset(util::Coordinates coord);
+		void setHeaderOffset(util::CoordInt coord);
 
 		sf::Sprite* topleft();
 		sf::Sprite* top();
@@ -52,7 +52,7 @@ namespace graphics {
 		sf::Font* font();
 		int fontSize();
 		sf::Color* fontColor();
-		util::Coordinates headerOffset();
+		util::CoordInt headerOffset();
 
 	private:
 		sf::Texture* m_botImage;
@@ -63,7 +63,7 @@ namespace graphics {
 		sf::Font m_font;
 		int m_fontSize;
 		sf::Color m_fontColor;
-		util::Coordinates m_headerOffset;
+		util::CoordInt m_headerOffset;
 
 		sf::Sprite m_button[StateCount];
 

@@ -120,7 +120,7 @@ namespace graphics {
 			else
 				m_columnsLabel.at(i).setSize(m_columnsWidth.at(i), 40);
 
-			m_columnsLabel.at(i).setCoord(util::Coordinates(x, 0));
+			m_columnsLabel.at(i).setCoord(util::CoordInt(x, 0));
 			if(m_columnsWidth.at(i) == 0)
 				x += (m_width-definedSize)/nUndefinedSize;
 			else
@@ -129,7 +129,7 @@ namespace graphics {
 		int y = 40;
 		for(std::map<int,Row*>::const_iterator it = m_rows.begin(); it != m_rows.end(); ++it){
 			it->second->setSize(m_width, 40);
-			it->second->setCoord(util::Coordinates(0, y));
+			it->second->setCoord(util::CoordInt(0, y));
 			it->second->setWindow(m_window);
 			x = 0;
 			for(unsigned int j=0; j<m_columns.size(); j++) {
@@ -139,7 +139,7 @@ namespace graphics {
 				else
 					it->second->get(j)->setSize(m_columnsWidth.at(j), 40);
 
-				it->second->get(j)->setCoord(util::Coordinates(x, y));
+				it->second->get(j)->setCoord(util::CoordInt(x, y));
 				if(m_columnsWidth.at(j) == 0)
 					x += (m_width-definedSize)/nUndefinedSize;
 				else
@@ -166,7 +166,7 @@ namespace graphics {
 		}
 		if(!m_visible)
 			return;
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		BasicStyle* headerStyle = new BasicStyle();
 		headerStyle->setFontColor(m_style->headerTextColor());
 		for(unsigned int i=0; i<m_columnsLabel.size(); i++) {

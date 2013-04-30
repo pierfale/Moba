@@ -16,6 +16,7 @@ namespace graphics {
 		m_buttonFocus = false;
 		m_buttonPressed = false;
 		m_closeable = true;
+		m_absolute = true;
 		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [name="+name+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
 	}
 
@@ -26,7 +27,7 @@ namespace graphics {
 	bool InnerWindow::event(sf::Event* event, bool used) {
 		if(m_style == NULL || !m_visible)
 			return used;
-		util::Coordinates coord = Component::getRealCoord();
+		util::CoordInt coord = Component::getRealCoord();
 		if(event->type == sf::Event::MouseButtonPressed) {
 			if(m_closeable && event->mouseButton.x >= coord.x+m_width-m_style->topleft()->getGlobalBounds().width-m_style->headerOffset().x &&
 					event->mouseButton.x <= coord.x+m_width-m_style->topleft()->getGlobalBounds().width-m_style->headerOffset().x+m_style->button(WindowStyle::normal)->getGlobalBounds().width &&
@@ -45,7 +46,7 @@ namespace graphics {
 				m_pressed = true;
 				getWindow()->setSelectedComponent(this);
 				m_originCoord = m_coord;
-				m_originMouseCoord = util::Coordinates(event->mouseButton.x, event->mouseButton.y);
+				m_originMouseCoord = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
 				used = true;
 			}
 			else if(event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
@@ -64,7 +65,7 @@ namespace graphics {
 		}
 		else if(event->type == sf::Event::MouseMoved) {
 			if(m_pressed) {
-				m_coord = util::Coordinates(m_originCoord.x+(event->mouseMove.x-m_originMouseCoord.x), m_originCoord.y+(event->mouseMove.y-m_originMouseCoord.y));
+				m_coord = util::CoordInt(m_originCoord.x+(event->mouseMove.x-m_originMouseCoord.x), m_originCoord.y+(event->mouseMove.y-m_originMouseCoord.y));
 				used = true;
 			}
 			else if(m_closeable && event->mouseMove.x >= coord.x+m_width-m_style->topleft()->getGlobalBounds().width-m_style->headerOffset().x &&
@@ -109,14 +110,14 @@ namespace graphics {
 		m_closeable = state;
 	}
 
-	util::Coordinates InnerWindow::getRealCoord() {
+	util::CoordInt InnerWindow::getRealCoord() {
 		if(m_parent == NULL)
 			return getCoord();
-		return util::Coordinates(m_coord.x+m_style->botleft()->getGlobalBounds().width+m_parent->getRealCoord().x, m_coord.y+m_style->topleft()->getGlobalBounds().height+m_parent->getRealCoord().y);
+		return util::CoordInt(m_coord.x+m_style->botleft()->getGlobalBounds().width+m_parent->getRealCoord().x, m_coord.y+m_style->topleft()->getGlobalBounds().height+m_parent->getRealCoord().y);
 	}
 
-	util::Coordinates InnerWindow::getCoord() {
-		return util::Coordinates(m_coord.x+m_style->botleft()->getGlobalBounds().width, m_coord.y+m_style->topleft()->getGlobalBounds().height);
+	util::CoordInt InnerWindow::getCoord() {
+		return util::CoordInt(m_coord.x+m_style->botleft()->getGlobalBounds().width, m_coord.y+m_style->topleft()->getGlobalBounds().height);
 	}
 
 	int InnerWindow::getHeight() {
@@ -135,6 +136,17 @@ namespace graphics {
 		return false;
 	}
 
+	void InnerWindow::setMinimalSize() {
+		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
+			return;
+		}
+		if(m_components.size() == 1) {
+			m_width = m_components.at(0).getWidth()+m_style->botleft()->getGlobalBounds().width*2;
+			m_height = m_components.at(0).getHeight()+m_style->botleft()->getGlobalBounds().height+m_style->topleft()->getGlobalBounds().height;
+		}
+	}
+
 	void InnerWindow::draw(sf::RenderWindow* render) {
 		if(m_style == NULL) {
 			log_err "No style has been applied to the component "+getComponentName() end_log_err;
@@ -143,7 +155,7 @@ namespace graphics {
 		if(!m_visible)
 			return;
 
-		util::Coordinates coord = Component::getRealCoord();
+		util::CoordInt coord = Component::getRealCoord();
 
 		int topWidth = m_style->topleft()->getGlobalBounds().width;
 		int topHeight = m_style->topleft()->getGlobalBounds().height;

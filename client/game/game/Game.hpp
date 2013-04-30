@@ -15,13 +15,16 @@ namespace game {
 	class Game {
 
 	public:
-		Game(int id, std::string name, std::string creator);
+		Game(int id, std::string name, std::string creator, int nPlayer);
 		int getID();
 		std::string getName();
 		std::string getCreator();
+		int getNPlayer();
+		void setNPlayer(int n);
 
 	private:
 		int m_id;
+		int m_nPlayer;
 		std::string m_name;
 		std::string m_creator;
 	};

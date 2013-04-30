@@ -9,7 +9,7 @@
 
 namespace graphics {
 
-	Line::Line(util::Coordinates origin, util::Coordinates target, LineStyle* style) : m_style(style) {
+	Line::Line(util::CoordInt origin, util::CoordInt target, LineStyle* style) : m_style(style) {
 		m_origin = origin;
 		m_target = target;
 		m_width = origin.x > target.x ? origin.x - target.x : target.x - origin.x;
@@ -26,7 +26,7 @@ namespace graphics {
 			return;
 		}
 
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 
 		sf::Sprite verticalUp, horizontal, verticalDown;
 

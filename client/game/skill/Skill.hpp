@@ -24,10 +24,10 @@ namespace game {
 
 	public:
 		Skill();
-		Skill(int id, std::string name, std::string describe, std::vector<int> parents, std::string image, util::Coordinates coord);
+		Skill(int id, std::string name, std::string describe, std::vector<int> parents, std::string image, util::CoordInt coord);
 		int getId();
 		std::string getImage();
-		util::Coordinates getCoord();
+		util::CoordInt getCoord();
 		std::vector<int> getParents();
 
 	private:
@@ -36,7 +36,7 @@ namespace game {
 		std::string m_describe;
 		std::vector<int> m_parents;
 		std::string m_image;
-		util::Coordinates m_coord;
+		util::CoordInt m_coord;
 
 	};
 }

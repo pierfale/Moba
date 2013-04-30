@@ -75,7 +75,7 @@ namespace game {
 			cursor++;
 		}
 		parents.push_back(util::Cast::stringToInt(args.at(3).substr(beg, cursor-beg)));
-		return new Skill(util::Cast::stringToInt(args.at(0)), args.at(1), args.at(2), parents, args.at(4), util::Coordinates(util::Cast::stringToInt(args.at(5)), util::Cast::stringToInt(args.at(6))));
+		return new Skill(util::Cast::stringToInt(args.at(0)), args.at(1), args.at(2), parents, args.at(4), util::CoordInt(util::Cast::stringToInt(args.at(5)), util::Cast::stringToInt(args.at(6))));
 
 	}
 

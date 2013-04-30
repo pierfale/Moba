@@ -15,14 +15,20 @@ namespace graphics {
 		m_selected = false;
 		m_visible = true;
 		m_enable = true;
+		m_absolute = false;
+		m_widthCenter = false;
+		m_heightCenter = false;
 	}
 
-	Component::Component(util::Coordinates coord, int width, int height) : m_coord(coord), m_width(width), m_height(height), m_parent(NULL), m_window(NULL) {
+	Component::Component(util::CoordInt coord, int width, int height) : m_coord(coord), m_width(width), m_height(height), m_parent(NULL), m_window(NULL) {
 		m_focus = false;
 		m_pressed = false;
 		m_selected = false;
 		m_visible = true;
 		m_enable = true;
+		m_absolute = false;
+		m_widthCenter = false;
+		m_heightCenter = false;
 	}
 
 	Component::~Component() {
@@ -37,8 +43,10 @@ namespace graphics {
 		m_window = window;
 	}
 
-	void Component::setCoord(util::Coordinates coord) {
+	void Component::setCoord(util::CoordInt coord) {
 		m_coord = coord;
+		m_widthCenter = false;
+		m_heightCenter = false;
 	}
 	void Component::setSize(int width, int height) {
 		m_width = width;
@@ -73,20 +81,26 @@ namespace graphics {
 	void Component::setWidthCenter() {
 		if(m_parent != NULL)
 			m_coord.x = (m_parent->getWidth()-m_width)/2;
+		m_widthCenter = true;
 	}
 	void Component::setHeightCenter() {
 		if(m_parent != NULL)
 			m_coord.y = (m_parent->getHeight()-m_height)/2;
+		m_heightCenter = true;
 	}
 
-	util::Coordinates Component::getCoord() {
+	void Component::setAbsolute(bool state) {
+		m_absolute = state;
+	}
+
+	util::CoordInt Component::getCoord() {
 		return m_coord;
 	}
 
-	util::Coordinates Component::getRealCoord() {
+	util::CoordInt Component::getRealCoord() {
 		if(m_parent == NULL)
 			return m_coord;
-		return util::Coordinates(m_coord.x+m_parent->getRealCoord().x, m_coord.y+m_parent->getRealCoord().y);
+		return util::CoordInt(m_coord.x+m_parent->getRealCoord().x, m_coord.y+m_parent->getRealCoord().y);
 	}
 
 	int Component::getHeight() {
@@ -125,8 +139,15 @@ namespace graphics {
 		return m_selected;
 	}
 
-	void Component::validate() {
+	bool Component::isAbsolute() {
+		return m_absolute;
+	}
 
+	void Component::validate() {
+		if(m_widthCenter)
+			m_coord.x = (m_parent->getWidth()-m_width)/2;
+		if(m_heightCenter)
+			m_coord.y = (m_parent->getHeight()-m_height)/2;
 	}
 
 	std::string Component::toString(bool recursive) {

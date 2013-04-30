@@ -50,10 +50,11 @@ namespace graphics {
 
 	protected:
 		boost::ptr_vector<Component> m_components;
+		boost::ptr_vector<Component> m_componentsAbs;
 		Layout* m_layout;
 		sf::Texture* m_background;
-		Repeat m_repeat;
 		sf::Color m_backgroundColor;
+		Repeat m_repeat;
 
 
 

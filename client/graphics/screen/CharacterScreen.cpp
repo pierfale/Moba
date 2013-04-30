@@ -24,7 +24,7 @@ namespace graphics {
 		delete m_returnButton;
 		delete m_rightContainer;
 		delete m_upButtonContainer;
-		delete m_rightMainContainer;;
+		delete m_rightMainContainer;
 		delete m_statButton;
 		delete m_skillButton;
 		delete m_launchButton;

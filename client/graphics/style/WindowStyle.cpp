@@ -74,7 +74,7 @@ namespace graphics {
 		m_fontColor = color;
 	}
 
-	void WindowStyle::setHeaderOffset(util::Coordinates coord) {
+	void WindowStyle::setHeaderOffset(util::CoordInt coord) {
 		m_headerOffset = coord;
 	}
 
@@ -130,7 +130,7 @@ namespace graphics {
 		return &m_fontColor;
 	}
 
-	util::Coordinates WindowStyle::headerOffset() {
+	util::CoordInt WindowStyle::headerOffset() {
 		return m_headerOffset;
 	}
 

@@ -20,13 +20,13 @@ namespace graphics {
 
 	class Line : public Component {
 	public:
-		Line(util::Coordinates origin, util::Coordinates target, LineStyle* style = NULL);
+		Line(util::CoordInt origin, util::CoordInt target, LineStyle* style = NULL);
 		bool event(sf::Event* event, bool used);
 		void draw(sf::RenderWindow* render);
 
 	private:
-		util::Coordinates m_origin;
-		util::Coordinates m_target;
+		util::CoordInt m_origin;
+		util::CoordInt m_target;
 		LineStyle* m_style;
 	};
 }

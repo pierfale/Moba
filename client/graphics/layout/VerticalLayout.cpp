@@ -12,7 +12,7 @@ namespace graphics {
 
 	void VerticalLayout::validate() {
 		for(int i=0; i<m_container->childSize(); i++) {
-			m_container->getChild(i)->setCoord(util::Coordinates(0, i*(m_container->getHeight()/m_container->childSize())));
+			m_container->getChild(i)->setCoord(util::CoordInt(0, i*(m_container->getHeight()/m_container->childSize())));
 			m_container->getChild(i)->setSize(m_container->getWidth(), m_container->getHeight()/m_container->childSize());
 		}
 	}

@@ -30,21 +30,22 @@ namespace graphics {
 		void setStyle(WindowStyle* style);
 		void setCloseable(bool state);
 
-		util::Coordinates getRealCoord();
+		util::CoordInt getRealCoord();
 
-		util::Coordinates getCoord();
+		util::CoordInt getCoord();
 		int getHeight();
 		int getWidth();
 		std::string getComponentName();
 
 		bool isSelectable();
+		void setMinimalSize();
 
 	private:
 		std::string m_name;
 		WindowStyle* m_style;
 		boost::ptr_vector<InnerWindowListener> m_listener;
-		util::Coordinates m_originCoord;
-		util::Coordinates m_originMouseCoord;
+		util::CoordInt m_originCoord;
+		util::CoordInt m_originMouseCoord;
 
 		bool m_closeable;
 		bool m_buttonFocus;

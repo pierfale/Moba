@@ -5,12 +5,10 @@
  *      Author: Béni
  */
 
-#include "Gameboard.h"
+#include "MapEditor.h"
 
 /*int main() {
- //	graphics::Gameboard::write("ressources/game/mapOfArena");
- 	graphics::Gameboard::full();
- 	return 0;
+	graphics::MapEditor::full();
+	return 0;
 }*/
-
 

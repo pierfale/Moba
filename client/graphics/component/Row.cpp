@@ -38,7 +38,7 @@ namespace graphics {
 		}
 	}
 
-	void Row::setCoord(util::Coordinates coord) {
+	void Row::setCoord(util::CoordInt coord) {
 		m_coord = coord;
 	}
 
@@ -76,7 +76,7 @@ namespace graphics {
 	}
 
 	bool Row::event(sf::Event* event, bool used) {
-		util::Coordinates coord(m_coord.x+m_table->getRealCoord().x, m_coord.y+m_table->getRealCoord().y);
+		util::CoordInt coord(m_coord.x+m_table->getRealCoord().x, m_coord.y+m_table->getRealCoord().y);
 		if(event->type == sf::Event::MouseButtonPressed) {
 			if(!used && event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_height) {

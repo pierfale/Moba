@@ -16,7 +16,7 @@ namespace game {
 	}
 
 	bool GameList::add(Game* game) {
-		for(int i=0; i<getInstance()->m_games.size(); i++) {
+		for(unsigned int i=0; i<getInstance()->m_games.size(); i++) {
 			if(getInstance()->m_games.at(i).getID() == game->getID())
 				return false;
 		}
@@ -28,8 +28,29 @@ namespace game {
 		return &getInstance()->m_games.at(i);
 	}
 
+	Game* GameList::getByID(int id) {
+		for(unsigned int i=0; i<getInstance()->m_games.size(); i++) {
+			if(getInstance()->m_games.at(i).getID() == id)
+				return &getInstance()->m_games.at(i);
+		}
+		return NULL;
+	}
+
 	int GameList::size() {
 		return getInstance()->m_games.size();
+	}
+
+	void GameList::removeByID(int id) {
+		for(boost::ptr_vector<Game>::iterator it = getInstance()->m_games.begin(); it < getInstance()->m_games.end(); ++it) {
+			if(it->getID() == id) {
+				getInstance()->m_games.release(it);
+				return;
+			}
+		}
+	}
+
+	void GameList::clear() {
+		getInstance()->m_games.clear();
 	}
 
 	GameList* GameList::getInstance() {

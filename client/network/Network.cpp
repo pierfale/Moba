@@ -6,24 +6,33 @@
  */
 
 #include "Network.hpp"
+#include "../graphics/screen/ConnectionScreen.hpp"
+#include "../graphics/screen/ScreenManager.hpp"
 
 namespace network {
 
 	boost::shared_ptr<Network> Network::m_instance;
+	boost::mutex Network::m_guard;
 
 	Network::Network() : m_run(true), m_firstConnect(true) {
 
 	}
 
-	void Network::init(boost::asio::ip::tcp::endpoint target) {
+	bool Network::init(boost::asio::ip::tcp::endpoint target) {
 		getInstance()->m_run = true;
 		getInstance()->m_socket.reset(new boost::asio::ip::tcp::socket(getInstance()->m_ios));
-		getInstance()->m_socket.get()->async_connect(target,
-				boost::bind(&Network::connect_handle, getInstance(), boost::asio::placeholders::error));
-		if(getInstance()->m_firstConnect) {
-			getInstance()->m_ios.run();
-			getInstance()->m_firstConnect = false;
+		boost::system::error_code error;
+		getInstance()->m_socket.get()->connect(target, error);
+		if(error) {
+			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::ConnectionScreen::getName())
+				((graphics::ConnectionScreen*)graphics::Graphics::getWindow()->getContentPane())->setMessage("Unable to connect to the server");
+			return false;
 		}
+		else {
+			log_out "Connected to the server!" end_log_out;
+			boost::thread thread(boost::bind(&Network::run, getInstance()));
+		}
+		return true;
 	}
 
 	void Network::connect_handle(const boost::system::error_code& error) {
@@ -38,14 +47,10 @@ namespace network {
 
 	void Network::close() {
 		network::Packet packet(getInstance()->m_socket.get(), network::PacketType::SESSION_CLOSE);
-		packet.send(boost::bind(&Network::close_handle, getInstance()));
-	}
-
-	void Network::close_handle() {
+		packet.send();
 		getInstance()->m_run = false;
 		getInstance()->m_socket.get()->close();
 		getInstance()->m_socket.reset();
-		graphics::Graphics::getWindow()->addCallFunction(boost::bind(&game::PlayerList::clear));
 	}
 
 	boost::asio::ip::tcp::socket* Network::getSocket() {
@@ -61,13 +66,36 @@ namespace network {
 			network::Packet packet(m_socket.get(), network::PacketType::UNDEFINED);
 			if(!packet.receive())
 				break;
-			log_out "packet receive! type="+util::Cast::intToString(packet.getType()) end_log_out;
+			m_guard.lock();
+			getInstance()->m_packetStack.push_back(packet);
+			m_guard.unlock();
+
+
+		}
+
+		close_handle();
+	}
+
+	void Network::process() {
+		m_guard.lock();
+		for(unsigned int i=0; i<getInstance()->m_packetStack.size(); i++) {
+			log_err "packet receive! type="+util::Cast::intToString(getInstance()->m_packetStack.at(i).getType()) end_log_err;
 			int typeFirstMask = 0xFF000000;
-			if((packet.getType() & typeFirstMask) == network::PacketType::SESSION) {
-				Message_session::process(packet);
+			if((getInstance()->m_packetStack.at(i).getType() & typeFirstMask) == network::PacketType::SESSION) {
+				Message_session::process(getInstance()->m_packetStack.at(i));
 			}
 		}
+		getInstance()->m_packetStack.clear();
+		m_guard.unlock();
+	}
+
+	void Network::close_handle() {
 		log_out "disconnected from the server" end_log_out;
+		if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() != graphics::ConnectionScreen::getName()) {
+			graphics::Graphics::getWindow()->setContentPane(graphics::ScreenManager::connection());
+			graphics::Graphics::getWindow()->getContentPane()->validate();
+			((graphics::ConnectionScreen*)graphics::Graphics::getWindow()->getContentPane())->setMessage("Disconnected from server");
+		}
 	}
 
 	Network* Network::getInstance() {

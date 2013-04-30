@@ -9,9 +9,14 @@
 #define CHARACTER_H_
 
 #include <string>
+#include <queue>
+#include <math.h>
 
-#include "../component/Component.hpp"
+#include "SFML/Graphics.hpp"
 #include "../../util/Coordinates.hpp"
+#include "../Component/ComponentInclude.hpp"
+#include "Camera.h"
+#include "../../game/character/Player.hpp"
 
 namespace graphics {
 
@@ -20,41 +25,40 @@ class Character {
 
 		enum Direction{SOUTH, WEST, EAST, NORTH};
 
-		Character(std::string name);
+		Character(game::Player* player);
 		virtual ~Character();
-
-		std::string toString();
 
 		//graphics manage
 		void load(Window* window);
-		virtual void event(sf::Event* event) = 0;
-		virtual void moveTo(int x, int y) = 0;
-		virtual void setTarget(int x, int y) = 0;
+		void event(sf::Event* event, Camera cam, bool client);
+		void moveTo();
+		void setTarget(int x, int y);
 		void incFrame();
+		void draw(sf::RenderWindow* render, Camera cam);
 
 		//getters
 		int getDirection();
 		sf::Sprite* getSprite();
 		sf::Texture* getTexture();
 		int getFrame();
-		util::Coordinates getCoordinates();
 		bool getOnMove();
+		game::Player* getPlayerModel();
 
 		//setters
-		void setCoord(int x, int y);
 		void setDirection(int dir);
 
 		//pathfinding
-		std::vector<util::Coordinates> getPathAs();
+		std::vector<util::CoordInt> getPathAs();
 
 	protected:
-		std::string m_name;
 		int m_nbFrame;
 		bool m_onMove;
 		Direction m_direction;
-		util::Coordinates m_coord, m_target;
-		sf::Sprite* m_sprite;
+		util::CoordFloat m_target;
 		sf::Texture* m_texture;
+		boost::timer m_frame;
+		game::Player* m_player;
+		sf::Sprite* m_sprite;
 		//std::vector<util::Coordinates> path;
 	};
 

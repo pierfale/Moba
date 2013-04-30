@@ -23,6 +23,8 @@
 
 //Log
 #include "../../log/Log.hpp"
+//Config
+#include "../../config/Config.hpp"
 //Debug
 #include "../../debug/Alloc.hpp"
 
@@ -56,6 +58,7 @@ namespace graphics {
 		Container* m_root;
 		Container* m_rootTmp;
 		std::vector<boost::function<void()> > m_callFunction;
+		boost::timer m_frame;
 
 	};
 }

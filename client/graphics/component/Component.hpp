@@ -26,12 +26,12 @@ namespace graphics {
 
 	public:
 		Component();
-		Component(util::Coordinates coord, int width, int height);
+		Component(util::CoordInt coord, int width, int height);
 		virtual ~Component();
 
 		void setParent(Component* parent);
 		virtual void setWindow(Window* window);
-		void setCoord(util::Coordinates coord);
+		void setCoord(util::CoordInt coord);
 		void setSize(int width, int height);
 		virtual void setSelected(bool state, bool force = false);
 		virtual void setMinimalSize();
@@ -39,9 +39,10 @@ namespace graphics {
 		void setEnable(bool state);
 		void setWidthCenter();
 		void setHeightCenter();
+		void setAbsolute(bool state);
 
-		virtual util::Coordinates getCoord();
-		virtual util::Coordinates getRealCoord();
+		virtual util::CoordInt getCoord();
+		virtual util::CoordInt getRealCoord();
 		virtual int getHeight();
 		virtual int getWidth();
 		virtual std::string getComponentName();
@@ -49,6 +50,7 @@ namespace graphics {
 		virtual bool isSelectable();
 		virtual bool isContainer();
 		bool isSelected();
+		bool isAbsolute();
 
 		virtual void draw(sf::RenderWindow* render) = 0;
 		virtual bool event(sf::Event* event, bool used) = 0;
@@ -58,7 +60,7 @@ namespace graphics {
 	protected:
 		Window* getWindow();
 		Component* getParent();
-		util::Coordinates m_coord;
+		util::CoordInt m_coord;
 		int m_width;
 		int m_height;
 		Component* m_parent;
@@ -69,6 +71,10 @@ namespace graphics {
 		bool m_selected;
 		bool m_visible;
 		bool m_enable;
+		bool m_absolute;
+
+		bool m_widthCenter;
+		bool m_heightCenter;
 
 	};
 }

@@ -25,10 +25,10 @@ namespace graphics {
 				x += ((m_container->getWidth()-total)/m_container->childSize())/2;
 				if(m_vertical == full) {
 					m_container->getChild(i)->setSize(m_container->getChild(i)->getWidth(), m_container->getHeight());
-					m_container->getChild(i)->setCoord(util::Coordinates(x, 0));
+					m_container->getChild(i)->setCoord(util::CoordInt(x, 0));
 				}
 				else
-					m_container->getChild(i)->setCoord(util::Coordinates(x, (m_container->getHeight()-m_container->getChild(i)->getHeight())/2));
+					m_container->getChild(i)->setCoord(util::CoordInt(x, (m_container->getHeight()-m_container->getChild(i)->getHeight())/2));
 
 				x += m_container->getChild(i)->getWidth()+((m_container->getWidth()-total)/m_container->childSize())/2;
 			}
@@ -36,13 +36,13 @@ namespace graphics {
 		else {
 			int x = 0;
 			for(int i=0; i<m_container->childSize(); i++) {
-				m_container->getChild(i)->setCoord(util::Coordinates(x, 0));
+				m_container->getChild(i)->setCoord(util::CoordInt(x, 0));
 				if(m_vertical == full) {
 					m_container->getChild(i)->setSize(m_container->getChild(i)->getWidth(), m_container->getHeight());
-					m_container->getChild(i)->setCoord(util::Coordinates(x, 0));
+					m_container->getChild(i)->setCoord(util::CoordInt(x, 0));
 				}
 				else
-					m_container->getChild(i)->setCoord(util::Coordinates(x, (m_container->getHeight()-m_container->getChild(i)->getHeight())/2));
+					m_container->getChild(i)->setCoord(util::CoordInt(x, (m_container->getHeight()-m_container->getChild(i)->getHeight())/2));
 				x += m_container->getChild(i)->getWidth();
 			}
 		}

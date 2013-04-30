@@ -26,7 +26,7 @@ namespace graphics {
 		Row(Table* table);
 		~Row();
 		void setSize(int width, int height);
-		void setCoord(util::Coordinates coord);
+		void setCoord(util::CoordInt coord);
 		void setWindow(Window* window);
 		void setSelect(bool state);
 
@@ -44,7 +44,7 @@ namespace graphics {
 		boost::ptr_vector<Component> m_components;
 		int m_width;
 		int m_height;
-		util::Coordinates m_coord;
+		util::CoordInt m_coord;
 
 		bool m_focus;
 		bool m_selected;

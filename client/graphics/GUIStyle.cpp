@@ -37,7 +37,7 @@ namespace graphics {
 		getInstance()->m_innerwindow.get()->setTopImage("ressources/gui/window_top.png");
 		getInstance()->m_innerwindow.get()->setCenterImage("ressources/gui/window_center.png");
 		getInstance()->m_innerwindow.get()->setButtonImage("ressources/gui/window_close.png");
-		getInstance()->m_innerwindow.get()->setHeaderOffset(util::Coordinates(10, 5));
+		getInstance()->m_innerwindow.get()->setHeaderOffset(util::CoordInt(10, 5));
 		getInstance()->m_innerwindow.get()->setFontColor(sf::Color(226, 233, 40));
 		getInstance()->m_innerwindow.get()->setFontSize(18);
 
@@ -59,7 +59,7 @@ namespace graphics {
 
 		getInstance()->m_buttonImage.reset(new BasicStyle());
 		getInstance()->m_buttonImage.get()->setBorderImage("ressources/gui/button_image.png");
-		getInstance()->m_buttonImage.get()->setCenterImage("ressources/gui/button_imagecenter.png");
+		getInstance()->m_buttonImage.get()->setCenterImage("ressources/gui/button_image_center.png");
 		getInstance()->m_buttonImage.get()->setFontColor(sf::Color(226, 233, 40));
 
 	}

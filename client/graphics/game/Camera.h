@@ -10,9 +10,12 @@
 
 #include <iostream>
 
-#include "../../util/Coordinates.hpp"
 #include "SFML/Window.hpp"
+#include "SFML/Graphics.hpp"
+#include <boost/timer.hpp>
 
+#include "../../util/Coordinates.hpp"
+#include "../ImageLoader.hpp"
 
 namespace graphics {
 
@@ -20,17 +23,21 @@ namespace graphics {
 	public:
 		Camera();
 		Camera(int x, int y);
-		Camera(util::Coordinates &copy);
+		Camera(util::CoordInt &copy);
 		virtual ~Camera();
 
 		void setLandMark(int w, int h);
 
-		util::Coordinates getCoord();
+		util::CoordInt getCoord();
+		void setCoord(util::CoordInt coord);
 		void event(sf::Event* event, int* w, int* h);
+		void validate(int* gbW, int* gbH);
 
 	private:
-		util::Coordinates m_coord;
+		int m_rate;
+		util::CoordInt m_coord;
 		int m_lmW, m_lmH;
+		boost::timer m_frame;
 	};
 
 } /* namespace graphics */

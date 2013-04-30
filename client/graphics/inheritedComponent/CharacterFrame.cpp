@@ -30,7 +30,7 @@ namespace graphics {
 	}
 
 	void CharacterFrame::draw(sf::RenderWindow* render) {
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		if(m_select)
 			m_selected = true;
 

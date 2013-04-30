@@ -16,7 +16,7 @@ namespace game {
 		m_image = "";
 	}
 
-	Skill::Skill(int id, std::string name, std::string describe, std::vector<int> parents, std::string image, util::Coordinates coord) {
+	Skill::Skill(int id, std::string name, std::string describe, std::vector<int> parents, std::string image, util::CoordInt coord) {
 		m_id = id;
 		m_name = name;
 		m_describe = name;
@@ -33,7 +33,7 @@ namespace game {
 		return m_image;
 	}
 
-	util::Coordinates Skill::getCoord() {
+	util::CoordInt Skill::getCoord() {
 		return m_coord;
 	}
 

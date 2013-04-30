@@ -25,7 +25,7 @@ namespace graphics {
 	bool Button::event(sf::Event* event, bool used) {
 		if(!m_visible || !m_enable)
 			return used;
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		if(event->type == sf::Event::MouseButtonPressed) {
 			if(!used && event->mouseButton.x > coord.x && event->mouseButton.x < coord.x+m_width
 				&& event->mouseButton.y > coord.y && event->mouseButton.y < coord.y+m_height) {
@@ -149,7 +149,7 @@ namespace graphics {
 		if(!m_visible) {
 			return;
 		}
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		BasicStyle::State state = BasicStyle::normal;
 
 		if(!m_enable)

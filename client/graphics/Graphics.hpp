@@ -8,8 +8,6 @@
 #include <boost/shared_ptr.hpp>
 #include "component/Window.hpp"
 #include "GuiStyle.hpp"
-#include "game/Gameboard.h"
-#include "game/Player.h"
 
 //Log
 #include "../log/Log.hpp"
