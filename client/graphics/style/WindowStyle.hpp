@@ -10,15 +10,21 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../component/Window.hpp"
+
 #include "../../util/Util.hpp"
+#include "../ImageLoader.hpp"
+
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
 	class WindowStyle {
 	public:
 		enum State {normal, focus, press, StateCount};
-		WindowStyle(Window* window);
+		WindowStyle();
 		void setBotImage(std::string path);
 		void setTopImage(std::string path);
 		void setCenterImage(std::string path);
@@ -27,7 +33,7 @@ namespace graphics {
 		void setFont(sf::Font font);
 		void setFontSize(int fontSize);
 		void setFontColor(sf::Color color);
-		void setHeaderOffset(util::Coordinates coord);
+		void setHeaderOffset(util::CoordInt coord);
 
 		sf::Sprite* topleft();
 		sf::Sprite* top();
@@ -46,10 +52,9 @@ namespace graphics {
 		sf::Font* font();
 		int fontSize();
 		sf::Color* fontColor();
-		util::Coordinates headerOffset();
+		util::CoordInt headerOffset();
 
 	private:
-		Window* m_window;
 		sf::Texture* m_botImage;
 		sf::Texture* m_topImage;
 		sf::Texture* m_centerImage;
@@ -58,7 +63,7 @@ namespace graphics {
 		sf::Font m_font;
 		int m_fontSize;
 		sf::Color m_fontColor;
-		util::Coordinates m_headerOffset;
+		util::CoordInt m_headerOffset;
 
 		sf::Sprite m_button[StateCount];
 

@@ -12,4 +12,14 @@
 *.la
 *.a
 
+# Executable
 *.exe
+
+# Log
+*.log
+*.dll
+/Documentation
+/Release
+/Debug
+.settings/
+.cproject

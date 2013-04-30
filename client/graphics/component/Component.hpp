@@ -10,10 +10,15 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+
 #include "../../util/Util.hpp"
 #include "Window.hpp"
 #include "../../ThreadManager.hpp"
 
+//Log
+#include "../../log/Log.hpp"
+//Debug
+#include "../../debug/Alloc.hpp"
 
 namespace graphics {
 
@@ -21,22 +26,23 @@ namespace graphics {
 
 	public:
 		Component();
-		Component(util::Coordinates coord, int width, int height);
+		Component(util::CoordInt coord, int width, int height);
 		virtual ~Component();
 
 		void setParent(Component* parent);
 		virtual void setWindow(Window* window);
-		void setCoord(util::Coordinates coord);
+		void setCoord(util::CoordInt coord);
 		void setSize(int width, int height);
-		virtual void setSelected(bool state);
+		virtual void setSelected(bool state, bool force = false);
 		virtual void setMinimalSize();
 		void setVisible(bool state);
 		void setEnable(bool state);
 		void setWidthCenter();
 		void setHeightCenter();
+		void setAbsolute(bool state);
 
-		virtual util::Coordinates getCoord();
-		virtual util::Coordinates getRealCoord();
+		virtual util::CoordInt getCoord();
+		virtual util::CoordInt getRealCoord();
 		virtual int getHeight();
 		virtual int getWidth();
 		virtual std::string getComponentName();
@@ -44,15 +50,17 @@ namespace graphics {
 		virtual bool isSelectable();
 		virtual bool isContainer();
 		bool isSelected();
+		bool isAbsolute();
 
 		virtual void draw(sf::RenderWindow* render) = 0;
 		virtual bool event(sf::Event* event, bool used) = 0;
 		virtual void validate();
-		virtual std::string toString();
+		virtual std::string toString(bool recursive = false);
 
 	protected:
 		Window* getWindow();
-		util::Coordinates m_coord;
+		Component* getParent();
+		util::CoordInt m_coord;
 		int m_width;
 		int m_height;
 		Component* m_parent;
@@ -63,6 +71,10 @@ namespace graphics {
 		bool m_selected;
 		bool m_visible;
 		bool m_enable;
+		bool m_absolute;
+
+		bool m_widthCenter;
+		bool m_heightCenter;
 
 	};
 }

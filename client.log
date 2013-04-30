@@ -1,0 +1,152 @@
+Thread 28c : Ref 0x4df9af8: Create Window [title=Moba, width=800, height=600]
+Thread 28c : [ImageLoader] get ressources/gui/button_2.png
+Thread 28c : [ImageLoader] get ressources/gui/button_2_center.png
+Thread 28c : [ImageLoader] get ressources/gui/textfield_2.png
+Thread 28c : [ImageLoader] get ressources/gui/textfield_center.png
+Thread 28c : [ImageLoader] get ressources/gui/window_bot.png
+Thread 28c : [ImageLoader] get ressources/gui/window_top.png
+Thread 28c : [ImageLoader] get ressources/gui/window_center.png
+Thread 28c : [ImageLoader] get ressources/gui/window_close.png
+Thread 28c : [ImageLoader] get ressources/gui/line.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : [ImageLoader] get ressources/gui/button_image.png
+Thread 28c : [ImageLoader] get ressources/gui/button_image_center.png
+Thread 28c : Ref 0x5e42d28: Create Label [text=Pseudo : , style=0x5e39ac8]
+Thread 28c : Ref 0x5e42d70: Create TextField [text=, style=0x5e18c98]
+Thread 28c : Ref 0x5e42db8: Create Label [text=Password : , style=0x5e39ac8]
+Thread 28c : Ref 0x5e42e00: Create TextField [text=, style=0x5e18c98]
+Thread 28c : Ref 0x5e40c88: Create Button [text=Connection, style=0x4dfaf20]
+Thread 28c : Ref 0x5e40c88: Add listener 0x4dfa050 in Button
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x5e42c58)
+Thread 28c : Ref 0x5e42ed0: Create InnerWindow [name=login..., width=300, height=100, style=0x5e3cae8]
+Thread 28c : Ref 0x5e4cfe8: Create Label [text=Connection... , style=0x5e39ac8]
+Thread 28c : Connected to the server!
+[Error] packet receive! type=2 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrameDown.png
+Thread 28c : Ref 0x5e43a28: Create Button [text=New Character, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43a28: Add listener 0x4dfa0f0 in Button
+Thread 28c : Ref 0x5e43a68: Create Button [text=Return, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43a68: Add listener 0x4dfa140 in Button
+Thread 28c : [ImageLoader] get ressources/gui/background1.png
+Thread 28c : Ref 0x5e43ae8: Create Button [text=Statistic, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43ae8: Add listener 0x4dfa180 in Button
+Thread 28c : Ref 0x5e43b28: Create Button [text=Skill, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43b28: Add listener 0x4dfa1d0 in Button
+Thread 28c : Ref 0x5e43b68: Create Button [text=Launch, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43b68: Add listener 0x4dfa1c0 in Button
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x5e31560)
+[Error] packet receive! type=4 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d108: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d108: Add listener 0x4dfa020 in Button
+[Error] packet receive! type=4 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d108: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d108: Add listener 0x4dfa1f0 in Button
+Thread 28c : Ref 0x5e4d198: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d198: Add listener 0x4dfa0b0 in Button
+Thread 28c : Ref 0x5e4d1e0: Create Label [text=pierfale, style=0x5e72670]
+Thread 28c : Ref 0x5e4d228: Create Label [text=Physical Attack : 0, style=0x5e72670]
+Thread 28c : Ref 0x5e4d270: Create Label [text=Magical Attack : 0, style=0x5e72670]
+Thread 28c : Ref 0x5e4d2b8: Create Label [text=Physical Armor : 0, style=0x5e72670]
+Thread 28c : Ref 0x5e4d300: Create Label [text=Magical Armor : 0, style=0x5e72670]
+Thread 28c : Ref 0x5e4d348: Create Label [text=Attack Speed : 0, style=0x5e72670]
+Thread 28c : Ref 0x5e4d390: Create Label [text=Movement Speed : 0, style=0x5e72670]
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : Ref 0x5e85db0: Create Button [text=Matchmaking, style=0x4dfaf20]
+Thread 28c : Ref 0x5e85db0: Add listener 0x4dfa260 in Button
+Thread 28c : Ref 0x5e85df0: Create Button [text=Join Game, style=0x4dfaf20]
+Thread 28c : Ref 0x5e85df0: Add listener 0x4dfa2f0 in Button
+Thread 28c : Ref 0x5e85e30: Create Button [text=Create Game, style=0x4dfaf20]
+Thread 28c : Ref 0x5e85e30: Add listener 0x4dfa2e0 in Button
+Thread 28c : Ref 0x5e85e70: Create Button [text=Return, style=0x4dfaf20]
+Thread 28c : Ref 0x5e85e70: Add listener 0x4dfa310 in Button
+Thread 28c : Ref 0x22fa48: Create Label [text=Name, style=0x5e39ac8]
+Thread 28c : Ref 0x22fa48: Create Label [text=Creator, style=0x5e39ac8]
+Thread 28c : Ref 0x22fa48: Create Label [text=Players, style=0x5e39ac8]
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x5e68288)
+Thread 28c : [ImageLoader] get ressources/gui/background1.png
+[Error] Center layout can't work with multiple components [Container 0x5e440f0] | file : ..\client\graphics\layout\CenterLayout.cpp, line 18
+Thread 28c : Ref 0x5e4d198: Create TextField [text=, style=0x5e18c98]
+Thread 28c : Ref 0x5e8ae90: Create Button [text=Return, style=0x4dfaf20]
+Thread 28c : Ref 0x5e8ae90: Add listener 0x4dfa1d0 in Button
+Thread 28c : Ref 0x5e8b010: Create Button [text=Create, style=0x4dfaf20]
+Thread 28c : Ref 0x5e8b010: Add listener 0x4dfa190 in Button
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x9d50f58)
+[Error] packet receive! type=6 | file : ..\client\network\Network.cpp, line 82
+[Error] packet receive! type=12 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : Ref 0x5e43be8: Create Button [text=Change Team, style=0x4dfaf20]
+Thread 28c : Ref 0x5e43be8: Add listener 0x4dfa320 in Button
+Thread 28c : Ref 0x5e8ab50: Create Button [text=Launch, style=0x4dfaf20]
+Thread 28c : Ref 0x5e8ab50: Add listener 0x4dfa340 in Button
+Thread 28c : Ref 0x5e8ab90: Create Button [text=Return, style=0x4dfaf20]
+Thread 28c : Ref 0x5e8ab90: Add listener 0x4dfa290 in Button
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : Ref 0x5e4d108: Create Label [text=yoyo, style=0x5e8c680]
+Thread 28c : Ref 0x5e4d3d8: Create TextField [text=, style=0x5e18c98]
+[Error] packet receive! type=13 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d468: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x5e76e98)
+[Error] packet receive! type=13 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d468: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d4b0: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+[Error] packet receive! type=21 | file : ..\client\network\Network.cpp, line 82
+[Error] packet receive! type=14 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d4b0: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+[Error] packet receive! type=21 | file : ..\client\network\Network.cpp, line 82
+[Error] packet receive! type=13 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d4b0: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d198: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+[Error] packet receive! type=21 | file : ..\client\network\Network.cpp, line 82
+[Error] packet receive! type=13 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x5e4d198: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d4b0: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+Thread 28c : Ref 0x5e4d540: Create Button [text=, style=0]
+Thread 28c : [ImageLoader] get ressources/gui/button_character.png
+Thread 28c : [ImageLoader] get ressources/gui/button_character_center.png
+[Error] packet receive! type=21 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : [ImageLoader] get ressources/gui/background_characterFrame.png
+Thread 28c : Ref 0x5ef2e08: Create Button [text=Matchmaking, style=0x4dfaf20]
+Thread 28c : Ref 0x5ef2e08: Add listener 0x5e303e0 in Button
+Thread 28c : Ref 0x5ef2e48: Create Button [text=Join Game, style=0x4dfaf20]
+Thread 28c : Ref 0x5ef2e48: Add listener 0x5e30460 in Button
+Thread 28c : Ref 0x5ef2e88: Create Button [text=Create Game, style=0x4dfaf20]
+Thread 28c : Ref 0x5ef2e88: Add listener 0x5e30450 in Button
+Thread 28c : Ref 0x5ef2ec8: Create Button [text=Return, style=0x4dfaf20]
+Thread 28c : Ref 0x5ef2ec8: Add listener 0x5e30480 in Button
+Thread 28c : Ref 0x22f9f8: Create Label [text=Name, style=0x5e39ac8]
+Thread 28c : Ref 0x22f9f8: Create Label [text=Creator, style=0x5e39ac8]
+Thread 28c : Ref 0x22f9f8: Create Label [text=Players, style=0x5e39ac8]
+Thread 28c : Ref 0x5e4d5d0: Create Label [text=, style=0]
+Thread 28c : Ref 0x5e4d588: Create Label [text=, style=0]
+Thread 28c : Ref 0x5e4d618: Create Label [text=, style=0]
+Thread 28c : Ref 0x5e4d660: Create Label [text=ok, style=0x5eb7398]
+Thread 28c : Ref 0x5e4d5d0: Create Label [text=pierfale, style=0x5eb7398]
+Thread 28c : Ref 0x5e4d588: Create Label [text=3 player(s), style=0x5eb7398]
+[Error] packet receive! type=6 | file : ..\client\network\Network.cpp, line 82
+Thread 28c : Ref 0x4df9af8: New ContentPane in Window (ref 0x5e68288)
+[Error] packet receive! type=20 | file : ..\client\network\Network.cpp, line 82

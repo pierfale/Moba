@@ -10,7 +10,11 @@
 namespace graphics {
 
 	Label::Label(std::string text, BasicStyle* style) : m_text(text), m_style(style), m_align(alignLeft) {
-		client::Log::out("Ref "+util::Cast::ptrToInt(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToInt(style)+"]");
+		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
+	}
+
+	Label::~Label() {
+
 	}
 
 
@@ -19,13 +23,13 @@ namespace graphics {
 	}
 
 	bool Label::event(sf::Event* event, bool used) {
-		util::Coordinates coord = getRealCoord();
+		util::CoordInt coord = getRealCoord();
 		if(event->type == sf::Event::MouseMoved) {
 			if(!used && event->mouseMove.x > coord.x && event->mouseMove.x < coord.x+m_width
 				&& event->mouseMove.y > coord.y && event->mouseMove.y < coord.y+m_height) {
 				if(!m_focus) {
 					for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseEntered(this);
+						m_window->addCallFunction(boost::bind(&LabelListener::mouseEntered, &(*it), this));
 					}
 				}
 				m_focus = true;
@@ -34,7 +38,7 @@ namespace graphics {
 			else {
 				if(m_focus) {
 					for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-						it->mouseLeft(this);
+						m_window->addCallFunction(boost::bind(&LabelListener::mouseLeft, &(*it), this));
 					}
 				}
 				m_focus = false;
@@ -43,7 +47,7 @@ namespace graphics {
 		else if(event->type == sf::Event::MouseLeft) {
 			if(m_focus) {
 				for(boost::ptr_vector<LabelListener>::iterator it = m_listener.begin(); it != m_listener.end(); ++it) {
-					it->mouseLeft(this);
+					m_window->addCallFunction(boost::bind(&LabelListener::mouseLeft, &(*it), this));
 				}
 			}
 			m_focus = false;
@@ -89,9 +93,12 @@ namespace graphics {
 
 	void Label::draw(sf::RenderWindow* render) {
 		if(m_style == NULL) {
+			log_err "No style has been applied to the component "+getComponentName() end_log_err;
 			return;
 		}
-		util::Coordinates coord = getRealCoord();
+		if(!m_visible)
+			return;
+		util::CoordInt coord = getRealCoord();
 		sf::Text text(m_text);
 		text.setFont(*m_style->font());
 		text.setCharacterSize(m_style->fontSize());

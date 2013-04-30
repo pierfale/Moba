@@ -9,7 +9,7 @@
 
 namespace graphics {
 
-	WindowStyle::WindowStyle(Window* window) : m_window(window), m_font(sf::Font::getDefaultFont()), m_fontSize(20), m_fontColor(sf::Color::Black) {
+	WindowStyle::WindowStyle() : m_font(sf::Font::getDefaultFont()), m_fontSize(20), m_fontColor(sf::Color::Black) {
 		m_botImage = NULL;
 		m_topImage = NULL;
 		m_centerImage = NULL;
@@ -17,8 +17,7 @@ namespace graphics {
 	}
 
 	void WindowStyle::setTopImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_topImage = m_window->getImageLoader()->get(path);
+		m_topImage = ImageLoader::get(path);
 		int width = m_topImage->getSize().x;
 		int height = m_topImage->getSize().y;
 
@@ -31,8 +30,7 @@ namespace graphics {
 	}
 
 	void WindowStyle::setBotImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_botImage = m_window->getImageLoader()->get(path);
+		m_botImage = ImageLoader::get(path);
 		int width = m_botImage->getSize().x;
 		int height = m_botImage->getSize().y;
 		m_left.setTexture(*m_botImage);
@@ -49,8 +47,7 @@ namespace graphics {
 	}
 
 	void WindowStyle::setButtonImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_buttonImage = m_window->getImageLoader()->get(path);
+		m_buttonImage = ImageLoader::get(path);
 		int width = m_buttonImage->getSize().x/StateCount;
 		int height = m_buttonImage->getSize().y;
 		for(int i=0; i<StateCount; i++) {
@@ -60,8 +57,7 @@ namespace graphics {
 	}
 
 	void WindowStyle::setCenterImage(std::string path) {
-		m_window->getImageLoader()->add(path);
-		m_centerImage = m_window->getImageLoader()->get(path);
+		m_centerImage = ImageLoader::get(path);
 		m_center.setTexture(*m_centerImage);
 		m_center.setTextureRect(sf::IntRect(0, 0, m_centerImage->getSize().x,  m_centerImage->getSize().y));
 	}
@@ -78,7 +74,7 @@ namespace graphics {
 		m_fontColor = color;
 	}
 
-	void WindowStyle::setHeaderOffset(util::Coordinates coord) {
+	void WindowStyle::setHeaderOffset(util::CoordInt coord) {
 		m_headerOffset = coord;
 	}
 
@@ -134,7 +130,7 @@ namespace graphics {
 		return &m_fontColor;
 	}
 
-	util::Coordinates WindowStyle::headerOffset() {
+	util::CoordInt WindowStyle::headerOffset() {
 		return m_headerOffset;
 	}
 

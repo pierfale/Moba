@@ -8,6 +8,7 @@
 #ifndef GRAPHICS_HPP_
 #define GRAPHICS_HPP_
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../graphics/Define.hpp"
 

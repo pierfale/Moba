@@ -18,4 +18,8 @@ namespace graphics {
 		m_container = container;
 	}
 
+	std::string Layout::getLayoutName() {
+		return "Layout";
+	}
+
 }

@@ -8,28 +8,34 @@
 #ifndef IMAGELOADER_HPP_
 #define IMAGELOADER_HPP_
 
-#include <string>
-#include <vector>
-#include <map>
+#include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
-#include <boost/bind.hpp>
+#include <string>
+#include <map>
 #include <SFML/Graphics.hpp>
+
+//Log
 #include "../log/Log.hpp"
+//Debug
+#include "../debug/Alloc.hpp"
 
 namespace graphics {
 
 	class ImageLoader {
 
 	public:
-		ImageLoader();
-		void add(std::string path);
-		void process();
-		sf::Texture* get(std::string path);
-
+		~ImageLoader();
+		static sf::Texture* get(std::string path);
+		static sf::Image* getImage(std::string path);
+		static void process();
 	private:
+		ImageLoader();
 		std::map<std::string,sf::Texture> m_textures;
+		std::map<std::string,sf::Image> m_images;
 		std::vector<std::string> m_wait;
-		static  boost::mutex m_guard;
+		static ImageLoader* getInstance();
+		static boost::shared_ptr<ImageLoader> m_instance;
+		boost::mutex m_guard;
 	};
 
 }

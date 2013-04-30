@@ -13,6 +13,8 @@
 #include "Container.hpp"
 #include "InnerWindow.hpp"
 #include "Label.hpp"
+#include "Line.hpp"
+#include "Table.hpp"
 #include "TextField.hpp"
 #include "Window.hpp"
 
