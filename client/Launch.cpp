@@ -9,7 +9,6 @@
 #include "graphics/Graphics.hpp"
 #include "log/Log.hpp"
 #include "config/Config.hpp"
-#include "iomanager.cpp"
 #include "game/skill/SkillReader.hpp"
 
 int main() {
