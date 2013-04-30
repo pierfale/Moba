@@ -1,7 +1,7 @@
 #ifndef COORDINATES_H
 #define COORDINATES_H
 
-#include <string>
+#include <sstream>
 #include "Cast.hpp"
 
 namespace util {
@@ -34,11 +34,17 @@ namespace util {
 		}
 
 		std::string toString() {
-			return "[" + util::Cast::intToString(x) + ";" + util::Cast::intToString(y) + "]";
+			std::stringstream ss;
+			ss << x;
+			std::stringstream ss1;
+			ss1 << y;
+
+			return "[" + ss.str() + ";" + ss1.str() + "]";
 		}
 
 		T x;
 		T y;
+
 	};
 
 	typedef Coordinates<int> CoordInt;

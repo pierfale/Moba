@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <boost/shared_ptr.hpp>
 #include "boost/ptr_container/ptr_vector.hpp"
 #include "Case.h"
 #include "../character/Player.hpp"
@@ -22,33 +23,40 @@ namespace game {
 
 	class GameboardModel {
 	public:
-		GameboardModel(Player* player, std::string path);
 		virtual ~GameboardModel();
 
 		//getters
-		Player* getClientPlayer();
-		Player* getOtherPlayer(int i);
-		boost::ptr_vector<Player> getVectorOTherPlayer();
-		int getHeight();
-		int getWidth();
+		static Player* getClientPlayer();
+		static Player* getOtherPlayer(int i);
+		static boost::ptr_vector<Player> getVectorOTherPlayer();
+		static int getHeight();
+		static int getWidth();
+
+		//setters
+		static void setClientPlayer(Player* player);
 
 		//vector manage
-		void addPlayer(Player* p);
-		void removePlayer(Player* p);
-		void removeAllPlayer(Player* p);
+		static void addPlayer(Player* p);
+		static void removePlayer(Player* p);
+		static void removeAllPlayer(Player* p);
 
 		//gameboard
-		Case*** getGameboard(int i);
+		static Case*** getGameboard(int i);
 
 		//IO manage
-		void read(std::string path);
+		static void read(std::string path);
 
 	private:
+
+		GameboardModel();
+
 		int m_widthGameBoard, m_heightGameBoard;
 		Case*** m_gameboard;	//1rst Layer
 		Case*** m_gameboardLayer;	//2nd Layer
 		boost::ptr_vector<Player> m_oPlayers; //Other Player
 		Player* m_player; //Client Player
+		static GameboardModel* getInstance();
+		static boost::shared_ptr<GameboardModel> m_instance;
 	};
 
 } /* namespace game */

@@ -9,68 +9,80 @@
 
 namespace game {
 
-	GameboardModel::GameboardModel(Player* player, std::string path) : m_widthGameBoard(0) , m_heightGameBoard(0) {
-		m_player = player;
+	boost::shared_ptr<GameboardModel> GameboardModel::m_instance;
+
+	GameboardModel::GameboardModel() : m_widthGameBoard(0) , m_heightGameBoard(0) {
+		m_player = NULL;
 		m_gameboard = NULL;
 		m_gameboardLayer = NULL;
-		read(path);
 	}
 	GameboardModel::~GameboardModel() {
 		for (int i = 0 ; i < m_heightGameBoard ; i++ ) {
-			delete[](m_gameboardLayer[i]);
-			delete[](m_gameboard[i]);
+			delete[](getInstance()->m_gameboardLayer[i]);
+			delete[](getInstance()->m_gameboard[i]);
 		}
-		delete(m_gameboardLayer);
-		delete(m_gameboard);
+		delete(getInstance()->m_gameboardLayer);
+		delete(getInstance()->m_gameboard);
 	}
 
 	//getters
-	Player* GameboardModel::getClientPlayer() { return m_player; }
-	Player* GameboardModel::getOtherPlayer(int i) {return &m_oPlayers.at(i);}
-	boost::ptr_vector<Player> GameboardModel::getVectorOTherPlayer() {return m_oPlayers;}
-	int GameboardModel::getHeight() { return m_heightGameBoard; }
-	int GameboardModel::getWidth() { return m_widthGameBoard; }
+	Player* GameboardModel::getClientPlayer() { return getInstance()->m_player; }
+	Player* GameboardModel::getOtherPlayer(int i) {return &(getInstance()->m_oPlayers).at(i);}
+	boost::ptr_vector<Player> GameboardModel::getVectorOTherPlayer() {return getInstance()->m_oPlayers;}
+	int GameboardModel::getHeight() { return getInstance()->m_heightGameBoard; }
+	int GameboardModel::getWidth() { return getInstance()->m_widthGameBoard; }
 	Case*** GameboardModel::getGameboard(int i){
-		if (i == 0) return m_gameboard;
-		else return m_gameboardLayer;
+		if (i == 0) return getInstance()->m_gameboard;
+		else return getInstance()->m_gameboardLayer;
 	}
 
+	//setters
+	void GameboardModel::setClientPlayer(Player* player) {getInstance()->m_player=player;}
+
 	//vector manage
-	void GameboardModel::addPlayer(Player* p){m_oPlayers.push_back(p);}
+	void GameboardModel::addPlayer(Player* p){getInstance()->m_oPlayers.push_back(p);}
 	void GameboardModel::removePlayer(Player* p) {}
 	void GameboardModel::removeAllPlayer(Player* p) {}
 
+	//singleton pattern
+	GameboardModel* GameboardModel::getInstance() {
+		if(m_instance.get() == NULL)
+			m_instance.reset(new GameboardModel());
+		return m_instance.get();
+	}
 
 	//IO manage
 		void GameboardModel::read(std::string path) {
 			if (path=="") return ;
-
+			int width, height;
 			std::ifstream f(path.c_str(), std::ios::in | std::ios::binary);
-			f.read((char*) &m_widthGameBoard, sizeof(int));
-			f.read((char*) &m_heightGameBoard, sizeof(int));
-
-			m_gameboard = (Case***)malloc(m_widthGameBoard*sizeof(Case**));
-			m_gameboardLayer = (Case***)malloc(m_widthGameBoard*sizeof(Case**));
-			for (int i = 0 ; i < m_heightGameBoard ; i++ ) {
-				m_gameboard[i] = (Case**)malloc(m_heightGameBoard*sizeof(Case*));
-				m_gameboardLayer[i] = (Case**)malloc(m_heightGameBoard*sizeof(Case*));
+			if (!f) log_err "cannot open file " + path end_log_err;
+			f.read((char*) &width, sizeof(int));
+			f.read((char*) &height, sizeof(int));
+			getInstance()->m_widthGameBoard = width; getInstance()->m_heightGameBoard = height;
+			getInstance()->m_gameboard = (Case***)malloc(getInstance()->m_widthGameBoard*sizeof(Case**));
+			getInstance()->m_gameboardLayer = (Case***)malloc(getInstance()->m_widthGameBoard*sizeof(Case**));
+			for (int i = 0 ; i < getInstance()->m_heightGameBoard ; i++ ) {
+				getInstance()->m_gameboard[i] = (Case**)malloc(getInstance()->m_heightGameBoard*sizeof(Case*));
+				getInstance()->m_gameboardLayer[i] = (Case**)malloc(getInstance()->m_heightGameBoard*sizeof(Case*));
 			}
 
 			int idtmp;
-			for (int i = 0 ; i < m_heightGameBoard ; i++){
-				for (int j = 0 ; j < m_widthGameBoard ; j++){
+			for (int i = 0 ; i < getInstance()->m_heightGameBoard ; i++){
+				for (int j = 0 ; j < getInstance()->m_widthGameBoard ; j++){
 					f.read((char*) &idtmp, sizeof(int));
-					m_gameboard[j][i] = new Case(idtmp);
-					if (idtmp == 23) m_gameboard[i][j]->setPassable(false);
+					getInstance()->m_gameboard[j][i] = new Case(idtmp);
+					if (idtmp == 23) {getInstance()->m_gameboard[j][i]->setPassable(false);
+					}
 				}
 			}
 			f.close();
 
 			std::ifstream g((path+"L").c_str(), std::ios::in | std::ios::binary);
-			for (int i = 0 ; i < m_heightGameBoard ; i++){
-				for (int j = 0 ; j < m_widthGameBoard ; j++){
+			for (int i = 0 ; i < getInstance()->m_heightGameBoard ; i++){
+				for (int j = 0 ; j < getInstance()->m_widthGameBoard ; j++){
 					g.read((char*) &idtmp, sizeof(int));
-					m_gameboardLayer[j][i] = new Case(idtmp);
+					getInstance()->m_gameboardLayer[j][i] = new Case(idtmp);
 				}
 			}
 			g.close();

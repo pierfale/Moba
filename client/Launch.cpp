@@ -11,7 +11,7 @@
 #include "config/Config.hpp"
 #include "game/skill/SkillReader.hpp"
 
-int main() {
+/*int main() {
 
 	std::cout << "Init client ..." << std::endl;
 	Config::load("client.conf");
@@ -25,6 +25,6 @@ int main() {
 
 	graphics::Graphics::init();
 	graphics::Graphics::run();
-}
+}*/
 
 

@@ -5,16 +5,13 @@
  *      Author: pierre
  */
 
-#ifndef MESSAGE_SESSION_HPP_
-#define MESSAGE_SESSION_HPP_
+#ifndef MESSAGE_GAME_HPP_
+#define MESSAGE_GAME_HPP_
 
 #include <boost/thread/thread.hpp>
 #include "Packet.hpp"
 #include "PacketType.hpp"
 #include "../../graphics/Graphics.hpp"
-#include "../../graphics/screen/ConnectionScreen.hpp"
-#include "../../graphics/screen/CharacterScreen.hpp"
-#include "../../graphics/screen/GameListScreen.hpp"
 #include "../../graphics/game/Gameboard.h"
 
 
@@ -27,8 +24,7 @@
 
 namespace network {
 
-	class Message_session {
-
+	class Message_game {
 	public:
 		static void process(Packet packet);
 	};
@@ -36,4 +32,4 @@ namespace network {
 }
 
 
-#endif /* MESSAGE_SESSION_HPP_ */
+#endif /* MESSAGE_GAME_HPP_ */

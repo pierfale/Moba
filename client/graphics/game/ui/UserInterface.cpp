@@ -17,7 +17,7 @@ namespace graphics {
 	UserInterface::~UserInterface() {delete m_spellBarr;}
 
 	void UserInterface::draw(sf::RenderWindow* render) {
-		m_spellBarr->setCoord(util::CoordInt(150,150));
+	//	m_spellBarr->setCoord(util::CoordInt(150,150));
 		m_spellBarr->draw(render);
 	}
 	bool UserInterface::event(sf::Event* event, bool used) { return used; }
