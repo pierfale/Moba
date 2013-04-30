@@ -29,10 +29,10 @@
 
 namespace graphics {
 
-	class Gameboard : public Component{
+	class Gameboard : public Container{
 	public:
 		//standard
-		Gameboard(game::GameboardModel* gameboard);
+		Gameboard();
 		virtual ~Gameboard();
 
 		//graphics manage
@@ -40,6 +40,7 @@ namespace graphics {
 		void drawGameboard(sf::RenderWindow* render, game::Case*** gameboard);
 		bool event(sf::Event* event, bool used);
 		void validate();
+		static void loadImage();
 
 	private:
 		sf::Texture* m_texture;
@@ -47,7 +48,6 @@ namespace graphics {
 		bool m_loaded;
 		Character* m_player; //graphics Client Player
 		boost::ptr_vector<Character> m_oPlayers; //graphics Other Players
-		game::GameboardModel* m_gameboardModel; //Model of Gameboard
 		UserInterface* m_interface;
 	};
 

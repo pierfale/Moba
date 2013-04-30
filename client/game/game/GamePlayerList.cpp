@@ -48,7 +48,6 @@ namespace game {
 	void GamePlayerList::clear() {
 		getInstance()->m_players.clear();
 	}
-
 	int GamePlayerList::size() {
 		return getInstance()->m_players.size();
 	}

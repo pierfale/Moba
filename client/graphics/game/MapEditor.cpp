@@ -45,6 +45,9 @@ void MapEditor::write(std::string path) {
 			for (int j = 0 ; j < 30 ; j++) {
 				for (int i = 0 ; i < 30 ; i++){
 					in = 1;
+				//	tmp = rand() % 100 + 1;
+				//	if (tmp > 90) in = 23;
+					if (tmp != 10 && i == 5) {tmp++; in = 23;}
 					f.write((char *)&in, sizeof(int));
 				}
 			}
@@ -57,7 +60,7 @@ void MapEditor::write(std::string path) {
 		else {
 			for (int j = 0 ; j < 30; j++) {
 				for (int i = 0 ; i < 30 ; i++){
-					in = 0; tmp = rand() % 100 + 1;
+					in = 0;
 					if ( j == 0 ) {
 						if ( i == 0 ) in = 6;
 						else if ( i == 29) in = 7;
@@ -75,7 +78,6 @@ void MapEditor::write(std::string path) {
 						else if ( j == 29) in = 11;
 						else in = 9;
 					}
-					else if (tmp > 90) in = 23;
 					g.write((char *)&in, sizeof(int));
 				}
 			}

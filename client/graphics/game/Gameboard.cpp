@@ -8,24 +8,22 @@
 #include "Gameboard.h"
 
 namespace graphics {
-
 	//standard
-	Gameboard::Gameboard(game::GameboardModel* gameboard) : Component(), m_cam() , m_loaded(false) {
-		m_gameboardModel = gameboard;
+	Gameboard::Gameboard() : Container(), m_cam() , m_loaded(false) {
 		m_texture = ImageLoader::get("ressources/game/Tiles.png");
-		m_player = new Character(m_gameboardModel->getClientPlayer());
-		m_oPlayers.push_back(new Character(m_gameboardModel->getOtherPlayer(0)));
+		m_player = new Character(game::GameboardModel::getClientPlayer());
+		m_oPlayers.push_back(new Character(game::GameboardModel::getOtherPlayer(0)));
 		m_loaded = true;
-		m_cam.setLandMark(m_gameboardModel->getWidth(), m_gameboardModel->getHeight());
-		m_interface = new UserInterface(m_gameboardModel->getClientPlayer());
+		m_cam.setLandMark(game::GameboardModel::getWidth(), game::GameboardModel::getHeight());
+		m_interface = new UserInterface(game::GameboardModel::getClientPlayer());
 	}
 	Gameboard::~Gameboard() {}
 
 	//graphics manage
 	void Gameboard::draw(sf::RenderWindow* render) {
 		if (!m_loaded) return;
-		drawGameboard(render, m_gameboardModel->getGameboard(0));
-		drawGameboard(render, m_gameboardModel->getGameboard(1));
+		drawGameboard(render, game::GameboardModel::getGameboard(0));
+		drawGameboard(render, game::GameboardModel::getGameboard(1));
 		if (m_player->getPlayerModel()->getCoord().y < m_oPlayers.at(0).getPlayerModel()->getCoord().y) {
 			m_player->draw(render, m_cam);
 			m_oPlayers.at(0).draw(render, m_cam);
@@ -44,7 +42,7 @@ namespace graphics {
 		sf::Sprite* sprite = new sf::Sprite();
 		int markX = m_cam.getCoord().x/SIZE_TILE + m_width/SIZE_TILE +2,
 				markY = m_cam.getCoord().y/SIZE_TILE + m_height/SIZE_TILE +2;
-		if (markY > m_gameboardModel->getHeight()) markY--;if (markY > m_gameboardModel->getHeight()) markY--;if (markX > m_gameboardModel->getHeight()) markX--;
+		if (markY > game::GameboardModel::getHeight()) markY--;if (markY >game::GameboardModel::getHeight()) markY--;if (markX > game::GameboardModel::getHeight()) markX--;
  		for (int i = m_cam.getCoord().y/SIZE_TILE, k = 0 ; i < markY ; i++, k++){
 			for (int j = m_cam.getCoord().x/SIZE_TILE, l = 0; j < markX ; j++, l++){
 				if (gameboard[j][i]->getId() != 0) {
@@ -77,5 +75,11 @@ namespace graphics {
 	}
 
 	void Gameboard::validate() {m_cam.validate(&m_width ,&m_height);}
+	void Gameboard::loadImage() {
+		ImageLoader::get("ressources/game/Tiles.png");
+		ImageLoader::get("ressources/game/1.png");
+		ImageLoader::get("ressources/game/animSword.png");
+		game::GameboardModel::read("ressources/game/mapOfArena");
+	}
 
 } /* namespace graphics */

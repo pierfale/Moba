@@ -72,7 +72,6 @@ namespace network {
 
 
 		}
-
 		close_handle();
 	}
 
@@ -97,14 +96,11 @@ namespace network {
 			((graphics::ConnectionScreen*)graphics::Graphics::getWindow()->getContentPane())->setMessage("Disconnected from server");
 		}
 	}
-
 	Network* Network::getInstance() {
 		if(m_instance.get() == NULL)
 			m_instance.reset(new Network());
 		return m_instance.get();
 	}
-
-
 }
 
 
