@@ -30,6 +30,7 @@ namespace graphics {
 
 		util::CoordInt getCoord();
 		void setCoord(util::CoordInt coord);
+
 		void event(sf::Event* event, int* w, int* h);
 		void validate(int* gbW, int* gbH);
 

@@ -14,6 +14,7 @@
 #include "Packet.hpp"
 #include "PacketType.hpp"
 #include "message/Message_session.hpp"
+#include "message/Message_game.hpp"
 
 #include "../log/Log.hpp"
 #include "../util/Util.hpp"

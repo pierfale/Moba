@@ -92,7 +92,4 @@ namespace graphics {
 	//setters
 	void Character::setDirection(int dir) { m_direction = Direction(dir); }
 
-	//pathfinding
-	//std::vector<util::Coordinates> Character::getPathAs() { return std::vector<util::Coordinates>;}
-
 } /* namespace graphics */

@@ -1,7 +1,7 @@
 /*
  * Util.hpp
  *
- *  Created on: 7 avr. 2013
+ *  Created on: 30 avr. 2013
  *      Author: pierre
  */
 
@@ -11,6 +11,7 @@
 #include "Cast.hpp"
 #include "Coordinates.hpp"
 #include "Graphics.hpp"
+#include "PathFinding.h"
 
 
 #endif /* UTIL_HPP_ */

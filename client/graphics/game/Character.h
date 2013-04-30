@@ -59,7 +59,6 @@ class Character {
 		boost::timer m_frame;
 		game::Player* m_player;
 		sf::Sprite* m_sprite;
-		//std::vector<util::Coordinates> path;
 	};
 
 } /* namespace graphics */
