@@ -1,0 +1,5 @@
+1 "spell 1" "xaxa 1" 0 ressources/game/skill/1.png 150 5
+2 "spell 2" "xaxa 2" 1 ressources/game/skill/2.png 100 95
+3 "spell 3" "xaxa 3" 1 ressources/game/skill/3.png 200 95
+4 "spell 4" "xaxa 4" 2,3 ressources/game/skill/4.png 150 185
+5 "spell 5" "xaxa 5" 4 ressources/game/skill/5.png 150 275
