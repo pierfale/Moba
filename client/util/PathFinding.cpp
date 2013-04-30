@@ -11,7 +11,6 @@ namespace util {
 
 //pathfinding
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
-	/*
 	std::queue<CoordInt> vector;
 	std::map<CoordInt, CoordInt> parent;
 	parent[start] = start;
@@ -33,7 +32,7 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 					}
 				}
 			}
-		}
+		}/*
 		//bad tri
 		for(unsigned int i=0; i<tmp.size()-1;i++) {
 			for(unsigned int j=i; j<tmp.size()-1; j++) {
@@ -41,13 +40,13 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
     				+(tmp.at(j).y > goal.y ? tmp.at(j).y - goal.y : goal.y - tmp.at(j).y)
     				< (tmp.at(j+1).x > goal.x ? tmp.at(j+1).x - goal.x : goal.x - tmp.at(j+1).x)
     				+(tmp.at(j+1).y > goal.y ? tmp.at(j+1).y - goal.y : goal.y - tmp.at(j+1).y)) {
-					/*
+
 					Coordinates c = tmp.at(i);
 					tmp.erase(tmp.begin()+i);
 					tmp.insert(tmp.begin()+i+1, c);
 				}
 			}
-		}
+		}*/
 
 		for(unsigned int i=0; i<tmp.size(); i++)
 			vector.push(tmp.at(i));
@@ -61,8 +60,6 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 		r.push_back(curr);
 		curr = parent[curr];
 	}
-	return r;*/
-	std::vector<CoordInt> r;
 	return r;
 }
 
