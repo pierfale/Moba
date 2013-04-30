@@ -3,6 +3,7 @@
 	<name>Moba</name>
 	<comment></comment>
 	<projects>
+		<project>network</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
