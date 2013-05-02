@@ -19,6 +19,8 @@
 #include "../ImageLoader.hpp"
 #include "../component/Component.hpp"
 #include "../../game/game/Case.h"
+#include "../../game/game/GamePlayerList.hpp"
+#include "../../game/menu/CurrentCharacter.hpp"
 #include "Camera.h"
 #include "../../game/game/GameboardModel.h"
 #include "Character.h"

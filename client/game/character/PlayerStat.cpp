@@ -11,7 +11,7 @@ namespace game {
 
 	PlayerStat::PlayerStat() {
 		m_attackSpeed = 0;
-		m_movementSpeed = 0;
+		m_movementSpeed = 100;
 
 		m_physicalAttack = 0;
 		m_magicalAttack = 0;

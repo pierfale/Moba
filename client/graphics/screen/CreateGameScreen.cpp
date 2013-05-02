@@ -57,6 +57,8 @@ namespace graphics {
 		m_createButton->addListener(new CreateGameScreen_DownButton(this));
 		m_downButtonContainer->add(m_createButton);
 
+		//tmp
+		m_nameTextField->setText("test");
 	}
 
 	void CreateGameScreen::buttonChanged(void* origin) {

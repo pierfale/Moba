@@ -12,7 +12,19 @@ namespace util {
 //pathfinding
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 
-	std::stack<CoordInt> vector;
+	if(!(start.x >= 0 && start.x < game::GameboardModel::getWidth() &&
+		start.y >= 0 && start.y < game::GameboardModel::getHeight()) ||
+		!(goal.x >= 0 && goal.x < game::GameboardModel::getWidth() &&
+		goal.y >= 0 && goal.y < game::GameboardModel::getHeight())) {
+		log_err "invalide coordinates : start "+start.toString()+", goal "+goal.toString() end_log_err;
+		std::vector<CoordInt> r;
+		return r;
+	}
+	if(!game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()) {
+		std::vector<CoordInt> r;
+		return r;
+	}
+	std::queue<CoordInt> vector;
 
 	std::map<CoordInt, CoordInt> parent;
 	parent[start] = start;
@@ -27,15 +39,33 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 				if(curr.x+i >= 0 && curr.x+i < game::GameboardModel::getWidth() &&
 						curr.y+j >= 0 && curr.y+j < game::GameboardModel::getHeight() &&
 						game::GameboardModel::getGameboard(0)[curr.x+i][curr.y+j]->getPassable()) {
-					counter++;
-					CoordInt coord(curr.x+i, curr.y+j);
-					if(parent.find(coord) == parent.end()) {
-						tmp.push_back(coord);
-						parent[coord] = curr;
+					bool ok = true;
+					if(i != 0 || j != 0) {
+						for(int k=-1; k<2; k++) {
+							for(int l=-1; l<2; l++) {
+								if((k == 0 || l == 0) && !(k == 0 && l == 0)) {
+									if(curr.x+i+k >= 0 && curr.x+i+k < game::GameboardModel::getWidth() &&
+										curr.y+j+l >= 0 && curr.y+j+l < game::GameboardModel::getHeight()) {
+										if(!game::GameboardModel::getGameboard(0)[curr.x+i+k][curr.y+j+l]->getPassable())
+											ok = false;
+									}
+								}
+							}
+						}
+					}
+
+					if(ok) {
+						counter++;
+						CoordInt coord(curr.x+i, curr.y+j);
+						if(parent.find(coord) == parent.end()) {
+							tmp.push_back(coord);
+							parent[coord] = curr;
+						}
 					}
 				}
 			}
 		}
+		/*
 		//bad tri
 		for(int i=0; i<(int)tmp.size()-1;i++) {
 			int min = i;
@@ -53,11 +83,11 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 			}
 		}
 
-
+*/
 		for(unsigned int i=0; i<tmp.size(); i++) {
 			vector.push(tmp.at(i));
 		}
-		curr = vector.top();
+		curr = vector.front();
 		vector.pop();
 	}
 	std::cout << "COUNTER : " << counter << std::endl;
@@ -86,7 +116,10 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 	}
 	r.push_back(r1.at(r1.size()-1));
 	return r;*/
-	return checkDirection(path);
+	std::vector<CoordInt> r = checkDirection(path);
+	if(r.size() == 0)
+		r.push_back(goal);
+	return r;
 }
 
 float PathFinding::cost(std::vector<CoordInt> path) {
@@ -116,7 +149,7 @@ float PathFinding::cost(std::vector<CoordInt> path) {
 std::vector<CoordInt> PathFinding::checkDirection(std::vector<CoordInt> path) {
 	std::vector<CoordInt> r;
 	int lastDir = D_NONE;
-	for(unsigned int i=0; i<path.size()-1; i++) {
+	for(int i=0; i<(int)path.size()-1; i++) {
 		int currDir = D_NONE;
 		if(path.at(i).x == path.at(i+1).x && path.at(i).y < path.at(i+1).y)
 			currDir = D_NORTH;
@@ -142,8 +175,23 @@ std::vector<CoordInt> PathFinding::checkDirection(std::vector<CoordInt> path) {
 }
 
 void PathFinding::printPath(std::vector<CoordInt> path) {
-	for (std::vector<CoordInt>::iterator it = path.begin() ; it != path.end() ; ++it)
-		std::cout << (*it).toString() << std::endl;
+	for(int i=0; i<15; i++) {
+		for(int j=0; j<15; j++) {
+			bool find = false;
+			for(unsigned int k=0; k<path.size(); k++){
+				if(path.at(k) == util::CoordInt(j,i))
+					find = true;
+
+			}
+			if(find)
+				std::cout << "X";
+			else if(game::GameboardModel::getGameboard(0)[j][i]->getPassable())
+				std::cout << " ";
+			else
+				std::cout << "#";
+		}
+		std::cout << std::endl;
+	}
 }
 
 } /* namespace util */

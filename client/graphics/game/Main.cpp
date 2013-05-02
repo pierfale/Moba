@@ -8,7 +8,7 @@
 #include "../../util/Util.hpp"
 #include "../game/Gameboard.h"
 #include "../game/MapEditor.h"
-
+/*
 int main() {
 	//graphics::MapEditor::full();
 	graphics::Gameboard::loadImage();
@@ -32,3 +32,4 @@ int main() {
 		std::cout << std::endl;
 	}
 }
+*/

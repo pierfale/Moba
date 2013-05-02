@@ -12,7 +12,6 @@ namespace game {
 	boost::shared_ptr<GameboardModel> GameboardModel::m_instance;
 
 	GameboardModel::GameboardModel() : m_widthGameBoard(0) , m_heightGameBoard(0) {
-		m_player = NULL;
 		m_gameboard = NULL;
 		m_gameboardLayer = NULL;
 	}
@@ -26,23 +25,12 @@ namespace game {
 	}
 
 	//getters
-	Player* GameboardModel::getClientPlayer() { return getInstance()->m_player; }
-	Player* GameboardModel::getOtherPlayer(int i) {return &(getInstance()->m_oPlayers).at(i);}
-	boost::ptr_vector<Player> GameboardModel::getVectorOTherPlayer() {return getInstance()->m_oPlayers;}
 	int GameboardModel::getHeight() { return getInstance()->m_heightGameBoard; }
 	int GameboardModel::getWidth() { return getInstance()->m_widthGameBoard; }
 	Case*** GameboardModel::getGameboard(int i){
 		if (i == 0) return getInstance()->m_gameboard;
 		else return getInstance()->m_gameboardLayer;
 	}
-
-	//setters
-	void GameboardModel::setClientPlayer(Player* player) {getInstance()->m_player=player;}
-
-	//vector manage
-	void GameboardModel::addPlayer(Player* p){getInstance()->m_oPlayers.push_back(p);}
-	void GameboardModel::removePlayer(Player* p) {}
-	void GameboardModel::removeAllPlayer(Player* p) {}
 
 	//singleton pattern
 	GameboardModel* GameboardModel::getInstance() {

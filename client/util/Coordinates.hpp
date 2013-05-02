@@ -45,7 +45,6 @@ namespace util {
 			ss << x;
 			std::stringstream ss1;
 			ss1 << y;
-
 			return "[" + ss.str() + ";" + ss1.str() + "]";
 		}
 

@@ -11,54 +11,52 @@
 #include <string>
 #include <queue>
 #include <math.h>
+#include <SFML/Graphics.hpp>
 
-#include "SFML/Graphics.hpp"
 #include "../../util/Coordinates.hpp"
 #include "../Component/ComponentInclude.hpp"
 #include "Camera.h"
 #include "../../game/character/Player.hpp"
 
+#define CHARACTER_OFFSET_X 25
+#define CHARACTER_OFFSET_Y 85
+#define CHARACTER_TIME_BETWEEN_FRAME 0.01
+#define CHARACTER_DIAG_RATIO 0.7
+#define CASE_SIZE 50
+
 namespace graphics {
 
 class Character {
 	public:
-
 		enum Direction{SOUTH, WEST, EAST, NORTH};
 
-		Character(game::Player* player);
-		virtual ~Character();
+		Character(game::Player* model);
+		void event(sf::Event* event, Camera* cam, bool used, bool isPlayer);
 
-		//graphics manage
-		void load(Window* window);
-		void event(sf::Event* event, Camera cam, bool client);
-		void moveTo();
-		void setTarget(int x, int y);
-		void incFrame();
-		void draw(sf::RenderWindow* render, Camera cam);
+		void draw(sf::RenderWindow* render, Camera* cam);
+		game::Player* getModel();
+		void setDirection(Direction dir);
+		void checkMovement();
+		void updateCoord();
+		void calculCoord();
 
-		//getters
-		int getDirection();
-		sf::Sprite* getSprite();
-		sf::Texture* getTexture();
-		int getFrame();
-		bool getOnMove();
-		game::Player* getPlayerModel();
-
-		//setters
-		void setDirection(int dir);
-
-		//pathfinding
-		std::vector<util::CoordInt> getPathAs();
-
-	protected:
-		int m_nbFrame;
-		bool m_onMove;
-		Direction m_direction;
-		util::CoordFloat m_target;
+	private:
+		game::Player* m_model;
+		util::CoordInt nextDest;
+		util::CoordInt lastDest;
+		boost::timer m_timer;
 		sf::Texture* m_texture;
-		boost::timer m_frame;
-		game::Player* m_player;
-		sf::Sprite* m_sprite;
+		sf::Sprite m_sprite;
+
+		Direction m_direction;
+
+		int m_nbFrame;
+		float m_nextFrame;
+		bool m_onMove;
+		network::PacketType::PacketContents m_lastServDir;
+		int m_nDirection;
+
+
 	};
 
 } /* namespace graphics */

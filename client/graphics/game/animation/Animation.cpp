@@ -21,7 +21,7 @@ namespace graphics {
 	void Animation::incFrame() {if (getInstance()->m_nbFrame == 3) getInstance()->m_nbFrame = 0; else getInstance()->m_nbFrame++;}
 
 	void Animation::drawAutoAttack(sf::RenderWindow* render, Character* caster) {
-		if (getInstance()->m_frame.elapsed() > caster->getPlayerModel()->getStat()->attackSpeed()) {
+		/*if (getInstance()->m_frame.elapsed() > caster->getPlayerModel()->getStat()->attackSpeed()) {
 			getInstance()->m_frame.restart();getInstance()->incFrame();
 		}
 		getInstance()->m_texture = ImageLoader::get("ressources/game/animSword.png");
@@ -31,7 +31,7 @@ namespace graphics {
 		getInstance()->m_sprite->setTextureRect(spriteZone);
 		getInstance()->m_sprite->setPosition(caster->getPlayerModel()->getCoord().x,caster->getPlayerModel()->getCoord().y);
 		render->draw(*getInstance()->m_sprite);
-		delete getInstance()->m_sprite;
+		delete getInstance()->m_sprite;*/
 	}
 
 	Animation* Animation::getInstance() {

@@ -113,7 +113,6 @@ namespace graphics {
 			network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCHARACTER);
 			packet.send();
 		}
-
 	}
 
 	std::string CharacterScreen::getComponentName() {

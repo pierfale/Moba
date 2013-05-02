@@ -78,10 +78,13 @@ namespace network {
 	void Network::process() {
 		m_guard.lock();
 		for(unsigned int i=0; i<getInstance()->m_packetStack.size(); i++) {
-			log_err "packet receive! type="+util::Cast::intToString(getInstance()->m_packetStack.at(i).getType()) end_log_err;
+			log_err "packet receive! type="+util::Cast::intToHexString(getInstance()->m_packetStack.at(i).getType()) end_log_err;
 			int typeFirstMask = 0xFF000000;
 			if((getInstance()->m_packetStack.at(i).getType() & typeFirstMask) == network::PacketType::SESSION) {
 				Message_session::process(getInstance()->m_packetStack.at(i));
+			}
+			if((getInstance()->m_packetStack.at(i).getType() & typeFirstMask) == network::PacketType::GAME) {
+				Message_game::process(getInstance()->m_packetStack.at(i));
 			}
 		}
 		getInstance()->m_packetStack.clear();

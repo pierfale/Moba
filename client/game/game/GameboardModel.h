@@ -26,19 +26,9 @@ namespace game {
 		virtual ~GameboardModel();
 
 		//getters
-		static Player* getClientPlayer();
-		static Player* getOtherPlayer(int i);
 		static boost::ptr_vector<Player> getVectorOTherPlayer();
 		static int getHeight();
 		static int getWidth();
-
-		//setters
-		static void setClientPlayer(Player* player);
-
-		//vector manage
-		static void addPlayer(Player* p);
-		static void removePlayer(Player* p);
-		static void removeAllPlayer(Player* p);
 
 		//gameboard
 		static Case*** getGameboard(int i);
@@ -53,8 +43,6 @@ namespace game {
 		int m_widthGameBoard, m_heightGameBoard;
 		Case*** m_gameboard;	//1rst Layer
 		Case*** m_gameboardLayer;	//2nd Layer
-		boost::ptr_vector<Player> m_oPlayers; //Other Player
-		Player* m_player; //Client Player
 		static GameboardModel* getInstance();
 		static boost::shared_ptr<GameboardModel> m_instance;
 	};

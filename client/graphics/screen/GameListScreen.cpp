@@ -88,6 +88,7 @@ namespace graphics {
 		m_tableStyle->setFontColor(sf::Color::White);
 
 		refreshGame();
+
 	}
 
 	std::string GameListScreen::getComponentName() {

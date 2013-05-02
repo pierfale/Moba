@@ -28,6 +28,26 @@ namespace game {
 		getInstance()->m_current = player;
 	}
 
+	void CurrentCharacter::setPath(std::vector<util::CoordInt> path) {
+		getInstance()->m_path = path;
+	}
+
+	util::CoordInt CurrentCharacter::getNextDest() {
+		if(getInstance()->m_path.size() > 0)
+			return getInstance()->m_path.at(getInstance()->m_path.size()-1);
+		else
+			return util::CoordInt(-1,-1);
+	}
+
+	void CurrentCharacter::destReached() {
+		if(getInstance()->m_path.size() > 0)
+			getInstance()->m_path.erase(getInstance()->m_path.begin()+getInstance()->m_path.size()-1);
+	}
+
+	bool CurrentCharacter::isLastDest() {
+		return getInstance()->m_path.size() == 1;
+	}
+
 	void CurrentCharacter::reset() {
 		getInstance()->m_current = NULL;
 	}

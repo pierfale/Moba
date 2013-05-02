@@ -12,8 +12,10 @@
 #include <boost/timer.hpp>
 #include <map>
 #include <stack>
+#include <queue>
 #include <iostream>
 #include "../game/game/GameboardModel.h"
+#include "../log/Log.hpp"
 
 #define D_NONE 0
 #define D_NORTH 1

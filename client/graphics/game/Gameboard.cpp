@@ -8,33 +8,48 @@
 #include "Gameboard.h"
 
 namespace graphics {
+
 	//standard
 	Gameboard::Gameboard() : Container(), m_cam() , m_loaded(false) {
 		m_texture = ImageLoader::get("ressources/game/Tiles.png");
-		m_player = new Character(game::GameboardModel::getClientPlayer());
-		m_oPlayers.push_back(new Character(game::GameboardModel::getOtherPlayer(0)));
+		m_player = new Character(game::CurrentCharacter::get());
+
+		for(int i=0; i<game::GamePlayerList::size(); i++) {
+			m_oPlayers.push_back(new Character(game::GamePlayerList::get(i)));
+		}
+
 		m_loaded = true;
 		m_cam.setLandMark(game::GameboardModel::getWidth(), game::GameboardModel::getHeight());
-		m_interface = new UserInterface(game::GameboardModel::getClientPlayer());
+		m_interface = new UserInterface(game::CurrentCharacter::get());
 	}
 	Gameboard::~Gameboard() {}
 
 	//graphics manage
 	void Gameboard::draw(sf::RenderWindow* render) {
 		if (!m_loaded) return;
+
+		m_player->updateCoord();
+		for(unsigned int i=0; i<m_oPlayers.size(); i++) {
+			m_oPlayers.at(i).calculCoord();
+		}
 		drawGameboard(render, game::GameboardModel::getGameboard(0));
 		drawGameboard(render, game::GameboardModel::getGameboard(1));
-		if (m_player->getPlayerModel()->getCoord().y < m_oPlayers.at(0).getPlayerModel()->getCoord().y) {
-			m_player->draw(render, m_cam);
-			m_oPlayers.at(0).draw(render, m_cam);
-		} else {
-			m_oPlayers.at(0).draw(render, m_cam);
-			m_player->draw(render, m_cam);
+		bool playerDraw = false;
+		for(unsigned int i=0; i<m_oPlayers.size(); i++) {
+			if(!playerDraw && m_player->getModel()->getCoord().y < m_oPlayers.at(i).getModel()->getCoord().y) {
+				playerDraw = true;
+				m_player->draw(render, &m_cam);
+			}
+			m_oPlayers.at(i).draw(render, &m_cam);
 		}
-		if (m_player->getPlayerModel()->getSpell()->getCast() && m_player->getPlayerModel()->getSpell()->onRange(m_oPlayers.at(0).getPlayerModel())){
+		if(!playerDraw)
+			m_player->draw(render, &m_cam);
+
+		//wtf?
+		/*if (m_player->getPlayerModel()->getSpell()->getCast() && m_player->getPlayerModel()->getSpell()->onRange(m_oPlayers.at(0).getPlayerModel())){
 				Animation::draw(render,m_player,NULL);
 				if (m_player->getDirection() == 3) m_player->draw(render, m_cam);
-		}
+		}*/
 		//m_interface->draw(render);
 	}
 
@@ -60,21 +75,24 @@ namespace graphics {
 	bool Gameboard::event(sf::Event* event, bool used) {
 		if (event->type == sf::Event::MouseButtonPressed) {
 			if (event->mouseButton.button == sf::Mouse::Right) {
-				if (event->mouseButton.x >= m_oPlayers.at(0).getPlayerModel()->getCoord().x &&
+				/*if (event->mouseButton.x >= m_oPlayers.at(0).getPlayerModel()->getCoord().x &&
 					event->mouseButton.x < m_oPlayers.at(0).getPlayerModel()->getCoord().x+50 &&
 					event->mouseButton.y >= m_oPlayers.at(0).getPlayerModel()->getCoord().y &&
 					event->mouseButton.y < m_oPlayers.at(0).getPlayerModel()->getCoord().y+85) {
 						m_player->getPlayerModel()->getSpell()->callSpell(0, m_oPlayers.at(0).getPlayerModel());
-				}
+				}*/
 			}
 		}
 		m_cam.event(event, &m_width ,&m_height);
-		m_player->event(event, m_cam, true);
-		m_oPlayers.at(0).event(event, m_cam, false);
+		m_player->event(event, &m_cam, used, true);
+
+		for(unsigned int i=0; i<m_oPlayers.size(); i++)
+			m_oPlayers.at(i).event(event, &m_cam, used, false);
 		return used;
 	}
 
 	void Gameboard::validate() {m_cam.validate(&m_width ,&m_height);}
+
 	void Gameboard::loadImage() {
 		ImageLoader::get("ressources/game/Tiles.png");
 		ImageLoader::get("ressources/game/1.png");

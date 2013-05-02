@@ -20,6 +20,10 @@ namespace game {
 	public:
 		static Player* get();
 		static void set(Player* player);
+		static void setPath(std::vector<util::CoordInt> path);
+		static util::CoordInt getNextDest();
+		static void destReached();
+		static bool isLastDest();
 		static void reset();
 
 	private:
@@ -27,6 +31,7 @@ namespace game {
 		static CurrentCharacter* getInstance();
 		static boost::shared_ptr<CurrentCharacter> m_instance;
 		Player* m_current;
+		std::vector<util::CoordInt> m_path;
 	};
 }
 

@@ -118,14 +118,10 @@ namespace network {
 				 ((graphics::GameListScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshGame();
 		}
 		else if (packet.getType() == PacketType::SESSION_ANSWERLAUNCHGAME) {
-			game::GameboardModel::setClientPlayer(game::CurrentCharacter::get()); // TODO path of file to load
-			for (int i = 0 ; i < game::GamePlayerList::size() ; i++) {game::GameboardModel::addPlayer(game::GamePlayerList::get(i));}
+			game::CurrentCharacter::get(); // TODO path of file to load
 			graphics::Gameboard::loadImage();
 			network::Packet ready_packet(network::Network::getSocket(), network::PacketType::GAME_ASKREADY);
 			ready_packet.send();
-		}
-		else if (packet.getType() == PacketType::GAME_ANSWERREADY) {
-			graphics::Graphics::getWindow()->setContentPane(new graphics::Gameboard());
 		}
 	}
 }

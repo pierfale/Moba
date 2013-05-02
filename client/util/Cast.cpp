@@ -15,6 +15,13 @@ namespace util {
 		return ss.str();
 	}
 
+	std::string Cast::intToHexString(int n) {
+		std::stringstream ss;
+		ss << std::hex << n;
+		return ss.str();
+	}
+
+
 	std::string Cast::ptrToString(void* ptr) {
 		std::stringstream ss;
 		ss << ptr;
