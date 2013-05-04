@@ -123,7 +123,6 @@ namespace graphics {
 	}
 
 	void GameListScreen::refreshGame() {
-		std::cout << "refresh gamelist" << std::endl;
 		m_table->removeAllRow();
 
 		for(int i=0; i<game::GameList::size(); i++) {

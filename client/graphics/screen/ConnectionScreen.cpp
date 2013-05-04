@@ -132,6 +132,7 @@ namespace graphics {
 				ss << ((hash[i] & 0x000000F0) >> 4)
 					<< (hash[i] & 0x0000000F);
 			}
+			log_out "Connection to "+Config::get("server")+":"+Config::get("port") end_log_out;
 			if(network::Network::init(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(Config::get("server")), util::Cast::stringToInt(Config::get("port"))))) {
 				network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKCONNECTION);
 				packet << m_pseudoTextField->getText() << ss.str();

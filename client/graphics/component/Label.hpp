@@ -27,6 +27,7 @@ namespace graphics {
 
 	public:
 		enum Align {alignLeft, alignCenter, alignRight};
+		enum VAlign {valignTop, valignCenter, valignBot};
 		Label(std::string text, BasicStyle* style=NULL);
 		~Label();
 		void draw(sf::RenderWindow* render);
@@ -34,6 +35,7 @@ namespace graphics {
 		bool event(sf::Event* event, bool used);
 		void setStyle(BasicStyle* style);
 		void setAlign(Align align);
+		void setVAlign(VAlign align);
 		void setMinimalSize();
 		void setText(std::string);
 
@@ -47,6 +49,7 @@ namespace graphics {
 		BasicStyle* m_style;
 		boost::ptr_vector<LabelListener> m_listener;
 		Align m_align;
+		VAlign m_valign;
 
 	};
 

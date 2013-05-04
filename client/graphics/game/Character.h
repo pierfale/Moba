@@ -18,8 +18,8 @@
 #include "Camera.h"
 #include "../../game/character/Player.hpp"
 
-#define CHARACTER_OFFSET_X 25
-#define CHARACTER_OFFSET_Y 85
+#define CHARACTER_SIZE_X 50
+#define CHARACTER_SIZE_Y 85
 #define CHARACTER_TIME_BETWEEN_FRAME 0.01
 #define CHARACTER_DIAG_RATIO 0.7
 #define CASE_SIZE 50
@@ -31,7 +31,7 @@ class Character {
 		enum Direction{SOUTH, WEST, EAST, NORTH};
 
 		Character(game::Player* model);
-		void event(sf::Event* event, Camera* cam, bool used, bool isPlayer);
+		bool event(sf::Event* event, Camera* cam, bool used, bool isPlayer);
 
 		void draw(sf::RenderWindow* render, Camera* cam);
 		game::Player* getModel();
@@ -55,7 +55,7 @@ class Character {
 		bool m_onMove;
 		network::PacketType::PacketContents m_lastServDir;
 		int m_nDirection;
-
+		bool m_focus;
 
 	};
 

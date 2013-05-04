@@ -73,7 +73,7 @@ namespace graphics {
 	}
 
 	bool Gameboard::event(sf::Event* event, bool used) {
-		if (event->type == sf::Event::MouseButtonPressed) {
+		if(event->type == sf::Event::MouseButtonPressed) {
 			if (event->mouseButton.button == sf::Mouse::Right) {
 				/*if (event->mouseButton.x >= m_oPlayers.at(0).getPlayerModel()->getCoord().x &&
 					event->mouseButton.x < m_oPlayers.at(0).getPlayerModel()->getCoord().x+50 &&
@@ -83,11 +83,11 @@ namespace graphics {
 				}*/
 			}
 		}
-		m_cam.event(event, &m_width ,&m_height);
-		m_player->event(event, &m_cam, used, true);
+		used = m_cam.event(event, used, &m_width ,&m_height);
+		used = m_player->event(event, &m_cam, used, true);
 
 		for(unsigned int i=0; i<m_oPlayers.size(); i++)
-			m_oPlayers.at(i).event(event, &m_cam, used, false);
+			used = m_oPlayers.at(i).event(event, &m_cam, used, false);
 		return used;
 	}
 

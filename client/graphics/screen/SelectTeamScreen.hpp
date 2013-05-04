@@ -13,7 +13,9 @@
 #include "../layout/LayoutInclude.hpp"
 #include "../../game/game/Game.hpp"
 #include "../../game/character/Player.hpp"
+#include "../../game/chat/ChatList.hpp"
 #include "../inheritedComponent/CharacterFrame.hpp"
+#include "../inheritedComponent/Chat.hpp"
 #include "../../network/Network.hpp"
 
 namespace graphics {
@@ -27,6 +29,7 @@ namespace graphics {
 		std::string getComponentName();
 		static std::string getName();
 		game::Game* getGame();
+		Chat* getChat();
 		void refreshPlayer();
 		void buttonPressed(void* origin);
 
@@ -39,10 +42,7 @@ namespace graphics {
 		Container* m_mainUpContainer;
 		Container* m_team1Container;
 		Container* m_team2Container;
-		Container* m_mainDownContainer;
-		BasicStyle* m_chatLabelStyle;
-		Label* m_chatLabel;
-		TextField* m_chatTextField;
+		Chat* m_chat;
 		Button* m_changeTeamButton;
 		Button* m_launchButton;
 		Button* m_returnButton;

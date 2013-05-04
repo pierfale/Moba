@@ -14,6 +14,7 @@
 #include "InnerWindow.hpp"
 #include "Label.hpp"
 #include "Line.hpp"
+#include "ScrollBar.hpp"
 #include "Table.hpp"
 #include "TextField.hpp"
 #include "Window.hpp"

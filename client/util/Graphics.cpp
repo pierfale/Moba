@@ -30,7 +30,7 @@ namespace util {
 			sf::Sprite sprite;
 			sprite.setTexture(*texture);
 			sprite.setPosition(rect.left, rect.top);
-			sprite.setScale(rect.width/texture->getSize().x, rect.height/texture->getSize().y);
+			sprite.setScale((float)rect.width/(float)texture->getSize().x, (float)rect.height/(float)texture->getSize().y);
 			render->draw(sprite);
 		}
 	}

@@ -9,7 +9,7 @@
 
 namespace graphics {
 
-	Label::Label(std::string text, BasicStyle* style) : m_text(text), m_style(style), m_align(alignLeft) {
+	Label::Label(std::string text, BasicStyle* style) : m_text(text), m_style(style), m_align(alignLeft), m_valign(valignCenter) {
 		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [text="+text+", style="+util::Cast::ptrToString(style)+"]" end_log_out;
 	}
 
@@ -68,11 +68,15 @@ namespace graphics {
 		text.setCharacterSize(m_style->fontSize());
 		sf::FloatRect textSize = text.getGlobalBounds();
 		m_width = textSize.width;
-		m_height = textSize.height;
+		m_height = textSize.height+5;
 	}
 
 	void Label::setAlign(Align align) {
 		m_align = align;
+	}
+
+	void Label::setVAlign(VAlign align) {
+		m_valign = align;
 	}
 
 	void Label::setText(std::string text) {
@@ -104,12 +108,18 @@ namespace graphics {
 		text.setCharacterSize(m_style->fontSize());
 		text.setColor(*m_style->fontColor());
 		sf::FloatRect textSize = text.getGlobalBounds();
+		int x = coord.x+(m_width-textSize.width)/2;
+		int y = coord.y+(m_height-textSize.height)/2;
 		if(m_align == alignLeft)
-			text.setPosition(coord.x,coord.y+(m_height-textSize.height*1.5)/2);
-		else if(m_align == alignCenter)
-			text.setPosition(coord.x+(m_width-textSize.width)/2,coord.y+(m_height-textSize.height*1.5)/2);
-		else
-			text.setPosition(coord.x+m_width-textSize.width,coord.y+(m_height-textSize.height*1.5)/2);
+			x = coord.x;
+		else if(m_align == alignRight)
+			x = coord.x+m_width-textSize.width;
+
+		if(m_valign == valignTop)
+			y = coord.y;
+		else if(m_valign == valignBot)
+			y = coord.y+m_width-textSize.height;
+		text.setPosition(x,y);
 		render->draw(text);
 	}
 }

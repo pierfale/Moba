@@ -32,6 +32,7 @@ namespace graphics {
 		static TableStyle* table();
 		static BasicStyle* characterFrame();
 		static BasicStyle* buttonImage();
+		static ScrollBarStyle* scrollbar();
 
 	private:
 		GUIStyle();
@@ -47,6 +48,7 @@ namespace graphics {
 		boost::shared_ptr<TableStyle> m_table;
 		boost::shared_ptr<BasicStyle> m_characterFrame;
 		boost::shared_ptr<BasicStyle> m_buttonImage;
+		boost::shared_ptr<ScrollBarStyle> m_scrollbar;
 	};
 }
 

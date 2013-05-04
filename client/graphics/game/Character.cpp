@@ -13,14 +13,16 @@ namespace graphics {
 	Character::Character(game::Player* model) : m_model(model), m_direction(SOUTH), m_nbFrame(0), m_nextFrame(0.0), m_onMove(false), m_lastServDir(network::PacketType::DIRECTION_NONE) {
 		m_texture = ImageLoader::get("ressources/game/1.png");
 		m_nDirection = 0;
+		m_focus = false;
 	}
 
 	game::Player* Character::getModel() {
 		return m_model;
 	}
 
-	void Character::event(sf::Event* event, Camera* cam, bool used, bool isPlayer) {
-		if(event->type == sf::Event::MouseButtonPressed && isPlayer) {
+	bool Character::event(sf::Event* event, Camera* cam, bool used, bool isPlayer) {
+		if(!used && event->type == sf::Event::MouseButtonPressed && isPlayer) {
+			used = true;
 			std::cout << (int)m_model->getCoord().x/CASE_SIZE << ';' << event->mouseButton.x/CASE_SIZE << '-' << (int)m_model->getCoord().y/CASE_SIZE << ";" << event->mouseButton.y/CASE_SIZE << std::endl;
 			if((int)m_model->getCoord().x/CASE_SIZE != event->mouseButton.x/CASE_SIZE || (int)m_model->getCoord().y/CASE_SIZE != event->mouseButton.y/CASE_SIZE) {
 				game::CurrentCharacter::setPath(util::PathFinding::getPath(util::CoordInt((int)m_model->getCoord().x/CASE_SIZE, (int)m_model->getCoord().y/CASE_SIZE),
@@ -51,6 +53,17 @@ namespace graphics {
 				}
 			}
 		}
+		else if(event->type == sf::Event::MouseMoved) {
+			if(!used && event->mouseMove.x >= m_model->getCoord().x-CHARACTER_SIZE_X/2-cam->getCoord().x && event->mouseMove.x < m_model->getCoord().x+CHARACTER_SIZE_X/2-cam->getCoord().x &&
+					event->mouseMove.y >= m_model->getCoord().y-CHARACTER_SIZE_Y-cam->getCoord().y && event->mouseMove.y < m_model->getCoord().y-cam->getCoord().y &&
+					ImageLoader::getImage("ressources/game/1.png")->getPixel(CHARACTER_SIZE_X*m_nbFrame+event->mouseMove.x-(m_model->getCoord().x-CHARACTER_SIZE_X/2-cam->getCoord().x), CHARACTER_SIZE_Y*m_direction+event->mouseMove.y-(m_model->getCoord().y-CHARACTER_SIZE_Y-cam->getCoord().y)).a > 200) {
+					m_focus = true;
+					used = true;
+			}
+			else
+				m_focus = false;
+		}
+		return used;
 	}
 
 	void Character::updateCoord() {
@@ -100,11 +113,8 @@ namespace graphics {
 						nextDest.y = nextDest.y*CASE_SIZE + CASE_SIZE/2;
 					}
 				}
-				else {
+				else
 					m_onMove = false;
-					m_nbFrame = 0;
-
-				}
 			}
 			util::CoordFloat extra = m_model->getCoordExtra();
 			m_model->setCoord(util::CoordFloat(x+extra.x,y+extra.y));
@@ -198,30 +208,42 @@ namespace graphics {
 			m_model->setCoord(util::CoordFloat(x-CHARACTER_DIAG_RATIO*m_model->getStat()->movementSpeed()*elapsed, y+CHARACTER_DIAG_RATIO*m_model->getStat()->movementSpeed()*elapsed));
 		}
 		if(m_model->getDirection() == network::PacketType::DIRECTION_NONE) {
-			m_nbFrame = 0;
 			m_onMove = false;
 		}
-		util::CoordFloat extra = m_model->getCoordExtra();
-		m_model->setCoord(util::CoordFloat(m_model->getCoord().x+extra.x,m_model->getCoord().y+extra.y));
-		m_nextFrame += elapsed;
-		if(m_nextFrame > CHARACTER_TIME_BETWEEN_FRAME) {
-			m_nbFrame = (m_nbFrame+1)%4;
-			m_nextFrame = m_nextFrame-FRAME_TIME;
+
+		if(m_onMove) {
+			util::CoordFloat extra = m_model->getCoordExtra();
+			m_model->setCoord(util::CoordFloat(m_model->getCoord().x+extra.x,m_model->getCoord().y+extra.y));
+			m_nextFrame += elapsed;
+			if(m_nextFrame > CHARACTER_TIME_BETWEEN_FRAME) {
+				m_nbFrame = (m_nbFrame+1)%4;
+				m_nextFrame = m_nextFrame-FRAME_TIME;
+			}
 		}
+		else
+			m_nbFrame = 0;
 	}
 
 	void Character::draw(sf::RenderWindow* render, Camera* cam) {
 		m_sprite.setTexture(*m_texture);
-		m_sprite.setTextureRect(sf::IntRect(50*m_nbFrame,85*m_direction,50,85));
-		m_sprite.setPosition(m_model->getCoord().x-CHARACTER_OFFSET_X, m_model->getCoord().y-CHARACTER_OFFSET_Y);
+		m_sprite.setTextureRect(sf::IntRect(CHARACTER_SIZE_X*m_nbFrame, CHARACTER_SIZE_Y*m_direction, CHARACTER_SIZE_X, CHARACTER_SIZE_Y));
+		m_sprite.setPosition(m_model->getCoord().x-CHARACTER_SIZE_X/2-cam->getCoord().x, m_model->getCoord().y-CHARACTER_SIZE_Y-cam->getCoord().y);
+		if(m_focus) {
+			if(game::CurrentCharacter::get()->getTeam() == m_model->getTeam())
+				m_sprite.setColor(sf::Color::Green);
+			else
+				m_sprite.setColor(sf::Color::Red);
+		}
+		else
+			m_sprite.setColor(sf::Color::White);
 		render->draw(m_sprite);
 
 		sf::RectangleShape rect(sf::Vector2f(4, 4));
-		rect.setPosition(m_model->getCoord().x-2, m_model->getCoord().y-2);
+		rect.setPosition(m_model->getCoord().x-2-cam->getCoord().x, m_model->getCoord().y-2-cam->getCoord().y);
 		render->draw(rect);
 
 		sf::RectangleShape rect2(sf::Vector2f(4, 4));
-		rect2.setPosition(nextDest.x-2, nextDest.y-2);
+		rect2.setPosition(nextDest.x-2-cam->getCoord().x, nextDest.y-2-cam->getCoord().y);
 		render->draw(rect2);
 	}
 }

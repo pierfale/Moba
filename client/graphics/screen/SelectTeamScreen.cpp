@@ -21,10 +21,7 @@ namespace graphics {
 		delete m_buttonDownContainer;
 		delete m_mainContainer;
 		delete m_mainUpContainer;
-		delete m_mainDownContainer;
-		delete m_chatLabelStyle;
-		delete m_chatLabel;
-		delete m_chatTextField;
+		delete m_chat;
 		delete m_changeTeamButton;
 		delete m_launchButton;
 		delete m_returnButton;
@@ -72,8 +69,9 @@ namespace graphics {
 		m_mainUpContainer = new Container();
 		m_mainContainer->add(m_mainUpContainer);
 
-		m_mainDownContainer = new Container();
-		m_mainContainer->add(m_mainDownContainer);
+		m_chat = new Chat();
+		game::ChatList::add(m_chat);
+		m_mainContainer->add(m_chat);
 
 		m_mainContainer->setLayout(new SplitFixedLayout(SplitFixedLayout::horizontal, SplitFixedLayout::first, 500));
 
@@ -89,14 +87,7 @@ namespace graphics {
 
 		m_mainUpContainer->setLayout(new HorizontalLayout());
 
-		m_chatLabelStyle = new BasicStyle();
-		m_chatLabel = new Label("yoyo", m_chatLabelStyle);
-		m_mainDownContainer->add(m_chatLabel);
 
-		m_chatTextField = new TextField(GUIStyle::textfield());
-		m_mainDownContainer->add(m_chatTextField);
-
-		m_mainDownContainer->setLayout(new SplitFixedLayout(SplitFixedLayout::horizontal, SplitFixedLayout::second, 40));
 	}
 
 	std::string SelectTeamScreen::getComponentName() {
@@ -108,6 +99,10 @@ namespace graphics {
 
 	game::Game* SelectTeamScreen::getGame() {
 		return m_game;
+	}
+
+	Chat* SelectTeamScreen::getChat() {
+		return m_chat;
 	}
 
 	void SelectTeamScreen::refreshPlayer() {

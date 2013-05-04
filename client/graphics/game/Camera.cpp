@@ -22,7 +22,7 @@ namespace graphics {
 
 	void Camera::setCoord(util::CoordInt coord) { m_coord = coord ;}
 
-	void Camera::event(sf::Event* event, int* gbW, int* gbH) {
+	bool Camera::event(sf::Event* event, bool used, int* gbW, int* gbH) {
 		if (m_frame.elapsed() > 0.25) {
 			m_frame.restart();
 			m_rate+=5;
@@ -70,6 +70,7 @@ namespace graphics {
 			}
 		}
 		if (event->type == sf::Event::KeyReleased) {m_rate = 10;}
+		return used;
 	}
 
 	void Camera::validate(int* gbW, int* gbH) {
