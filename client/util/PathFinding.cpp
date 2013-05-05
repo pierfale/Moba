@@ -24,6 +24,7 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 		std::vector<CoordInt> r;
 		return r;
 	}
+	std::cout << start.toString() << '-' << goal.toString() << std::endl;
 	std::queue<CoordInt> vector;
 
 	std::map<CoordInt, CoordInt> parent;
@@ -40,6 +41,7 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 						curr.y+j >= 0 && curr.y+j < game::GameboardModel::getHeight() &&
 						game::GameboardModel::getGameboard(0)[curr.x+i][curr.y+j]->getPassable()) {
 					bool ok = true;
+					/*
 					if(i != 0 || j != 0) {
 						for(int k=-1; k<2; k++) {
 							for(int l=-1; l<2; l++) {
@@ -53,7 +55,7 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 							}
 						}
 					}
-
+*/
 					if(ok) {
 						counter++;
 						CoordInt coord(curr.x+i, curr.y+j);

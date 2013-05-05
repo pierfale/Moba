@@ -21,35 +21,44 @@ namespace graphics {
 	}
 
 	bool Character::event(sf::Event* event, Camera* cam, bool used, bool isPlayer) {
-		if(!used && event->type == sf::Event::MouseButtonPressed && isPlayer) {
-			used = true;
-			std::cout << (int)m_model->getCoord().x/CASE_SIZE << ';' << event->mouseButton.x/CASE_SIZE << '-' << (int)m_model->getCoord().y/CASE_SIZE << ";" << event->mouseButton.y/CASE_SIZE << std::endl;
-			if((int)m_model->getCoord().x/CASE_SIZE != event->mouseButton.x/CASE_SIZE || (int)m_model->getCoord().y/CASE_SIZE != event->mouseButton.y/CASE_SIZE) {
-				game::CurrentCharacter::setPath(util::PathFinding::getPath(util::CoordInt((int)m_model->getCoord().x/CASE_SIZE, (int)m_model->getCoord().y/CASE_SIZE),
-					util::CoordInt(event->mouseButton.x/CASE_SIZE,event->mouseButton.y/CASE_SIZE)));
-				std::cout << "crash ?" << std::endl;
-				if(event->mouseButton.x/CASE_SIZE >= 0 && event->mouseButton.x/CASE_SIZE < game::GameboardModel::getWidth() &&
-					event->mouseButton.y/CASE_SIZE >= 0 && event->mouseButton.y/CASE_SIZE < game::GameboardModel::getHeight() &&
-					game::GameboardModel::getGameboard(0)[event->mouseButton.x/CASE_SIZE][event->mouseButton.y/CASE_SIZE]->getPassable()) {
-					std::cout << "crash !!" << std::endl;
-					lastDest = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
-				}
+		if(!used && event->type == sf::Event::MouseButtonPressed) {
+
+			if(event->mouseButton.x >= m_model->getCoord().x-CHARACTER_SIZE_X/2-cam->getCoord().x && event->mouseButton.x < m_model->getCoord().x+CHARACTER_SIZE_X/2-cam->getCoord().x &&
+					event->mouseButton.y >= m_model->getCoord().y-CHARACTER_SIZE_Y-cam->getCoord().y && event->mouseButton.y < m_model->getCoord().y-cam->getCoord().y &&
+					ImageLoader::getImage("ressources/game/1.png")->getPixel(CHARACTER_SIZE_X*m_nbFrame+event->mouseButton.x-(m_model->getCoord().x-CHARACTER_SIZE_X/2-cam->getCoord().x), CHARACTER_SIZE_Y*m_direction+event->mouseButton.y-(m_model->getCoord().y-CHARACTER_SIZE_Y-cam->getCoord().y)).a > 200 &&
+					!isPlayer) {
+				used = true;
+				network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKLAUNCHSPELL);
+				packet << 1 << m_model->getID();
+				packet.send();
 			}
-			else {
-				std::vector<util::CoordInt> v;
-				game::CurrentCharacter::setPath(v);
-				nextDest = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
-				m_onMove = true;
-			}
-			if(game::CurrentCharacter::getNextDest() != util::CoordInt(-1, -1)) {
-				m_onMove = true;
-				if(game::CurrentCharacter::isLastDest()) {
-					nextDest = lastDest;
+			else if(isPlayer) {
+				used = true;
+				if((int)m_model->getCoord().x/CASE_SIZE != event->mouseButton.x/CASE_SIZE || (int)m_model->getCoord().y/CASE_SIZE != event->mouseButton.y/CASE_SIZE) {
+					game::CurrentCharacter::setPath(util::PathFinding::getPath(util::CoordInt((int)m_model->getCoord().x/CASE_SIZE, (int)m_model->getCoord().y/CASE_SIZE),
+						util::CoordInt(event->mouseButton.x/CASE_SIZE,event->mouseButton.y/CASE_SIZE)));
+					if(event->mouseButton.x/CASE_SIZE >= 0 && event->mouseButton.x/CASE_SIZE < game::GameboardModel::getWidth() &&
+						event->mouseButton.y/CASE_SIZE >= 0 && event->mouseButton.y/CASE_SIZE < game::GameboardModel::getHeight() &&
+						game::GameboardModel::getGameboard(0)[event->mouseButton.x/CASE_SIZE][event->mouseButton.y/CASE_SIZE]->getPassable()) {
+						lastDest = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
+					}
 				}
 				else {
-					nextDest = game::CurrentCharacter::getNextDest();
-					nextDest.x = nextDest.x*CASE_SIZE + CASE_SIZE/2;
-					nextDest.y = nextDest.y*CASE_SIZE + CASE_SIZE/2;
+					std::vector<util::CoordInt> v;
+					game::CurrentCharacter::setPath(v);
+					nextDest = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
+					m_onMove = true;
+				}
+				if(game::CurrentCharacter::getNextDest() != util::CoordInt(-1, -1)) {
+					m_onMove = true;
+					if(game::CurrentCharacter::isLastDest()) {
+						nextDest = lastDest;
+					}
+					else {
+						nextDest = game::CurrentCharacter::getNextDest();
+						nextDest.x = nextDest.x*CASE_SIZE + CASE_SIZE/2;
+						nextDest.y = nextDest.y*CASE_SIZE + CASE_SIZE/2;
+					}
 				}
 			}
 		}
