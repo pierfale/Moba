@@ -12,7 +12,7 @@
 
 #include "Layout.hpp"
 
-#define SIZE_ICON 25
+#define SIZE_ICON 37
 
 namespace graphics {
 

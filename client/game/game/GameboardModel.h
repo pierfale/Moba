@@ -16,17 +16,18 @@
 
 #include <boost/shared_ptr.hpp>
 #include "boost/ptr_container/ptr_vector.hpp"
-#include "Case.h"
 #include "../character/Player.hpp"
+#include "Case.h"
+
 
 namespace game {
 
 	class GameboardModel {
 	public:
-		virtual ~GameboardModel();
+		~GameboardModel();
 
 		//getters
-		static boost::ptr_vector<Player> getVectorOTherPlayer();
+		//static boost::ptr_vector<Player> getVectorOTherPlayer();
 		static int getHeight();
 		static int getWidth();
 

@@ -9,12 +9,17 @@
 
 namespace graphics {
 	SpellBarr::SpellBarr(game::Player* player) {
-		for (int i = 0 ; i < 3 ; i++) {
-			ButtonImage* tmp = new ButtonImage("ressouces/game/icon.png", sf::Rect<int>(i*25,0,25,25), GUIStyle::buttonImage());
-			m_buttons.push_back(*tmp);
+		setLayout(&m_layout);
+		setBackground("ressources/gui/spellBarr_background.png", none);
+		m_width = 0;
+		for (int i = 0 ; i < 4 ; i++ ){
+			ButtonImage* tmp = new ButtonImage("ressources/game/icon.png", sf::Rect<int>(i*25,0,25,25), GUIStyle::buttonImage());
 			add(tmp);
+			m_buttons.push_back(*tmp);
+			m_width += 37;
 		}
-		m_layout.setContainer(this);
+		m_width += 12;
+		m_height = 49;
 	}
 
 	SpellBarr::~SpellBarr() {
@@ -23,6 +28,6 @@ namespace graphics {
 		}
 	}
 
-	bool SpellBarr::event(sf::Event* event, bool used){return used;}
+	bool SpellBarr::event(sf::Event* event, bool used){return Container::event(event, used);}
 
 } /* namespace graphics */

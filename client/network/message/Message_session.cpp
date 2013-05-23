@@ -66,22 +66,35 @@ namespace network {
 			}
 		}
 		else if(packet.getType() == PacketType::SESSION_PLAYERJOINGAME) {
-			int id, level, team;
-			std::string name;
-			packet >> &id >> &name >> &level >> &team;
-			game::Player* player = new game::Player(id , name, level);
-			player->setTeam(team);
-			std::cout << "--->" << id << ":" << name << ":" << level << ":" << team << std::endl;
-			game::GamePlayerList::add(player);
-			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName())
-				((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
-		}
+				int id, level, team;
+				std::string name;
+				packet >> &id >> &name >> &level >> &team;
+				game::Player* player = NULL;
+				if (id == game::CurrentCharacter::get()->getID()) {
+					player = game::CurrentCharacter::get();
+					player->setFaction(static_cast<PacketType::PacketContents>(team));
+				}
+				player = new game::Player(id , name, level);
+				player->setFaction(static_cast<PacketType::PacketContents>(team));
+				std::cout << "--->" << id << ":" << name << ":" << level << ":" << team << std::endl;
+				game::GamePlayerList::add(player);
+				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName())
+					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+			}
 		else if(packet.getType() == PacketType::SESSION_PLAYERCHANGETEAM) {
 			int id, team;
 			packet >> &id >> &team;
-			game::GamePlayerList::getByID(id)->setTeam(team);
-			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName()) {
-				((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+			game::Player* p = NULL;
+			if (id == game::CurrentCharacter::get()->getID()) {
+				p = game::CurrentCharacter::get();
+				p->setFaction(static_cast<PacketType::PacketContents>(team));
+			}
+			p = game::GamePlayerList::getByID(id);
+			if(p != NULL) {
+				p->setFaction(static_cast<PacketType::PacketContents>(team));
+				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName()) {
+					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+				}
 			}
 		}
 		else if(packet.getType() == PacketType::SESSION_PLAYERQUITGAME) {

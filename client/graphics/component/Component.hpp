@@ -22,6 +22,26 @@
 
 namespace graphics {
 
+	/*! \class Component
+	   * \brief abstract class representing a graphic component
+	   *
+	   * Component have coordinates and size.
+	   * Component may have this state :
+	   * normal
+	   * focus
+	   * selected
+	   * pressed
+	   * disable
+	   *
+	   * Each component can be visible or not
+	   *
+	   * There are 2 type of component :
+	   *
+	   * Absolute : like innerWindows, they are over other
+	   * Non-Absolute
+	   *
+	   */
+
 	class Component {
 
 	public:

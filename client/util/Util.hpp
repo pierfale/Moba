@@ -11,6 +11,7 @@
 #include "Cast.hpp"
 #include "Coordinates.hpp"
 #include "Graphics.hpp"
+#include "Math.hpp"
 #include "PathFinding.h"
 
 

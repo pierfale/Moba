@@ -113,7 +113,7 @@ namespace graphics {
 		for(int i=0; i<game::GamePlayerList::size(); i++) {
 			CharacterFrame* cf = new CharacterFrame(game::GamePlayerList::get(i));
 			m_chars.push_back(cf);
-			if(game::GamePlayerList::get(i)->getTeam() == 1)
+			if(game::GamePlayerList::get(i)->getFaction() == network::PacketType::FACTION_TEAM1)
 				m_team1Container->add(cf);
 			else
 				m_team2Container->add(cf);

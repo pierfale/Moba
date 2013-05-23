@@ -139,7 +139,6 @@ namespace graphics {
 			checkFunctionCall();
 			network::Network::process();
 			checkNewContentPane();
-			//ImageLoader::process();
 
 			m_window->clear(sf::Color::White);
 			m_root->draw(m_window);
