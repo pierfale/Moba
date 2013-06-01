@@ -66,22 +66,35 @@ namespace network {
 			}
 		}
 		else if(packet.getType() == PacketType::SESSION_PLAYERJOINGAME) {
-			int id, level, team;
-			std::string name;
-			packet >> &id >> &name >> &level >> &team;
-			game::Player* player = new game::Player(id , name, level);
-			player->setTeam(team);
-			std::cout << "--->" << id << ":" << name << ":" << level << ":" << team << std::endl;
-			game::GamePlayerList::add(player);
-			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName())
-				((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
-		}
+				int id, level, team;
+				std::string name;
+				packet >> &id >> &name >> &level >> &team;
+				game::Player* player = NULL;
+				if (id == game::CurrentCharacter::get()->getID()) {
+					player = game::CurrentCharacter::get();
+					player->setFaction(static_cast<PacketType::PacketContents>(team));
+				}
+				player = new game::Player(id , name, level);
+				player->setFaction(static_cast<PacketType::PacketContents>(team));
+				std::cout << "--->" << id << ":" << name << ":" << level << ":" << team << std::endl;
+				game::GamePlayerList::add(player);
+				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName())
+					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+			}
 		else if(packet.getType() == PacketType::SESSION_PLAYERCHANGETEAM) {
 			int id, team;
 			packet >> &id >> &team;
-			game::GamePlayerList::getByID(id)->setTeam(team);
-			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName()) {
-				((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+			game::Player* p = NULL;
+			if (id == game::CurrentCharacter::get()->getID()) {
+				p = game::CurrentCharacter::get();
+				p->setFaction(static_cast<PacketType::PacketContents>(team));
+			}
+			p = game::GamePlayerList::getByID(id);
+			if(p != NULL) {
+				p->setFaction(static_cast<PacketType::PacketContents>(team));
+				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName()) {
+					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();
+				}
 			}
 		}
 		else if(packet.getType() == PacketType::SESSION_PLAYERQUITGAME) {
@@ -123,6 +136,61 @@ namespace network {
 			network::Packet ready_packet(network::Network::getSocket(), network::PacketType::GAME_ASKREADY);
 			ready_packet.send();
 		}
+		else if (packet.getType() == PacketType::SESSION_ANSWERSKILL) {
+			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+				if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterSkill::getName()) {
+					int id;
+					packet >> &id;
+					((graphics::CharacterSkill*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->setActiveSkill(id);
+				}
+			}
+		}
+		else if (packet.getType() == PacketType::SESSION_ANSWERALLSKILL) {
+			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+				if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterSkill::getName()) {
+					int size;
+					packet >> &size;
+					for(int i=0; i<size; i++) {
+						int id;
+						packet >> &id;
+						((graphics::CharacterSkill*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->setActiveSkill(id);
+					}
+				}
+			}
+		}
+		else if(packet.getType() == PacketType::SESSION_ANSWERALLSTAT) {
+					int life;
+					int maxLife;
+					int mana;
+					int maxMana;
+					float attackSpeed;
+					float movementSpeed;
+					int physicalAttack;
+					int magicalAttack;
+					int physicalArmor;
+					int magicalArmor;
+					float range;
+
+					packet >> &life >> &maxLife >> &mana >> &maxMana >> &attackSpeed >> &movementSpeed >> &physicalAttack >> &magicalAttack >> &physicalArmor >> &magicalArmor >> &range;
+					if(game::CurrentCharacter::get() != NULL) {
+						game::CurrentCharacter::get()->getStat()->setLife(life);
+						game::CurrentCharacter::get()->getStat()->setMaxLife(maxLife);
+						game::CurrentCharacter::get()->getStat()->setMana(mana);
+						game::CurrentCharacter::get()->getStat()->setMaxMana(maxMana);
+						game::CurrentCharacter::get()->getStat()->setAttackSpeed(attackSpeed);
+						game::CurrentCharacter::get()->getStat()->setMovementSpeed(movementSpeed);
+						game::CurrentCharacter::get()->getStat()->setPhysicalAttack(physicalAttack);
+						game::CurrentCharacter::get()->getStat()->setMagicalAttack(magicalAttack);
+						game::CurrentCharacter::get()->getStat()->setPhysicalArmor(physicalArmor);
+						game::CurrentCharacter::get()->getStat()->setMagicalArmor(magicalArmor);
+						game::CurrentCharacter::get()->getStat()->setRange(range);
+						if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+							if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterInfo::getName()) {
+								((graphics::CharacterInfo*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->refresh();
+							}
+						}
+					}
+				}
 	}
 }
 

@@ -8,6 +8,8 @@
 #ifndef PLAYERSTAT_HPP_
 #define PLAYERSTAT_HPP_
 
+#include "CharacterStat.hpp"
+
 //Log
 #include "../../log/Log.hpp"
 //Debug
@@ -15,29 +17,10 @@
 
 namespace game {
 
-	class PlayerStat {
+	class PlayerStat : public CharacterStat {
 
 	public:
-		PlayerStat();
 
-		float attackSpeed();
-		float movementSpeed();
-
-		int physicalAttack();
-		int magicalAttack();
-
-		int physicalArmor();
-		int magicalArmor();
-
-	private:
-		float m_attackSpeed;
-		float m_movementSpeed;
-
-		int m_physicalAttack;
-		int m_magicalAttack;
-
-		int m_physicalArmor;
-		int m_magicalArmor;
 	};
 }
 

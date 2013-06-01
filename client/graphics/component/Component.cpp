@@ -6,10 +6,11 @@
  */
 
 #include "Component.hpp"
+#include "FocusFrame.hpp"
 
 namespace graphics {
 
-	Component::Component() : m_width(0), m_height(0), m_parent(NULL), m_window(NULL) {
+	Component::Component() : m_width(0), m_height(0), m_parent(NULL), m_window(NULL), m_focusFrame(NULL) {
 		m_focus = false;
 		m_pressed = false;
 		m_selected = false;
@@ -20,7 +21,7 @@ namespace graphics {
 		m_heightCenter = false;
 	}
 
-	Component::Component(util::CoordInt coord, int width, int height) : m_coord(coord), m_width(width), m_height(height), m_parent(NULL), m_window(NULL) {
+	Component::Component(util::CoordInt coord, int width, int height) : m_coord(coord), m_width(width), m_height(height), m_parent(NULL), m_window(NULL), m_focusFrame(NULL) {
 		m_focus = false;
 		m_pressed = false;
 		m_selected = false;
@@ -32,7 +33,8 @@ namespace graphics {
 	}
 
 	Component::~Component() {
-
+		if(m_focusFrame != NULL)
+			delete m_focusFrame;
 	}
 
 	void Component::setParent(Component* parent) {
@@ -93,6 +95,14 @@ namespace graphics {
 		m_absolute = state;
 	}
 
+	void Component::setFocusFrame(FocusFrame* frame) {
+		m_focusFrame = frame;
+	}
+
+	void Component::setSelectable(bool state) {
+		m_selectable = state;
+	}
+
 	util::CoordInt Component::getCoord() {
 		return m_coord;
 	}
@@ -128,7 +138,7 @@ namespace graphics {
 	}
 
 	bool Component::isSelectable() {
-		return true;
+		return m_selectable;
 	}
 
 	bool Component::isContainer() {

@@ -36,7 +36,7 @@ namespace game {
 	Skill* SkillReader::evalLine(std::string line) {
 		unsigned int cursor = 0;
 		std::vector<std::string> args;
-		for(int i=0; i<7; i++) {
+		for(int i=0; i<11; i++) {
  			while(cursor < line.length() && isblank(line.at(cursor))) {
 				cursor++;
 			}
@@ -75,7 +75,7 @@ namespace game {
 			cursor++;
 		}
 		parents.push_back(util::Cast::stringToInt(args.at(3).substr(beg, cursor-beg)));
-		return new Skill(util::Cast::stringToInt(args.at(0)), args.at(1), args.at(2), parents, args.at(4), util::CoordInt(util::Cast::stringToInt(args.at(5)), util::Cast::stringToInt(args.at(6))));
+		return new Skill(util::Cast::stringToInt(args.at(0)), args.at(1), args.at(2), parents, args.at(4), util::CoordInt(util::Cast::stringToInt(args.at(5)), util::Cast::stringToInt(args.at(6))), sf::IntRect(util::Cast::stringToInt(args.at(7)), util::Cast::stringToInt(args.at(8)), util::Cast::stringToInt(args.at(9)), util::Cast::stringToInt(args.at(10))));
 
 	}
 

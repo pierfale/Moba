@@ -39,6 +39,7 @@ namespace graphics {
 		Window(int width, int height, std::string title);
 		void setContentPane(Container* pane);
 		void addCallFunction(boost::function<void()> function);
+		void addDrawFunction(boost::function<void(sf::RenderWindow*)> function);
 		void setSelectedComponent(Component* component);
 		void selectNext();
 		std::string getComponentName();
@@ -58,6 +59,7 @@ namespace graphics {
 		Container* m_root;
 		Container* m_rootTmp;
 		std::vector<boost::function<void()> > m_callFunction;
+		std::vector<boost::function<void(sf::RenderWindow*)> > m_drawFunction;
 		boost::timer m_frame;
 
 	};

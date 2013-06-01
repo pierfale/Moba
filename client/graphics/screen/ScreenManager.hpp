@@ -16,6 +16,7 @@
 #include "NewCharacterScreen.hpp"
 #include "SelectTeamScreen.hpp"
 #include "CreateGameScreen.hpp"
+#include "EndScreen.h"
 #include "../../game/game/Game.hpp"
 
 //Log
@@ -35,6 +36,7 @@ namespace graphics {
 		static NewCharacterScreen* newCharacter();
 		static SelectTeamScreen* selectTeam(game::Game* game);
 		static CreateGameScreen* createGameScreen();
+		static EndScreen* endScreen();
 
 	private:
 		ScreenManager();

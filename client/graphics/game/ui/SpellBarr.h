@@ -8,8 +8,8 @@
 #ifndef SPELLBARR_H_
 #define SPELLBARR_H_
 
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
+#include <map>
 
 #include "../../GUIStyle.hpp"
 #include "../../component/ComponentInclude.hpp"
@@ -17,17 +17,21 @@
 #include "../../inheritedComponent/ButtonImage.hpp"
 
 #include "../../../game/character/Player.hpp"
+#include "../../../game/game/SpellList.hpp"
 
 namespace graphics {
+
+
 
 	class SpellBarr : public Container{
 	public:
 		SpellBarr(game::Player* player);
 		virtual ~SpellBarr();
-		bool event(sf::Event* event, bool used);
+		void spellActivate(void* origin);
 	private:
-		std::vector<ButtonImage> m_buttons;
+		boost::ptr_vector<ButtonImage> m_buttons;
 		SpellBarrLayout m_layout;
+		std::map<ButtonImage*, game::Spell*> m_buttonSpells;
 	};
 
 } /* namespace graphics */

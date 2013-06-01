@@ -29,6 +29,10 @@ namespace graphics {
 		m_callFunction.push_back(function);
 	}
 
+	void Window::addDrawFunction(boost::function<void(sf::RenderWindow*)> function) {
+		m_drawFunction.push_back(function);
+	}
+
 	void Window::checkNewContentPane() {
 		if(m_rootTmp != NULL) {
 			Container* old = m_root;
@@ -139,10 +143,13 @@ namespace graphics {
 			checkFunctionCall();
 			network::Network::process();
 			checkNewContentPane();
-			//ImageLoader::process();
 
 			m_window->clear(sf::Color::White);
 			m_root->draw(m_window);
+			 for (std::vector<boost::function<void(sf::RenderWindow*)> >::iterator it = m_drawFunction.begin() ; it != m_drawFunction.end(); ++it)
+				 (*it)(m_window);
+			 m_drawFunction.clear();
+
 			m_window->display();
 			if(m_frame.elapsed() < 1.0/(float)util::Cast::stringToInt(Config::get("maxfps")))
 				boost::this_thread::sleep(boost::posix_time::milliseconds((1.0/(float)util::Cast::stringToInt(Config::get("maxfps"))-m_frame.elapsed())*1000.0));

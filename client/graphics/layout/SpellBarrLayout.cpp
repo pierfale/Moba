@@ -14,7 +14,7 @@ namespace graphics {
 
 	void SpellBarrLayout::validate() {
 		for (int i = 0 ; i < m_container->childSize() ; ++i) {
-			m_container->getChild(i)->setCoord(util::CoordInt(i*SIZE_ICON, 0));
+			m_container->getChild(i)->setCoord(util::CoordInt(i*SIZE_ICON+6, 6));
 			m_container->getChild(i)->setSize(SIZE_ICON,SIZE_ICON);
 		}
 	}
