@@ -27,7 +27,7 @@
 								<option id="gnu.cpp.compiler.option.include.paths.373200268" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Users\pierre\git\MobaNetwork&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Béni\git\MobaNetwork&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.56704012" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="_WIN32_WINNT=0x0501"/>
@@ -44,7 +44,7 @@
 								<option id="gnu.cpp.link.option.other.1260423099" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
 								<option id="gnu.cpp.link.option.libs.594502895" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="ws2_32"/>
-									<listOptionValue builtIn="false" value="network"/>
+									<listOptionValue builtIn="false" value="MobaNetwork"/>
 									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-1_53"/>
 									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-1_53"/>
 									<listOptionValue builtIn="false" value="mysqlclient"/>
@@ -53,7 +53,7 @@
 									<listOptionValue builtIn="false" value="sfml-system"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.2025699577" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;C:\Users\pierre\git\MobaNetwork\Debug&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Béni\git\MobaNetwork\Debug&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\boost_1_53_0\lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\SFML-2.0-rc\lib&quot;"/>
 								</option>

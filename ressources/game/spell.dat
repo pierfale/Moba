@@ -1,0 +1,6 @@
+2 "PowerFul Strike" "Hit the ennemy with <color=pd>150%</color> of the total physical damage<br/>10 secondes cooldowns" ressources/game/icon.png 50 0 25 25
+3 "FireBall" "Launch a fireball who hit ennemy with <color=md>200%</color> of the total magical damage<br/>15 secondes cooldowns" ressources/game/icon.png 100 0 25 25
+4 "Blizzard" "Gives <color=md>50%</color> per seconde while 4 secondes and slow him while 6 secondes" ressources/game/icon.png 100 0 25 25
+5 "Triple Strike" "Triggers a burst of 3 shoots" ressources/game/icon.png 100 0 25 25
+6 "Blaze" "Silence ennemy while 3 secondes" ressources/game/icon.png 75 0 25 25
+7 "Cold shield" "shield Increase the Physical Armor by <color=pa>20</color> And the Magical Armor by <color=ma>20</color> while 5 secondes" ressources/game/icon.png 75 0 25 25

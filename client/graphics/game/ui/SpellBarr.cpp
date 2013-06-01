@@ -6,23 +6,37 @@
  */
 
 #include "SpellBarr.h"
+#include "../../inheritedListener/SpellBar_Button.hpp"
 
 namespace graphics {
 	SpellBarr::SpellBarr(game::Player* player) {
-		for (int i = 0 ; i < 3 ; i++) {
-			ButtonImage* tmp = new ButtonImage("ressouces/game/icon.png", sf::Rect<int>(i*25,0,25,25), GUIStyle::buttonImage());
-			m_buttons.push_back(*tmp);
+		setLayout(&m_layout);
+		setBackground("ressources/gui/spellBarr_background.png", none);
+		m_width = 0;
+		for (int i = 0 ; i < game::SpellList::size() ; i++ ){
+			ButtonImage* tmp = new ButtonImage(game::SpellList::get(i)->getImage(), game::SpellList::get(i)->getSubrect(), GUIStyle::buttonImage());
+			tmp->setFocusFrame(new FocusFrame(game::SpellList::get(i)->getName(), game::SpellList::get(i)->getContents(), GUIStyle::focusFrame()));
+			tmp->addListener(new SpellBar_Button(this));
 			add(tmp);
+			m_buttons.push_back(tmp);
+			m_width += 37;
+			m_buttonSpells[tmp] = game::SpellList::get(i);
 		}
-		m_layout.setContainer(this);
+		m_width += 12;
+		m_height = 49;
 	}
 
 	SpellBarr::~SpellBarr() {
-		for(std::vector<ButtonImage>::iterator it = m_buttons.begin() ; it != m_buttons.end() ; ++it) {
-			delete &(*it);
-		}
+
 	}
 
-	bool SpellBarr::event(sf::Event* event, bool used){return used;}
+	void SpellBarr::spellActivate(void* origin) {
+		std::cout << "OK" << std::endl;
+		if(m_buttonSpells.find((ButtonImage*)origin) != m_buttonSpells.end()) {
+			std::cout << "OK2" << std::endl;
+			m_buttonSpells[(ButtonImage*)origin]->send();
+		}
+
+	}
 
 } /* namespace graphics */

@@ -39,6 +39,10 @@ namespace graphics {
 		return new CreateGameScreen();
 	}
 
+	EndScreen* ScreenManager::endScreen() {
+			return new EndScreen();
+	}
+
 	ScreenManager* ScreenManager::getInstance() {
 		if(m_instance.get() == NULL)
 			m_instance.reset(new ScreenManager());

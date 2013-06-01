@@ -11,12 +11,20 @@ namespace game {
 
 	boost::shared_ptr<CurrentCharacter> CurrentCharacter::m_instance;
 
-	CurrentCharacter::CurrentCharacter() : m_current(NULL) {
+	CurrentCharacter::CurrentCharacter() : m_current(NULL), m_currentView(NULL), m_target(NULL) {
 
 	}
 
 	Player* CurrentCharacter::get() {
 		return getInstance()->m_current;
+	}
+
+	graphics::UserPlayer* CurrentCharacter::getView() {
+		return getInstance()->m_currentView;
+	}
+
+	Character* CurrentCharacter::getTarget() {
+		return getInstance()->m_target;
 	}
 
 	void CurrentCharacter::set(Player* player) {
@@ -26,6 +34,19 @@ namespace game {
 			packet.send();
 		}
 		getInstance()->m_current = player;
+	}
+
+
+	void CurrentCharacter::set(graphics::UserPlayer* player) {
+		getInstance()->m_currentView = player;
+	}
+
+	void CurrentCharacter::setTarget(Character* player) {
+		getInstance()->m_target = player;
+		if(player == NULL)
+			log_out "[Target] No target" end_log_out;
+		else
+			log_out "[Target] "+player->getName() end_log_out;
 	}
 
 	void CurrentCharacter::setPath(std::vector<util::CoordInt> path) {

@@ -65,6 +65,11 @@ namespace graphics {
 		getInstance()->m_scrollbar.reset(new ScrollBarStyle());
 		getInstance()->m_scrollbar.get()->setBackgroundImage("ressources/gui/scrollbar_background.png");
 		getInstance()->m_scrollbar.get()->setBarImage("ressources/gui/scrollbar_center.png");
+
+		getInstance()->m_focusFrame.reset(new BasicStyle());
+		getInstance()->m_focusFrame.get()->setBorderImage("ressources/gui/button_image.png");
+		getInstance()->m_focusFrame.get()->setCenterImage("ressources/gui/button_image_center.png");
+		getInstance()->m_focusFrame.get()->setFontColor(sf::Color(226, 233, 40));
 	}
 
 	BasicStyle* GUIStyle::button() {
@@ -101,6 +106,10 @@ namespace graphics {
 
 	ScrollBarStyle* GUIStyle::scrollbar() {
 		return getInstance()->m_scrollbar.get();
+	}
+
+	BasicStyle* GUIStyle::focusFrame() {
+		return getInstance()->m_focusFrame.get();
 	}
 
 	GUIStyle* GUIStyle::getInstance() {

@@ -13,7 +13,7 @@
 #include "PacketType.hpp"
 #include "../../graphics/Graphics.hpp"
 #include "../../graphics/game/Gameboard.h"
-
+#include "../../graphics/game/animation/spell/SingleTargetSpellImpl.hpp"
 
 #include "../../game/character/Player.hpp"
 #include "../../game/menu/PlayerList.hpp"
@@ -21,6 +21,7 @@
 #include "../../game/game/GameboardModel.h"
 #include "../../game/game/GamePlayerList.hpp"
 #include "../../game/menu/GameList.hpp"
+#include "../../game/game/SpellList.hpp"
 
 namespace network {
 

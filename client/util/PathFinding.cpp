@@ -6,6 +6,7 @@
  */
 
 #include "PathFinding.h"
+#include "../game/game/GameboardModel.h"
 
 namespace util {
 

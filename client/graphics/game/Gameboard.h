@@ -13,6 +13,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
 
 #include "boost/ptr_container/ptr_vector.hpp"
 
@@ -23,13 +24,16 @@
 #include "../../game/menu/CurrentCharacter.hpp"
 #include "Camera.h"
 #include "../../game/game/GameboardModel.h"
-#include "Character.h"
-#include "animation/Animation.h"
-#include "ui/UserInterface.h"
+#include "character/Player.hpp"
+#include "character/UserPlayer.hpp"
+#include "animation/Animation.hpp"
+#include "BufferDraw.hpp"
 
 #define SIZE_TILE 50
 
 namespace graphics {
+
+class UserInterface;
 
 	class Gameboard : public Container{
 	public:
@@ -43,14 +47,21 @@ namespace graphics {
 		bool event(sf::Event* event, bool used);
 		void validate();
 		static void loadImage();
+		static util::CoordInt convertCoord(util::CoordInt coord);
+		static util::CoordFloat convertCoord(util::CoordFloat coord);
+
+		//animation
+		static void addAnimation(Animation* animation);
+		static void removeAnimation(Animation* animation);
 
 	private:
 		sf::Texture* m_texture;
-		Camera m_cam;
-		bool m_loaded;
-		Character* m_player; //graphics Client Player
-		boost::ptr_vector<Character> m_oPlayers; //graphics Other Players
+		static Camera m_cam;
+		boost::ptr_vector<Player> m_players; //graphics Other Players
 		UserInterface* m_interface;
+		static boost::ptr_vector<Animation> m_animations;
+		BufferDraw m_bufferY;
+		bool m_loaded;
 	};
 
 } /* namespace graphics */

@@ -5,32 +5,43 @@
  *      Author: Béni
  */
 
-#include "Spell.h"
-#include "../character/Player.hpp"
+#include "Spell.hpp"
+#include "../../network/Network.hpp"
 
 namespace game {
 
-	Spell::Spell() : m_cast(false), m_range(0) { m_player = NULL;}
-	Spell::Spell(Player* player) : m_cast(false), m_range(0)  {m_player = player;}
-	Spell::~Spell() {}
-
-	void Spell::callSpell(int id, Player* target) {
-		autoAttack(target);
+	Spell::Spell(int id, std::string name, std::string describe, std::string image, sf::IntRect subrect) : m_subrect(subrect) {
+		m_id = id;
+		m_name = name;
+		m_describe = describe;
+		m_image = image;
 	}
 
-	void Spell::autoAttack(Player* target) {
-		m_range = 50;
-		m_cast = true;
+	int Spell::getId() {
+		return m_id;
 	}
 
-	bool Spell::getCast() {return m_cast;}
-	bool Spell::onRange(Player* target) {
-		if (abs(m_player->getCoord().x - target->getCoord().x) <= m_range &&
-			abs(m_player->getCoord().y - target->getCoord().y) <= m_range)
-				return true;
-		return false;
+	std::string Spell::getImage() {
+		return m_image;
 	}
-	void Spell::setCast(bool cast) {m_cast = cast;}
 
+	std::string Spell::getName() {
+		return m_name;
+	}
 
-} /* namespace game */
+	std::string Spell::getContents() {
+		return m_describe;
+	}
+
+	sf::IntRect Spell::getSubrect() {
+		return m_subrect;
+	}
+
+	void Spell::send() {
+		if(game::CurrentCharacter::getTarget() != NULL) {
+			network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKLAUNCHSINGLETARGETSPELL);
+			packet << m_id << game::CurrentCharacter::getTarget()->getID();
+			packet.send();
+		}
+	}
+}

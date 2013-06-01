@@ -30,10 +30,12 @@ namespace graphics {
 	}
 
 	void ConnectionScreen::load() {
+		this->setBackground("ressources/gui/background_title.jpg", none);
 
 		m_mainContainer = new Container();
 		m_mainContainer->setLayout(new PassivLayout());
-		this->add(m_mainContainer);
+		m_mainContainer->setBackground("ressources/gui/background_frame_title.png", none);
+		add(m_mainContainer);
 
 		m_pseudoLabel = new Label("Pseudo : ", GUIStyle::label());
 		m_pseudoLabel->setSize(200, 40);

@@ -129,6 +129,7 @@ namespace graphics {
 		}
 		((CharacterFrame*)origin)->setSelect(true);
 		m_playerSelected = ((CharacterFrame*)origin)->getPlayer();
+		game::CurrentCharacter::set(m_playerSelected);
 		viewChanged(m_statButton);
 		m_statButton->setSelected(true, true);
 		m_statButton->setEnable(true);
@@ -136,10 +137,11 @@ namespace graphics {
 		m_skillButton->setEnable(true);
 		m_launchButton->setSelected(false, true);
 		m_launchButton->setEnable(true);
-		game::CurrentCharacter::set(m_playerSelected);
+		std::cout << "END OF CHARACTER CHANGE" << std::endl;
 	}
 
 	void CharacterScreen::viewChanged(void* origin) {
+		std::cout << "VIEW CHANGE" << std::endl;
 		if(m_playerSelected != NULL && origin == m_statButton) {
 			Container* tmp = new CharacterInfo(m_playerSelected);
 			m_rightContainer->replace(m_rightMainContainer, tmp);
@@ -187,7 +189,10 @@ namespace graphics {
 			cf->addListener(new CharacterScreen_CharacterButton(this));
 		}
 
+	}
 
+	Container* CharacterScreen::getMainFrame() {
+		return m_rightMainContainer;
 	}
 }
 

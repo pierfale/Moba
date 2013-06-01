@@ -37,6 +37,7 @@ namespace graphics {
 		void refreshCharacter();
 		std::string getComponentName();
 		static std::string getName();
+		Container* getMainFrame();
 
 	private:
 		Container* m_leftContainer;
