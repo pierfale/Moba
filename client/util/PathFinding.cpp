@@ -94,7 +94,6 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 
 	while(curNode->at != goal){
 		std::vector<CoordInt> neighbors(getNeighbors(curNode->at));
-		std::vector<node*> neighborNodes;
 		for(unsigned int i = 0; i < neighbors.size(); i++){
 			struct node *neighborNode = &map[neighbors.at(i).y * width + neighbors.at(i).x];
 			float newCost = curNode->cost + distance(curNode->at, neighborNode->at);
@@ -102,11 +101,9 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 				neighborNode->cost = newCost;
 				neighborNode->antecedant = curNode;
 			}
-			neighborNodes.push_back(neighborNode);
 		}
 		curNode->tested = true;
 		curNode = findLowestCost(map, height, width);
-		neighborNodes.clear();
 	}
 	std::deque<CoordInt> path;
 	assert(curNode == goalNode);
