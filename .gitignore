@@ -22,4 +22,5 @@
 /Release
 /Debug
 .settings/
+.project
 .cproject
