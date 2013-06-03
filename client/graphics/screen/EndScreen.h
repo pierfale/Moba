@@ -10,6 +10,7 @@
 
 #include "../component/Container.hpp"
 #include "../inheritedComponent/FrameEndGame.h"
+#include "../inheritedComponent/FrameExp.h"
 #include "../component/Button.hpp"
 #include "../inheritedListener/EndScreenListnerButton.h"
 #include "../layout/VerticalLayout.hpp"
@@ -25,8 +26,9 @@ public:
 	~EndScreen();
 	void load();
 private:
-	Container m_leftContainer, m_rightContainer, m_buttonContainer;
+	Container m_leftContainer, m_rightContainer, m_buttonContainer, m_rightBottomContainer, m_containerExp;
 	FrameEndGame* m_frame;
+	FrameExp* m_exp;
 	Button* m_returnButton;
 	Chat* m_chat;
 };
