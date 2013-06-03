@@ -149,6 +149,12 @@ void Message_game::process(Packet packet) {
 		}
 	}
 	else if (packet.getType() == PacketType::GAME_END) {
+		int expTeam1, expTeam2;
+		packet >> &expTeam1 >> &expTeam2;
+		if (game::CurrentCharacter::get()->getFaction() == PacketType::FACTION_TEAM1)
+			game::CurrentCharacter::get()->setExpEarned(expTeam1);
+		else
+			game::CurrentCharacter::get()->setExpEarned(expTeam2);
 		graphics::Graphics::getWindow()->setContentPane(graphics::ScreenManager::endScreen());
 	}
 	else if (packet.getType() == PacketType::GAME_SCORE_UPGRADE) {

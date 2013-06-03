@@ -27,7 +27,7 @@ namespace graphics {
 		m_cam.setLandMark(game::GameboardModel::getWidth(), game::GameboardModel::getHeight());
 
 		if (game::CurrentCharacter::get()->getFaction() == network::PacketType::FACTION_TEAM1)
-			m_cam.setCoord(util::CoordInt(50,50));
+			m_cam.setCoord(util::CoordInt(5,5));
 		else
 			m_cam.setCoord(util::CoordInt(1100,1100));
 

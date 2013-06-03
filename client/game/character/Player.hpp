@@ -22,18 +22,25 @@ namespace game {
 	class Player : public Character {
 
 	public:
-		Player(int id, std::string name, int level);
+		Player(int id, std::string name, int level, int exp);
+
 		PlayerStat* getStat();
 		int getLevel();
 		int getDie();
 		int getFrag();
+		int getExp();
+		int getExpEarned();
+		int getExpRequired();
 
 		void incDie();
+		void incExp();
 		void incFrag();
+
+		void setExpEarned(int expEarned);
 
 
 	private:
-		int m_level, m_nb_die, m_nb_frag;
+		int m_level, m_nb_die, m_nb_frag, m_exp, m_expEarned, m_expRequired;
 	};
 }
 
