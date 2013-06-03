@@ -72,8 +72,6 @@ namespace graphics {
 		if(m_pane == NULL || m_style == NULL)
 			return;
 		util::CoordInt coord =  Component::getRealCoord();
-		int width =  m_pane->getHeight() > m_height ? m_width - m_style->backgroundCenter()->getGlobalBounds().width : m_width;
-		int height = m_pane->getWidth() > m_width ? m_height - m_style->backgroundCenter()->getGlobalBounds().width : m_height;
 		sf::View tmp = render->getView();
 		sf::View view;
 		view.reset(sf::FloatRect(coord.x, coord.y, m_width,  m_height));

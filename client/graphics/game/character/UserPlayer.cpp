@@ -128,7 +128,7 @@ namespace graphics {
 						util::CoordInt(goal.x/CASE_SIZE, goal.y/CASE_SIZE));
 			std::vector<util::CoordInt> pathFinal;
 			if(path.size() > 0) {
-				for(int i=path.size()-1; i>=0; i--) {
+				for(unsigned int i = 0 ; i< path.size(); i++) {
 					pathFinal.push_back(util::CoordInt(path.at(i).x*CASE_SIZE+CASE_SIZE/2, path.at(i).y*CASE_SIZE+CASE_SIZE/2));
 				}
 				if(pathFinal.at(pathFinal.size()-1) != goal) {
