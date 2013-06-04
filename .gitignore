@@ -20,6 +20,7 @@
 *.dll
 /Documentation
 /Release
+/Doc
 /Debug
 .settings/
 .cproject
