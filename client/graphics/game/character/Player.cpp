@@ -26,9 +26,17 @@ namespace graphics {
 					event->mouseButton.y >= m_model->getCoord().y-m_textureHeight-cam->getCoord().y && event->mouseButton.y < m_model->getCoord().y-cam->getCoord().y &&
 					ImageLoader::getImage("ressources/game/1.png")->getPixel(m_textureWidth*m_nbFrame+event->mouseButton.x-(m_model->getCoord().x-m_textureWidth/2-cam->getCoord().x), m_textureHeight*m_direction+event->mouseButton.y-(m_model->getCoord().y-m_textureHeight-cam->getCoord().y)).a > 200) {
 				used = true;
-				network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKTARGET);
-				packet << m_model->getID();
-				packet.send();
+				if(game::CurrentSpell::get() != NULL) {
+					network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKLAUNCHSINGLETARGETSPELL);
+					packet << game::CurrentSpell::get()->getId() << m_model->getID();
+					packet.send();
+					game::CurrentSpell::set(NULL);
+				}
+				else {
+					network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKTARGET);
+					packet << m_model->getID();
+					packet.send();
+				}
 			}
 
 		}

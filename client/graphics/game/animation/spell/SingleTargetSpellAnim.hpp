@@ -17,6 +17,7 @@ namespace graphics {
 
 	public:
 		SingleTargetSpellAnim(game::Character* caster, game::Character* target);
+		static SingleTargetSpellAnim* process(int idSpell, game::Character* caster, game::Character* target);
 
 	protected:
 		game::Character* m_caster;

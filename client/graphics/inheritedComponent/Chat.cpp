@@ -13,8 +13,7 @@
 
 namespace graphics {
 
-	Chat::Chat() : m_id(0) {
-
+	Chat::Chat(int type) : m_id(0) {
 		m_scroll = new ScrollBar(GUIStyle::scrollbar());
 		this->add(m_scroll);
 
@@ -27,16 +26,22 @@ namespace graphics {
 		m_botContainer = new Container();
 		this->add(m_botContainer);
 
+
 		m_textField = new TextField(GUIStyle::textfield());
 		m_textField->addListener(new Chat_TextFieldListener(this));
 		m_botContainer->add(m_textField);
 
+	if(type != 1) {
 		m_button = new Button("Send", GUIStyle::button());
 		m_button->addListener(new Chat_ButtonListener(this));
 		m_button->setEnable(false);
 		m_botContainer->add(m_button);
+	}
+	else
+		m_button = NULL;
 
-		m_botContainer->setLayout(new SplitFixedLayout(SplitFixedLayout::vertical, SplitFixedLayout::second, 150));
+		if(type != 1)
+			m_botContainer->setLayout(new SplitFixedLayout(SplitFixedLayout::vertical, SplitFixedLayout::second, 150));
 
 		this->setLayout(new SplitFixedLayout(SplitFixedLayout::horizontal, SplitFixedLayout::second, 40));
 	}
@@ -47,11 +52,13 @@ namespace graphics {
 		delete m_label;
 		delete m_botContainer;
 		delete m_textField;
-		delete m_button;
+		if(m_button != NULL)
+			delete m_button;
 	}
 
 	void Chat::setID(int id) {
 		m_id = id;
+		if(m_button != NULL)
 		m_button->setEnable(true);
 	}
 

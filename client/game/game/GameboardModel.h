@@ -30,6 +30,12 @@ namespace game {
 		//static boost::ptr_vector<Player> getVectorOTherPlayer();
 		static int getHeight();
 		static int getWidth();
+		static int getIdMode();
+		static int getScoreTeam(int i);
+
+		//setters
+		static void setMode(int idMode);
+		static void setScore(int scoreTeam1, int scoreTeam2);
 
 		//gameboard
 		static Case*** getGameboard(int i);
@@ -41,7 +47,7 @@ namespace game {
 
 		GameboardModel();
 
-		int m_widthGameBoard, m_heightGameBoard;
+		int m_widthGameBoard, m_heightGameBoard, m_idMode, m_scoreTeam1, m_scoreTeam2;
 		Case*** m_gameboard;	//1rst Layer
 		Case*** m_gameboardLayer;	//2nd Layer
 		static GameboardModel* getInstance();

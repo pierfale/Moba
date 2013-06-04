@@ -39,21 +39,20 @@ namespace graphics {
 		if(height > 0) {
 			verticalUp.setTexture(*m_style->line());
 			verticalUp.setPosition(coord.x+m_origin.x-m_style->line()->getSize().x/2,coord.y+y);
-			verticalUp.setScale(1.0, (height/2)/m_style->line()->getSize().y);
+			verticalUp.setScale(1.0, (height/2+m_style->line()->getSize().y/2)/m_style->line()->getSize().y);
 			render->draw(verticalUp);
 		}
 
-		if(width > 0) {
-			horizontal.setTexture(*m_style->line());
-			horizontal.setPosition(coord.x+x-m_style->line()->getSize().x/2, coord.y+y+(height/2)-m_style->line()->getSize().y/2);
-			horizontal.setScale((width+m_style->line()->getSize().x)/m_style->line()->getSize().x, 1.0);
-			render->draw(horizontal);
-		}
+		horizontal.setTexture(*m_style->line());
+		horizontal.setPosition(coord.x+x-m_style->line()->getSize().x/2, coord.y+y+(height/2)-m_style->line()->getSize().y/2);
+		horizontal.setScale((width+m_style->line()->getSize().x)/m_style->line()->getSize().x, 1.0);
+		render->draw(horizontal);
+
 
 		if(height > 0) {
 			verticalUp.setTexture(*m_style->line());
 			verticalUp.setPosition(coord.x+m_target.x-m_style->line()->getSize().x/2,coord.y+y+(height/2));
-			verticalUp.setScale(1.0, (height/2)/m_style->line()->getSize().y);
+			verticalUp.setScale(1.0, (height/2+m_style->line()->getSize().y/2)/m_style->line()->getSize().y);
 			render->draw(verticalUp);
 		}
 

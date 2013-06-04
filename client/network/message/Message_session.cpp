@@ -136,6 +136,61 @@ namespace network {
 			network::Packet ready_packet(network::Network::getSocket(), network::PacketType::GAME_ASKREADY);
 			ready_packet.send();
 		}
+		else if (packet.getType() == PacketType::SESSION_ANSWERSKILL) {
+			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+				if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterSkill::getName()) {
+					int id;
+					packet >> &id;
+					((graphics::CharacterSkill*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->setActiveSkill(id);
+				}
+			}
+		}
+		else if (packet.getType() == PacketType::SESSION_ANSWERALLSKILL) {
+			if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+				if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterSkill::getName()) {
+					int size;
+					packet >> &size;
+					for(int i=0; i<size; i++) {
+						int id;
+						packet >> &id;
+						((graphics::CharacterSkill*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->setActiveSkill(id);
+					}
+				}
+			}
+		}
+		else if(packet.getType() == PacketType::SESSION_ANSWERALLSTAT) {
+					int life;
+					int maxLife;
+					int mana;
+					int maxMana;
+					float attackSpeed;
+					float movementSpeed;
+					int physicalAttack;
+					int magicalAttack;
+					int physicalArmor;
+					int magicalArmor;
+					float range;
+
+					packet >> &life >> &maxLife >> &mana >> &maxMana >> &attackSpeed >> &movementSpeed >> &physicalAttack >> &magicalAttack >> &physicalArmor >> &magicalArmor >> &range;
+					if(game::CurrentCharacter::get() != NULL) {
+						game::CurrentCharacter::get()->getStat()->setLife(life);
+						game::CurrentCharacter::get()->getStat()->setMaxLife(maxLife);
+						game::CurrentCharacter::get()->getStat()->setMana(mana);
+						game::CurrentCharacter::get()->getStat()->setMaxMana(maxMana);
+						game::CurrentCharacter::get()->getStat()->setAttackSpeed(attackSpeed);
+						game::CurrentCharacter::get()->getStat()->setMovementSpeed(movementSpeed);
+						game::CurrentCharacter::get()->getStat()->setPhysicalAttack(physicalAttack);
+						game::CurrentCharacter::get()->getStat()->setMagicalAttack(magicalAttack);
+						game::CurrentCharacter::get()->getStat()->setPhysicalArmor(physicalArmor);
+						game::CurrentCharacter::get()->getStat()->setMagicalArmor(magicalArmor);
+						game::CurrentCharacter::get()->getStat()->setRange(range);
+						if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName()) {
+							if(((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame()->getComponentName() == graphics::CharacterInfo::getName()) {
+								((graphics::CharacterInfo*)((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->getMainFrame())->refresh();
+							}
+						}
+					}
+				}
 	}
 }
 

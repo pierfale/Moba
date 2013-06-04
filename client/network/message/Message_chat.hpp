@@ -11,8 +11,6 @@
 #include <string>
 #include "Packet.hpp"
 #include "../../graphics/Graphics.hpp"
-#include "../../graphics/screen/SelectTeamScreen.hpp"
-
 
 namespace network {
 

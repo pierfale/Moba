@@ -16,8 +16,10 @@ namespace graphics {
 
 	bool UserPlayer::event(sf::Event* event, Camera* cam, bool used) {
 		if(!used && event->type == sf::Event::MouseButtonPressed && event->mouseButton.button == sf::Mouse::Right) {
-			util::CoordInt goal = util::CoordInt(event->mouseButton.x, event->mouseButton.y);
+			util::CoordInt goal = util::CoordInt(event->mouseButton.x+cam->getCoord().x, event->mouseButton.y+cam->getCoord().y);
 			this->moveTo(goal);
+			used = true;
+			game::CurrentSpell::set(NULL);
 		}
 		else if(event->type == sf::Event::MouseMoved) {
 			if(!used && event->mouseMove.x >= m_model->getCoord().x-m_textureWidth/2-cam->getCoord().x && event->mouseMove.x < m_model->getCoord().x+m_textureWidth/2-cam->getCoord().x &&

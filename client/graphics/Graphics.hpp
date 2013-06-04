@@ -17,6 +17,7 @@
 #include "../debug/Alloc.hpp"
 
 namespace graphics {
+
 	class Graphics {
 	public:
 		~Graphics();

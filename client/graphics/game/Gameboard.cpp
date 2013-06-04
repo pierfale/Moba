@@ -6,6 +6,7 @@
  */
 
 #include "Gameboard.h"
+#include "ui/UserInterface.h"
 
 namespace graphics {
 
@@ -16,15 +17,17 @@ namespace graphics {
 	Gameboard::Gameboard() : Container() {
 		m_texture = ImageLoader::get("ressources/game/Tiles.png");
 
+
+		Cursor::set(CURSOR_GAMENORMAL);
 		UserPlayer* m_userPlayer = new UserPlayer(game::CurrentCharacter::get());
-		m_players.push_back(m_userPlayer);
+
 		game::CurrentCharacter::set(m_userPlayer);
 		for(int i=0; i<game::GamePlayerList::size(); i++) {
 			m_players.push_back(new Player(game::GamePlayerList::get(i)));
 		}
-
+		m_players.push_back(m_userPlayer);
 		m_cam.setLandMark(game::GameboardModel::getWidth(), game::GameboardModel::getHeight());
-		m_interface = new UserInterface(game::CurrentCharacter::get());
+		m_interface = new UserInterface(game::CurrentCharacter::get(), "ressources/game/Battleground", this);
 		add(m_interface);
 	}
 	Gameboard::~Gameboard() {
@@ -74,6 +77,22 @@ namespace graphics {
 	}
 
 	void Gameboard::drawGameboard(sf::RenderWindow* render, game::Case*** gameboard){
+		//Check mouse move camera
+		if(m_window->isFocus()) {
+			util::CoordInt mouse = util::CoordInt(sf::Mouse::getPosition(*render).x, sf::Mouse::getPosition(*render).y);
+			int borderSize = 50;
+			if(mouse.x < borderSize && mouse.x >= 0)
+				m_cam.move(true, false);
+			if(mouse.x > render->getSize().x-borderSize && mouse.x <= render->getSize().x)
+				m_cam.move(true, true);
+			if(mouse.y < borderSize && mouse.y >= 0)
+				m_cam.move(false, false);
+			if(mouse.y > render->getSize().y-borderSize && mouse.y <= render->getSize().y)
+				m_cam.move(false, true);
+
+			m_cam.endMove();
+		}
+
 		sf::Sprite sprite;
 		int markX = m_cam.getCoord().x/SIZE_TILE + m_width/SIZE_TILE +2,
 				markY = m_cam.getCoord().y/SIZE_TILE + m_height/SIZE_TILE +2;
@@ -95,7 +114,7 @@ namespace graphics {
 
 	bool Gameboard::event(sf::Event* event, bool used) {
 		used = m_cam.event(event, used, &m_width ,&m_height);
-		m_interface->event(event, used);
+		used = m_interface->event(event, used);
 		for(unsigned int i=0; i<m_players.size(); i++)
 			used = m_players.at(i).event(event, &m_cam, used);
 
@@ -104,8 +123,13 @@ namespace graphics {
 			network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKTARGET);
 			packet << 0;
 			packet.send();
+
 		}
 
+		if(event->type == sf::Event::MouseButtonPressed) {
+			Cursor::set(CURSOR_GAMENORMAL);
+			game::CurrentSpell::set(NULL);
+		}
 		return used;
 	}
 
@@ -138,6 +162,22 @@ namespace graphics {
 				return;
 			}
 		}
+	}
+
+	Chat* Gameboard::getChat() {
+		return m_interface->getChat();
+	}
+
+	std::string Gameboard::getComponentName() {
+		return "Gameboard";
+	}
+
+	std::string Gameboard::getName() {
+		return "Gameboard";
+	}
+
+	Camera* Gameboard::getCamera() {
+		return &m_cam;
 	}
 
 } /* namespace graphics */

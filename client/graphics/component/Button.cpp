@@ -6,6 +6,8 @@
  */
 
 #include "Button.hpp"
+#include "FocusFrame.hpp"
+#include "Container.hpp"
 
 namespace graphics {
 
@@ -57,6 +59,24 @@ namespace graphics {
 				}
 				m_focus = true;
 				used = true;
+				if(m_focusFrame != NULL) {
+					int x = event->mouseMove.x+10;
+					if(x+m_focusFrame->getWidth() > m_window->getContentPane()->getWidth()) {
+						if(event->mouseMove.x-m_focusFrame->getWidth() > 0)
+							x = event->mouseMove.x-m_focusFrame->getWidth();
+						else
+							x = 0;
+					}
+					int y = event->mouseMove.y+10;
+					if(y+m_focusFrame->getHeight() > m_window->getContentPane()->getHeight()) {
+						if(event->mouseMove.y-m_focusFrame->getHeight() > 0)
+							y = event->mouseMove.y-m_focusFrame->getHeight();
+						else
+							y = 0;
+					}
+
+					m_focusFrame->setCoord(util::CoordInt(x, y));
+				}
 			}
 			else {
 				if(m_focus && m_enable) {

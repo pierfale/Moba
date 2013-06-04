@@ -11,7 +11,7 @@ namespace game {
 
 boost::shared_ptr<GameboardModel> GameboardModel::m_instance;
 
-GameboardModel::GameboardModel() : m_widthGameBoard(0) , m_heightGameBoard(0) {
+GameboardModel::GameboardModel() : m_widthGameBoard(0) , m_heightGameBoard(0), m_idMode(-1), m_scoreTeam1(0), m_scoreTeam2(0)  {
 	m_gameboard = NULL;
 	m_gameboardLayer = NULL;
 }
@@ -32,12 +32,24 @@ GameboardModel::~GameboardModel() {
 	free(getInstance()->m_gameboard);
 }
 
+//setters
+void GameboardModel::setMode(int idMode) {getInstance()->m_idMode = idMode;}
+void GameboardModel::setScore(int scoreTeam1, int scoreTeam2) {
+	getInstance()->m_scoreTeam1 = scoreTeam1;
+	getInstance()->m_scoreTeam2 = scoreTeam2;
+}
+
 //getters
 int GameboardModel::getHeight() { return getInstance()->m_heightGameBoard; }
 int GameboardModel::getWidth() { return getInstance()->m_widthGameBoard; }
 Case*** GameboardModel::getGameboard(int i){
 	if (i == 0) return getInstance()->m_gameboard;
 	else return getInstance()->m_gameboardLayer;
+}
+int GameboardModel::getIdMode() { return getInstance()->m_idMode; }
+int GameboardModel::getScoreTeam(int i) {
+	if (i == 1) return getInstance()->m_scoreTeam1 ;
+	else return getInstance()->m_scoreTeam2;
 }
 
 //singleton pattern

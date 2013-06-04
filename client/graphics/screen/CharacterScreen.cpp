@@ -129,6 +129,7 @@ namespace graphics {
 		}
 		((CharacterFrame*)origin)->setSelect(true);
 		m_playerSelected = ((CharacterFrame*)origin)->getPlayer();
+		game::CurrentCharacter::set(m_playerSelected);
 		viewChanged(m_statButton);
 		m_statButton->setSelected(true, true);
 		m_statButton->setEnable(true);
@@ -136,7 +137,7 @@ namespace graphics {
 		m_skillButton->setEnable(true);
 		m_launchButton->setSelected(false, true);
 		m_launchButton->setEnable(true);
-		game::CurrentCharacter::set(m_playerSelected);
+
 	}
 
 	void CharacterScreen::viewChanged(void* origin) {
@@ -188,6 +189,10 @@ namespace graphics {
 		}
 
 
+	}
+
+	Container* CharacterScreen::getMainFrame() {
+		return m_rightMainContainer;
 	}
 }
 

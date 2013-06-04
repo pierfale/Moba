@@ -10,6 +10,8 @@
 
 #include "Character.hpp"
 #include "../../../game/character/Player.hpp"
+#include "../../../game/game/CurrentSpell.hpp"
+#include "../../Cursor.hpp"
 
 namespace graphics {
 

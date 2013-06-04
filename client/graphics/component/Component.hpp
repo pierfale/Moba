@@ -42,6 +42,8 @@ namespace graphics {
 	   *
 	   */
 
+	class FocusFrame;
+
 	class Component {
 
 	public:
@@ -60,6 +62,8 @@ namespace graphics {
 		void setWidthCenter();
 		void setHeightCenter();
 		void setAbsolute(bool state);
+		void setFocusFrame(FocusFrame* frame);
+		void setSelectable(bool state);
 
 		virtual util::CoordInt getCoord();
 		virtual util::CoordInt getRealCoord();
@@ -85,6 +89,7 @@ namespace graphics {
 		int m_height;
 		Component* m_parent;
 		Window* m_window;
+		FocusFrame* m_focusFrame;
 
 		bool m_focus;
 		bool m_pressed;
@@ -92,9 +97,11 @@ namespace graphics {
 		bool m_visible;
 		bool m_enable;
 		bool m_absolute;
+		bool m_selectable;
 
 		bool m_widthCenter;
 		bool m_heightCenter;
+
 
 	};
 }

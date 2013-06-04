@@ -12,12 +12,15 @@
 #include "../GUIStyle.hpp"
 #include "../layout/LayoutInclude.hpp"
 
+#define CHAT_DEFAULT 0
+#define CHAT_FULLTEXTFIELD 1
+
 namespace graphics {
 
 	class Chat : public Container {
 
 	public:
-		Chat();
+		Chat(int type = CHAT_DEFAULT);
 		~Chat();
 		void setID(int id);
 		int getID();

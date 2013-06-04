@@ -21,26 +21,36 @@
 #include "../../layout/PassivLayout.hpp"
 #include "../../layout/VerticalLayout.hpp"
 #include "../../inheritedComponent/PlayerFrameInfo.h"
+#include "../../inheritedComponent/VirtualFrameMode.h"
+#include "../../inheritedComponent/FrameModePvp.h"
 #include "../../InheritedListener/MenuInGameButton.h"
 #include "../../layout/HorizontalLayout.hpp"
 #include "../../GUIStyle.hpp"
 #include "../../inheritedComponent/Chat.hpp"
+#include "../../../game/chat/ChatList.hpp"
+#include "MiniMap.hpp"
 
 namespace graphics {
 
 class CurrentCharacter;
+class Gameboard;
 
 class UserInterface : public Container {
 	public:
-		UserInterface(game::Player* player);
+		UserInterface(game::Player* player, std::string mapName, Gameboard* gameboard);
 		virtual ~UserInterface();
 
 		void draw(sf::RenderWindow* render);
+		void setMode();
+		void buildTeam();
 		void validate();
+
+		bool event(sf::Event* event, bool used);
 		void menu();
 		void quit();
 		void confirm();
 		void removeConfirm();
+		Chat* getChat();
 
 	private:
 		SpellBarr* m_spellBarr;
@@ -49,8 +59,11 @@ class UserInterface : public Container {
 		PlayerFrameInfo* m_player_frame_info;
 		PlayerFrameInfo* m_enemi_frame_info;
 		boost::ptr_vector<PlayerFrameInfo> m_team_mates;
-		bool m_boolMenu, m_gotTarget;
-		Chat m_chat;
+		bool m_boolMenu, m_gotTarget, m_loaded;
+		Chat* m_chat;
+		VirtualFrameMode* m_frame_mode;
+		game::Player* m_player;
+		MiniMap* m_minimap;
 	};
 
 } /* namespace graphics */

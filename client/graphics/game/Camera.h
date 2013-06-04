@@ -33,12 +33,21 @@ namespace graphics {
 
 		bool event(sf::Event* event, bool used, int* w, int* h);
 		void validate(int* gbW, int* gbH);
+		void move(bool horizontal, bool positif);
+		void endMove();
 
 	private:
 		int m_rate;
 		util::CoordInt m_coord;
 		int m_lmW, m_lmH;
 		boost::timer m_frame;
+		int nHorizontalFrame;
+		int nVerticalFrame;
+		int nLastHorizontalFrame;
+		int nLastVerticalFrame;
+
+		int m_width;
+		int m_height;
 	};
 
 } /* namespace graphics */

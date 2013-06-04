@@ -27,12 +27,16 @@
 #include "character/Player.hpp"
 #include "character/UserPlayer.hpp"
 #include "animation/Animation.hpp"
-#include "ui/UserInterface.h"
 #include "BufferDraw.hpp"
+#include "../../game/game/CurrentSpell.hpp"
+#include "../Cursor.hpp"
+#include "../inheritedComponent/Chat.hpp"
 
 #define SIZE_TILE 50
 
 namespace graphics {
+
+class UserInterface;
 
 	class Gameboard : public Container{
 	public:
@@ -52,6 +56,11 @@ namespace graphics {
 		//animation
 		static void addAnimation(Animation* animation);
 		static void removeAnimation(Animation* animation);
+
+		std::string getComponentName();
+		static std::string getName();
+		Chat* getChat();
+		Camera* getCamera();
 
 	private:
 		sf::Texture* m_texture;

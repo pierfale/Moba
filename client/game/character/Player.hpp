@@ -10,7 +10,6 @@
 
 #include "Character.hpp"
 #include "PlayerStat.hpp"
-#include "../spell/Spell.h"
 
 //Log
 #include "../../log/Log.hpp"
@@ -26,14 +25,15 @@ namespace game {
 		Player(int id, std::string name, int level);
 		PlayerStat* getStat();
 		int getLevel();
-		Spell* getSpell();
-		std::vector<int> getIDSpell();
+		int getDie();
+		int getFrag();
+
+		void incDie();
+		void incFrag();
 
 
 	private:
-		int m_level;
-		Spell* m_spell;
-		std::vector<int> m_idSpell;
+		int m_level, m_nb_die, m_nb_frag;
 	};
 }
 

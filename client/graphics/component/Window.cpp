@@ -19,6 +19,7 @@ namespace graphics {
 		m_root = new Container();
 		m_rootTmp = NULL;
 		m_framesCount = 0;
+		m_focus = true;
 	}
 
 	void Window::setContentPane(Container* pane) {
@@ -27,6 +28,10 @@ namespace graphics {
 
 	void Window::addCallFunction(boost::function<void()> function) {
 		m_callFunction.push_back(function);
+	}
+
+	void Window::addDrawFunction(boost::function<void(sf::RenderWindow*)> function) {
+		m_drawFunction.push_back(function);
 	}
 
 	void Window::checkNewContentPane() {
@@ -115,6 +120,7 @@ namespace graphics {
 
 	void Window::run() {
 		m_window = new sf::RenderWindow(sf::VideoMode(m_width, m_height), m_title);
+		Cursor::load(m_window);
 		GUIStyle::init();
 		setContentPane(ScreenManager::connection());
 		while (m_window->isOpen()) {
@@ -132,6 +138,10 @@ namespace graphics {
 				else if(event.type == sf::Event::TextEntered && event.text.unicode == 9) {
 					selectNext();
 				}
+				else if(event.type == sf::Event::GainedFocus)
+					m_focus = true;
+				else if(event.type == sf::Event::LostFocus)
+					m_focus = false;
 				else
 					m_root->event(&event, false);
 
@@ -142,6 +152,12 @@ namespace graphics {
 
 			m_window->clear(sf::Color::White);
 			m_root->draw(m_window);
+			 for (std::vector<boost::function<void(sf::RenderWindow*)> >::iterator it = m_drawFunction.begin() ; it != m_drawFunction.end(); ++it)
+				 (*it)(m_window);
+			 m_drawFunction.clear();
+
+			 Cursor::draw();
+
 			m_window->display();
 			if(m_frame.elapsed() < 1.0/(float)util::Cast::stringToInt(Config::get("maxfps")))
 				boost::this_thread::sleep(boost::posix_time::milliseconds((1.0/(float)util::Cast::stringToInt(Config::get("maxfps"))-m_frame.elapsed())*1000.0));
@@ -154,6 +170,10 @@ namespace graphics {
 			}
 		}
 
+	}
+
+	bool Window::isFocus() {
+		return m_focus;
 	}
 
 }

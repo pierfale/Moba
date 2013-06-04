@@ -21,6 +21,11 @@ namespace util {
 		return ss.str();
 	}
 
+	std::string Cast::floatToString(float n) {
+		std::stringstream ss;
+		ss << n;
+		return ss.str();
+	}
 
 	std::string Cast::ptrToString(void* ptr) {
 		std::stringstream ss;

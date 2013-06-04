@@ -13,6 +13,7 @@
 #include "Graphics.hpp"
 #include "Math.hpp"
 #include "PathFinding.h"
+#include "TagTree.hpp"
 
 
 #endif /* UTIL_HPP_ */

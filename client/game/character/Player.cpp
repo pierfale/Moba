@@ -9,27 +9,36 @@
 
 namespace game {
 
-	Player::Player(int id, std::string name, int level) : Character(id, name), m_level(level) {
-		 m_spell = new Spell(this);
-		 m_idSpell.push_back(1);m_idSpell.push_back(2);
-		 m_stat = new PlayerStat();
-	}
+Player::Player(int id, std::string name, int level) : Character(id, name), m_level(level), m_nb_die(0), m_nb_frag(0)  {
+	m_stat = new PlayerStat();
+}
 
-	PlayerStat* Player::getStat() {
-		return (PlayerStat*)m_stat;
-	}
+PlayerStat* Player::getStat() {
+	return (PlayerStat*)m_stat;
+}
 
-	int Player::getLevel() {
-		return m_level;
-	}
+int Player::getLevel() {
+	return m_level;
+}
 
-	Spell* Player::getSpell() {
-		return m_spell;
-	}
+void Player::incDie() {
+	std::cout << m_nb_die << std::endl;
+	m_nb_die++;
+	std::cout << m_nb_die << std::endl;
+}
 
-	std::vector<int> Player::getIDSpell() {
-		return m_idSpell;
-	}
+void Player::incFrag() {
+	m_nb_frag++;
+}
+
+int Player::getDie() {
+	return m_nb_die;
+}
+
+int Player::getFrag() {
+	return m_nb_frag;
+}
+
 }
 
 
