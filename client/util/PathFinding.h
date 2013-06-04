@@ -52,6 +52,7 @@ private:
 	static void initMap(CoordInt start, struct node *map, int height, int width);
 	static float distance(CoordInt from, CoordInt to);
 	static struct PathFinding::node* findLowestCost(node *map, int height, int width);
+	static bool mustBypass(CoordInt &cur, CoordInt &voisinToByPass);
 
 };
 
