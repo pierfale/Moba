@@ -44,7 +44,7 @@ void FrameEndGame::drawHeader(sf::RenderWindow* render) {
 
 	sf::Sprite sprite;
 	sprite.setTexture(*m_texture_background);
-	sprite.setScale(3.0, 1.0);
+	sprite.setScale(3.21, 1.0);
 	sprite.setPosition(5,5);
 	render->draw(sprite);
 
@@ -64,38 +64,42 @@ void FrameEndGame::drawHeader(sf::RenderWindow* render) {
 	render->draw(label);
 
 	label.setString("LvL");
-	label.setPosition(115,20);
+	label.setPosition(145,20);
 	render->draw(label);
 
 	sprite.setTexture(*m_texture_icon);
 
 	sprite.setTextureRect(sf::IntRect(0,0,25,25));
-	sprite.setPosition(165,15);
+	sprite.setPosition(195,15);
 	render->draw(sprite);
 
 	sprite.setTextureRect(sf::IntRect(0,25,25,25));
-	sprite.setPosition(215,15);
+	sprite.setPosition(245,15);
 	render->draw(sprite);
 
 	sprite.setTextureRect(sf::IntRect(175,0,25,25));
-	sprite.setPosition(265,15);
+	sprite.setPosition(295,15);
 	render->draw(sprite);
 
 	if (game::GameboardModel::getIdMode() != 2)
 		sprite.setColor(sf::Color(10,10,10));
 
 	sprite.setTextureRect(sf::IntRect(25,25,25,25));
-	sprite.setPosition(315,15);
+	sprite.setPosition(345,15);
 	render->draw(sprite);
 
 	sprite.setTextureRect(sf::IntRect(50,25,25,25));
-	sprite.setPosition(365,15);
+	sprite.setPosition(395,15);
 	render->draw(sprite);
 
 }
-
 void FrameEndGame::drawPlayerInfo(sf::RenderWindow* render, game::Player* player, int index) {
 	sf::Sprite sprite;
+	int team;
+	if (player->getFaction() == 15) //TODO use the PacketType
+		team = 1 ;
+	else
+		team = 2;
 
 	if (player->getFaction() == game::CurrentCharacter::get()->getFaction())
 		sprite.setColor(sf::Color(0,255,0));
@@ -103,7 +107,7 @@ void FrameEndGame::drawPlayerInfo(sf::RenderWindow* render, game::Player* player
 		sprite.setColor(sf::Color(255,0,0));
 
 	sprite.setTexture(*m_texture_background);
-	sprite.setScale(3.0, 1.0);
+	sprite.setScale(3.21, 1.0);
 	sprite.setPosition(5,5+index*49);
 	render->draw(sprite);
 
@@ -115,7 +119,8 @@ void FrameEndGame::drawPlayerInfo(sf::RenderWindow* render, game::Player* player
 	label.setCharacterSize(13);
 	label.setColor(sf::Color::White);
 
-	label.setString(util::Cast::intToString(player->getFaction()));
+
+	label.setString(util::Cast::intToString(team));
 	label.setPosition(15,20+index*49);
 	render->draw(label);
 
@@ -124,33 +129,33 @@ void FrameEndGame::drawPlayerInfo(sf::RenderWindow* render, game::Player* player
 	render->draw(label);
 
 	label.setString(util::Cast::intToString(player->getLevel()));
-	label.setPosition(115,20+index*49);
+	label.setPosition(145,20+index*49);
 	render->draw(label);
 
 	//Frags
 	label.setString(util::Cast::intToString(player->getFrag()));
-	label.setPosition(165,15+index*49);
+	label.setPosition(205,15+index*49);
 	render->draw(label);
 
 	//Die
 	label.setString(util::Cast::intToString(player->getDie()));
-	label.setPosition(215,15+index*49);
+	label.setPosition(255,15+index*49);
 	render->draw(label);
 
 	//Gold
 	label.setString(util::Cast::intToString(0));
-	label.setPosition(265,15+index*49);
+	label.setPosition(305,15+index*49);
 	render->draw(label);
 
 	if (game::GameboardModel::getIdMode() != 2)
 		sprite.setColor(sf::Color(10,10,10));
 
 	sprite.setTextureRect(sf::IntRect(25,25,25,25));
-	sprite.setPosition(315,15+index*49);
+	sprite.setPosition(345,15+index*49);
 	render->draw(sprite);
 
 	sprite.setTextureRect(sf::IntRect(50,25,25,25));
-	sprite.setPosition(365,15+index*49);
+	sprite.setPosition(395,15+index*49);
 	render->draw(sprite);
 }
 

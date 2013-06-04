@@ -32,6 +32,7 @@
 #include "../Cursor.hpp"
 #include "../inheritedComponent/Chat.hpp"
 
+
 #define SIZE_TILE 50
 
 namespace graphics {
@@ -69,6 +70,8 @@ class UserInterface;
 		UserInterface* m_interface;
 		static boost::ptr_vector<Animation> m_animations;
 		BufferDraw m_bufferY;
+
+		bool m_loaded;
 	};
 
 } /* namespace graphics */

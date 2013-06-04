@@ -14,7 +14,7 @@ EndScreenListner_Button::EndScreenListner_Button() {}
 EndScreenListner_Button::~EndScreenListner_Button() {}
 
 void EndScreenListner_Button::pressed(void* origin) {
-	graphics::Graphics::getWindow()->setContentPane(graphics::ScreenManager::character());
+	graphics::Graphics::getWindow()->setContentPane(ScreenManager::character());
 }
 
 } /* namespace graphics */

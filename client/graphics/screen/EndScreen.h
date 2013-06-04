@@ -10,10 +10,14 @@
 
 #include "../component/Container.hpp"
 #include "../inheritedComponent/FrameEndGame.h"
+#include "../inheritedComponent/Chat.hpp"
+#include "../inheritedComponent/FrameExp.h"
 #include "../component/Button.hpp"
 #include "../inheritedListener/EndScreenListnerButton.h"
+#include "../layout/VerticalLayout.hpp"
+#include "../layout/SplitFixedLayout.hpp"
 #include "../GUIStyle.hpp"
-#include "../inheritedComponent/Chat.hpp"
+#include "../../game/chat/ChatList.hpp"
 
 namespace graphics {
 
@@ -21,14 +25,18 @@ class EndScreen  : public Container {
 
 public:
 	EndScreen();
-	virtual ~EndScreen();
+	Chat* getChat();
+	~EndScreen();
 	void load();
 	std::string getComponentName();
 	static std::string getName();
-	Chat* getChat();
+
 private:
+	Container m_leftContainer, m_rightContainer, m_buttonContainer, m_rightBottomContainer, m_containerExp;
 	FrameEndGame* m_frame;
+	FrameExp* m_exp;
 	Button* m_returnButton;
+	Chat* m_chat;
 };
 
 } /* namespace graphics */

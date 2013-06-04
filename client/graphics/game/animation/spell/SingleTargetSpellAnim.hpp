@@ -20,6 +20,7 @@ namespace graphics {
 		static SingleTargetSpellAnim* process(int idSpell, game::Character* caster, game::Character* target);
 
 	protected:
+
 		game::Character* m_caster;
 		game::Character* m_target;
 	};

@@ -62,7 +62,7 @@ void PlayerFrameInfo::drawGauge(sf::RenderWindow* render) {
 	name.setColor(sf::Color::White);
 	name.setCharacterSize(13);
 	name.setFont(m_font);
-	name.setPosition((m_coord.x+((140*m_scale)-name.getGlobalBounds().width))/2,m_coord.y);
+	name.setPosition(m_coord.x+((140*m_scale)-name.getGlobalBounds().width)/2,m_coord.y);
 	name.setScale(m_scale, m_scale);
 	render->draw(name);
 

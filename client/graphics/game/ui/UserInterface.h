@@ -30,10 +30,12 @@
 #include "../../../game/chat/ChatList.hpp"
 #include "MiniMap.hpp"
 
+
 namespace graphics {
 
 class CurrentCharacter;
 class Gameboard;
+
 
 class UserInterface : public Container {
 	public:
@@ -64,6 +66,7 @@ class UserInterface : public Container {
 		VirtualFrameMode* m_frame_mode;
 		game::Player* m_player;
 		MiniMap* m_minimap;
+
 	};
 
 } /* namespace graphics */

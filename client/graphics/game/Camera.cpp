@@ -12,6 +12,7 @@ namespace graphics {
 	Camera::Camera() : m_rate(10), m_coord(0,0), m_lmW(0), m_lmH(0), nHorizontalFrame(0), nVerticalFrame(0), nLastHorizontalFrame(0), nLastVerticalFrame(0) {}
 	Camera::Camera(int x, int y) : m_rate(10), m_coord(x,y) , m_lmW(0), m_lmH(0), nHorizontalFrame(0), nVerticalFrame(0), nLastHorizontalFrame(0), nLastVerticalFrame(0) {}
 	Camera::Camera(util::CoordInt &copy) : m_rate(10),m_coord(copy), m_lmW(0), m_lmH(0), nHorizontalFrame(0), nVerticalFrame(0), nLastHorizontalFrame(0), nLastVerticalFrame(0) {}
+
 	Camera::~Camera() {}
 
 	util::CoordInt Camera::getCoord() { return m_coord; }

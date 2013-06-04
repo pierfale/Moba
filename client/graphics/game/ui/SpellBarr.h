@@ -22,6 +22,7 @@
 #include "../../Cursor.hpp"
 
 namespace graphics {
+
 	class SpellBarr : public Container{
 	public:
 		SpellBarr(game::Player* player);

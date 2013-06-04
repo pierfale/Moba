@@ -40,9 +40,9 @@ namespace network {
 		}
 		else if(packet.getType() == PacketType::SESSION_ANSWERCHARACTER) {
 			std::string name;
-			int id, level;
-			packet >> &id >> &name >> &level;
-			if(game::PlayerList::add(new game::Player(id, name, level))) {
+			int id, level, exp;
+			packet >> &id >> &name >> &level >> &exp;
+			if(game::PlayerList::add(new game::Player(id, name, level, exp))) {
 				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::CharacterScreen::getName())
 					((graphics::CharacterScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshCharacter();
 			}
@@ -66,17 +66,16 @@ namespace network {
 			}
 		}
 		else if(packet.getType() == PacketType::SESSION_PLAYERJOINGAME) {
-				int id, level, team;
+				int id, level, team, exp;
 				std::string name;
-				packet >> &id >> &name >> &level >> &team;
+				packet >> &id >> &name >> &level >> &exp >>&team;
 				game::Player* player = NULL;
 				if (id == game::CurrentCharacter::get()->getID()) {
 					player = game::CurrentCharacter::get();
 					player->setFaction(static_cast<PacketType::PacketContents>(team));
 				}
-				player = new game::Player(id , name, level);
+				player = new game::Player(id , name, level, exp);
 				player->setFaction(static_cast<PacketType::PacketContents>(team));
-				std::cout << "--->" << id << ":" << name << ":" << level << ":" << team << std::endl;
 				game::GamePlayerList::add(player);
 				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName())
 					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->refreshPlayer();

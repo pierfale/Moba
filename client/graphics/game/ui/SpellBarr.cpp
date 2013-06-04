@@ -34,6 +34,7 @@ namespace graphics {
 		if(m_buttonSpells.find((ButtonImage*)origin) != m_buttonSpells.end()) {
 			Cursor::set(CURSOR_GAMEFOCUS);
 			game::CurrentSpell::set(m_buttonSpells[(ButtonImage*)origin]);
+
 		}
 
 	}

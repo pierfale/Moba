@@ -137,10 +137,10 @@ namespace graphics {
 		m_skillButton->setEnable(true);
 		m_launchButton->setSelected(false, true);
 		m_launchButton->setEnable(true);
-
 	}
 
 	void CharacterScreen::viewChanged(void* origin) {
+		std::cout << "VIEW CHANGE" << std::endl;
 		if(m_playerSelected != NULL && origin == m_statButton) {
 			Container* tmp = new CharacterInfo(m_playerSelected);
 			m_rightContainer->replace(m_rightMainContainer, tmp);
@@ -187,7 +187,6 @@ namespace graphics {
 			}
 			cf->addListener(new CharacterScreen_CharacterButton(this));
 		}
-
 
 	}
 

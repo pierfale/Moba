@@ -23,5 +23,6 @@
 /Doc
 /Debug
 .settings/
+.project
 .cproject
 /Doc

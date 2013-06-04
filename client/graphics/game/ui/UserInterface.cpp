@@ -7,11 +7,13 @@
 
 #include "UserInterface.h"
 #include "../../../game/menu/CurrentCharacter.hpp"
+
 #include "../Gameboard.h"
 
 namespace graphics {
 
 UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboard* gameboard) : m_boolMenu(false) , m_gotTarget(false), m_loaded(false){
+
 	m_player = player;
 	m_frame_mode = NULL;
 	setLayout(new PassivLayout());
@@ -51,6 +53,7 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 			add(&m_team_mates.at(i));
 		}
 	}
+
 	m_chat = new Chat(CHAT_FULLTEXTFIELD);
 	m_chat->setSize(300,200);
 	m_chat->validate();
@@ -63,16 +66,17 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 }
 
 UserInterface::~UserInterface() {
-//	delete m_button_quit;
-//	delete m_button_no;
-//	delete m_button_yes;
-//	delete m_player_frame_info;
-//	delete m_enemi_frame_info;
-//	delete m_frame_mode;
-//	delete m_confirm;
-//	delete m_menu;
-	//delete m_spellBarr;
+	delete m_button_quit;
+	delete m_button_no;
+	delete m_button_yes;
+	delete m_player_frame_info;
+	delete m_enemi_frame_info;
+	delete m_frame_mode;
+	delete m_confirm;
+	delete m_menu;
+	delete m_chat;
 }
+
 
 void UserInterface::buildTeam() {
 	for (int i = 0 ; i < game::GamePlayerList::size() ; ++i) {
@@ -151,5 +155,4 @@ bool UserInterface::event(sf::Event* event, bool used) {
 Chat* UserInterface::getChat() {
 	return m_chat;
 }
-
 } /* namespace graphics */

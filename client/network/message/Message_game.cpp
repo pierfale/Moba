@@ -120,11 +120,8 @@ void Message_game::process(Packet packet) {
 		else
 			target = game::GamePlayerList::getByID(targetID);
 
-		if(caster != NULL && target != NULL) {
-			graphics::SingleTargetSpellAnim* anim = graphics::SingleTargetSpellAnim::process(id, caster, target);
-			if(anim != NULL)
-				graphics::Gameboard::addAnimation(anim);
-		}
+		if(caster != NULL && target != NULL)
+			graphics::Gameboard::addAnimation(new graphics::AutoAttackAnim(caster, target));
 	}
 	else if(packet.getType() == PacketType::GAME_ANSWERTARGET) {
 		int id;
@@ -151,18 +148,34 @@ void Message_game::process(Packet packet) {
 		}
 	}
 	else if (packet.getType() == PacketType::GAME_END) {
+		int expTeam1, expTeam2;
+		packet >> &expTeam1 >> &expTeam2;
+		if (game::CurrentCharacter::get()->getFaction() == PacketType::FACTION_TEAM1)
+			game::CurrentCharacter::get()->setExpEarned(expTeam1);
+		else
+			game::CurrentCharacter::get()->setExpEarned(expTeam2);
 		graphics::Graphics::getWindow()->setContentPane(graphics::ScreenManager::endScreen());
 	}
 	else if (packet.getType() == PacketType::GAME_SCORE_UPGRADE) {
-		int scoreTeam1, scoreTeam2, idDieClient;
-		packet >> &scoreTeam1 >> &scoreTeam2 >> &idDieClient;
+		int scoreTeam1, scoreTeam2, idDieClient, idKillerClient;
+		packet >> &scoreTeam1 >> &scoreTeam2 >> &idDieClient >> &idKillerClient;
+
 		game::Player* p = NULL;
+
 		if(idDieClient == game::CurrentCharacter::get()->getID())
 			p = game::CurrentCharacter::get();
 		else
 			p = game::GamePlayerList::getByID(idDieClient);
 		if (p != NULL )
 			p->incDie();
+
+		if(idKillerClient == game::CurrentCharacter::get()->getID())
+			p = game::CurrentCharacter::get();
+		else
+			p = game::GamePlayerList::getByID(idKillerClient);
+		if (p != NULL )
+			p->incFrag();
+
 		game::GameboardModel::setScore(scoreTeam1, scoreTeam2);
 	}
 }

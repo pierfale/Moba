@@ -9,7 +9,6 @@
 #define MATH_HPP_
 
 #include <cmath>
-#include <iostream>
 #include "Coordinates.hpp"
 
 namespace util {

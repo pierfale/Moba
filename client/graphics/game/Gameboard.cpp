@@ -25,8 +25,16 @@ namespace graphics {
 		for(int i=0; i<game::GamePlayerList::size(); i++) {
 			m_players.push_back(new Player(game::GamePlayerList::get(i)));
 		}
+
 		m_players.push_back(m_userPlayer);
+
 		m_cam.setLandMark(game::GameboardModel::getWidth(), game::GameboardModel::getHeight());
+
+		if (game::CurrentCharacter::get()->getFaction() == network::PacketType::FACTION_TEAM1)
+			m_cam.setCoord(util::CoordInt(5,5));
+		else
+			m_cam.setCoord(util::CoordInt(1100,1100));
+
 		m_interface = new UserInterface(game::CurrentCharacter::get(), "ressources/game/Battleground", this);
 		add(m_interface);
 	}
@@ -40,6 +48,12 @@ namespace graphics {
 
 	//graphics manage
 	void Gameboard::draw(sf::RenderWindow* render) {
+		if (!m_loaded) {
+				m_interface->buildTeam();
+				m_interface->setMode();
+				m_loaded = true;
+		}
+
 		//update character
 		for(unsigned int i=0; i<m_players.size(); i++) {
 			m_players.at(i).update();
@@ -117,7 +131,6 @@ namespace graphics {
 		used = m_interface->event(event, used);
 		for(unsigned int i=0; i<m_players.size(); i++)
 			used = m_players.at(i).event(event, &m_cam, used);
-
 		if(!used && event->type == sf::Event::MouseButtonPressed && event->mouseButton.button == sf::Mouse::Left) {
 			used = true;
 			network::Packet packet(network::Network::getSocket(), network::PacketType::GAME_ASKTARGET);
@@ -130,6 +143,7 @@ namespace graphics {
 			Cursor::set(CURSOR_GAMENORMAL);
 			game::CurrentSpell::set(NULL);
 		}
+
 		return used;
 	}
 
@@ -178,6 +192,7 @@ namespace graphics {
 
 	Camera* Gameboard::getCamera() {
 		return &m_cam;
+
 	}
 
 } /* namespace graphics */

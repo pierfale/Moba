@@ -155,7 +155,6 @@ namespace graphics {
 			 for (std::vector<boost::function<void(sf::RenderWindow*)> >::iterator it = m_drawFunction.begin() ; it != m_drawFunction.end(); ++it)
 				 (*it)(m_window);
 			 m_drawFunction.clear();
-
 			 Cursor::draw();
 
 			m_window->display();
