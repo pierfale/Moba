@@ -22,7 +22,7 @@ EndScreen::EndScreen() {
 EndScreen::~EndScreen() {
 
 	delete m_returnButton;
-	delete m_frame;
+//	delete m_frame;
 	delete m_exp;
 	delete m_chat;
 }

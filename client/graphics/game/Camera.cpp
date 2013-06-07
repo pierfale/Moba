@@ -86,6 +86,7 @@ namespace graphics {
 	void Camera::move(bool horizontal, bool positif) {
 		if(horizontal) {
 			int horizon = nLastHorizontalFrame < 10 ? nLastHorizontalFrame : 9;
+
 			if(positif) {
 				m_coord.x += 2+horizon;
 				if(m_coord.x >= (m_lmW*50)-(m_width))

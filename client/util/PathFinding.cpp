@@ -4,7 +4,7 @@
  *  Created on: 29 avr. 2013
  *      Author: Béni
  */
-
+#include <cmath>
 #include "PathFinding.h"
 #include "../game/game/GameboardModel.h"
 
@@ -120,11 +120,29 @@ std::vector<CoordInt> PathFinding::getNeighbors(CoordInt cur){
 	/* Conserve uniquement les voisins se trouvant dans la map et étant passables */
 	for(unsigned int i = 0; i < tmp.size(); i++){
 		CoordInt v = tmp.at(i);
-		if(!outOfMap(v) && game::GameboardModel::getGameboard(0)[v.x][v.y]->getPassable())
+		if(!outOfMap(v) && game::GameboardModel::getGameboard(0)[v.x][v.y]->getPassable() && !mustBypass(cur, v))
 			voisins.push_back(tmp.at(i));
 	}
 
 	return voisins;
+}
+
+bool PathFinding::mustBypass(CoordInt &cur, CoordInt &voisinToByPass){
+	if(cur.x == voisinToByPass.x || cur.y == voisinToByPass.y)
+		return false;
+
+	int diffX = voisinToByPass.x - cur.x;
+	int diffY = voisinToByPass.y - cur.y;
+
+	// Les coordonnées en argument ne sont pas voisines
+	if(std::abs(diffX) > 1 || std::abs(diffY) > 1)
+		return false;
+
+	game::Case*** gameBoardModel = game::GameboardModel::getGameboard(0);
+	if(!gameBoardModel[cur.x + diffX][cur.y]->getPassable() || !gameBoardModel[cur.x][cur.y + diffY]->getPassable())
+		return true;
+
+	return false;
 }
 
 /* Assume que from et to sont voisins */
@@ -140,8 +158,8 @@ bool PathFinding::outOfMap(CoordInt coord){
 }
 
 void PathFinding::printPath(std::vector<CoordInt> path) {
-	for(int i=0; i<15; i++) {
-		for(int j=0; j<15; j++) {
+	for(int i=0; i<game::GameboardModel::getHeight(); i++) {
+		for(int j=0; j<game::GameboardModel::getWidth(); j++) {
 			bool find = false;
 			for(unsigned int k=0; k<path.size(); k++){
 				if(path.at(k) == util::CoordInt(j,i))
