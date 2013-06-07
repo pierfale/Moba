@@ -15,6 +15,7 @@
 #include "../../graphics/game/Gameboard.h"
 #include "../../graphics/game/animation/spell/SingleTargetSpellAnim.hpp"
 #include "../../graphics/game/animation/spell/SingleTargetSpellImpl.hpp"
+#include "../../graphics/game/animation/LifeLoseAnim.hpp"
 
 #include "../../game/character/Player.hpp"
 #include "../../game/menu/PlayerList.hpp"

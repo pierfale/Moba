@@ -7,6 +7,7 @@
 
 #include "SingleTargetSpellAnim.hpp"
 #include "SingleTargetSpellImpl.hpp"
+#include "ShotImpl.hpp"
 
 namespace graphics {
 
@@ -20,10 +21,11 @@ namespace graphics {
 			case 1:
 				return new AutoAttackAnim(caster, target);
 			case 2:
+				return new ArrowAnim(caster, target);
+			case 10:
 				return new AutoAttackAnim(caster, target);
-			case 3:
-				return new FireballAnim(caster, target);
-
+			case 11:
+				return new FireBallAnim(caster, target);
 		}
 		return NULL;
 	}

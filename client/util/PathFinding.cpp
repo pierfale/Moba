@@ -10,76 +10,13 @@
 
 namespace util {
 
-//pathfinding
-/*
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
-
-	//GameboardModel == toute la carte
-	bool outOfMap = !(start.x >= 0 && start.x < game::GameboardModel::getWidth() &&
-			start.y >= 0 && start.y < game::GameboardModel::getHeight()) ||
-					!(goal.x >= 0 && goal.x < game::GameboardModel::getWidth() &&
-							goal.y >= 0 && goal.y < game::GameboardModel::getHeight());
-
-	if(outOfMap) {
-		log_err "invalide coordinates : start "+start.toString()+", goal "+goal.toString() end_log_err;
+	if(outOfMap(goal) || !game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()) {
 		std::vector<CoordInt> r;
 		return r;
 	}
 
-	//check si case bloquante
 
-	//cout diagonale = 1/0.7
-	if(!game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()) {
-		std::vector<CoordInt> r;
-		return r;
-	}
-	std::cout << start.toString() << '-' << goal.toString() << std::endl;
-	std::queue<CoordInt> vector;
-
-	std::map<CoordInt, CoordInt> parent;
-	parent[start] = start;
-	CoordInt curr = start;
-	int counter = 0;
-	boost::timer t;
-	while(curr != goal) {
-		std::vector<CoordInt> tmp;
-		for(int i=-1; i<2; i++) {
-			for(int j=-1; j<2; j++) {
-				if(curr.x+i >= 0 && curr.x+i < game::GameboardModel::getWidth() &&
-						curr.y+j >= 0 && curr.y+j < game::GameboardModel::getHeight() &&
-						game::GameboardModel::getGameboard(0)[curr.x+i][curr.y+j]->getPassable()) {
-					bool ok = true;
-					if(ok) {
-						counter++;
-						CoordInt coord(curr.x+i, curr.y+j);
-						if(parent.find(coord) == parent.end()) {
-							tmp.push_back(coord);
-							parent[coord] = curr;
-						}
-					}
-				}
-			}
-		}
-		for(unsigned int i=0; i<tmp.size(); i++) {
-			vector.push(tmp.at(i));
-		}
-		curr = vector.front();
-		vector.pop();
-	}
-	std::cout << "COUNTER : " << counter << std::endl;
-	std::cout << "TIMER : " << t.elapsed() << std::endl;
-	std::vector<CoordInt> path;
-	while(parent[curr] != curr) {
-		path.push_back(curr);
-		curr = parent[curr];
-	}
-	std::vector<CoordInt> r = checkDirection(path);
-	if(r.size() == 0)
-		r.push_back(goal);
-	return r;
-}*/
-
-std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 	int width = game::GameboardModel::getWidth();
 	int height = game::GameboardModel::getHeight();
 	struct node map[height * width];

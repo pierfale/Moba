@@ -84,11 +84,8 @@ namespace graphics {
 	}
 
 	void Camera::move(bool horizontal, bool positif) {
-		std::cout << "nLastHorizontalFrame : " << nLastHorizontalFrame << ", nLastVerticalFrame : " << nLastVerticalFrame << std::endl;
 		if(horizontal) {
 			int horizon = nLastHorizontalFrame < 10 ? nLastHorizontalFrame : 9;
-
-			std::cout << m_coord.x << ":" << m_lmW << ":" << m_width << std::endl;
 			if(positif) {
 				m_coord.x += 2+horizon;
 				if(m_coord.x >= (m_lmW*50)-(m_width))

@@ -17,11 +17,9 @@ namespace graphics {
 		m_scroll = new ScrollBar(GUIStyle::scrollbar());
 		this->add(m_scroll);
 
-		m_labelStyle = new BasicStyle();
-		m_label = new Label("", m_labelStyle);
-		m_label->setVAlign(Label::valignTop);
-		m_label->setMinimalSize();
-		m_scroll->setContentPane(m_label);
+		m_stringContainer = new Container();
+		m_stringContainer->setLayout(new VerticalFixedLayout(VerticalFixedLayout::fixed, VerticalFixedLayout::full));
+		m_scroll->setContentPane(m_stringContainer);
 
 		m_botContainer = new Container();
 		this->add(m_botContainer);
@@ -48,8 +46,7 @@ namespace graphics {
 
 	Chat::~Chat() {
 		delete m_scroll;
-		delete m_labelStyle;
-		delete m_label;
+		delete m_stringContainer;
 		delete m_botContainer;
 		delete m_textField;
 		if(m_button != NULL)
@@ -76,8 +73,11 @@ namespace graphics {
 	}
 
 	void Chat::receive(std::string message) {
-		m_label->setText(m_label->getText()+message+'\n');
-		m_label->setMinimalSize();
+		m_string.push_back(new String(message));
+		m_stringContainer->add(&m_string.at(m_string.size()-1));
+		int w = m_stringContainer->getWidth();
+		int h = m_stringContainer->getHeight()+m_string.at(m_string.size()-1).getHeight();
+		m_stringContainer->setSize(w, h);
 		m_scroll->setScrollDown();
 	}
 
