@@ -26,3 +26,9 @@
 .project
 .cproject
 /Doc
+
+#Latex files
+*.aux
+*.idx
+*.pdf
+*.toc
