@@ -90,13 +90,16 @@ namespace graphics {
 		m_interface->draw(render);
 
 		m_bufferY.clear();
+
+		if(m_messageTimer.elapsed() < 3.0)
+			render->draw(m_message);
 	}
 
 	void Gameboard::drawGameboard(sf::RenderWindow* render, game::Case*** gameboard){
 		//Check mouse move camera
 		if(m_window->isFocus()) {
 			util::CoordInt mouse = util::CoordInt(sf::Mouse::getPosition(*render).x, sf::Mouse::getPosition(*render).y);
-			int borderSize = 50;
+			int borderSize = 30;
 			if(mouse.x < borderSize && mouse.x >= 0)
 				m_cam.move(true, false);
 			if(mouse.x > render->getSize().x-borderSize && mouse.x <= render->getSize().x)
@@ -194,6 +197,13 @@ namespace graphics {
 	Camera* Gameboard::getCamera() {
 		return &m_cam;
 
+	}
+
+	void Gameboard::setMessage(std::string message) {
+		m_message.setString(message);
+		m_message.setCharacterSize(20);
+		m_message.setPosition((m_width-m_message.getGlobalBounds().width)/2, m_height-150);
+		m_messageTimer.restart();
 	}
 
 } /* namespace graphics */

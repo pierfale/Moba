@@ -122,8 +122,11 @@ void Message_game::process(Packet packet) {
 		else
 			target = game::GamePlayerList::getByID(targetID);
 
-		if(caster != NULL && target != NULL)
-			graphics::Gameboard::addAnimation(new graphics::AutoAttackAnim(caster, target));
+		if(caster != NULL && target != NULL) {
+			graphics::SingleTargetSpellAnim* anim =  graphics::SingleTargetSpellAnim::process(id, caster, target);
+			if(anim != NULL)
+				graphics::Gameboard::addAnimation(anim);
+		}
 	}
 	else if(packet.getType() == PacketType::GAME_ANSWERTARGET) {
 		int id;
@@ -179,6 +182,38 @@ void Message_game::process(Packet packet) {
 			p->incFrag();
 
 		game::GameboardModel::setScore(scoreTeam1, scoreTeam2);
+	}
+	else if (packet.getType() == PacketType::GAME_DOPHYSICALDAMAGE) {
+		int n, id;
+		packet >> &n >> &id;
+
+		game::Player* p = NULL;
+		if(id == game::CurrentCharacter::get()->getID())
+			p = game::CurrentCharacter::get();
+		else
+			p = game::GamePlayerList::getByID(id);
+		if (p != NULL)
+			graphics::Gameboard::addAnimation(new graphics::LifeLoseAnim(true, n, p));
+	}
+	else if (packet.getType() == PacketType::GAME_DOMAGICALDAMAGE) {
+		int n, id;
+		packet >> &n >> &id;
+
+		game::Player* p = NULL;
+		if(id == game::CurrentCharacter::get()->getID())
+			p = game::CurrentCharacter::get();
+		else
+			p = game::GamePlayerList::getByID(id);
+		if (p != NULL)
+			graphics::Gameboard::addAnimation(new graphics::LifeLoseAnim(false, n, p));
+	}
+	else if (packet.getType() == PacketType::GAME_SETMESSAGE) {
+		std::string message;
+		packet >> &message;
+		if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::Gameboard::getName()) {
+			((graphics::Gameboard*)graphics::Graphics::getWindow()->getContentPane())->setMessage(message);
+		}
+
 	}
 }
 }

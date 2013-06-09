@@ -131,6 +131,9 @@ namespace graphics {
 				else if(s.length() == 3 && s.substr(1, 1) == "i") {
 					style->setItalic(true);
 				}
+				else if(s.length() > 7 && s.substr(1, 5) == "size=") {
+					style->setSize(util::Cast::stringToInt(s.substr(6, s.size()-2)));
+				}
 			}
 			return BALISE_OPEN;
 		}
@@ -190,7 +193,7 @@ namespace graphics {
 			maxWidth = currX;
 
 		m_width = maxWidth;
-		m_height = currY+maxHeightLine;
+		m_height = currY+maxHeightLine+3;
 	}
 
 	void String::draw(sf::RenderWindow* render) {

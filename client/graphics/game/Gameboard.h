@@ -63,6 +63,8 @@ class UserInterface;
 		Chat* getChat();
 		Camera* getCamera();
 
+		void setMessage(std::string message);
+
 	private:
 		sf::Texture* m_texture;
 		static Camera m_cam;
@@ -72,6 +74,8 @@ class UserInterface;
 		BufferDraw m_bufferY;
 
 		bool m_loaded;
+		sf::Text m_message;
+		boost::timer m_messageTimer;
 	};
 
 } /* namespace graphics */

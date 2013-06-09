@@ -8,6 +8,7 @@
 #ifndef CHAT_HPP_
 #define CHAT_HPP_
 
+#include <boost/ptr_container/ptr_vector.hpp>
 #include "../component/ComponentInclude.hpp"
 #include "../GUIStyle.hpp"
 #include "../layout/LayoutInclude.hpp"
@@ -29,9 +30,9 @@ namespace graphics {
 
 	private:
 		int m_id;
-		BasicStyle* m_labelStyle;
 		ScrollBar* m_scroll;
-		Label* m_label;
+		boost::ptr_vector<String> m_string;
+		Container* m_stringContainer;
 		Container* m_botContainer;
 		TextField* m_textField;
 		Button* m_button;
