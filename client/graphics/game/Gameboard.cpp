@@ -14,9 +14,11 @@ namespace graphics {
 	 boost::ptr_vector<Animation> Gameboard::m_animations;
 
 	//standard
-	Gameboard::Gameboard() : Container() {
-		m_texture = ImageLoader::get("ressources/game/Tiles.png");
+	Gameboard::Gameboard(std::string map) : Container(), m_loaded(false) {
 
+		game::GameboardModel::read(map);
+
+		m_texture = ImageLoader::get("ressources/game/Tiles.png");
 
 		Cursor::set(CURSOR_GAMENORMAL);
 		UserPlayer* m_userPlayer = new UserPlayer(game::CurrentCharacter::get());
@@ -154,7 +156,6 @@ namespace graphics {
 		ImageLoader::get("ressources/game/Tiles.png");
 		ImageLoader::get("ressources/game/1.png");
 		ImageLoader::get("ressources/game/animSword.png");
-		game::GameboardModel::read("ressources/game/Battleground");
 	}
 
 	util::CoordInt Gameboard::convertCoord(util::CoordInt coord) {

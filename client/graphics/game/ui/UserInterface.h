@@ -24,6 +24,7 @@
 #include "../../inheritedComponent/VirtualFrameMode.h"
 #include "../../inheritedComponent/FrameModePvp.h"
 #include "../../InheritedListener/MenuInGameButton.h"
+#include "../../inheritedComponent/FrameCaract.h"
 #include "../../layout/HorizontalLayout.hpp"
 #include "../../GUIStyle.hpp"
 #include "../../inheritedComponent/Chat.hpp"
@@ -60,6 +61,7 @@ class UserInterface : public Container {
 		Button* m_button_quit,* m_button_yes,* m_button_no;
 		PlayerFrameInfo* m_player_frame_info;
 		PlayerFrameInfo* m_enemi_frame_info;
+		FrameCaract* m_player_frame_caract;
 		boost::ptr_vector<PlayerFrameInfo> m_team_mates;
 		bool m_boolMenu, m_gotTarget, m_loaded;
 		Chat* m_chat;

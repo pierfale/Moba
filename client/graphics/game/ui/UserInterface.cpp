@@ -18,6 +18,7 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 	m_frame_mode = NULL;
 	setLayout(new PassivLayout());
 
+
 	m_spellBarr = new SpellBarr(player);
 	add(m_spellBarr);
 
@@ -25,6 +26,9 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 	m_player_frame_info->setCoord(util::CoordInt(15,15));
 	m_enemi_frame_info = new PlayerFrameInfo();
 	m_enemi_frame_info->setCoord(util::CoordInt(175,15));
+	m_player_frame_caract = new FrameCaract(player);
+	add(m_player_frame_caract);
+	m_player_frame_caract->setCoord(util::CoordInt(660,356)); //parent.w - 140 ; parent.h - 236
 	add(m_player_frame_info);
 
 	m_menu = new InnerWindow("Menu",120,140, GUIStyle::innerwindow());
@@ -128,6 +132,7 @@ void UserInterface::validate() {
 	if(m_loaded) m_frame_mode->setCoord(util::CoordInt(getParent()->getWidth()-49, 1));
 	m_chat->setCoord(util::CoordInt(0,getParent()->getHeight()-200));
 	m_minimap->setCoord(util::CoordInt(getParent()->getWidth()-200,getParent()->getHeight()-200));
+	m_player_frame_caract->setCoord(util::CoordInt(getParent()->getWidth()-140, getParent()->getHeight()-236));
 }
 
 //Events
@@ -155,4 +160,5 @@ bool UserInterface::event(sf::Event* event, bool used) {
 Chat* UserInterface::getChat() {
 	return m_chat;
 }
+
 } /* namespace graphics */
