@@ -53,6 +53,7 @@ private:
 	static float distance(CoordInt from, CoordInt to);
 	static struct PathFinding::node* findLowestCost(node *map, int height, int width);
 	static bool mustBypass(CoordInt &cur, CoordInt &voisinToByPass);
+	static CoordInt findClosestPassable(CoordInt pos);
 
 };
 

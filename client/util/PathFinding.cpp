@@ -11,11 +11,17 @@
 namespace util {
 
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
-	if(outOfMap(goal) || !game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()) {
+	std::cout << "getPath..." << std::endl;
+	if(outOfMap(goal) || !game::GameboardModel::getGameboard(0)[start.x][start.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[start.x][start.y]->getPassable()) {
 		std::vector<CoordInt> r;
 		return r;
 	}
 
+	if(!game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[goal.x][goal.y]->getPassable()){
+		goal = findClosestPassable(goal);
+	}
 
 	int width = game::GameboardModel::getWidth();
 	int height = game::GameboardModel::getHeight();
@@ -42,11 +48,17 @@ std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 	}
 	std::deque<CoordInt> path;
 	assert(curNode == goalNode);
+
+	while((!game::GameboardModel::getGameboard(0)[curNode->at.x][curNode->at.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[curNode->at.x][curNode->at.y]->getPassable()) && curNode->at != start){
+		curNode = curNode->antecedant;
+	}
+
 	while(curNode->at != start){
 		path.push_front(curNode->at);
 		curNode = curNode->antecedant;
 	}
-	/* On repasse d'un deque à un vector... wtf un peu */
+
 	std::vector<CoordInt> pathVector;
 	unsigned int size = path.size();
 	std::cout << "Chemin pour aller de [" << curNode->at.x << ";" << curNode->at.y << "] à [" << goalNode->at.x << ";" << goalNode->at.y << "]" << std::endl;
@@ -75,6 +87,52 @@ void PathFinding::initMap(CoordInt start, struct node *map, int height, int widt
 			map[y*width + x].tested = false;
 		}
 	}
+}
+
+CoordInt PathFinding::findClosestPassable(CoordInt pos){
+	std::cout << "findClosestPassable..." << std::endl;
+	if(game::GameboardModel::getGameboard(0)[pos.x][pos.y]->getPassable()
+			&& game::GameboardModel::getGameboard(1)[pos.x][pos.y]->getPassable()){
+		return pos;
+	}
+
+	int x = 1, y = 1;
+
+	game::Case*** c0 = game::GameboardModel::getGameboard(0);
+	game::Case*** c1 = game::GameboardModel::getGameboard(1);
+
+	while(true){
+		std::cout << "trying with x = " << x << " and y = " << y << std::endl;
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x + x][pos.y]->getPassable()){
+			return CoordInt(pos.x + x, pos.y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x + x][pos.y + y]->getPassable()){
+			return CoordInt(pos.x + x, pos.y + y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x][pos.y + y]->getPassable()){
+			return CoordInt(pos.x, pos.y + y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x - x][pos.y + y]->getPassable()){
+			return CoordInt(pos.x - x, pos.y + y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x - x][pos.y]->getPassable()){
+			return CoordInt(pos.x - x, pos.y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x - x][pos.y - y]->getPassable()){
+			return CoordInt(pos.x - x, pos.y - y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x][pos.y - y]->getPassable()){
+			return CoordInt(pos.x, pos.y - y);
+		}
+		if(c0[pos.x + x][pos.y + y]->getPassable() && c1[pos.x + x][pos.y - y]->getPassable()){
+			return CoordInt(pos.x + x, pos.y - y);
+		}
+
+		x++;y++;
+	}
+
+	//impossible
+	return pos;
 }
 
 struct PathFinding::node* PathFinding::findLowestCost(node *map, int height, int width){
@@ -120,7 +178,8 @@ std::vector<CoordInt> PathFinding::getNeighbors(CoordInt cur){
 	/* Conserve uniquement les voisins se trouvant dans la map et étant passables */
 	for(unsigned int i = 0; i < tmp.size(); i++){
 		CoordInt v = tmp.at(i);
-		if(!outOfMap(v) && game::GameboardModel::getGameboard(0)[v.x][v.y]->getPassable() && !mustBypass(cur, v))
+		if(!outOfMap(v) && game::GameboardModel::getGameboard(0)[v.x][v.y]->getPassable()
+				&& game::GameboardModel::getGameboard(1)[v.x][v.y]->getPassable() && !mustBypass(cur, v))
 			voisins.push_back(tmp.at(i));
 	}
 
@@ -138,8 +197,10 @@ bool PathFinding::mustBypass(CoordInt &cur, CoordInt &voisinToByPass){
 	if(std::abs(diffX) > 1 || std::abs(diffY) > 1)
 		return false;
 
-	game::Case*** gameBoardModel = game::GameboardModel::getGameboard(0);
-	if(!gameBoardModel[cur.x + diffX][cur.y]->getPassable() || !gameBoardModel[cur.x][cur.y + diffY]->getPassable())
+	if(!game::GameboardModel::getGameboard(0)[cur.x + diffX][cur.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(0)[cur.x][cur.y + diffY]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[cur.x + diffX][cur.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[cur.x][cur.y + diffY]->getPassable())
 		return true;
 
 	return false;
