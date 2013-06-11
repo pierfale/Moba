@@ -1,11 +1,11 @@
 1 "Way of Warrior" "Increase the Physical damage by <color=pd>25</color>" 0 ressources/game/icon.png 100 5 0 0 25 25
 2 "Way of Mage" "Increase the Magical damage by <color=md>25</color>" 0 ressources/game/icon.png 300 5 25 0 25 25
-3 "PowerFul Strike" "Unlock the spell <color=sp>PowerFul Strike</color>SPELL(2)" 1 ressources/game/icon_spell.png 0 0 25 25
+3 "PowerFul Strike" "Unlock the spell <color=sp>PowerFul Strike</color>SPELL(2)" 1 ressources/game/icon_spell.png 50 95 0 0 25 25
 4 "Ranged Attack" "Increase the range by <color=ra>50</color> and the Physical damage by <color=pd>10</color>" 1 ressources/game/icon.png 150 95 75 0 25 25
 5 "Fire expertise" "Unlock the spell <color=sp>FireBall</color>SPELL(3)" 2 ressources/game/icon.png 250 95 100 0 25 25
 6 "Frost expertise" "Unlock the spell <color=sp>Blizzard</color>SPELL(4)" 2 ressources/game/icon.png 350 95 100 0 25 25
 7 "Heavy Armor" "Increase the Physical Armor by <color=pa>30</color> And the Magical Armor by <color=ma>30</color>" 3 ressources/game/icon.png 5 185 75 0 25 25
 8 "Assassin" "Increase the attack Speed by <color=as>20%</color>" 3 ressources/game/icon.png 60 185 75 0 25 25
-9 "Triple Strike" "Unlock the spell <color=sp>Triple Strike</color>SPELL(5)" 4 ressources/game/icon_spell.png 75 0 25 25
-10 "Blaze" "Unlock the spell <color=sp>Blaze</color>SPELL(6)" 5 ressources/game/icon_spell.png 100 0 25 25
-11 "Cold shield" "Unlock the spell <color=sp>Cold shield</color>SPELL(7)" 6 ressources/game/icon_spell.png 125 0 25 25
+9 "Triple Strike" "Unlock the spell <color=sp>Triple Strike</color>SPELL(5)" 4 ressources/game/icon_spell.png 150 185 75 0 25 25
+10 "Blaze" "Unlock the spell <color=sp>Blaze</color>SPELL(6)" 5 ressources/game/icon_spell.png 250 185 100 0 25 25
+11 "Cold shield" "Unlock the spell <color=sp>Cold shield</color>SPELL(7)" 6 ressources/game/icon_spell.png 350 185 125 0 25 25

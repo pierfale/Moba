@@ -43,7 +43,6 @@ namespace graphics {
 		std::map<int, ButtonImage*> m_button;
 		std::map<ButtonImage*, int> m_buttonReverse;
 		boost::ptr_vector<Line>  m_line;
-
 	};
 
 }

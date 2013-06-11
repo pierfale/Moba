@@ -155,7 +155,6 @@ namespace graphics {
 			delete m_rightMainContainer;
 			m_rightMainContainer = tmp;
 			((CharacterSkill*)m_rightMainContainer)->load();
-
 		}
 		else if(m_playerSelected != NULL && origin == m_launchButton) {
 			m_window->setContentPane(ScreenManager::gameList());
