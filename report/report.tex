@@ -106,8 +106,8 @@ welcoming us and letting us using their comfortable facilities.\\
 		  computers, high-speed Internet connection and softwares. Moreover, we prefered to use our laptops
 		  instead of university's computers because our tools were already configured.
 
-		  \section{Project definition}
-		  \subsection{Project description} %TODO Update for each functionnality implemented
+		  \chapter{Project definition}
+		  \section{Project description} %TODO Update for each functionnality implemented
 		  The project consists in creating a video game where each player has its own character, also 
 		  called a hero. A hero has several characteristics such as % Caracteristiques ici
 		  spells, and can level up by beating his enemy. The goal depend on the game type selected by the player who created the game.\\
@@ -115,17 +115,85 @@ welcoming us and letting us using their comfortable facilities.\\
 		 Then, we choose that project because it provide a lot of way to develop. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
 
 		  \part{How to play}
+		  \chapter{???PREREQUIS???}
+		  To be able to launch the application, you must own a MySQL database called '\emph{moba}' with following tables in it:
+		  \begin{itemize}
+		  \item{account (Account\_ID integer, Account\_Pseudo varchar(32), Account\_Password char(40))}
+		  \item{characters (Characters\_ID integer, Characters\_Account integer, Characters\_Name varchar(32) Characters\_Level smallint(6), Characters\_Exp integer)}
+		  \item{packet (Value char(8), Args text, Describe text)}
+		  \item{skill (Skill\_ID integer, Skill\_Characters integer)}
+		  \end{itemize}
+
+		  You can find a ???model??? of this database in the \emph{Database} folder. You just have to import this database in your ???SGBD??? with few ???enregistrements??? to get it works.\\
+
+		  To launch the server, you just have to double click on MobaServer.exe, a console should ???appear??? showing server's logs.\\
+		  ???De meme pour??? the client, double click on Moba.exe.
+
 		  \chapter{Before the game starts}
 		  \section{Login screen}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{connection_screen.png}
+		  \end{center}
+		  When you launch the client application, you're invited to connect to the server. To be able to log in, you must have a pseudo and password. Here are few login(1)/password(2) couples that are already in database:
+		  \begin{itemize}
+		  \item{test/test}
+		  \item{test1/test}
+		  \item{test2/test}
+		  \end{itemize}
+
+		  Once these fields are ???renseignés???, click on connection button(3) to connect.
+		  
 		  \section{Managing your characters}
+		  Once you're logged in, you can see the character screen.
+		  \begin{center}
+		  \includegraphics[scale=0.4]{character_screen.png}
+		  \end{center}
+		  On the left, you have your characters list(1), a 'New character' button to create a new character and 'Return' button(2) to disconnect from server. On the top, you have 3 buttons:
+		  \begin{description}
+		  \item[Stat(4):]{Display selected character's characteristics}
+		  \item[Skill(5):]{Display the skill tree for current character}
+		  \item[Launch(6):]{Go to launch screen}
+		  \end{description}
+		  If you don't have any character yet, you're invited to create a new one.
+
 		  \subsection{Creating a new character}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{create_character.png}
+		  \end{center}
+		  We wanted to give the ???opportunity??? of customizing your character on this screen, but unfornuately, we didn't have enough time and knowledge about ???graphismes???, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
 		  \subsection{Statistics}
 		  \subsection{Skill-tree}
 		  \subsection{...}
 		  \section{Launch a new game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{launch_screen.png}
+		  \end{center}
+		  This screen enable you to create a new game or join an existing one. On the left, there is 3 buttons:
+		  \begin{description}
+		  \item[MatchMaking(1):]{Search a game where players are at the same level as you, this functionnality isn't implemented}
+		  \item[Join Game(2):]{Join a game among those which are available}
+		  \item[Create Game(3):]{Create a new game}
+		  \end{description}
 		  \section{Join an existing game}
 		  \chapter{In-game}
 		  \section{In-game screen}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{in_game.png}
+		  \end{center}
+		  The in-game screen is ???composé??? of numerous components which display a lot of informations:
+		  \begin{description}
+		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to ???launch??? spells}
+		  \item[Target informations(2):]{Same as (1) but correspond to ???targeted??? player's informations}
+		  \item[Character (3) and (4):]{When the cursor is on an enemy, this one becomes red, if it's a friend, it becomes green}
+		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's ???maximal??? range for attack is drawn around him}
+		  \item[Game informations(5):]{There is the ???temps écoulé??? and the score}
+		  \item[Character's characteristics(6):]{Contains all charactestics a player ???dispose of???: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
+		  \item[Mini map(7):]{Enable to get a ???globale??? view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
+		  \item[Spell bar(8):]{Allow the player to ???launch??? spells, spells which are in this bar depend on your skill tree}
+		  \item[Chat(9):]{A chat which permit to speak with other players}
+		  \item[Friends informations(10):]{Information about all your friends in the game}
+		  \end{description}
+
 		  \section{Movement}
 		  \section{Attack}
 		  \subsection{Auto-attack}
@@ -135,7 +203,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \chapter{End-game}
 
 		  \part{Technical description}
-		  \chapter{Technical choices}
+		  \chapter{Tools}
 		  \section{C++}
 		  We used C++ all along this project, because it provides interesting libraries for making video games, such as SFML.
 		  Moreover, JAVA is the only object-oriented language we studied at the university, so it enabled us to become multi-skilled.
@@ -314,7 +382,8 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 		\item{LOGIN\_OK}
 		\end{itemize}
 
-		If client is ???successfuly??? logged in, it goes to character-selection screen and sends a \emph{SESSION\_ASKCHARACTER} message. ???Afterwards???, the server sends a \emph{SESSION\_ANSWERCHARACTER} for each character the client owns, containing character's id, name, level and experience.
+		If client is ???successfuly??? logged in, it goes to character-selection screen and send a \emph{SESSION\_ASKCHARACTER} message. ???Afterwards???, the server sends a \emph{SESSION\_ANSWERCHARACTER} for each character the client owns, containing character's id, name, level and experience.\\
+		Each Client object contains a \emph{Player} object as attribute. This attribute represent the character choosed by client, while the client doesn't select a character, its value is NULL. To update this value, the server must receive a \emph{SESSION\_SELECTCHARACTER} followed by the character id from the client who wants to select a character. The server make sure that the character exists and is ???associé??? to the client before changing the Player attribute's value and load all character's information from database.
 
 
 
@@ -335,4 +404,15 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 		Spells are managed in the same way as skills, they are represented by IDs, names, descriptions and icons. During a game launch, the server sends a GAME\_ALLSPELLS packet, containing all spells id and how many they are. Thus, when a client wants to use a spell, he sends a GAME\_ASKLAUNCHSINGLETARGETSPELL, if this spell is mono-target\footnote{A spell which attack only one player}, then the target ID is also included in packet. Then, the server checks several parameters such as target type, distance between players, and attack/defense bonus applied to each of them, so that it can alter spell effects correctly. Finally, it sends animation's ID to every player who are in the game.
 
 
+		\part{Project results}
+		\chapter{Encountered difficulties}
+		\chapter{Benefits}
+		\section{Programming skills}
+		\section{Work in team}
+		\section{English improvement}
+		\section{Autonomy}
+		\section{Make a report}
+
+		\chapter*{Conclusion} %TOREWRITE
+		\addcontentsline{toc}{chapter}{Conclusion}
 		\end{document}
