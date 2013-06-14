@@ -21,182 +21,308 @@ First, we would like to thank Eddie Gray, our supervisor, who has supported us a
 gave us lots of advice throughout this project and the Glasgow Caledonian University for
 welcoming us and letting us using their comfortable facilities.\\
 
-Then, we would also like to thank our French supervisor Patrick Lebegue for supporting us
-and the University of Lille 1 for giving us the opportunity to carry out our internship in a
-foreign country.\\
+	  Then, we would also like to thank our French supervisor Patrick Lebegue for supporting us
+	  and the University of Lille 1 for giving us the opportunity to carry out our internship in a
+	  foreign country.\\
 
-Finally, we wish to thank all our former professors from the University of Lille 1 who
-permits us to achieve our graduation in very good conditions.\\
+	  Finally, we wish to thank all our former professors from the University of Lille 1 who
+	  permits us to achieve our graduation in very good conditions.\\
 
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
-During our 3-month-internship at Glasgow Caledonian University, we had to make a video game.
-In this game, every player have a character, called a hero, who has characteristics, spells, ans weapons.
-The goals for each player is to be the last survivor.\\
+	  \chapter*{Abstract}
+	  \addcontentsline{toc}{chapter}{Abstract}
+	  During our 3-month-internship at Glasgow Caledonian University, we had to make a video game.
+	  In this game, every player have a character, called a hero, who has characteristics, spells, ans weapons.
+	  The goals for each player is to be the last survivor.\\
 
-We made it because it touched to several aspects of computer science such as database, network,
-programming. Moreover, we had to learn a lot of stuff to get this project done.\\
-It was also a good opportunity to work in team, and discover what advantages and disadvantages it comes with.
-We used Git to synchronize our works, and we had a lot of issues about it, but it's part of learning.\\
+	  We made it because it touched to several aspects of computer science such as database, network,
+	  programming. Moreover, we had to learn a lot of stuff to get this project done.\\
+		  It was also a good opportunity to work in team, and discover what advantages and disadvantages it comes with.
+		  We used Git to synchronize our works, and we had a lot of issues about it, but it's part of learning.\\
 
-Our project is divided in three parts. First is the client program, which is executed by any people who wants to play,
-second is the server, and third is a shared library which contains every network functionnalities that are needed both
-by the client and the server.\\
+		  Our project is divided in three parts. First is the client program, which is executed by any people who wants to play,
+		  second is the server, and third is a shared library which contains every network functionnalities that are needed both
+		  by the client and the server.\\
 
-%TOREWRITE
-To conclude this abstract we can say that this project was a great experience for many
-reasons; we had never worked in team before, we learnt to search and develop
-autonomy. Moreover, as it was an Erasmus placement, we could discover a new country,
-another language, and last but not least, another culture.
+		  %TOREWRITE
+		  To conclude this abstract we can say that this project was a great experience for many
+		  reasons; we had never worked in team before, we learnt to search and develop
+		  autonomy. Moreover, as it was an Erasmus placement, we could discover a new country,
+		  another language, and last but not least, another culture.
 
-\chapter*{Introduction} %TOREWRITE
-\addcontentsline{toc}{chapter}{Introduction}
-In order to validate our DUT diploma, we chose to carry out our internship in an
-English speaking country to improve our English language.\\
+		  \chapter*{Introduction} %TOREWRITE
+		  \addcontentsline{toc}{chapter}{Introduction}
+		  In order to validate our DUT diploma, we chose to carry out our internship in an
+		  English speaking country to improve our English language.\\
 
-Our supervisor, Richard Foley, offered us a project's subject based on web and mobile
-technologies. We accepted it because we thought it was a really good idea to work on future
-technologies and it permits us to explore several fields using our computer skills acquired
-during our studies.\\
+		  Our supervisor, Richard Foley, offered us a project's subject based on web and mobile
+		  technologies. We accepted it because we thought it was a really good idea to work on future
+		  technologies and it permits us to explore several fields using our computer skills acquired
+		  during our studies.\\
 
-The project aimed to achieve a usable system by professors and able to manage
-multiple choice questions in an amphitheatre. Two mobile applications also had to be
-created so that students can answer the quiz.\\
+		  The project aimed to achieve a usable system by professors and able to manage
+		  multiple choice questions in an amphitheatre. Two mobile applications also had to be
+		  created so that students can answer the quiz.\\
 
-This report consists of three parts. We will first realise an overall presentation of the
-project and its objectives. We will then, in a second part, describe how the system can
-handle the quizzes and how the corresponding mobile applications work. Finally, we will
-review this project and the skills acquired during these three months.
+		  This report consists of three parts. We will first realise an overall presentation of the
+		  project and its objectives. We will then, in a second part, describe how the system can
+		  handle the quizzes and how the corresponding mobile applications work. Finally, we will
+		  review this project and the skills acquired during these three months.
 
-\renewcommand{\contentsname}{Summary}
-\tableofcontents
+		  \renewcommand{\contentsname}{Summary}
+		  \tableofcontents
 
-\part{Project presentation}
-\chapter{Workplace}
-\section{Glasgow}%TOREWRITE
-Glasgow is the largest city in Scotland and third most populous in the United
-Kingdom. The city is situated on the River Clyde in the country's West Central Lowlands.
-Today it is one of Europe's top ten financial centres and is home to many of
-Scotland's leading businesses. Glasgow is also ranked as the 57th most liveable city in the
-world.\\
+		  \part{Project presentation}
+		  \chapter{Workplace}
+		  \section{Glasgow}%TOREWRITE
+		  Glasgow is the largest city in Scotland and third most populous in the United
+		  Kingdom. The city is situated on the River Clyde in the country's West Central Lowlands.
+		  Today it is one of Europe's top ten financial centres and is home to many of
+		  Scotland's leading businesses. Glasgow is also ranked as the 57th most liveable city in the
+		  world.\\
 
-In the late 19th and early 20th centuries Glasgow grew in population, eventually
-reaching a peak of about 1 million in 1939, and was the fourth-largest city in Europe, after
-London, Paris and Berlin. In the 1960s, comprehensive urban renewal projects resulting in
-large-scale relocation of people to new towns and peripheral suburbs, followed by
-successive boundary changes, have reduced the current population of the City of Glasgow
-council area to 600,000, with 1,200,000 people living in the Greater Glasgow urban area. The
-entire region surrounding the conurbation covers approximately 2.3 million people, 41\% of
-Scotland's population.\\
+		  In the late 19th and early 20th centuries Glasgow grew in population, eventually
+		  reaching a peak of about 1 million in 1939, and was the fourth-largest city in Europe, after
+		  London, Paris and Berlin. In the 1960s, comprehensive urban renewal projects resulting in
+		  large-scale relocation of people to new towns and peripheral suburbs, followed by
+		  successive boundary changes, have reduced the current population of the City of Glasgow
+		  council area to 600,000, with 1,200,000 people living in the Greater Glasgow urban area. The
+		  entire region surrounding the conurbation covers approximately 2.3 million people, 41\% of
+		  Scotland's population.\\
 
-The heart of the city is George Square, located in the city centre, site of many of
-Glasgow's public statues and the elaborate Victorian Glasgow City Chambers, headquarters
-of Glasgow City Council.\\
+		  The heart of the city is George Square, located in the city centre, site of many of
+		  Glasgow's public statues and the elaborate Victorian Glasgow City Chambers, headquarters
+		  of Glasgow City Council.\\
 
-Three Universities are present in Glasgow: University of Glasgow, University of
-Strathclyde and Glasgow Caledonian University. We achieved our project in this latter.
+		  Three Universities are present in Glasgow: University of Glasgow, University of
+		  Strathclyde and Glasgow Caledonian University. We achieved our project in this latter.
 
-\section{Glasgow Caledonian University}%TOREWRITE
-Glasgow Caledonian University is a public University. The university was constituted
-by an Act of Parliament on 1 April 1993 as a result of a merger between Glasgow Polytechnic
-and The Queen's College. It has 17,500 students from over 100 countries, almost 400
-different courses available, a modern city-centre campus in Glasgow and high-tech facilities,
-including the award-winning Saltire Centre library.
+		  \section{Glasgow Caledonian University}%TOREWRITE
+		  Glasgow Caledonian University is a public University. The university was constituted
+		  by an Act of Parliament on 1 April 1993 as a result of a merger between Glasgow Polytechnic
+		  and The Queen's College. It has 17,500 students from over 100 countries, almost 400
+		  different courses available, a modern city-centre campus in Glasgow and high-tech facilities,
+		  including the award-winning Saltire Centre library.
 
-\section{Workspace}
-The project was mainly realised in our flats because we already had everything we needed there:
-computers, high-speed Internet connection and softwares. Moreover, we prefered to use our laptops
-instead of university's computers because our tools were already configured.
+		  \section{Workspace}
+		  The project was mainly realised in our flats because we already had everything we needed there:
+		  computers, high-speed Internet connection and softwares. Moreover, we prefered to use our laptops
+		  instead of university's computers because our tools were already configured.
 
-\section{Project definition}
-\subsection{Project description} %TODO Update for each functionnality implemented
-The project consists in creating a video game where each player has its own character, also 
-called a hero. A hero has several characteristics such as % Caracteristiques ici
-spells, and can level up by beating his enemy. The goal is to be the last survivor.
+		  \section{Project definition}
+		  \subsection{Project description} %TODO Update for each functionnality implemented
+		  The project consists in creating a video game where each player has its own character, also 
+		  called a hero. A hero has several characteristics such as % Caracteristiques ici
+		  spells, and can level up by beating his enemy. The goal is to be the last survivor.
 
-\part{How to play}
-\section{Login screen}
-\section{Managing your characters}
-\subsection{Creating a new character}
-\subsection{Statistics}
-\subsection{Skill-tree}
-\subsection{...}
-\section{Launch a new game}
-\section{Join an existing game}
-\section{In-game}
-\subsection{In-game screen}
-\subsection{Movement}
-\subsection{Attack}
-\subsubsection{Auto-attack}
-\subsubsection{Skills}
-\subsection{Camera}
-\subsection{How to win ?}
-\section{End-game}
+		  \part{How to play}
+		  \chapter{Before the game starts}
+		  \section{Login screen}
+		  \section{Managing your characters}
+		  \subsection{Creating a new character}
+		  \subsection{Statistics}
+		  \subsection{Skill-tree}
+		  \subsection{...}
+		  \section{Launch a new game}
+		  \section{Join an existing game}
+		  \chapter{In-game}
+		  \section{In-game screen}
+		  \section{Movement}
+		  \section{Attack}
+		  \subsection{Auto-attack}
+		  \subsection{Skills}
+		  \section{Camera}
+		  \section{How to win ?}
+		  \chapter{End-game}
 
-\part{Technical description}
-\chapter{Technical choices}
-\section{Programming language}
-We used C++ all along this project, because it provides interesting libraries for making video games, such as SFML.
-Moreover, JAVA is the only oriented-language we studied at the university, so it enabled us to become multi-skilled.
-Finally, we wanted to try the boost libraries, which allow programmers to make robust C++ programs much more easily, and improve
-software portability.
+		  \part{Technical description}
+		  \chapter{Technical choices}
+		  \section{C++}
+		  We used C++ all along this project, because it provides interesting libraries for making video games, such as SFML.
+		  Moreover, JAVA is the only object-oriented language we studied at the university, so it enabled us to become multi-skilled.
+		  Finally, we wanted to try the boost libraries, which allow programmers to make robust C++ programs much more easily, and improve
+		  software portability.
+		  \section{Eclipse CDT}
+		  \section{Git}
+		  \section{External libraries}
+		  \subsection{Boost} %TODO
+		  \begin{center}
+		  \includegraphics[scale=0.75]{Boost.png}
+		  \end{center}
+		  Boost is a set of libraries for the C++ programming language that provide support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, and unit testing. Release 1.52 contains over eighty individual libraries.\\
 
-\section{External libraries}
-\subsection{Boost} %TODO
-\begin{center}
-\includegraphics[scale=0.75]{Boost.png}
-\end{center}
-Boost is a set of libraries for the C++ programming language that provide support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, and unit testing. Release 1.52 contains over eighty individual libraries.\\
+		  Most of the Boost libraries are licensed under the Boost Software License, designed to allow Boost to be used with both free and proprietary software projects. Many of Boost's founders are on the C++ standards committee, and several Boost libraries have been accepted for incorporation into both Technical Report 1 and the C++11 standard.
 
-Most of the Boost libraries are licensed under the Boost Software License, designed to allow Boost to be used with both free and proprietary software projects. Many of Boost's founders are on the C++ standards committee, and several Boost libraries have been accepted for incorporation into both Technical Report 1 and the C++11 standard.
+		  \subsection{SFML} %TODO
+		  \label{SFML}
 
-\subsection{SFML} %TODO
-\label{SFML}
+		  \begin{center}
+		  \includegraphics[scale=0.75]{SFML2.png}
+		  \end{center}
 
-\begin{center}
-\includegraphics[scale=0.75]{SFML2.png}
-\end{center}
+		  SFML (Simple and Fast Multimedia Library) is a portable and easy-to-use API for multimedia programming. It is written in C++ but bindings are available for C, D, Python, Ruby, OCaml, .Net. It is an object oriented alternative for the SDL.\\
 
-SFML (Simple and Fast Multimedia Library) is a portable and easy-to-use API for multimedia programming. It is written in C++ but bindings are available for C, D, Python, Ruby, OCaml, .Net. It is an object oriented alternative for the SDL.\\
+		  SFML provides 2D graphics that are hardware accelerated with OpenGL. SFML can also be used for OpenGL windowing. SFML also provides different modules made to ease programming games and multimedia applications. SFML site offers complete SDK bundle in single pack, and tutorials to ease the developers. SFML Source code is provided under the terms of the zlib/png license.
 
-SFML provides 2D graphics that are hardware accelerated with OpenGL. SFML can also be used for OpenGL windowing. SFML also provides different modules made to ease programming games and multimedia applications. SFML site offers complete SDK bundle in single pack, and tutorials to ease the developers. SFML Source code is provided under the terms of the zlib/png license.
+		  \subsection{MySQL}
+		  MySQL is the world's most widely used open source relational database management system that runs as a server providing multi-user access to a number of databases.
+		  \section{Tools we developped} 
+		  \subsection{Logs}
+		  To make debugging easier, we made a simple log system which redirect ???flux entrant vers la sortie??? but also into a file we ???specified???. The class used to do that is called \emph{Logs}. It contains two methods: \emph{out} and \emph{err} which ???respectively??? redirect to standard and error ???flux??? and the file described by Logs attribute. Also, using a \emph{\#define} macro, we were able to know the file's name and line were Logs methods were called, without having to ???pass??? it as argument. Thus, we just had to give the message to out or err method.
+		  \subsection{Configuration}
+		  We also created a basic configuration tool using a parser to extract parameters values from files. Thus, we don't have to compile again each time a parameter is modified. Configuration files must ???respecter??? the following format:
+		  \begin{itemize}
+		  \item{Key = value}
+		  \item{Key = "value with blanks"}
+		  \end{itemize}
+		
+		  Blanks between \emph{key}, \emph{'='} and \emph{value} are not ???mandatory???
+		  It is also possible to put comments into these files by addind a '\emph{\#}' at the beginning of the line. The parser read each configuration files line by line and store each ???couple??? key/value in a \emph{Map} object. Finally, we developped a class to store default values if none is defined in files, so that we don't have to define a parameter if we want to keep its default value.
 
-\subsection{MySQL}
-MySQL is the world's most widely used open source relational database management system that runs as a server providing multi-user access to a number of databases.
+		  \subsection{Map editor}
 
-\chapter{How it work}
-\section{Graphics}
-\subsection{Modeling maps}
-Maps are handled by a two-dimension-array which contains Case objects. Each Case object contains attributes \emph{x} and \emph{y} to describe its coordinates. Another attribute allow us to know if a character can cross it. Finally, there is an attribute which contains a texture-id so that we know how to display it. In order to get these maps persistent, we wrote it in binary files. At the beginning, we had to do it manually, but it was tedious to do, so we developped a simple program to make it easier.\\
+		  \chapter{How it works}
+		  \section{Graphics}
+		  Once we choosed to use SFML librarie (see \ref{SFML}), we had to find an additional librarie containing components to make user interfaces, because SFML only provide very basic tools, such as drawing rectangles or circles. Many people developped and distributed libraries like this, but most of them are incomplete or contain bugs, that's why we decided to make our own, based on ???event??? programming. We also choosed to make the graphic part executed by a single thread. We first tried to create thread for each component, but synchronization and concurrent access between them became to hard to manage.
 
-Both for performances and ergonomic, we decided to make a map editor, with a texture-palette. Thus, we can create new maps just by using the mouse, with two layers to handle the element overlay, then we can save it and load it into the game. The game display the map by reading its binary file, once it knows the id of each Case, it paint the corresponding texture at Case's coordinates.
+		  \subsection{???Fonctionnement Global???} %TODO
+		  SFML provides a \emph{sf::RenderWindow} object which contains all informations about window and enable us to draw objects which inherit from \emph{sf::Drawable}, or \emph{sf::Vertex} objects, containing vertex from OpenGL library. SFML use an event system to handle any change on the window: mouse movements, clicks, focus and so on.\\
 
-\begin{figure}
-\begin{center}
-\includegraphics{image1.png}
-\end{center}
-\caption{Textures list}
-\end{figure}
+		  We created a \emph{graphics::Window} class which ???ENCAPSULE??? sf::RenderWindow. Then we developped an abstract class called \emph{graphics::component} to represent a graphic component. This class contains two methods: \emph{draw} to draw a component, and \emph{event} to deal with events.
+		  We also created \emph{graphics::Container} class, which can contain several components. It's role is to draw all of his components. graphics::Window objects contain a graphics::Container as root component for the component-tree.\\
 
-\subsection{Modeling characters}
-Modélisation du personnage:
-Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
+		  While the window isn't closed, the graphics::Window object carry out each of its actions on the same thread. The order used to do these actions is important to make sure that graphic components are working correctly:
+		  \begin{description}
+		  \item[Events:]{graphics::Window get every element which are contained in SMFL event list and check if he is directly concerned by it or not\footnote{whether the window is resized or closed.}}
+		  \item[Listener:]{It calls all functions contained in listener-array.}
+		  \item[Network packets:]{???TRAITE??? packet-list.}
+		  \item[Check root component:] It checks if temporary root object is different from null. If it is the case, then the old root object is recursively deleted and replaced by the new one. It happens when we want to display another screen.
+		  \item[Display:]{Call draw method from the root object.}
+		  \item[Sleep:]{If there is remaining time before next frame, then the program sleeps during this time.}
+		  \end{description}
 
-Every characters are drawn in three different positions: still, ... Each direction is represented by an attribute in Personnage's class.
-\subsection{Camera}
-The Camera object permit to display a part of map, depending on its position and its range\footnote{the window size}. Thus, the program only draw visible part of the map. We can move the camera either with the directionnal arrows or by moving the mouse on window edges. The movement is done pixel by pixel instead of case by case in order to be more fluid.
+		  \subsection{Components}
+		  We implemented several ???essential??? components to ???realize??? this game. They all inherit from \emph{graphics::Component}. This class contains all of their common attributes:
+		  \begin{itemize}
+		  \item{Size}
+		  \item{Position}
+		  \item{State}
+		  \end{itemize}
 
-\section{Network}
-\subsection{libnetwork}
-\subsection{Client}
-\subsection{Server}
+		  Their state can be:
+		  \begin{description}
+		  \item[normal:]{When the component has no action to do.}
+		  \item[hidden:]{When the user make a component hidden, it doesn't respond to events.}
+		  \item[disabled:]{When the user disable a component, it doesn't respond to events.}
+		  \item[focused:]{When the user move his mouse over the component.}
+		  \item[selected:]{When the user click on the component.}
+		  \end{description}
 
-\section{Gameplay}
-\subsection{Server}
-\subsubsection{Game rules}
-Mode de jeu :
-Les modes de jeu sont implémentés grâce à une classe abstraite qui régis toutes les règles de jeu : spawn des équipes, règle de jeu : temps, type de score (kill, capture de drapeau), carte a utiliser etc...
+		  The most important component is \emph{graphics::Container} which inherit from \emph{graphics::Component}. It contains several components and a layout which will ???placer??? them whenever the window is resized, or a component is either added, removed or replaced. The graphics::container object ???propage??? a lot of informations to its sons:
+		  \begin{itemize}
+		  \item{When events are received}
+		  \item{How to be displayed}
+		  \item{When the graphics::Window is modified}
+		  \item{When the component list is modified}
+		  \end{itemize}
+
+		  Each component must define its own draw and event methods.
+		  We also have numerous component ??????TODO????????
+
+		  \subsection{Layouts}
+		  In order to handle different sizes a window can have, we made several layouts which have to resize and move components following the size of the main window. Each graphics::Container has its own layout instance. The container is expected to destroy the old layout when it is replaced by a new one or when the container itself is destroyed. Every layout inherit from \emph{graphics::Layout} and must define the \emph{validate} method. 
+		  The layout knows everything about the container it belongs to, including all of its sons, so it can ???PLACER??? them correctly.
+	The default layout included in a container is the VerticalLayout, which align all sons ???vertically??? and resize them ???equally???
+We implemented several layouts ???for all of our needs??? (???ANNEXE???)
+
+	\subsection{Events}
+	At each frame, the SFML event list is ???passed??? as argument to root-container's event method. This method will send these events to all container's sons. It also contains a \emph{used} attribute which allow us to know whether an event has already been transmitted or not so that only one event is triggered when we click on two ???overlayed??? components.\\
+
+	Each component handle its events ???differently???, some of them are ???click-insensitive???, others check if the event is sent by keyboard and so on.
+	???Most components??? have an \emph{addListener} method which permit to add a new listener. These listeners ???vary??? following the component type, a button listener won't be the same as a textfield listener.\\
+
+	When a component wants to call one of its listener's method, it gives the method and listener's reference to the graphics::Window object, which will call them ???au bon moment???
+
+	\subsection{Styles}
+	???AFIN DE??? make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument
+	%Pour une plus grande adaptation de nos composant nous avons décider de créer des classe pour changer leurs style. Chaque componant prend en parametre a sa construction un style. La classe de style change en fonction du component; par exemple
+	%les bouton est le champs de saisie partage la meme classe graphics::BasicStyle.
+	%Cette dernier (BasicStyle), est le un style qui sert areprésenter un rectangle : il prend deux parametre, le chemin vers l'image représentant les bord et le chemin vers l'image représentant le centre.
+	%Cette classe découpe l'image de la facon suivante (schema?)
+	%Nous avons crée une classe singleton qui charge tous les style par défault et qui permet donc de mettre facilement un style sur les component
+
+
+	\subsection{Modeling maps}
+	Maps are handled by a two-dimension-array which contains Case objects. Each Case object contains attributes \emph{x} and \emph{y} to describe its coordinates. Another attribute allow us to know if a character can cross it. Finally, there is an attribute which contains a texture-id so that we know how to display it. In order to get these maps persistent, we wrote it in binary files. At the beginning, we had to do it manually, but it was tedious to do, so we developped a simple program to make it easier.\\
+
+	Both for performances and ergonomic, we decided to make a map editor, with a texture-palette. Thus, we can create new maps just by using the mouse, with two layers to handle the element overlay, then we can save it and load it into the game. The game display the map by reading its binary file, once it knows the id of each Case, it paint the corresponding texture at Case's coordinates.
+
+	\begin{figure}
+	\begin{center}
+	\includegraphics{image1.png}
+	\end{center}
+	\caption{Texture list}
+	\end{figure}
+
+	\subsection{Modeling characters}
+	Modélisation du personnage:
+	Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
+
+	Every character is drawn in three different positions: still, ... Each direction is represented by an attribute in Personnage's class.
+	\subsection{Camera}
+	The Camera object permit to display a part of map, depending on its position and its range\footnote{the window size}. Thus, the program only draw visible part of the map. We can move the camera either with the directionnal arrows or by moving the mouse on window edges. The movement is done pixel by pixel instead of case by case in order to be more fluid.
+
+	\section{Network}
+	\subsection{libnetwork}
+	%TOREWRITE MAYBE HEIN LOL
+	???Since??? both the server and the client have ???network functionnalities??? in common, instead of writing these function twice, we decided to write a shared library. This library contains the network protocol.\\
+		%-----------------------%
+
+		We choosed to use TCP as transport protocol because it's more ???fiable??? than UDP. Most of datas sent over network need to be received in the right order by the ???destinataire???. To make things easier, most of network functions are executed ???synchronously???, so that we don't have to check all the time if the packet needed to allow the program to continue has arrived or not. More over asynchronous functions use several threads, which increase the program ???complexity???\\
+
+		We defined a basic network protocol to enable clients and server to communicate. Each packet first contains the size of datas that are contained in the packet, on 4 octets, then the packet's type, which is also on 4 octets, and finally all datas. To make packet's type ???reconnaissance??? easier, we defined several types in an enumeration: the ???8 premiers??? bits are used to define the packet primary type. 3 primary types are available: \emph{Session, Game and Chat}. The 3 bits remaining are cut in differents ways depending on the packet's primary type. This system allow to deal with packets in different classes following the primary type:
+		\begin{itemize}
+		\item{\emph{SESSION} (0x00 XX XX XX) messages are handled by \emph{Message\_session} class.}
+		\item{\emph{GAME} (0x01 XX XX XX) messages are handled by \emph{Message\_game} class.}
+		\item{\emph{CHAT} (0x02 XX XX XX) messages are handled by \emph{Message\_chat} class.}
+		\end{itemize}
+
+		%Nous avons implémenter 3 type de donnée possible a envoyer : le type int (sur 4 octets), le type float (4 octets), et le type std::string. Ce dernier est envoyer de la facon suivante :
+		%les 4 premier octets reorésente la longeur de la chaine et ensuite les char sont mis a la suite. Grace la a surchage des opérateur, nous avons pu redéfinir les opérateur de flux entrant et sortant
+		%pour chaque type.
+
+		\subsection{Client}
+		\subsection{Server}
+		The server is a console application which manage all network packets and help clients to be synchronized. Its first task during ???start up??? is to  get its configuration files and parse it. Then, it create a log file based on its configuration. Once it's done, it load all informations from the database, such as spells or skills descriptions. ???Finally???, if everything works fine, it binds a socket to the port specified in its configuration and wait for connections.
+		\subsubsection{Access to database}
+		To get all necessary datas to make the game work, the server needs an access to a database which contains these informations. That database contains accounts and characters descriptions. We made a \emph{Database} class to execute SQL queries, connect and disconnect from database. If connection to database fails, then the server closes. SQL queries which start with 'SELECT' are handled by a method which return a \emph{ResultQuery} object. This object ???encapsule??? the MYSQL\_RES structure provided by the MySQL connector and correspond to a row from querie's result. It also contains a \emph{next} method which make the ResultQuery ???pointer??? to next row and return true if it exists and false if it doesn't. ???Enfin???, it has two \emph{get} methods, the first one take an integer as argument which correspond to the column's number, and the second one take a string as argument which is the name of column we want to get the value.
+		\subsubsection{Connection handling}
+		Each client, or connection, is handled in a new thread. Whenever a new connection is opened, a new \emph{Client} object is created on server. This object handled a connection for one client. Once it's created, it waits for a \emph{SESSION\_ASKCONNECTION} packet containing user and SHA1-encrypted password. Then, the server checks if user exists in database and if it's password is the one provided by the client. Following the result of this verification, the server reply with a \emph{SESSION\_ANSWERCONNECTION} packet and one of the following status:
+		\begin{itemize}
+		\item{NONEXISTENT\_ACCOUNT}
+		\item{BAD\_PASSWORD}
+		\item{ALREADY\_LOGGED}
+		\item{LOGIN\_OK}
+		\end{itemize}
+
+		If client is ???successfuly??? logged in, it goes to character-selection screen and sends a \emph{SESSION\_ASKCHARACTER} message. ???Afterwards???, the server sends a \emph{SESSION\_ANSWERCHARACTER} for each character the client owns, containing character's id, name, level and experience.
 
 
 
-\end{document}
+		\section{Gameplay}
+		\subsection{Server}
+		\subsubsection{Game rules}
+		Mode de jeu :
+		Les modes de jeu sont implémentés grâce à une classe abstraite qui régis toutes les règles de jeu : spawn des équipes, règle de jeu : temps, type de score (kill, capture de drapeau), carte a utiliser etc...
+		\subsection{Client}
+		\subsubsection{Skills}
+		Skills are displayed in a tree, so if you want to unlock a new skill, you have to unlock his parent first. Each time you level up, you earn one skill-point, and each skill cost one skill-point. Both client and server have the same configuration file for skill's informations, it contains their ids, names, descriptions, icon, parent, position in skill-tree.\\
+
+		They both load this file during their start up using a parser we made. Each datas are in textual format. When a client want to see the tree, it sends a SESSION\_ASKALLSKILLS (0x00000018) message. Then, the server reply with a SESSION\_ANSWERALLSKILLS (0x00000019) containing the number of skills the client bought and their IDs. The clients update its skill-tree afterwards, by circling in blue bought skills, in yellow for those it's allowed to buy, and in grey for those which it can't buy yet.
+		When a client wants to buy a new skill, it sends a SESSION\_ASKSKILL(0x00000016) packet containing skill ID, if purchase is accepted, the server reply with a SESSION\_ANSWERSKILL (0x00000017), which also contain skill ID.\\
+
+		For the server, each Player object contains a skill-ID-vector which represent all skills the player owns %TODO
+		\subsubsection{Spells}
+		Spells are managed in the same way as skills, they are represented by IDs, names, descriptions and icons. During a game launch, the server sends a GAME\_ALLSPELLS packet, containing all spells id and how many they are. Thus, when a client wants to use a spell, he sends a GAME\_ASKLAUNCHSINGLETARGETSPELL, if this spell is mono-target\footnote{A spell which attack only one player}, then the target ID is also included in packet. Then, the server checks several parameters such as target type, distance between players, and attack/defense bonus applied to each of them, so that it can alter spell effects correctly. Finally, it sends animation's ID to every player who are in the game.
+
+
+		\end{document}

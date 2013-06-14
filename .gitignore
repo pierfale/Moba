@@ -27,6 +27,7 @@
 .cproject
 /Doc
 
+*.txt
 #Latex files
 *.aux
 *.idx
