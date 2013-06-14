@@ -35,22 +35,25 @@ namespace graphics {
 		if(m_frame >= m_nFrame)
 			m_frame = 0;
 
+
 		float angle = util::Math::angle(m_target->getCoord(), m_coord);
-		m_coord.x += length*cos(angle);
-		m_coord.y += length*sin(angle);
 
-		if(m_caster->getCoord().x  < m_target->getCoord().x && m_coord.x > m_target->getCoord().x)
-			m_coord.x = m_target->getCoord().x;
-		if(m_caster->getCoord().x  > m_target->getCoord().x && m_coord.x < m_target->getCoord().x)
-			m_coord.x = m_target->getCoord().x;
-		if(m_caster->getCoord().y  < m_target->getCoord().y && m_coord.y > m_target->getCoord().y)
-			m_coord.y = m_target->getCoord().y;
-		if(m_caster->getCoord().y  > m_target->getCoord().y && m_coord.y < m_target->getCoord().y)
-			m_coord.y = m_target->getCoord().y;
-
-		if(m_coord.x == m_target->getCoord().x && m_coord.y == m_target->getCoord().y) {
+		if(util::Math::distance(m_target->getCoord(), m_coord) < 15.0) {
 			m_done = true;
 			return;
+		}
+
+		if(m_target->getCoord().x !=  m_coord.x) {
+			if(m_target->getCoord().x > m_coord.x)
+				m_coord.x = m_coord.x+length*cos(angle) < m_target->getCoord().x ? m_coord.x+length*cos(angle) : m_target->getCoord().x;
+			else
+				m_coord.x = m_coord.x-length*cos(angle) > m_target->getCoord().x ? m_coord.x-length*cos(angle) : m_target->getCoord().x;
+		}
+		if(m_target->getCoord().y !=  m_coord.y) {
+			if(m_target->getCoord().y > m_coord.y)
+				m_coord.y = m_coord.y+length*sin(angle) < m_target->getCoord().y ? m_coord.y+length*sin(angle) : m_target->getCoord().y;
+			else
+				m_coord.y = m_coord.y-length*sin(angle) > m_target->getCoord().y ? m_coord.y-length*sin(angle) : m_target->getCoord().y;
 		}
 
 		sf::Sprite sprite;
@@ -60,7 +63,6 @@ namespace graphics {
 		sprite.setOrigin((m_texture->getSize().x/m_nFrame)/2, m_texture->getSize().y/2);
 		sprite.setRotation(angle);
 		render->draw(sprite);
-
 
 	}
 }
