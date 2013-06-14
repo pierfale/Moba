@@ -112,10 +112,10 @@ welcoming us and letting us using their comfortable facilities.\\
 		  called a hero. A hero has several characteristics such as % Caracteristiques ici
 		  spells, and can level up by beating his enemy. The goal depend on the game type selected by the player who created the game.\\
 
-		 Then, we choose that project because it provide a lot of way to develop. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
+		 Then, we choose that project because it provide a lot of development opportunities. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
 
 		  \part{How to play}
-		  \chapter{???PREREQUIS???}
+		  \chapter{Prerequisite}
 		  To be able to launch the application, you must own a MySQL database called '\emph{moba}' with following tables in it:
 		  \begin{itemize}
 		  \item{account (Account\_ID integer, Account\_Pseudo varchar(32), Account\_Password char(40))}
@@ -124,10 +124,10 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{skill (Skill\_ID integer, Skill\_Characters integer)}
 		  \end{itemize}
 
-		  You can find a ???model??? of this database in the \emph{Database} folder. You just have to import this database in your ???SGBD??? with few ???enregistrements??? to get it works.\\
+		  You can find this database in the \emph{Database} folder. You just have to import this database in your database management system with few records to get it works.\\
 
-		  To launch the server, you just have to double click on MobaServer.exe, a console should ???appear??? showing server's logs.\\
-		  ???De meme pour??? the client, double click on Moba.exe.
+		  To launch the server, you just have to double click on MobaServer.exe, a console should appear showing server's logs.\\
+		  It is the same for the client, double click on Moba.exe.
 
 		  \chapter{Before the game starts}
 		  \section{Login screen}
@@ -141,7 +141,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{test2/test}
 		  \end{itemize}
 
-		  Once these fields are ???renseignés???, click on connection button(3) to connect.
+		  Once these fields are filled, click on connection button(3) to connect.
 		  
 		  \section{Managing your characters}
 		  Once you're logged in, you can see the character screen.
@@ -160,9 +160,22 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \begin{center}
 		  \includegraphics[scale=0.4]{create_character.png}
 		  \end{center}
-		  We wanted to give the ???opportunity??? of customizing your character on this screen, but unfornuately, we didn't have enough time and knowledge about ???graphismes???, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
+		  We wanted to give the opportunity to customize your character on this screen, but unfortunately, we didn't have enough time and knowledge about graphics, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
 		  \subsection{Statistics}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{stats_screen.png}
+		  \end{center}
+		  That screen summarize character characteristics.
 		  \subsection{Skill-tree}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{skill_tree_screen.png}
+		  \end{center}
+		  This is the skill tree screen. Here, you can buy improvement for your character. For each level, you got one point to spend in the tree, but to get last skilsl, you must buy spells that are before and following white lines.
+		  \begin{description}
+		  \item[Skill(1)]{There is a skill. To buy it, you must have one point and right-click on it. If you can buy, it is appear with yellow border, if you got it with blue border but if you can't buy it, it is dark.}
+		  \item[White Lines(2)]{This is the path you must follow. Example : you can not buy \emph{'PoweerFul Strike'} if you have not buy \emph{'Way of warrior'} before.}
+		  \item[Help(3)]{When you put the cursor on it, a help is displayed.}
+		  \end{description}
 		  \subsection{...}
 		  \section{Launch a new game}
 		  \begin{center}
@@ -174,33 +187,52 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item[Join Game(2):]{Join a game among those which are available}
 		  \item[Create Game(3):]{Create a new game}
 		  \end{description}
+		  \section{Create a new game}
+		  We wanted to give the opportunity to customize your game : game type, time, size of team... But we did not have enaugh time to implements this. The screen is similar as the screen of the creation of the characters %TODO RE-WRITE IN BETTER ENGLISH 
 		  \section{Join an existing game}
 		  \chapter{In-game}
 		  \section{In-game screen}
 		  \begin{center}
 		  \includegraphics[scale=0.4]{in_game.png}
 		  \end{center}
-		  The in-game screen is ???composé??? of numerous components which display a lot of informations:
+		  The in-game screen is composed of numerous components which display a lot of informations:
 		  \begin{description}
-		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to ???launch??? spells}
+		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to cast spells}
 		  \item[Target informations(2):]{Same as (1) but correspond to ???targeted??? player's informations}
 		  \item[Character (3) and (4):]{When the cursor is on an enemy, this one becomes red, if it's a friend, it becomes green}
-		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's ???maximal??? range for attack is drawn around him}
-		  \item[Game informations(5):]{There is the ???temps écoulé??? and the score}
-		  \item[Character's characteristics(6):]{Contains all charactestics a player ???dispose of???: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
-		  \item[Mini map(7):]{Enable to get a ???globale??? view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
-		  \item[Spell bar(8):]{Allow the player to ???launch??? spells, spells which are in this bar depend on your skill tree}
+		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's maximal range for attack is drawn around him}
+		  \item[Game informations(5):]{There is the time and the score}
+		  \item[Character's characteristics(6):]{Contains all charactestics a player have: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
+		  \item[Mini map(7):]{Enable to get a global view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
+		  \item[Spell bar(8):]{Allow the player to cast spells, spells which are in this bar depend on your skill tree}
 		  \item[Chat(9):]{A chat which permit to speak with other players}
 		  \item[Friends informations(10):]{Information about all your friends in the game}
 		  \end{description}
 
 		  \section{Movement}
+		To move characters, a simple left-click is required. The character will move to the location where you click.
 		  \section{Attack}
 		  \subsection{Auto-attack}
-		  \subsection{Skills}
+		To attack enemi with the auto-attack, you have to right-click on him. When you attack a enemi, he will attack you too and you will chase him.
+		  \subsection{Spells}
+		To cast a spell, you have to click on the spell which you want to launch by a right-click. Then the cursor will change and you can target your enemi.
 		  \section{Camera}
+		To move the camera, you case use arrow keys or put the cursor in the screen's border.
 		  \section{How to win ?}
+		There is only one game type available : DeathMatch. Two teams and one goal : have more frags than the other team before the time run out.
 		  \chapter{End-game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{end_screen.png}
+		  \end{center}
+		  That screen summarize the game.
+		  \begin{description}
+		  \item[Header(1):]It is the table's header. There is the team,  characters' name, characters'lvl, frags number, death number, gold earned, flag captured, flag get back. (gold and flag not implemented yet).
+		  \item[Window experience(2):]How much experience earned, and we can see the progression.
+		  \item[Chat(3):] The chat to speak with the others players.
+		  \item[Return button(4):] to return to the character screen.
+		  \item[enemis' window(5):] In red, we can see informations about our enemis.
+		  \item[allies' window(6):] In green, we can see informations about our allies.
+		  \end{description}
 
 		  \part{Technical description}
 		  \chapter{Tools}
@@ -258,12 +290,10 @@ welcoming us and letting us using their comfortable facilities.\\
 
 		Both for performances and ergonomic, we decided to make a map editor, with a texture-palette. Thus, we can create new maps just by using the mouse, with two layers to handle the element overlay, then we can save it and load it into the game. The game display the map by reading its binary file, once it knows the id of each Case, it paint the corresponding texture at Case's coordinates.
 
-		\begin{figure}
 		\begin{center}
 		\includegraphics{image1.png}
 		\end{center}
-		\caption{Texture list}
-		\end{figure}
+		
 
 		  \chapter{How it works}
 		  \section{Graphics}
