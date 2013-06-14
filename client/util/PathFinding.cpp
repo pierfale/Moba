@@ -12,17 +12,18 @@ namespace util {
 
 std::vector<CoordInt> PathFinding::getPath(CoordInt start, CoordInt goal) {
 	std::cout << "getPath..." << std::endl;
-	if(outOfMap(goal) || !game::GameboardModel::getGameboard(0)[start.x][start.y]->getPassable()
-			|| !game::GameboardModel::getGameboard(1)[start.x][start.y]->getPassable()) {
+	if(outOfMap(goal) || !game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()
+			|| !game::GameboardModel::getGameboard(1)[goal.x][goal.y]->getPassable()) {
 		std::vector<CoordInt> r;
 		return r;
 	}
 
+	/*
 	if(!game::GameboardModel::getGameboard(0)[goal.x][goal.y]->getPassable()
 			|| !game::GameboardModel::getGameboard(1)[goal.x][goal.y]->getPassable()){
 		goal = findClosestPassable(goal);
 	}
-
+	*/
 	int width = game::GameboardModel::getWidth();
 	int height = game::GameboardModel::getHeight();
 	struct node map[height * width];
