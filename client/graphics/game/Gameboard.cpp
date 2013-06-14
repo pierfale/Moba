@@ -41,7 +41,7 @@ namespace graphics {
 		add(m_interface);
 	}
 	Gameboard::~Gameboard() {
-		delete m_interface;
+		//delete m_interface;
 	}
 
 	bool characterSort(Character* c1, Character* c2) {
@@ -102,11 +102,11 @@ namespace graphics {
 			int borderSize = 30;
 			if(mouse.x < borderSize && mouse.x >= 0)
 				m_cam.move(true, false);
-			if(mouse.x > render->getSize().x-borderSize && mouse.x <= render->getSize().x)
+			if(mouse.x > (unsigned int)(render->getSize().x-borderSize) && mouse.x <= (unsigned int)(render->getSize().x))
 				m_cam.move(true, true);
 			if(mouse.y < borderSize && mouse.y >= 0)
 				m_cam.move(false, false);
-			if(mouse.y > render->getSize().y-borderSize && mouse.y <= render->getSize().y)
+			if(mouse.y > (unsigned int)(render->getSize().y-borderSize) && mouse.y <= (unsigned int)(render->getSize().y))
 				m_cam.move(false, true);
 
 			m_cam.endMove();
