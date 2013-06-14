@@ -13,8 +13,10 @@ namespace network {
 
 void Message_game::process(Packet packet) {
 	if(packet.getType() == PacketType::GAME_ANSWERREADY) {
+		std::string map;
+		packet >> &map;
 		game::GamePlayerList::removeByID(game::CurrentCharacter::get()->getID());
-		graphics::Graphics::getWindow()->setContentPane(new graphics::Gameboard());
+		graphics::Graphics::getWindow()->setContentPane(new graphics::Gameboard(map));
 	}
 	else if(packet.getType() == PacketType::GAME_MODE) {
 		int idMode;

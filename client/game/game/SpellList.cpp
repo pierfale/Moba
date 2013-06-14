@@ -20,6 +20,7 @@ namespace game {
 			if(getInstance()->m_spells.at(i).getId() == spell->getId())
 				return;
 		}
+		std::cout << spell->getName() << " ADDED" << std::endl;
 		getInstance()->m_spells.push_back(spell);
 
 

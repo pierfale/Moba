@@ -9,7 +9,8 @@
 #define ENDSCREENLISTNERBUTTON_H_
 
 #include "../listener/ButtonListener.hpp"
-#include "../../graphics/Graphics.hpp"
+#include "../Graphics.hpp"
+#include "../../game/game/GamePlayerList.hpp"
 
 namespace graphics {
 

@@ -10,7 +10,6 @@
 namespace graphics {
 
 EndScreen::EndScreen() {
-
 	setLayout(new PassivLayout());
 
 	m_frame = new FrameEndGame();
@@ -20,7 +19,6 @@ EndScreen::EndScreen() {
 }
 
 EndScreen::~EndScreen() {
-
 	delete m_returnButton;
 //	delete m_frame;
 	delete m_exp;

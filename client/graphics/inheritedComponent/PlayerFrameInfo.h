@@ -28,8 +28,6 @@ class CurrentCharacter;
 		void setScale(float scale);
 
 		void draw(sf::RenderWindow* render);
-		void drawGauge(sf::RenderWindow* render);
-		void drawCarac(sf::RenderWindow* render);
 		bool event(sf::Event* event, bool used);
 
 	private:

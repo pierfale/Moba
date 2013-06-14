@@ -76,7 +76,6 @@ namespace game {
 		}
 		parents.push_back(util::Cast::stringToInt(args.at(3).substr(beg, cursor-beg)));
 		return new Skill(util::Cast::stringToInt(args.at(0)), args.at(1), args.at(2), parents, args.at(4), util::CoordInt(util::Cast::stringToInt(args.at(5)), util::Cast::stringToInt(args.at(6))), sf::IntRect(util::Cast::stringToInt(args.at(7)), util::Cast::stringToInt(args.at(8)), util::Cast::stringToInt(args.at(9)), util::Cast::stringToInt(args.at(10))));
-
 	}
 
 	bool SkillReader::isblank(char c) {

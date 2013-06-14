@@ -15,6 +15,8 @@ namespace graphics {
 
 	Window::Window(int width, int height, std::string title) : m_width(width), m_height(height), m_title(title) {
 		log_out "Ref "+util::Cast::ptrToString(this)+": Create "+getComponentName()+" [title="+title+", width="+util::Cast::intToString(width)+", height="+util::Cast::intToString(height)+"]" end_log_out;
+
+
 		m_window = NULL;
 		m_root = new Container();
 		m_rootTmp = NULL;

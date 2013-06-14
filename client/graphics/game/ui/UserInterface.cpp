@@ -7,7 +7,6 @@
 
 #include "UserInterface.h"
 #include "../../../game/menu/CurrentCharacter.hpp"
-
 #include "../Gameboard.h"
 
 namespace graphics {
@@ -18,6 +17,7 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 	m_frame_mode = NULL;
 	setLayout(new PassivLayout());
 
+
 	m_spellBarr = new SpellBarr(player);
 	add(m_spellBarr);
 
@@ -25,6 +25,9 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 	m_player_frame_info->setCoord(util::CoordInt(15,15));
 	m_enemi_frame_info = new PlayerFrameInfo();
 	m_enemi_frame_info->setCoord(util::CoordInt(175,15));
+	m_player_frame_caract = new FrameCaract(player);
+	add(m_player_frame_caract);
+	m_player_frame_caract->setCoord(util::CoordInt(660,356)); //parent.w - 140 ; parent.h - 236
 	add(m_player_frame_info);
 
 	m_menu = new InnerWindow("Menu",120,140, GUIStyle::innerwindow());
@@ -55,7 +58,7 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 	}
 
 	m_chat = new Chat(CHAT_FULLTEXTFIELD);
-	m_chat->setSize(300,200);
+	m_chat->setSize(250,200);
 	m_chat->validate();
 	game::ChatList::add(m_chat);
 	add(m_chat);
@@ -66,15 +69,15 @@ UserInterface::UserInterface(game::Player* player, std::string mapName, Gameboar
 }
 
 UserInterface::~UserInterface() {
-	delete m_button_quit;
-	delete m_button_no;
-	delete m_button_yes;
-	delete m_player_frame_info;
-	delete m_enemi_frame_info;
-	delete m_frame_mode;
-	delete m_confirm;
-	delete m_menu;
-	delete m_chat;
+//	delete m_button_quit;
+//	delete m_button_no;
+//	delete m_button_yes;
+//	delete m_player_frame_info;
+//	delete m_enemi_frame_info;
+//	delete m_frame_mode;
+//	delete m_confirm;
+//	delete m_menu;
+//	delete m_chat;
 }
 
 
@@ -128,12 +131,13 @@ void UserInterface::validate() {
 	if(m_loaded) m_frame_mode->setCoord(util::CoordInt(getParent()->getWidth()-49, 1));
 	m_chat->setCoord(util::CoordInt(0,getParent()->getHeight()-200));
 	m_minimap->setCoord(util::CoordInt(getParent()->getWidth()-200,getParent()->getHeight()-200));
+	m_player_frame_caract->setCoord(util::CoordInt(getParent()->getWidth()-140, getParent()->getHeight()-236));
 }
 
 //Events
 void UserInterface::confirm() {add(m_confirm);}
 void UserInterface::removeConfirm() {remove(m_confirm);}
-void UserInterface::quit() {/*TODO QUIT();*/}
+void UserInterface::quit() {}
 void UserInterface::menu() {
 	if (m_boolMenu) {
 		remove(m_menu);
@@ -155,4 +159,5 @@ bool UserInterface::event(sf::Event* event, bool used) {
 Chat* UserInterface::getChat() {
 	return m_chat;
 }
+
 } /* namespace graphics */

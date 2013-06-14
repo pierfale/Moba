@@ -42,7 +42,7 @@ class UserInterface;
 	class Gameboard : public Container{
 	public:
 		//standard
-		Gameboard();
+		Gameboard(std::string map);
 		virtual ~Gameboard();
 
 		//graphics manage

@@ -15,9 +15,11 @@ namespace network {
 	void Message_chat::process(Packet packet) {
 
 		if(packet.getType() == PacketType::CHAT_CREATECHAT) {
+
 			int id, type;
 			packet >> &id >> &type;
 			if(type == network::PacketType::CHAT_SELECTTEAM) {
+
 				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::SelectTeamScreen::getName()) {
 					((graphics::SelectTeamScreen*)graphics::Graphics::getWindow()->getContentPane())->getChat()->setID(id);
 				}
@@ -29,6 +31,7 @@ namespace network {
 			}
 			else if(type == network::PacketType::CHAT_ENDGAME) {
 				if(graphics::Graphics::getWindow()->getContentPane()->getComponentName() == graphics::EndScreen::getName()) {
+
 					((graphics::EndScreen*)graphics::Graphics::getWindow()->getContentPane())->getChat()->setID(id);
 				}
 			}

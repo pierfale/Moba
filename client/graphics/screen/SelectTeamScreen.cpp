@@ -30,6 +30,7 @@ namespace graphics {
 
 	void SelectTeamScreen::load() {
 
+
 		m_buttonContainer = new Container();
 		m_buttonContainer->setBackground("ressources/gui/background_characterFrame.png", full);
 		this->add(m_buttonContainer);
@@ -69,7 +70,7 @@ namespace graphics {
 		m_mainUpContainer = new Container();
 		m_mainContainer->add(m_mainUpContainer);
 
-		m_chat = new Chat();
+		m_chat = new Chat(CHAT_DEFAULT);
 		game::ChatList::add(m_chat);
 		m_mainContainer->add(m_chat);
 

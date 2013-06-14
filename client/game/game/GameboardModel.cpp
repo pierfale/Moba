@@ -81,8 +81,8 @@ void GameboardModel::read(std::string path) {
 			f.read((char*) &idtmp, sizeof(int));
 			getInstance()->m_gameboard[x][y] = new Case(idtmp);
 			std::cout << getInstance()->m_gameboard[x][y]->getId();
-			if (idtmp == 3) {getInstance()->m_gameboard[x][y]->setPassable(false);
-			}
+			if (idtmp != 1  && idtmp != 2 && idtmp != 23)
+				getInstance()->m_gameboard[x][y]->setPassable(false);
 		}
 		std::cout << std::endl;
 	}
@@ -90,6 +90,8 @@ void GameboardModel::read(std::string path) {
 		for (int x = 0 ; x < getInstance()->m_widthGameBoard ; x++){
 			f.read((char*) &idtmp, sizeof(int));
 			getInstance()->m_gameboardLayer[x][y] = new Case(idtmp);
+			if (idtmp != 0)
+				getInstance()->m_gameboard[x][y]->setPassable(false);
 			std::cout << getInstance()->m_gameboardLayer[x][y]->getId();
 		}
 		std::cout << std::endl;
