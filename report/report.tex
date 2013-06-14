@@ -134,17 +134,66 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \begin{center}
 		  \includegraphics[scale=0.4]{connection_screen.png}
 		  \end{center}
-		  
+		  When you launch the client application, you're invited to connect to the server. To be able to log in, you must have a pseudo and password. Here are few login(1)/password(2) couples that are already in database:
+		  \begin{itemize}
+		  \item{test/test}
+		  \item{test1/test}
+		  \item{test2/test}
+		  \end{itemize}
 
+		  Once these fields are ???renseignés???, click on connection button(3) to connect.
+		  
 		  \section{Managing your characters}
+		  Once you're logged in, you can see the character screen.
+		  \begin{center}
+		  \includegraphics[scale=0.4]{character_screen.png}
+		  \end{center}
+		  On the left, you have your characters list(1), a 'New character' button to create a new character and 'Return' button(2) to disconnect from server. On the top, you have 3 buttons:
+		  \begin{description}
+		  \item[Stat(4):]{Display selected character's characteristics}
+		  \item[Skill(5):]{Display the skill tree for current character}
+		  \item[Launch(6):]{Go to launch screen}
+		  \end{description}
+		  If you don't have any character yet, you're invited to create a new one.
+
 		  \subsection{Creating a new character}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{create_character.png}
+		  \end{center}
+		  We wanted to give the ???opportunity??? of customizing your character on this screen, but unfornuately, we didn't have enough time and knowledge about ???graphismes???, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
 		  \subsection{Statistics}
 		  \subsection{Skill-tree}
 		  \subsection{...}
 		  \section{Launch a new game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{launch_screen.png}
+		  \end{center}
+		  This screen enable you to create a new game or join an existing one. On the left, there is 3 buttons:
+		  \begin{description}
+		  \item[MatchMaking(1):]{Search a game where players are at the same level as you, this functionnality isn't implemented}
+		  \item[Join Game(2):]{Join a game among those which are available}
+		  \item[Create Game(3):]{Create a new game}
+		  \end{description}
 		  \section{Join an existing game}
 		  \chapter{In-game}
 		  \section{In-game screen}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{in_game.png}
+		  \end{center}
+		  The in-game screen is ???composé??? of numerous components which display a lot of informations:
+		  \begin{description}
+		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to ???launch??? spells}
+		  \item[Target informations(2):]{Same as (1) but correspond to ???targeted??? player's informations}
+		  \item[Character (3) and (4):]{When the cursor is on an enemy, this one becomes red, if it's a friend, it becomes green}
+		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's ???maximal??? range for attack is drawn around him}
+		  \item[Game informations(5):]{There is the ???temps écoulé??? and the score}
+		  \item[Character's characteristics(6):]{Contains all charactestics a player ???dispose of???: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
+		  \item[Mini map(7):]{Enable to get a ???globale??? view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
+		  \item[Spell bar(8):]{Allow the player to ???launch??? spells, spells which are in this bar depend on your skill tree}
+		  \item[Chat(9):]{A chat which permit to speak with other players}
+		  \item[Friends informations(10):]{Information about all your friends in the game}
+		  \end{description}
+
 		  \section{Movement}
 		  \section{Attack}
 		  \subsection{Auto-attack}
