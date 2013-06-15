@@ -19,8 +19,7 @@ gave us lots of advice throughout this project and the Glasgow Caledonian Univer
 welcoming us and letting us using their comfortable facilities.\\
 
 	  Then, we would also like to thank our French supervisor Patrick Lebegue for supporting us
-	  and the University of Lille 1 for giving us the opportunity to carry out our internship in a
-	  foreign country.\\
+	  and the University of Lille 1 for giving us the opportunity to carry out our internship in foreign country.\\
 
 	  Finally, we wish to thank all our former professors from the University of Lille 1 who
 	  permits us to achieve our graduation in very good conditions.\\
@@ -28,8 +27,7 @@ welcoming us and letting us using their comfortable facilities.\\
 	  \chapter*{Abstract}
 	  \addcontentsline{toc}{chapter}{Abstract}
 	  During our 3-month-internship at Glasgow Caledonian University, we had to make a video game.
-	  In this game, every player have a character, called a hero, who has characteristics, spells, ans weapons.
-	  The goals for each player is to be the last survivor.\\
+	  In this game, every player have a character, called a hero, who has characteristics, spells, and weapons.\\
 
 	  We made it because it touched to several aspects of computer science such as database, network,
 	  programming. Moreover, we had to learn a lot of stuff to get this project done.\\
@@ -109,10 +107,12 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \section{Project description} %TODO Update for each functionnality implemented
 		  The project consists in creating a video game where each player has its own character, also 
 		  called a hero. A hero has several characteristics such as % Caracteristiques ici
-		  spells, and can level up by beating his enemy. The goal is to be the last survivor.
+		  spells, and can level up by beating his enemy. The goal depend on the game type selected by the player who created the game.\\
+
+		 Then, we choose that project because it provide a lot of development opportunities. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
 
 		  \part{How to play}
-		  \chapter{???PREREQUIS???}
+		  \chapter{Prerequisite}
 		  To be able to launch the application, you must own a MySQL database called '\emph{moba}' with following tables in it:
 		  \begin{itemize}
 		  \item{account (Account\_ID integer, Account\_Pseudo varchar(32), Account\_Password char(40))}
@@ -121,10 +121,10 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{skill (Skill\_ID integer, Skill\_Characters integer)}
 		  \end{itemize}
 
-		  You can find a ???model??? of this database in the \emph{Database} folder. You just have to import this database in your ???SGBD??? with few ???enregistrements??? to get it works.\\
+		  You can find this database in the \emph{Database} folder. You just have to import this database in your database management system with few records to get it works.\\
 
-		  To launch the server, you just have to double click on MobaServer.exe, a console should ???appear??? showing server's logs.\\
-		  ???De meme pour??? the client, double click on Moba.exe.
+		  To launch the server, you just have to double click on MobaServer.exe, a console should appear showing server's logs.\\
+		  It is the same for the client, double click on Moba.exe.
 
 		  \chapter{Before the game starts}
 		  \section{Login screen}
@@ -138,7 +138,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{test2/test}
 		  \end{itemize}
 
-		  Once these fields are ???renseignés???, click on connection button(3) to connect.
+		  Once these fields are filled, click on connection button(3) to connect.
 		  
 		  \section{Managing your characters}
 		  Once you're logged in, you can see the character screen.
@@ -157,9 +157,22 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \begin{center}
 		  \includegraphics[scale=0.4]{create_character.png}
 		  \end{center}
-		  We wanted to give the ???opportunity??? of customizing your character on this screen, but unfornuately, we didn't have enough time and knowledge about ???graphismes???, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
+		  We wanted to give the opportunity to customize your character on this screen, but unfortunately, we didn't have enough time and knowledge about graphics, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
 		  \subsection{Statistics}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{stats_screen.png}
+		  \end{center}
+		  That screen summarize character characteristics.
 		  \subsection{Skill-tree}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{skill_tree_screen.png}
+		  \end{center}
+		  This is the skill tree screen. Here, you can buy improvement for your character. For each level, you got one point to spend in the tree, but to get last skilsl, you must buy spells that are before and following white lines.
+		  \begin{description}
+		  \item[Skill(1)]{There is a skill. To buy it, you must have one point and right-click on it. If you can buy, it is appear with yellow border, if you got it with blue border but if you can't buy it, it is dark.}
+		  \item[White Lines(2)]{This is the path you must follow. Example : you can not buy \emph{'PoweerFul Strike'} if you have not buy \emph{'Way of warrior'} before.}
+		  \item[Help(3)]{When you put the cursor on it, a help is displayed.}
+		  \end{description}
 		  \subsection{...}
 		  \section{Launch a new game}
 		  \begin{center}
@@ -171,33 +184,71 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item[Join Game(2):]{Join a game among those which are available}
 		  \item[Create Game(3):]{Create a new game}
 		  \end{description}
+		  \section{Create a new game}
+		  We wanted to give the opportunity to customize your game : game type, time, size of team... But we did not have enaugh time to implements this. The screen is similar as the screen of the creation of the characters %TODO RE-WRITE IN BETTER ENGLISH 
 		  \section{Join an existing game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{lobby_screen.png}
+		  \end{center}
+		  This is the screen where the team are created.
+		   \begin{description}
+		  \item[Button Change team (1) :]{When you click on this button, your character wil change team.}
+		  \item[Button Launch(2) :]{When everyone is ready to launch the game. Only the creator of the game can launch it.}
+		  \item[The lobby (3) :]{We can see the both team, each players and his level.}
+		  \item[Chat (4) :]{The chat to speak with other people on this game.}
+		  \item[Return button (5)] {To go back at the previously screen.}
+  		 \end{description}
 		  \chapter{In-game}
 		  \section{In-game screen}
 		  \begin{center}
 		  \includegraphics[scale=0.4]{in_game.png}
 		  \end{center}
-		  The in-game screen is ???composé??? of numerous components which display a lot of informations:
+		  The in-game screen is composed of numerous components which display a lot of informations:
 		  \begin{description}
-		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to ???launch??? spells}
+		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to cast spells}
 		  \item[Target informations(2):]{Same as (1) but correspond to ???targeted??? player's informations}
 		  \item[Character (3) and (4):]{When the cursor is on an enemy, this one becomes red, if it's a friend, it becomes green}
-		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's ???maximal??? range for attack is drawn around him}
-		  \item[Game informations(5):]{There is the ???temps écoulé??? and the score}
-		  \item[Character's characteristics(6):]{Contains all charactestics a player ???dispose of???: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
-		  \item[Mini map(7):]{Enable to get a ???globale??? view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
-		  \item[Spell bar(8):]{Allow the player to ???launch??? spells, spells which are in this bar depend on your skill tree}
+		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's maximal range for attack is drawn around him}
+		  \item[Game informations(5):]{There is the time and the score}
+		  \item[Character's characteristics(6):]{Contains all charactestics a player have: physical damages, magical damages, attack speed, movement speed, physical armor, magical armor, range, gold.}
+		  \item[Mini map(7):]{Enable to get a global view of the entire map. Your character is represented by the yellow point, friends by green points and enemy by red points}
+		  \item[Spell bar(8):]{Allow the player to cast spells, spells which are in this bar depend on your skill tree}
 		  \item[Chat(9):]{A chat which permit to speak with other players}
 		  \item[Friends informations(10):]{Information about all your friends in the game}
 		  \end{description}
 
 		  \section{Movement}
+		To move characters, a simple left-click is required. The character will move to the location where you click.
 		  \section{Attack}
 		  \subsection{Auto-attack}
-		  \subsection{Skills}
+		To attack enemi with the auto-attack, you have to right-click on him. When you attack a enemi, he will attack you too and you will chase him.
+		  \subsection{Spells}
+		\begin{center}
+		\includegraphics[scale=0.4]{cast_spell.png}
+		\end{center}
+		To cast a spell, you have to :
+ 		\begin{description}
+  		\item[select a spell(1) :]{click on the spell which you want to launch by a right-click.} 
+		\item[target(2) :]{Then the cursor will change and you can target your enemi.}
+		\item[fire(3) :]{And with a right-click on the target, the character will cast the spell.}
+		 \end{description}
 		  \section{Camera}
+		To move the camera, you case use arrow keys or put the cursor in the screen's border.
 		  \section{How to win ?}
+		There is only one game type available : DeathMatch. Two teams and one goal : have more frags than the other team before the time run out.
 		  \chapter{End-game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{end_screen.png}
+		  \end{center}
+		  That screen summarize the game.
+		  \begin{description}
+		  \item[Header(1):]It is the table's header. There is the team,  characters' name, characters'lvl, frags number, death number, gold earned, flag captured, flag get back. (gold and flag not implemented yet).
+		  \item[Window experience(2):]How much experience earned, and we can see the progression.
+		  \item[Chat(3):] The chat to speak with the others players.
+		  \item[Return button(4):] to return to the character screen.
+		  \item[enemis' window(5):] In red, we can see informations about our enemis.
+		  \item[allies' window(6):] In green, we can see informations about our allies.
+		  \end{description}
 
 		  \part{Technical description}
 		  \chapter{Tools}
@@ -207,7 +258,14 @@ welcoming us and letting us using their comfortable facilities.\\
 		  Finally, we wanted to try the boost libraries, which allow programmers to make robust C++ programs much more easily, and improve
 		  software portability.
 		  \section{Eclipse CDT}
+		 Eclipse is a multi-language Integrated development environment (IDE) comprising a base workspace and an extensible plug-in system for customizing the environment.\\
+		We added the plug-in "CDT" : C/C++ Development Toolkit to code in C++ on Eclispe. We choose Eclispe because we used it before and it provides a very good comfort for coding. But we did not know, the plug-in does not work very well and we got some issues.
 		  \section{Git}
+		\begin {center}
+		\includegraphics[scale=0.5]{Git.png}
+		\end{center}
+		In software development, Git is a distributed version control and source code management (SCM) system with an emphasis on speed.
+		We used Git to synchronyze our project faster than with others support as USB Key. In fact, for merge differents parts of the project, we spent lot of time at the begin. But now, we are able to merge a lot of source code in short time.\\
 		  \section{External libraries}
 		  \subsection{Boost} %TODO
 		  \begin{center}
@@ -232,41 +290,49 @@ welcoming us and letting us using their comfortable facilities.\\
 		  MySQL is the world's most widely used open source relational database management system that runs as a server providing multi-user access to a number of databases.
 		  \section{Tools we developped} 
 		  \subsection{Logs}
-		  To make debugging easier, we made a simple log system which redirect ???flux entrant vers la sortie??? but also into a file we ???specified???. The class used to do that is called \emph{Logs}. It contains two methods: \emph{out} and \emph{err} which ???respectively??? redirect to standard and error ???flux??? and the file described by Logs attribute. Also, using a \emph{\#define} macro, we were able to know the file's name and line were Logs methods were called, without having to ???pass??? it as argument. Thus, we just had to give the message to out or err method.
+		  To make debugging easier, we made a simple log system which redirect the input stream to output stream but also into a file we ???specified???. The class used to do that is called \emph{Logs}. It contains two methods: \emph{out} and \emph{err} which ???respectively??? redirect to standard and error stream and the file described by Logs attribute. Also, using a \emph{\#define} macro, we were able to know the file's name and line were Logs methods were called, without having to send it as argument. Thus, we just had to give the message to out or err method.
 		  \subsection{Configuration}
-		  We also created a basic configuration tool using a parser to extract parameters values from files. Thus, we don't have to compile again each time a parameter is modified. Configuration files must ???respecter??? the following format:
+		  We also created a basic configuration tool using a parser to extract parameters values from files. Thus, we don't have to compile again each time a parameter is modified. Configuration files must match with the following format:
 		  \begin{itemize}
 		  \item{Key = value}
 		  \item{Key = "value with blanks"}
 		  \end{itemize}
 		
 		  Blanks between \emph{key}, \emph{'='} and \emph{value} are not ???mandatory???
-		  It is also possible to put comments into these files by addind a '\emph{\#}' at the beginning of the line. The parser read each configuration files line by line and store each ???couple??? key/value in a \emph{Map} object. Finally, we developped a class to store default values if none is defined in files, so that we don't have to define a parameter if we want to keep its default value.
+		  It is also possible to put comments into these files by addind a '\emph{\#}' at the beginning of the line. The parser read each configuration files line by line and store each pair key/value in a \emph{Map} object. Finally, we developped a class to store default values if none is defined in files, so that we don't have to define a parameter if we want to keep its default value.
 
 		  \subsection{Map editor}
+		Maps are handled by a two-dimension-array which contains Case objects. Each Case object contains attributes \emph{x} and \emph{y} to describe its coordinates. Another attribute allow us to know if a character can cross it. Finally, there is an attribute which contains a texture-id so that we know how to display it. In order to get these maps persistent, we wrote it in binary files. At the beginning, we had to do it manually, but it was tedious to do, so we developped a simple program to make it easier.\\
+
+		Both for performances and ergonomic, we decided to make a map editor, with a texture-palette. Thus, we can create new maps just by using the mouse, with two layers to handle the element overlay, then we can save it and load it into the game. The game display the map by reading its binary file, once it knows the id of each Case, it paint the corresponding texture at Case's coordinates.
+
+		\begin{center}
+		\includegraphics{image1.png}
+		\end{center}
+		
 
 		  \chapter{How it works}
 		  \section{Graphics}
-		  Once we choosed to use SFML librarie (see \ref{SFML}), we had to find an additional librarie containing components to make user interfaces, because SFML only provide very basic tools, such as drawing rectangles or circles. Many people developped and distributed libraries like this, but most of them are incomplete or contain bugs, that's why we decided to make our own, based on ???event??? programming. We also choosed to make the graphic part executed by a single thread. We first tried to create thread for each component, but synchronization and concurrent access between them became to hard to manage.
+		  Once we choosed to use SFML librarie (see \ref{SFML}), we had to find an additional librarie containing components to make user interfaces, because SFML only provide very basic tools, such as drawing rectangles or circles. Many people developped and distributed libraries like this, but most of them are incomplete or contain bugs, that's why we decided to make our own, based on Event-driven programming. We also choosed to make the graphic part executed by a single thread. We first tried to create thread for each component, but synchronization and concurrent access between them became to hard to manage.
 
 		  \subsection{???Fonctionnement Global???} %TODO
 		  SFML provides a \emph{sf::RenderWindow} object which contains all informations about window and enable us to draw objects which inherit from \emph{sf::Drawable}, or \emph{sf::Vertex} objects, containing vertex from OpenGL library. SFML use an event system to handle any change on the window: mouse movements, clicks, focus and so on.\\
 
-		  We created a \emph{graphics::Window} class which ???ENCAPSULE??? sf::RenderWindow. Then we developped an abstract class called \emph{graphics::component} to represent a graphic component. This class contains two methods: \emph{draw} to draw a component, and \emph{event} to deal with events.
+		  We created a \emph{graphics::Window} class which wrap sf::RenderWindow. Then we developped an abstract class called \emph{graphics::component} to represent a graphic component. This class contains two methods: \emph{draw} to draw a component, and \emph{event} to deal with events.
 		  We also created \emph{graphics::Container} class, which can contain several components. It's role is to draw all of his components. graphics::Window objects contain a graphics::Container as root component for the component-tree.\\
 
 		  While the window isn't closed, the graphics::Window object carry out each of its actions on the same thread. The order used to do these actions is important to make sure that graphic components are working correctly:
 		  \begin{description}
 		  \item[Events:]{graphics::Window get every element which are contained in SMFL event list and check if he is directly concerned by it or not\footnote{whether the window is resized or closed.}}
 		  \item[Listener:]{It calls all functions contained in listener-array.}
-		  \item[Network packets:]{???TRAITE??? packet-list.}
+		  \item[Network packets:]{process packet-list.}
 		  \item[Check root component:] It checks if temporary root object is different from null. If it is the case, then the old root object is recursively deleted and replaced by the new one. It happens when we want to display another screen.
 		  \item[Display:]{Call draw method from the root object.}
 		  \item[Sleep:]{If there is remaining time before next frame, then the program sleeps during this time.}
 		  \end{description}
 
 		  \subsection{Components}
-		  We implemented several ???essential??? components to ???realize??? this game. They all inherit from \emph{graphics::Component}. This class contains all of their common attributes:
+		  We implemented several essential components to realize this game. They all inherit from \emph{graphics::Component}. This class contains all of their common attributes:
 		  \begin{itemize}
 		  \item{Size}
 		  \item{Position}
@@ -308,31 +374,20 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 	When a component wants to call one of its listener's method, it gives the method and listener's reference to the graphics::Window object, which will call them ???au bon moment???
 
 	\subsection{Styles}
-	???AFIN DE??? make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument
+	In order to make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument. 
 	%Pour une plus grande adaptation de nos composant nous avons décider de créer des classe pour changer leurs style. Chaque componant prend en parametre a sa construction un style. La classe de style change en fonction du component; par exemple
 	%les bouton est le champs de saisie partage la meme classe graphics::BasicStyle.
 	%Cette dernier (BasicStyle), est le un style qui sert areprésenter un rectangle : il prend deux parametre, le chemin vers l'image représentant les bord et le chemin vers l'image représentant le centre.
 	%Cette classe découpe l'image de la facon suivante (schema?)
 	%Nous avons crée une classe singleton qui charge tous les style par défault et qui permet donc de mettre facilement un style sur les component
-
-
-	\subsection{Modeling maps}
-	Maps are handled by a two-dimension-array which contains Case objects. Each Case object contains attributes \emph{x} and \emph{y} to describe its coordinates. Another attribute allow us to know if a character can cross it. Finally, there is an attribute which contains a texture-id so that we know how to display it. In order to get these maps persistent, we wrote it in binary files. At the beginning, we had to do it manually, but it was tedious to do, so we developped a simple program to make it easier.\\
-
-	Both for performances and ergonomic, we decided to make a map editor, with a texture-palette. Thus, we can create new maps just by using the mouse, with two layers to handle the element overlay, then we can save it and load it into the game. The game display the map by reading its binary file, once it knows the id of each Case, it paint the corresponding texture at Case's coordinates.
-
-	\begin{figure}
-	\begin{center}
-	\includegraphics{image1.png}
-	\end{center}
-	\caption{Texture list}
-	\end{figure}
-
 	\subsection{Modeling characters}
-	Modélisation du personnage:
-	Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
-
-	Every character is drawn in three different positions: still, ... Each direction is represented by an attribute in Personnage's class.
+	%Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
+	The characters got three postures : motionless (repeat twice), first step and second step for four directions ( South, East, West, North). We can cut the picture in case : 
+	\begin{center}
+	\includegraphics[scale=0.4]{char.png}
+	\end{center}
+	Each column is a posture, and each row is a direction. With two int in as attribute, we can manage every posture in every direction with a simple addition. For example to have the first step to the north we have :\\
+	1 + 3x4 = 13, and the gameboard draw the right "case" of the character's texture.
 	\subsection{Camera}
 	The Camera object permit to display a part of map, depending on its position and its range\footnote{the window size}. Thus, the program only draw visible part of the map. We can move the camera either with the directionnal arrows or by moving the mouse on window edges. The movement is done pixel by pixel instead of case by case in order to be more fluid.
 
@@ -393,6 +448,9 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 
 		\part{Project results}
 		\chapter{Encountered difficulties}
+		\section{About the project definition}
+		We choose a very good project, because it had a lot of things to do in differents aspect of computer science. But, with such a project, we got somes problems to really define what we wanted to do and with the division of labor.
+		\section{About }
 		\chapter{Benefits}
 		\section{Programming skills}
 		\section{Work in team}

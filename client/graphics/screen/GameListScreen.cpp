@@ -33,6 +33,7 @@ namespace graphics {
 	void GameListScreen::load() {
 		network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_ASKGAME);
 		packet.send();
+		game::GameList::clear();
 
 		m_buttonContainer = new Container();
 		m_buttonContainer->setBackground("ressources/gui/background_characterFrame.png", full);
@@ -142,5 +143,4 @@ namespace graphics {
 		this->validate();
 	}
 }
-
 

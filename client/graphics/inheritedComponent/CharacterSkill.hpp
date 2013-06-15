@@ -16,6 +16,7 @@
 #include "../../game/skill/SkillReader.hpp"
 #include "Packet.hpp"
 #include "../../network/Network.hpp"
+#include "../GUIStyle.hpp"
 
 //Log
 #include "../../log/Log.hpp"
@@ -36,6 +37,7 @@ namespace graphics {
 		void setActiveSkill(int id);
 		void skillPressed(void* origin);
 
+		void validate();
 
 	private:
 		void checkDisableSkill();
@@ -43,6 +45,7 @@ namespace graphics {
 		std::map<int, ButtonImage*> m_button;
 		std::map<ButtonImage*, int> m_buttonReverse;
 		boost::ptr_vector<Line>  m_line;
+		ButtonImage* m_button_help;
 	};
 
 }

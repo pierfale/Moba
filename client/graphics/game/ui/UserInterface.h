@@ -37,7 +37,6 @@ namespace graphics {
 class CurrentCharacter;
 class Gameboard;
 
-
 class UserInterface : public Container {
 	public:
 		UserInterface(game::Player* player, std::string mapName, Gameboard* gameboard);

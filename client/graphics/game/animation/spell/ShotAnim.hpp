@@ -9,6 +9,7 @@
 #define SHOTANIM_HPP_
 
 #include <cmath>
+#include <boost/thread/thread.hpp>
 #include "SingleTargetSpellAnim.hpp"
 
 
@@ -36,3 +37,4 @@ namespace graphics {
 
 
 #endif /* SHOTANIM_HPP_ */
+
