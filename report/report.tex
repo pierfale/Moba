@@ -190,6 +190,17 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \section{Create a new game}
 		  We wanted to give the opportunity to customize your game : game type, time, size of team... But we did not have enaugh time to implements this. The screen is similar as the screen of the creation of the characters %TODO RE-WRITE IN BETTER ENGLISH 
 		  \section{Join an existing game}
+		  \begin{center}
+		  \includegraphics[scale=0.4]{lobby_screen.png}
+		  \end{center}
+		  This is the screen where the team are created.
+		   \begin{description}
+		  \item[Button Change team (1) :]{When you click on this button, your character wil change team.}
+		  \item[Button Launch(2) :]{When everyone is ready to launch the game. Only the creator of the game can launch it.}
+		  \item[The lobby (3) :]{We can see the both team, each players and his level.}
+		  \item[Chat (4) :]{The chat to speak with other people on this game.}
+		  \item[Return button (5)] {To go back at the previously screen.}
+  		 \end{description}
 		  \chapter{In-game}
 		  \section{In-game screen}
 		  \begin{center}
@@ -215,7 +226,15 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \subsection{Auto-attack}
 		To attack enemi with the auto-attack, you have to right-click on him. When you attack a enemi, he will attack you too and you will chase him.
 		  \subsection{Spells}
-		To cast a spell, you have to click on the spell which you want to launch by a right-click. Then the cursor will change and you can target your enemi.
+		\begin{center}
+		\includegraphics[scale=0.4]{cast_spell.png}
+		\end{center}
+		To cast a spell, you have to :
+ 		\begin{description}
+  		\item[select a spell(1) :]{click on the spell which you want to launch by a right-click.} 
+		\item[target(2) :]{Then the cursor will change and you can target your enemi.}
+		\item[fire(3) :]{And with a right-click on the target, the character will cast the spell.}
+		 \end{description}
 		  \section{Camera}
 		To move the camera, you case use arrow keys or put the cursor in the screen's border.
 		  \section{How to win ?}
@@ -364,18 +383,14 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 	%Cette dernier (BasicStyle), est le un style qui sert areprésenter un rectangle : il prend deux parametre, le chemin vers l'image représentant les bord et le chemin vers l'image représentant le centre.
 	%Cette classe découpe l'image de la facon suivante (schema?)
 	%Nous avons crée une classe singleton qui charge tous les style par défault et qui permet donc de mettre facilement un style sur les component
-
-
-	\subsection{Modeling maps}
-	
-
-	
-
 	\subsection{Modeling characters}
-	Modélisation du personnage:
-	Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
-
-	Every character is drawn in three different positions: still, ... Each direction is represented by an attribute in Personnage's class.
+	%Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
+	The characters got three postures : motionless (repeat twice), first step and second step for four directions ( South, East, West, North). We can cut the picture in case : 
+	\begin{center}
+	\includegraphics[scale=0.4]{char.png}
+	\end{center}
+	Each column is a posture, and each row is a direction. With two int in as attribute, we can manage every posture in every direction with a simple addition. For example to have the first step to the north we have :\\
+	1 + 3x4 = 13, and the gameboard draw the right "case" of the character's texture.
 	\subsection{Camera}
 	The Camera object permit to display a part of map, depending on its position and its range\footnote{the window size}. Thus, the program only draw visible part of the map. We can move the camera either with the directionnal arrows or by moving the mouse on window edges. The movement is done pixel by pixel instead of case by case in order to be more fluid.
 
@@ -436,6 +451,9 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 
 		\part{Project results}
 		\chapter{Encountered difficulties}
+		\section{About the project definition}
+		We choose a very good project, because it had a lot of things to do in differents aspect of computer science. But, with such a project, we got somes problems to really define what we wanted to do and with the division of labor.
+		\section{About }
 		\chapter{Benefits}
 		\section{Programming skills}
 		\section{Work in team}
