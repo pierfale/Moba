@@ -33,3 +33,6 @@
 *.idx
 *.pdf
 *.toc
+
+#Vim temp files
+*.swp
