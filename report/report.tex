@@ -378,20 +378,22 @@ We implemented several layouts for all of our needs.
 	\subsection{Events}
 	At each frame, the SFML event list is spreads as argument to root-container's event method. This method will send these events to all container's sons. It also contains a \emph{used} attribute which allow us to know whether an event has already been transmitted or not so that only one event is triggered when we click on two superimposed components.\\
 
-	Each component handle its events ???differently???, some of them are ???click-insensitive???, others check if the event is sent by keyboard and so on.
+	Each component handle its events differently, some of them are ???click-insensitive???, others check if the event is sent by keyboard and so on.
 	???Most components??? have an \emph{addListener} method which permit to add a new listener. These listeners ???vary??? following the component type, a button listener won't be the same as a textfield listener.\\
 
-	When a component wants to call one of its listener's method, it gives the method and listener's reference to the graphics::Window object, which will call them ???au bon moment???
+	When a component wants to call one of its listener's method, it gives the method and listener's reference to the graphics::Window object, which will call them at the right time.
 
 	\subsection{Styles}
-	In order to make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument. 
+	In order to make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument.\\
+	The class style change with the component, for example : Buttons and textfields share the same style: graphics::BasicStyle. This style represents a rectangle : it takes 2 arguments, the path to the border's texture and the path to the center's texture. Le style cut textures like this :\\
+	????????? ADD THIS FUCKING SCHEMA ???????????
 	%Pour une plus grande adaptation de nos composant nous avons décider de créer des classe pour changer leurs style. Chaque componant prend en parametre a sa construction un style. La classe de style change en fonction du component; par exemple
 	%les bouton est le champs de saisie partage la meme classe graphics::BasicStyle.
 	%Cette dernier (BasicStyle), est le un style qui sert areprésenter un rectangle : il prend deux parametre, le chemin vers l'image représentant les bord et le chemin vers l'image représentant le centre.
 	%Cette classe découpe l'image de la facon suivante (schema?)
+	We implemented a singleton class to load every style and make easier to put style on component. 
 	%Nous avons crée une classe singleton qui charge tous les style par défault et qui permet donc de mettre facilement un style sur les component
 	\subsection{Modeling characters}
-	%Le personnage est déssiné dans 3 positions différentes (immobile, pas gauche, pas droit)pour les 4 directions possibles (SUD, EST, OUEST, NORD). Chaque direction est modélisée par un attribut int dans la classe personnage.
 	The characters got three postures : motionless (repeat twice), first step and second step for four directions ( South, East, West, North). We can cut the picture in case : 
 	\begin{center}
 	\includegraphics[scale=0.4]{char.png}
@@ -443,7 +445,7 @@ We implemented several layouts for all of our needs.
 			\section{Network}
 			\subsection{libnetwork}
 			%TOREWRITE MAYBE HEIN LOL
-			???Since??? both the server and the client have ???network functionnalities??? in common, instead of writing these function twice, we decided to write a shared library. This library contains the network protocol.\\
+			Since both the server and the client have network functionnalities in common, instead of writing these function twice, we decided to write a shared library. This library contains the network protocol.\\
 				%-----------------------%
 
 				We choosed to use TCP as transport protocol because it's more ???fiable??? than UDP. Most of datas sent over network need to be received in the right order by the ???destinataire???. To make things easier, most of network functions are executed ???synchronously???, so that we don't have to check all the time if the packet needed to allow the program to continue has arrived or not. More over asynchronous functions use several threads, which increase the program ???complexity???\\
