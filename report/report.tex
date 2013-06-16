@@ -130,7 +130,21 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{characters (Characters\_ID integer, Characters\_Account integer, Characters\_Name varchar(32) Characters\_Level smallint(6), Characters\_Exp integer)}
 		  \item{skill (Skill\_ID integer, Skill\_Characters integer)}
 		  \end{itemize}
+		  \begin{figure}[h]		
+		  \begin{center}
+		  \includegraphics[scale=0.5]{mcd.png}
+		  \end{center}
+		  \caption{Database MCD}
+		  \end{figure}
 
+		  \begin{figure}[h]		
+		  \begin{center}
+		  \includegraphics[scale=0.5]{mld.jpg}
+		  \end{center}
+		  \caption{Database MLD}
+		  \end{figure}
+
+		
 		  You can find this database in the \emph{Database} folder. You just have to import this database in your database management system with few records to get it works.\\
 
 		  To launch the server, you just have to double click on MobaServer.exe, a console should appear showing server's logs.\\
@@ -342,12 +356,16 @@ welcoming us and letting us using their comfortable facilities.\\
 		While the window isn't closed, the graphics::Window object carry out each of its actions on the same thread. The order used to do these actions is important to make sure that graphic components are working correctly:
 		\begin{description}
 		\item[Events:]{graphics::Window get every element which are contained in SMFL event list and check if he is directly concerned by it or not\footnote{whether the window is resized or closed.}}
-		\item[Listener:]{It calls all functions contained in listener-array.}
+		\item[Listeners:]{It calls all functions contained in listener-array.}
 		\item[Network packets:]{process packet-list.}
 		\item[Check root component:] It checks if temporary root object is different from null. If it is the case, then the old root object is recursively deleted and replaced by the new one. It happens when we want to display another screen.
 		\item[Display:]{Call draw method from the root object.}
 		\item[Sleep:]{If there is remaining time before next frame, then the program sleeps during this time.}
 		\end{description}
+
+		\begin{center}
+		\includegraphics[scale=0.3]{windowCycle.jpg}
+		\end{center}
 
 		\section{Components}
 		We implemented several essential components to realize this game. They all inherit from \emph{graphics::Component}. This class contains all of their common attributes:
@@ -523,6 +541,75 @@ We implemented several layouts for all of our needs.
 					\chapter*{Conclusion} %TOREWRITE
 					\addcontentsline{toc}{chapter}{Conclusion}
 					In conclusion, the project was, in our opinion, sucessful. Even if we didn't have everything we thank, we got a good application. 
-					\end{document}
->>>>>>> eb0f855514a99d3e4c1330af3ebff2a74a55aac1
 
+					\appendix
+					\chapter{Components list}
+					\addtolength{\oddsidemargin}{-.875in}
+					\addtolength{\evensidemargin}{-.875in}
+					\small
+\begin{center}
+\begin{tabular}{|p{2.2cm}|p{4cm}|p{3.5cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+Name & Description & Listener & Style & Selectable & Example \\
+\hline
+Button & Create a button, detect clicks and when mouse is mouse is on it & ButtonListener & BasicStyle & true & image \\
+\hline
+ButtonImage & Inherit from Button, allow to put an image on the button & ButtonListener & BasicStyle & true & image \\
+\hline
+Container & Situate components on window using a layout & None & None & false & image \\
+\hline
+FocusFrame & Integrated to others components to display a tool tip when the mouse is on it & None & BasicStyle & false & image \\
+\hline
+InnerWindow & Inherit from Container. Permits to simulate windows inside the main window & InnerWindowListener & WindowStyle & false & image \\
+\hline
+Label & Used to display text & LabelListener & BasicStyle & false & image \\
+\hline
+Line & Used to display horizontal and vertical lines (for skill tree for example) & None & LineStyle & false & image \\
+\hline
+ScrollBar & Contains a Container object. If the container is bigger than the scrollBar, then scroll bars are displayed to scroll through the window & None & ScrollBarStyle & false & image \\
+\hline
+String & Allow to customize texts using XML & None & None & false & image \\
+\hline
+Table & Simulate table's behaviour & TableListener & TableStyle & false & image \\
+\hline
+Textfield & Allow to enter text & TextFieldListener & BasicStyle & false & image \\
+\hline
+\end{tabular}
+\end{center}
+					\chapter{Styles list}
+\begin{tabular}{|p{3cm}|p{10cm}|p{2cm}|}
+\hline
+Name & Description & Example\\
+\hline
+BasicStyle & Takes two images as arguments : The first represents component's borders, the second one represents component's center & image \\
+\hline
+LineStyle & Takes an image as argument to draw the line & image \\
+\hline
+ScrollBarStyle & Takes two images as arguments: the first is the scroll-bar's background, and the second is the bar's image & image \\
+\hline
+StringStyle & Contains all text's personalizations : size, color, italic, underline and bold & image \\
+\hline
+TableStyle & Describes background's color, texts' colors and borders' sizes & image \\
+\hline
+WindowStyle & Similar to BasicStyle but add an image to represent closing button and parameters to customize window's name & image \\
+\hline
+\end{tabular}
+
+					\chapter{Listeners list}
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+Name & Methods\\
+\hline
+ButtonListener & pressed, released, mouseEntered, mouseLeft, selected, unselected, enter \\
+\hline
+InnerWindowListener & pressed, released, mouseEntered, mouseLeft \\
+\hline
+LabelListener & mouseEntered, mouseLeft \\
+\hline
+TableListener & rowSelected \\
+\hline
+TextFieldListener & textChanged, mouseEntered mouseLeft, selected, unselected, enter \\
+\hline
+\end{tabular}
+
+					\end{document}
