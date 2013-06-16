@@ -28,14 +28,10 @@ welcoming us and letting us using their comfortable facilities.\\
 	  During our 3-month-internship at Glasgow Caledonian University, we had to make a video game.
 	  In this game, every player have a character, called a hero, who has characteristics, spells, and weapons.\\
 
-	  We made it because it touched to several aspects of computer science such as database, network,
-	  programming. Moreover, we had to learn a lot of stuff to get this project done.\\
+	             We made it because it touched to several aspects of computer science such as database, network,
+	 	  programming. Moreover, we had to learn a lot of stuff to get this project done.\\
 		  It was also a good opportunity to work in team, and discover what advantages and disadvantages it comes with.
 		  We used Git to synchronize our works, and we had a lot of issues about it, but it's part of learning.\\
-
-		  Our project is divided in three parts. First is the client program, which is executed by any people who wants to play,
-		  second is the server, and third is a shared library which contains every network functionnalities that are needed both
-		  by the client and the server.\\
 
 		  %TOREWRITE
 		  To conclude this abstract we can say that this project was a great experience for many
@@ -45,7 +41,7 @@ welcoming us and letting us using their comfortable facilities.\\
 
 		  \chapter*{Introduction} %TOREWRITE
 		  \addcontentsline{toc}{chapter}{Introduction}
-		  In order to validate our DUT diploma, we chose to carry out our internship in an
+		  In order to validate our DUT diploma, we choose to carry out our internship in an
 		  English speaking country to improve our English language.\\
 
 		%  Our supervisor, Richard Foley, offered us a project's subject based on web and mobile
@@ -55,7 +51,7 @@ welcoming us and letting us using their comfortable facilities.\\
 
 		  Our supervisor, Eddie Gray, let us choose our project. He gave to us the old report to saw what the other did. He let us choose technologies to do it.\\
 
-		  The project which we choose is a Multi-player video game.??? ADD SOMETHING ???\\
+		  The project that we choose is a 2D Multi-player video game.??? ADD SOMETHING ???\\
 
 		%  The project aimed to achieve a usable system by professors and able to manage
 		%  multiple choice questions in an amphitheatre. Two mobile applications also had to be
@@ -220,7 +216,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  The in-game screen is composed of numerous components which display a lot of informations:
 		  \begin{description}
 		  \item[Character informations(1):]{The HP bar represents character's health (Health points) and the MP bar correspond to character's mana (Mana points) which are used to cast spells}
-		  \item[Target informations(2):]{Same as (1) but correspond to ???targeted??? player's informations}
+		  \item[Target informations(2):]{Same as (1) but correspond to targeted player's informations}
 		  \item[Character (3) and (4):]{When the cursor is on an enemy, this one becomes red, if it's a friend, it becomes green}
 		  \item[Character's range(4*):]{When your cursor is on your character, a circle representing it's maximal range for attack is drawn around him}
 		  \item[Game informations(5):]{There is the time and the score}
@@ -304,7 +300,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  MySQL is the world's most widely used open source relational database management system that runs as a server providing multi-user access to a number of databases.
 		  \section{Tools we developped} 
 		  \subsection{Logs}
-		  To make debugging easier, we made a simple log system which redirect the input stream to output stream but also into a file we ???specified???. The class used to do that is called \emph{Logs}. It contains two methods: \emph{out} and \emph{err} which ???respectively??? redirect to standard and error stream and the file described by Logs attribute. Also, using a \emph{\#define} macro, we were able to know the file's name and line were Logs methods were called, without having to send it as argument. Thus, we just had to give the message to out or err method.
+		  To make debugging easier, we made a simple log system which redirect the input stream to output stream but also into a file we specified. The class used to do that is called \emph{Logs}. It contains two methods: \emph{out} and \emph{err} which respectively redirect to standard and error stream and the file described by Logs attribute. Also, using a \emph{\#define} macro, we were able to know the file's name and line were Logs methods were called, without having to send it as argument. Thus, we just had to give the message to out or err method.
 		  \subsection{Configuration}
 		  We also created a basic configuration tool using a parser to extract parameters values from files. Thus, we don't have to compile again each time a parameter is modified. Configuration files must match with the following format:
 		  \begin{itemize}
@@ -312,7 +308,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item{Key = "value with blanks"}
 		  \end{itemize}
 		
-		  Blanks between \emph{key}, \emph{'='} and \emph{value} are not ???mandatory???
+		  Blanks between \emph{key}, \emph{'='} and \emph{value} are not mandatory
 		  It is also possible to put comments into these files by addind a '\emph{\#}' at the beginning of the line. The parser read each configuration files line by line and store each pair key/value in a \emph{Map} object. Finally, we developped a class to store default values if none is defined in files, so that we don't have to define a parameter if we want to keep its default value.
 
 		  \subsection{Map editor}
@@ -329,7 +325,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \section{Graphics}
 		  Once we choosed to use SFML librarie (see \ref{SFML}), we had to find an additional librarie containing components to make user interfaces, because SFML only provide very basic tools, such as drawing rectangles or circles. Many people developped and distributed libraries like this, but most of them are incomplete or contain bugs, that's why we decided to make our own, based on Event-driven programming. We also choosed to make the graphic part executed by a single thread. We first tried to create thread for each component, but synchronization and concurrent access between them became to hard to manage.
 
-		  \subsection{???Fonctionnement Global???} %TODO
+		  \subsection{Overall Functioning} %TODO
 		  SFML provides a \emph{sf::RenderWindow} object which contains all informations about window and enable us to draw objects which inherit from \emph{sf::Drawable}, or \emph{sf::Vertex} objects, containing vertex from OpenGL library. SFML use an event system to handle any change on the window: mouse movements, clicks, focus and so on.\\
 
 		  We created a \emph{graphics::Window} class which wrap sf::RenderWindow. Then we developped an abstract class called \emph{graphics::component} to represent a graphic component. This class contains two methods: \emph{draw} to draw a component, and \emph{event} to deal with events.
@@ -362,7 +358,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  \item[selected:]{When the user click on the component.}
 		  \end{description}
 
-		  The most important component is \emph{graphics::Container} which inherit from \emph{graphics::Component}. It contains several components and a layout which will ???placer??? them whenever the window is resized, or a component is either added, removed or replaced. The graphics::container object ???propage??? a lot of informations to its sons:
+		  The most important component is \emph{graphics::Container} which inherit from \emph{graphics::Component}. It contains several components and a layout which will situate them whenever the window is resized, or a component is either added, removed or replaced. The graphics::container object spreads a lot of informations to its sons:
 		  \begin{itemize}
 		  \item{When events are received}
 		  \item{How to be displayed}
@@ -375,12 +371,12 @@ welcoming us and letting us using their comfortable facilities.\\
 
 		  \subsection{Layouts}
 		  In order to handle different sizes a window can have, we made several layouts which have to resize and move components following the size of the main window. Each graphics::Container has its own layout instance. The container is expected to destroy the old layout when it is replaced by a new one or when the container itself is destroyed. Every layout inherit from \emph{graphics::Layout} and must define the \emph{validate} method. 
-		  The layout knows everything about the container it belongs to, including all of its sons, so it can ???PLACER??? them correctly.
-	The default layout included in a container is the VerticalLayout, which align all sons ???vertically??? and resize them ???equally???
-We implemented several layouts ???for all of our needs??? (???ANNEXE???)
+		  The layout knows everything about the container it belongs to, including all of its sons, so it can situate them correctly.
+	The default layout included in a container is the VerticalLayout, which align all sons vertically and put them at the same size.
+We implemented several layouts for all of our needs.
 
 	\subsection{Events}
-	At each frame, the SFML event list is ???passed??? as argument to root-container's event method. This method will send these events to all container's sons. It also contains a \emph{used} attribute which allow us to know whether an event has already been transmitted or not so that only one event is triggered when we click on two ???overlayed??? components.\\
+	At each frame, the SFML event list is spreads as argument to root-container's event method. This method will send these events to all container's sons. It also contains a \emph{used} attribute which allow us to know whether an event has already been transmitted or not so that only one event is triggered when we click on two superimposed components.\\
 
 	Each component handle its events ???differently???, some of them are ???click-insensitive???, others check if the event is sent by keyboard and so on.
 	???Most components??? have an \emph{addListener} method which permit to add a new listener. These listeners ???vary??? following the component type, a button listener won't be the same as a textfield listener.\\
@@ -506,8 +502,6 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 
 					They both load this file during their start up using a parser we made. Each datas are in textual format. 		
 
-
-
 					\part{Project results}
 					\chapter{Encountered difficulties}
 					\section{About the project definition}
@@ -516,17 +510,19 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 					We didn't know c++ very well and using git was hard at the begin. Merging and synchronize was boring and tedious.
 					\chapter{Benefits}
 					\section{Programming skills}
-					We improve our c++ skill,  and \\ ???SOMETHING MORE PLEASE \\
-						Now, we are able to synchronize projects very quickly with git and it is really comfortable to merge with it.
-						\section{Work in team}
-						We learnt to listen each other, and try to solve our disagreements with compromises in order to satify each teammate.
-						\section{English improvement}
-						Immersion in Scotland was awesome, and our english skill was improve as we wished.
-						\section{Autonomy}
+					We improve our c++ skill,  and it is a very good programming language.
+					Moreover, we are able to synchronize projects very quickly with git and it is really comfortable to merge with it.
+					\section{Work in team}
+					We learnt to listen each other, and try to solve our disagreements with compromises in order to satify each teammate.
+					\section{English improvement}
+					Immersion in Scotland was awesome, and our english skill was improve as we wished.
+					\section{Autonomy}
+					We worked with a great amount of autonomy. The division of labour was the hardest part and even now, each teammate bring something for each project's part.
+					\section{Make a report}
+					We used LateX, to write this report. It was a great opportunity for us to learn it. LateX is a good tools for writing report.
 
-						\section{Make a report}
-
-						\chapter*{Conclusion} %TOREWRITE
-						\addcontentsline{toc}{chapter}{Conclusion}
-						\end{document}
+					\chapter*{Conclusion} %TOREWRITE
+					\addcontentsline{toc}{chapter}{Conclusion}
+					In conclusion, the project was, in our opinion, sucessful. Even if we didn't have everything we thank, we got a good application. 
+					\end{document}
 
