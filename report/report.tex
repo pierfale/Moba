@@ -403,80 +403,128 @@ We implemented several layouts ???for all of our needs??? (???ANNEXE???)
 	\subsection{Camera}
 	The Camera object permit to display a part of map, depending on its position and its range\footnote{the window size}. Thus, the program only draw visible part of the map. We can move the camera either with the directionnal arrows or by moving the mouse on window edges. The movement is done pixel by pixel instead of case by case in order to be more fluid.
 
-	\section{Network}
-	\subsection{libnetwork}
-	%TOREWRITE MAYBE HEIN LOL
-	???Since??? both the server and the client have ???network functionnalities??? in common, instead of writing these function twice, we decided to write a shared library. This library contains the network protocol.\\
-		%-----------------------%
+	\subsubsection{Buffer Y}
+	In order to display all components, we use a buffer called \emph{Buffer Y}. At each frame, this buffer is emptied, and is filled with refreshed components (with their new positions, sizes and states). A component must inherit from \emph{graphics::BufferDrawable} to be put in the Buffer Y. This class has two methods:
+		\begin{description}
+		\item[getvalueY:]{Return the y-coordinate of the top left where we want to draw the component}
+		\item[draw:]{Describe how the component must be drawn}
+		\end{description}
 
-		We choosed to use TCP as transport protocol because it's more ???fiable??? than UDP. Most of datas sent over network need to be received in the right order by the ???destinataire???. To make things easier, most of network functions are executed ???synchronously???, so that we don't have to check all the time if the packet needed to allow the program to continue has arrived or not. More over asynchronous functions use several threads, which increase the program ???complexity???\\
+		The class which manage the order in which Buffer Y's components should be drawn is \emph{graphics::BufferDraw}. It calls component's draw methods in right order so that we can apply several layers on the window.
 
-		We defined a basic network protocol to enable clients and server to communicate. Each packet first contains the size of datas that are contained in the packet, on 4 octets, then the packet's type, which is also on 4 octets, and finally all datas. To make packet's type ???reconnaissance??? easier, we defined several types in an enumeration: the ???8 premiers??? bits are used to define the packet primary type. 3 primary types are available: \emph{Session, Game and Chat}. The 3 bits remaining are cut in differents ways depending on the packet's primary type. This system allow to deal with packets in different classes following the primary type:
-		\begin{itemize}
-		\item{\emph{SESSION} (0x00 XX XX XX) messages are handled by \emph{Message\_session} class.}
-		\item{\emph{GAME} (0x01 XX XX XX) messages are handled by \emph{Message\_game} class.}
-		\item{\emph{CHAT} (0x02 XX XX XX) messages are handled by \emph{Message\_chat} class.}
-		\end{itemize}
+		\subsubsection{Animations}
+		All animations inherit from \emph{graphics::Animation} class which inherit from \emph{graphics::BufferDrawable}. The only attribute an animation owns is '\emph{isDone}', which is true once the animation is finished. To be displayed, an animation object calls \emph{addAnimation} method from the \emph{graphics::GameBoard} class. The gameboard's role is to add all animations which aren't finished, at each frame, to the buffer Y.\\
 
-		%Nous avons implémenter 3 type de donnée possible a envoyer : le type int (sur 4 octets), le type float (4 octets), et le type std::string. Ce dernier est envoyer de la facon suivante :
-		%les 4 premier octets reorésente la longeur de la chaine et ensuite les char sont mis a la suite. Grace la a surchage des opérateur, nous avons pu redéfinir les opérateur de flux entrant et sortant
-		%pour chaque type.
+		Most of animations we implemented are used for spells ????TODO????\\
+			%La majorité des animation que nous avons implémenter est utilisé pour les sort : la classe graphics::SingleTargetSpellAnim, qui hérite de Animation, prend en parametre le personnage qui est a l'origine du sort et celui qui est la cible.
+			%cette classe possede égalment une emthode statique process qui permet d'instancier la bonne classe en fonction d'un identifiant de sort.
+			%Les animation des sort sont implémenté dans graphics::SingleTargetSpellImpl.
+			%Pour les animation qui sont comme un projectile, nous avons créer la classe graphics::ShotAnim qui hérite de graphics::SingleTargetSpellAnim. cette classe détermine la position de l'objet en fonction de l'angle entre le caster et la target et de la vitesse du projectile.
+			%Les animation de projectile sont implémenter dans le fichier ShotImpl
 
-		\subsection{Client}
-		\subsection{Server}
-		The server is a console application which manage all network packets and help clients to be synchronized. Its first task during ???start up??? is to  get its configuration files and parse it. Then, it create a log file based on its configuration. Once it's done, it load all informations from the database, such as spells or skills descriptions. ???Finally???, if everything works fine, it binds a socket to the port specified in its configuration and wait for connections.
-		\subsubsection{Access to database}
-		To get all necessary datas to make the game work, the server needs an access to a database which contains these informations. That database contains accounts and characters descriptions. We made a \emph{Database} class to execute SQL queries, connect and disconnect from database. If connection to database fails, then the server closes. SQL queries which start with 'SELECT' are handled by a method which return a \emph{ResultQuery} object. This object ???encapsule??? the MYSQL\_RES structure provided by the MySQL connector and correspond to a row from querie's result. It also contains a \emph{next} method which make the ResultQuery ???pointer??? to next row and return true if it exists and false if it doesn't. ???Enfin???, it has two \emph{get} methods, the first one take an integer as argument which correspond to the column's number, and the second one take a string as argument which is the name of column we want to get the value.
-		\subsubsection{Connection handling}
-		Each client, or connection, is handled in a new thread. Whenever a new connection is opened, a new \emph{Client} object is created on server. This object handled a connection for one client. Once it's created, it waits for a \emph{SESSION\_ASKCONNECTION} packet containing user and SHA1-encrypted password. Then, the server checks if user exists in database and if it's password is the one provided by the client. Following the result of this verification, the server reply with a \emph{SESSION\_ANSWERCONNECTION} packet and one of the following status:
-		\begin{itemize}
-		\item{NONEXISTENT\_ACCOUNT}
-		\item{BAD\_PASSWORD}
-		\item{ALREADY\_LOGGED}
-		\item{LOGIN\_OK}
-		\end{itemize}
+			%Il y a également l'animation LifeLose qui permet d'afficher au dessus d'un personnage les point de vie que le client a retirer.
 
-		If client is ???successfuly??? logged in, it goes to character-selection screen and send a \emph{SESSION\_ASKCHARACTER} message. ???Afterwards???, the server sends a \emph{SESSION\_ANSWERCHARACTER} for each character the client owns, containing character's id, name, level and experience.\\
-		Each Client object contains a \emph{Player} object as attribute. This attribute represent the character choosed by client, while the client doesn't select a character, its value is NULL. To update this value, the server must receive a \emph{SESSION\_SELECTCHARACTER} followed by the character id from the client who wants to select a character. The server make sure that the character exists and is ???associé??? to the client before changing the Player attribute's value and load all character's information from database.
+			Generally, animations are triggered after a specific packet reception. For example, mono-target spells animation are triggered when a \emph{GAME\_PLAYERLAUNCHSINGLETARGETSPELL} is received, and life loss animation when a \emph{GAME\_DOPHYSICALDAMAGE} has arrived.
+
+			\subsubsection{Characters}
+			At client side, we splitted the model and view. The model consists of two classes:
+			\begin{description}
+			\item[game::Character:]{Contains character's id, coordinates, direction and team}
+			\item[game::Player:]{Contains character's statistics}
+			\end{description}
+
+			On the graphics part, we have:
+			\begin{description}
+			\item[graphics::Character:]{Inherit from graphics::BufferDrawable}
+			\item[graphics::Player:]{Inherit from graphics::Character, which calculate character's position depending on its speed, previous coordinates, direction, and ???temps ecoule??? since last frame}
+			\item[graphics::UserPlayer:]{Inherit from graphics::Player, represents ???WTF???}
+			\end{description}
+
+			About character's movements, we decided to let the client calculate the path to move from its position to the place where the player clicked, to avoid a server overload. However, clients' positions are always checked by the server to make sure they are not cheating.
+
+			\section{Network}
+			\subsection{libnetwork}
+			%TOREWRITE MAYBE HEIN LOL
+			???Since??? both the server and the client have ???network functionnalities??? in common, instead of writing these function twice, we decided to write a shared library. This library contains the network protocol.\\
+				%-----------------------%
+
+				We choosed to use TCP as transport protocol because it's more ???fiable??? than UDP. Most of datas sent over network need to be received in the right order by the ???destinataire???. To make things easier, most of network functions are executed ???synchronously???, so that we don't have to check all the time if the packet needed to allow the program to continue has arrived or not. More over asynchronous functions use several threads, which increase the program ???complexity???\\
+
+				We defined a basic network protocol to enable clients and server to communicate. Each packet first contains the size of datas that are contained in the packet, on 4 octets, then the packet's type, which is also on 4 octets, and finally all datas. To make packet's type ???reconnaissance??? easier, we defined several types in an enumeration: the ???8 premiers??? bits are used to define the packet primary type. 3 primary types are available: \emph{Session, Game and Chat}. The 3 bits remaining are cut in differents ways depending on the packet's primary type. This system allow to deal with packets in different classes following the primary type:
+				\begin{itemize}
+				\item{\emph{SESSION} (0x00 XX XX XX) messages are handled by \emph{Message\_session} class.}
+				\item{\emph{GAME} (0x01 XX XX XX) messages are handled by \emph{Message\_game} class.}
+				\item{\emph{CHAT} (0x02 XX XX XX) messages are handled by \emph{Message\_chat} class.}
+				\end{itemize}
+
+				%Nous avons implémenter 3 type de donnée possible a envoyer : le type int (sur 4 octets), le type float (4 octets), et le type std::string. Ce dernier est envoyer de la facon suivante :
+				%les 4 premier octets reorésente la longeur de la chaine et ensuite les char sont mis a la suite. Grace la a surchage des opérateur, nous avons pu redéfinir les opérateur de flux entrant et sortant
+				%pour chaque type.
+
+				\subsection{Server}
+				The server is a console application which manage all network packets and help clients to be synchronized. Its first task during ???start up??? is to  get its configuration files and parse it. Then, it create a log file based on its configuration. Once it's done, it load all informations from the database, such as spells or skills descriptions. ???Finally???, if everything works fine, it binds a socket to the port specified in its configuration and wait for connections.
+				\subsubsection{Access to database}
+				To get all necessary datas to make the game work, the server needs an access to a database which contains these informations. That database contains accounts and characters descriptions. We made a \emph{Database} class to execute SQL queries, connect and disconnect from database. If connection to database fails, then the server closes. SQL queries which start with 'SELECT' are handled by a method which return a \emph{ResultQuery} object. This object ???encapsule??? the MYSQL\_RES structure provided by the MySQL connector and correspond to a row from querie's result. It also contains a \emph{next} method which make the ResultQuery ???pointer??? to next row and return true if it exists and false if it doesn't. ???Enfin???, it has two \emph{get} methods, the first one take an integer as argument which correspond to the column's number, and the second one take a string as argument which is the name of column we want to get the value.
+				\subsubsection{Connection handling}
+				Each client, or connection, is handled in a new thread. Whenever a new connection is opened, a new \emph{Client} object is created on server. This object handled a connection for one client. Then clients and server can communicate.
+
+				\subsection{How the network protocol is used}
+				\subsubsection{Login}
+				Once the thread to handle a connection is created, it waits for a \emph{SESSION\_ASKCONNECTION} packet containing user and SHA1-encrypted password. Then, the server checks if user exists in database and if it's password is the one provided by the client. Following the result of this verification, the server reply with a \emph{SESSION\_ANSWERCONNECTION} packet and one of the following status:
+				\begin{itemize}
+				\item{NONEXISTENT\_ACCOUNT}
+				\item{BAD\_PASSWORD}
+				\item{ALREADY\_LOGGED}
+				\item{LOGIN\_OK}
+				\end{itemize}
+
+				\subsubsection{Character selection}
+				If client is ???successfuly??? logged in, it goes to character-selection screen and send a \emph{SESSION\_ASKCHARACTER} message. ???Afterwards???, the server sends a \emph{SESSION\_ANSWERCHARACTER} for each character the client owns, containing character's id, name, level and experience.\\
+					Each Client object contains a \emph{Player} object as attribute. This attribute represent the character choosed by client, while the client doesn't select a character, its value is NULL. To update this value, the server must receive a \emph{SESSION\_SELECTCHARACTER} followed by the character id from the client who wants to select a character. The server make sure that the character exists and is ???associé??? to the client before changing the Player attribute's value and load all character's information from database.
+
+					\subsubsection{Skills}
+					When a client want to see the tree, it sends a SESSION\_ASKALLSKILLS (0x00000018) message. Then, the server reply with a SESSION\_ANSWERALLSKILLS (0x00000019) containing the number of skills the client bought and their IDs. The clients update its skill-tree afterwards, by circling in blue bought skills, in yellow for those it's allowed to buy, and in grey for those which it can't buy yet.
+					When a client wants to buy a new skill, it sends a SESSION\_ASKSKILL(0x00000016) packet containing skill ID, if purchase is accepted, the server reply with a SESSION\_ANSWERSKILL (0x00000017), which also contain skill ID.\\
+
+					For the server, each Player object contains a skill-ID-vector which represent all skills the player owns %TODO
+
+					\subsubsection{Statistics}
+
+					\subsubsection{Spells}
+					Spells are managed in the same way as skills, they are represented by IDs, names, descriptions and icons. During a game launch, the server sends a GAME\_ALLSPELLS packet, containing all spells id and how many they are. Thus, when a client wants to use a spell, he sends a GAME\_ASKLAUNCHSINGLETARGETSPELL, if this spell is mono-target\footnote{A spell which attack only one player}, then the target ID is also included in packet. Then, the server checks several parameters such as target type, distance between players, and attack/defense bonus applied to each of them, so that it can alter spell effects correctly. Finally, it sends animation's ID to every player who are in the game.
+
+					\section{Gameplay}
+					\subsection{Server}
+					\subsubsection{Game rules}
+					Mode de jeu :
+					Les modes de jeu sont implémentés grâce à une classe abstraite qui régis toutes les règles de jeu : spawn des équipes, règle de jeu : temps, type de score (kill, capture de drapeau), carte a utiliser etc...
+					\subsection{Client}
+					\subsubsection{Skills}
+					Skills are displayed in a tree, so if you want to unlock a new skill, you have to unlock his parent first. Each time you level up, you earn one skill-point, and each skill cost one skill-point. Both client and server have the same configuration file for skill's informations, it contains their ids, names, descriptions, icon, parent, position in skill-tree.\\
+
+					They both load this file during their start up using a parser we made. Each datas are in textual format. 		
 
 
 
-		\section{Gameplay}
-		\subsection{Server}
-		\subsubsection{Game rules}
-		Mode de jeu :
-		Les modes de jeu sont implémentés grâce à une classe abstraite qui régis toutes les règles de jeu : spawn des équipes, règle de jeu : temps, type de score (kill, capture de drapeau), carte a utiliser etc...
-		\subsection{Client}
-		\subsubsection{Skills}
-		Skills are displayed in a tree, so if you want to unlock a new skill, you have to unlock his parent first. Each time you level up, you earn one skill-point, and each skill cost one skill-point. Both client and server have the same configuration file for skill's informations, it contains their ids, names, descriptions, icon, parent, position in skill-tree.\\
+					\part{Project results}
+					\chapter{Encountered difficulties}
+					\section{About the project definition}
+					We choose a very good project, because it had a lot of things to do in differents aspect of computer science. But, with such a project, we got somes problems to really define what we wanted to do and with the division of labor.
+					\section{About technical aspect}
+					We didn't know c++ very well and using git was hard at the begin. Merging and synchronize was boring and tedious.
+					\chapter{Benefits}
+					\section{Programming skills}
+					We improve our c++ skill,  and \\ ???SOMETHING MORE PLEASE \\
+						Now, we are able to synchronize projects very quickly with git and it is really comfortable to merge with it.
+						\section{Work in team}
+						We learnt to listen each other, and try to solve our disagreements with compromises in order to satify each teammate.
+						\section{English improvement}
+						Immersion in Scotland was awesome, and our english skill was improve as we wished.
+						\section{Autonomy}
 
-		They both load this file during their start up using a parser we made. Each datas are in textual format. When a client want to see the tree, it sends a SESSION\_ASKALLSKILLS (0x00000018) message. Then, the server reply with a SESSION\_ANSWERALLSKILLS (0x00000019) containing the number of skills the client bought and their IDs. The clients update its skill-tree afterwards, by circling in blue bought skills, in yellow for those it's allowed to buy, and in grey for those which it can't buy yet.
-		When a client wants to buy a new skill, it sends a SESSION\_ASKSKILL(0x00000016) packet containing skill ID, if purchase is accepted, the server reply with a SESSION\_ANSWERSKILL (0x00000017), which also contain skill ID.\\
+						\section{Make a report}
 
-		For the server, each Player object contains a skill-ID-vector which represent all skills the player owns %TODO
-		\subsubsection{Spells}
-		Spells are managed in the same way as skills, they are represented by IDs, names, descriptions and icons. During a game launch, the server sends a GAME\_ALLSPELLS packet, containing all spells id and how many they are. Thus, when a client wants to use a spell, he sends a GAME\_ASKLAUNCHSINGLETARGETSPELL, if this spell is mono-target\footnote{A spell which attack only one player}, then the target ID is also included in packet. Then, the server checks several parameters such as target type, distance between players, and attack/defense bonus applied to each of them, so that it can alter spell effects correctly. Finally, it sends animation's ID to every player who are in the game.
-
-
-		\part{Project results}
-		\chapter{Encountered difficulties}
-		\section{About the project definition}
-		We choose a very good project, because it had a lot of things to do in differents aspect of computer science. But, with such a project, we got somes problems to really define what we wanted to do and with the division of labor.
-		\section{About technical aspect}
-		We didn't know c++ very well and using git was hard at the begin. Merging and synchronize was boring and tedious.
-		\chapter{Benefits}
-		\section{Programming skills}
-		We improve our c++ skill,  and \\ ???SOMETHING MORE PLEASE \\
-		Now, we are able to synchronize projects very quickly with git and it is really comfortable to merge with it.
-		\section{Work in team}
-		We learnt to listen each other, and try to solve our disagreements with compromises in order to satify each teammate.
-		\section{English improvement}
-		Immersion in Scotland was awesome, and our english skill was improve as we wished.
-		\section{Autonomy}
-		
-		\section{Make a report}
-
-		\chapter*{Conclusion} %TOREWRITE
-		\addcontentsline{toc}{chapter}{Conclusion}
-		\end{document}
+						\chapter*{Conclusion} %TOREWRITE
+						\addcontentsline{toc}{chapter}{Conclusion}
+						\end{document}
 
