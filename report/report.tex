@@ -115,21 +115,23 @@ welcoming us and letting us using their comfortable facilities.\\
 		  called a hero. A hero has several characteristics such as % Caracteristiques ici
 		  spells, and can level up by beating his enemy. The goal depend on the game type selected by the player who created the game.\\
 
-		 We wanted to do a multi-player video game, on network. Moreover, we want a Role Player Game where the player can truly embodies his character.\\
+		  We wanted to do a multi-player video game, on network. Moreover, we want a Role Player Game where the player can truly embodies his character.\\
 
-		 Then, we choose that project because it provide a lot of development opportunities. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
+		  Then, we choose that project because it provide a lot of development opportunities. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.\\
 
-		 We wanted to do a multi-player video game, on network. Moreover, we want a Role Player Game where the player can truly embodies his character.\\
-
-		 Then, we choose that project because it provide a lot of development opportunities. But of course, we couldn't do everythhing we wanted and moreover, sometimes, it was hard to know what to do in first.
-
+		  In fact, at the begin we got lot of idea :
+		  \begin{description}
+		  \item[Multi Game Type :]{ First of all, we wanted to implements different game type in order to have a game diversify.}
+		  \item[Characters Customizing :] {We wanted to give the chance to the player to have his own characters, as in physical way as in skill and spell. Thereby, each character is unique and the player can have a really role playing experience.}
+		  \item[Game on network :] {We think game online are best type game.}
+		  \item[Teamwork :] {We wanted to give a really importance to the teamwork. In fact, players have to collaborate with their teammates to win the game.}
+		  \end{description}
 		  \part{How to play}
 		  \chapter{Prerequisite}
 		  To be able to launch the application, you must own a MySQL database called '\emph{moba}' with following tables in it:
 		  \begin{itemize}
 		  \item{account (Account\_ID integer, Account\_Pseudo varchar(32), Account\_Password char(40))}
 		  \item{characters (Characters\_ID integer, Characters\_Account integer, Characters\_Name varchar(32) Characters\_Level smallint(6), Characters\_Exp integer)}
-		  \item{packet (Value char(8), Args text, Describe text)}
 		  \item{skill (Skill\_ID integer, Skill\_Characters integer)}
 		  \end{itemize}
 
@@ -172,7 +174,7 @@ welcoming us and letting us using their comfortable facilities.\\
 		  We wanted to give the opportunity to customize your character on this screen, but unfortunately, we didn't have enough time and knowledge about graphics, so we only have one skin for all characters. The textfield at bottom of the screen correspond to the name of the character.
 		  \subsection{Statistics}
 		  \begin{center}
-		  \includegraphics[scale=0.4]{stats_screen.png}
+		  \includegraphics[scale=0.3]{stats_screen.png}
 		  \end{center}
 		  That screen summarize character characteristics.
 		  \subsection{Skill-tree}
