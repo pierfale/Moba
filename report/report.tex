@@ -493,13 +493,13 @@ We implemented several layouts for all of our needs.
 					\chapter*{Conclusion} %TOREWRITE
 					\addcontentsline{toc}{chapter}{Conclusion}
 					
-					In conclusion, the project was, in our opinion, sucessful. Even if we didn't have everything we thank, we got a good application.\\
+					In conclusion, the project is, in our opinion, sucessful. Even if we didn't manage to do everything we wanted, we got a good application.\\
 					
-					We managed a great game, which may continue. Thus, maybe one day, it will be completed as we expected.\\
+					It was a great opportunity for us to make this game, which we may keep improving later. Thus, maybe one day, it will be completed as we expected.\\
 
-					Moreover, we got nice trips, and we could discover Scotland, and his people, his landscape, and his culture.\\
+					Moreover, we got nice trips, and we could discover Scotland, its people, its landscapes, and its culture.\\
 		
-					Erasmus is a nice experience for students, we appreciated it. We will advice other student to come to Glasgow.
+					Erasmus is a nice experience for students, we appreciated it. We will advice other students to come to Glasgow.
 
 
 					\appendix
@@ -508,50 +508,50 @@ We implemented several layouts for all of our needs.
 					\addtolength{\evensidemargin}{-.875in}
 					\small
 \begin{center}
-\begin{tabular}{|p{2.2cm}|p{4cm}|p{3.5cm}|p{2cm}|p{2cm}|p{2cm}|}
+\begin{tabular}{|p{2.2cm}|p{4cm}|p{3.5cm}|p{2cm}|p{1.5cm}|p{4cm}|}
 \hline
 Name & Description & Listener & Style & Selectable & Example \\
 \hline
-Button & Create a button, detect clicks and when mouse is mouse is on it & ButtonListener & BasicStyle & true & image \\
+Button & Creates a button, detects clicks and when mouse is mouse is on it & ButtonListener & BasicStyle & true & \includegraphics[scale=0.5]{button.png} \\
 \hline
-ButtonImage & Inherit from Button, allow to put an image on the button & ButtonListener & BasicStyle & true & image \\
+ButtonImage & Inherits from Button, allows to put an image on the button & ButtonListener & BasicStyle & true & \includegraphics[scale=0.5]{buttonimage.png} \\
 \hline
-Container & Situate components on window using a layout & None & None & false & image \\
+Container & Situates components on window using a layout & None & None & false & \includegraphics[scale=0.5]{Container.png} \\
 \hline
-FocusFrame & Integrated to others components to display a tool tip when the mouse is on it & None & BasicStyle & false & image \\
+FocusFrame & Integrated to other components to display a tool tip when the mouse is on it & None & BasicStyle & false & \includegraphics[scale=0.5]{focusframe.png} \\
 \hline
-InnerWindow & Inherit from Container. Permits to simulate windows inside the main window & InnerWindowListener & WindowStyle & false & image \\
+InnerWindow & Inherits from Container. Permits to simulate windows inside the main window & InnerWindowListener & WindowStyle & false & \includegraphics[scale=0.5]{Innerwindow.png} \\
 \hline
-Label & Used to display text & LabelListener & BasicStyle & false & image \\
+Label & Used to display text & LabelListener & BasicStyle & false & \includegraphics[scale=0.6]{label.png} \\
 \hline
-Line & Used to display horizontal and vertical lines (for skill tree for example) & None & LineStyle & false & image \\
+Line & Used to display horizontal and vertical lines (for skill tree for example) & None & LineStyle & false & \includegraphics[scale=0.5]{Line.png} \\
 \hline
-ScrollBar & Contains a Container object. If the container is bigger than the scrollBar, then scroll bars are displayed to scroll through the window & None & ScrollBarStyle & false & image \\
+ScrollBar & Contains a Container object. If the container is bigger than the scrollBar, then scroll bars are displayed to scroll through the window & None & ScrollBarStyle & false & \includegraphics[scale=0.8, angle=90]{ScrollBar.png} \\
 \hline
-String & Allow to customize texts using XML & None & None & false & image \\
+String & Allows to customize texts using XML & None & None & false & \includegraphics[scale=0.3]{string.png} \\
 \hline
-Table & Simulate table's behaviour & TableListener & TableStyle & false & image \\
+Table & Simulates table's behaviour & TableListener & TableStyle & false & \includegraphics[scale=0.2]{Table.png} \\
 \hline
-Textfield & Allow to enter text & TextFieldListener & BasicStyle & false & image \\
+Textfield & Allows to enter text & TextFieldListener & BasicStyle & false & \includegraphics[scale=0.5]{textfield.png} \\
 \hline
 \end{tabular}
 \end{center}
 					\chapter{Styles list}
-\begin{tabular}{|p{3cm}|p{10cm}|p{2cm}|}
+\begin{tabular}{|p{3cm}|p{10cm}|}
 \hline
-Name & Description & Example\\
+Name & Description \\
 \hline
-BasicStyle & Takes two images as arguments : The first represents component's borders, the second one represents component's center & image \\
+BasicStyle & Takes two images as arguments : The first represents component's borders, the second one represents component's center  \\
 \hline
-LineStyle & Takes an image as argument to draw the line & image \\
+LineStyle & Takes an image as argument to draw the line  \\
 \hline
-ScrollBarStyle & Takes two images as arguments: the first is the scroll-bar's background, and the second is the bar's image & image \\
+ScrollBarStyle & Takes two images as arguments: the first is the scroll-bar's background, and the second is the bar's image  \\
 \hline
-StringStyle & Contains all text's personalizations : size, color, italic, underline and bold & image \\
+StringStyle & Contains all text's personalizations : size, color, italic, underline and bold  \\
 \hline
-TableStyle & Describes background's color, texts' colors and borders' sizes & image \\
+TableStyle & Describes background's color, texts' colors and borders' sizes  \\
 \hline
-WindowStyle & Similar to BasicStyle but add an image to represent closing button and parameters to customize window's name & image \\
+WindowStyle & Similar to BasicStyle but adds an image to represent closing button and parameters to customize window's name  \\
 \hline
 \end{tabular}
 
@@ -587,7 +587,7 @@ TextFieldListener & textChanged, mouseEntered mouseLeft, selected, unselected, e
 		  \caption{Database MLD}
 		  \end{figure}
 
-\chapter{Screens links}
+\chapter{Links between screens}
 		  \begin{figure}[h]		
 		  \begin{center}
 		  \includegraphics[scale=0.4]{screen.jpg}
