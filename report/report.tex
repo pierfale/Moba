@@ -378,7 +378,7 @@ We implemented several layouts for all of our needs.
 
 	When a component wants to call one of its listener's method, it gives the method and listener's reference to the graphics::Window object, which will call them at the right time.
 
-	\subsection{Styles}
+	\section{Styles}
 	In order to make our components more adaptable, we decided to add classes to change component's style. Each component takes a style object as constructor argument.\\
 	The style class changes with the component, for example : Buttons and textfields share the same style: graphics::BasicStyle. This style represents a rectangle : it takes 2 arguments, the path to the border's texture and the path to the center's texture.\\
 	We implemented a singleton class to load every style and make easier to put style on component. 
