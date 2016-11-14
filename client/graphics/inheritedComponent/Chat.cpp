@@ -60,6 +60,8 @@ namespace graphics {
 	}
 
 	int Chat::getID() {
+
+
 		return m_id;
 	}
 

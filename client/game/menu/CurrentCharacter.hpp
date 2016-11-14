@@ -24,6 +24,7 @@ namespace game {
 		static Character* getTarget();
 		static void set(Player* player);
 		static void set(graphics::UserPlayer* player);
+		static void clear();
 		static void setTarget(Character* player);
 		static void setPath(std::vector<util::CoordInt> path);
 		static util::CoordInt getNextDest();

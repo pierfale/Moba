@@ -14,9 +14,11 @@ namespace graphics {
 	 boost::ptr_vector<Animation> Gameboard::m_animations;
 
 	//standard
-	Gameboard::Gameboard() : Container() {
-		m_texture = ImageLoader::get("ressources/game/Tiles.png");
+	Gameboard::Gameboard(std::string map) : Container(), m_loaded(false) {
 
+		game::GameboardModel::read(map);
+
+		m_texture = ImageLoader::get("ressources/game/Tiles.png");
 
 		Cursor::set(CURSOR_GAMENORMAL);
 		UserPlayer* m_userPlayer = new UserPlayer(game::CurrentCharacter::get());
@@ -39,7 +41,7 @@ namespace graphics {
 		add(m_interface);
 	}
 	Gameboard::~Gameboard() {
-		delete m_interface;
+		//delete m_interface;
 	}
 
 	bool characterSort(Character* c1, Character* c2) {
@@ -100,11 +102,11 @@ namespace graphics {
 			int borderSize = 30;
 			if(mouse.x < borderSize && mouse.x >= 0)
 				m_cam.move(true, false);
-			if(mouse.x > render->getSize().x-borderSize && mouse.x <= render->getSize().x)
+			if(mouse.x > (unsigned int)(render->getSize().x-borderSize) && mouse.x <= (unsigned int)(render->getSize().x))
 				m_cam.move(true, true);
 			if(mouse.y < borderSize && mouse.y >= 0)
 				m_cam.move(false, false);
-			if(mouse.y > render->getSize().y-borderSize && mouse.y <= render->getSize().y)
+			if(mouse.y > (unsigned int)(render->getSize().y-borderSize) && mouse.y <= (unsigned int)(render->getSize().y))
 				m_cam.move(false, true);
 
 			m_cam.endMove();
@@ -157,7 +159,6 @@ namespace graphics {
 		ImageLoader::get("ressources/game/Tiles.png");
 		ImageLoader::get("ressources/game/1.png");
 		ImageLoader::get("ressources/game/animSword.png");
-		game::GameboardModel::read("ressources/game/Battleground");
 	}
 
 	util::CoordInt Gameboard::convertCoord(util::CoordInt coord) {

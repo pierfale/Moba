@@ -28,7 +28,6 @@ namespace game {
 				getInstance()->m_spells.push_back(spell);
 			}
 		}
-
 		file.close();
 		return true;
 	}

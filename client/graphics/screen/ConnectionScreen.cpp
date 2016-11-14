@@ -30,6 +30,7 @@ namespace graphics {
 	}
 
 	void ConnectionScreen::load() {
+		Cursor::set(CURSOR_NONE);
 		this->setBackground("ressources/gui/background_title.jpg", none);
 
 		m_mainContainer = new Container();

@@ -12,6 +12,7 @@ namespace game {
 	boost::shared_ptr<CurrentSpell> CurrentSpell::m_instance;
 
 	CurrentSpell::CurrentSpell() {
+
 		m_spell = NULL;
 	}
 

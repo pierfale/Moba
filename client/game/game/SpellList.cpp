@@ -20,6 +20,7 @@ namespace game {
 			if(getInstance()->m_spells.at(i).getId() == spell->getId())
 				return;
 		}
+		std::cout << spell->getName() << " ADDED" << std::endl;
 		getInstance()->m_spells.push_back(spell);
 
 
@@ -29,7 +30,8 @@ namespace game {
 	}
 
 	void SpellList::clear() {
-		getInstance()->m_spells.clear();
+		while(getInstance()->m_spells.size() > 0)
+			getInstance()->m_spells.release(getInstance()->m_spells.begin()).release();
 	}
 	int SpellList::size() {
 		return getInstance()->m_spells.size();

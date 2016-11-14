@@ -18,6 +18,7 @@
 #include "../layout/SplitFixedLayout.hpp"
 #include "../GUIStyle.hpp"
 #include "../../game/chat/ChatList.hpp"
+#include "../Cursor.hpp"
 
 namespace graphics {
 

@@ -16,6 +16,7 @@
 #include "../../network/Network.hpp"
 #include "Packet.hpp"
 #include "PacketType.hpp"
+#include "../Cursor.hpp"
 
 //Log
 #include "../../log/Log.hpp"

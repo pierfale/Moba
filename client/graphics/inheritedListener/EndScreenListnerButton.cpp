@@ -14,7 +14,11 @@ EndScreenListner_Button::EndScreenListner_Button() {}
 EndScreenListner_Button::~EndScreenListner_Button() {}
 
 void EndScreenListner_Button::pressed(void* origin) {
-	graphics::Graphics::getWindow()->setContentPane(ScreenManager::character());
+	game::GamePlayerList::clear();
+	game::SpellList::clear();
+	game::CurrentCharacter::clear();
+	game::PlayerList::clear();
+	Graphics::getWindow()->setContentPane(ScreenManager::character());
 }
 
 } /* namespace graphics */

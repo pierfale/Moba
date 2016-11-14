@@ -23,8 +23,6 @@ namespace graphics {
 		virtual void released(void* origin);
 		virtual void mouseEntered(void* origin);
 		virtual void mouseLeft(void* origin);
-		virtual void selected(void* origin);
-		virtual void unselected(void* origin);
 	};
 
 }

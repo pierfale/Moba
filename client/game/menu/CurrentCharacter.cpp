@@ -41,6 +41,13 @@ namespace game {
 		getInstance()->m_currentView = player;
 	}
 
+	void CurrentCharacter::clear() {
+		getInstance()->m_current = NULL;
+		network::Packet packet(network::Network::getSocket(), network::PacketType::SESSION_SELECTCHARACTER);
+		packet << 0;
+		packet.send();
+	}
+
 	void CurrentCharacter::setTarget(Character* player) {
 		getInstance()->m_target = player;
 		if(player == NULL)

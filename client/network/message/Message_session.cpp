@@ -132,6 +132,8 @@ namespace network {
 		else if (packet.getType() == PacketType::SESSION_ANSWERLAUNCHGAME) {
 			game::CurrentCharacter::get(); // TODO path of file to load
 			graphics::Gameboard::loadImage();
+			game::CurrentCharacter::setTarget(NULL);
+			game::GameboardModel::setScore(0,0);
 			network::Packet ready_packet(network::Network::getSocket(), network::PacketType::GAME_ASKREADY);
 			ready_packet.send();
 		}

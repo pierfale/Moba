@@ -26,7 +26,7 @@ namespace graphics {
 
 	public:
 		ArrowAnim(game::Character* caster, game::Character* target) : ShotAnim(caster, target, "ressources/game/arrow.png", 1) {
-
+			m_speed = 500;
 		}
 
 	};

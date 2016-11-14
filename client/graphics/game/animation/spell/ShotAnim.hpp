@@ -37,3 +37,4 @@ namespace graphics {
 
 
 #endif /* SHOTANIM_HPP_ */
+
