@@ -1,0 +1,21 @@
+Thread 14cc : Connect to database (127.0.0.1,root,,moba) ...
+Thread 14cc : Connection established !
+Thread 14cc : Launch server on port 2342
+Thread 14cc : new client !
+Thread 14cc : client connected : 1
+Thread 1754 : packet receive! type=1
+Thread 1754 : query : SELECT Account_ID, Account_Password FROM account WHERE Account_Pseudo = 'test'
+Thread 1754 : packet receive! type=3
+Thread 1754 : query : SELECT Characters_ID, Characters_Name, Characters_Level FROM characters WHERE Characters_Account = '5'
+Thread 1754 : packet receive! type=7
+Thread 1754 : query : SELECT Characters_Account, Characters_Name, Characters_Level FROM characters WHERE Characters_ID = '1'
+Thread 1754 : client connected : 0
+Thread 1754 : client closed !
+Thread 14cc : new client !
+Thread 14cc : client connected : 1
+Thread 10ec : packet receive! type=1
+Thread 10ec : query : SELECT Account_ID, Account_Password FROM account WHERE Account_Pseudo = 'test'
+Thread 10ec : packet receive! type=3
+Thread 10ec : query : SELECT Characters_ID, Characters_Name, Characters_Level FROM characters WHERE Characters_Account = '5'
+Thread 10ec : client connected : 0
+Thread 10ec : client closed !

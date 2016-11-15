@@ -1,0 +1,126 @@
+\hypertarget{class_player}{\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_player_aa4859027be34e4fa0f8c05b6be3c22e3}{{\bfseries Player} (int id, \hyperlink{class_client}{Client} $\ast$client, std\-::string name, int level, int exp)}\label{class_player_aa4859027be34e4fa0f8c05b6be3c22e3}
+
+\item 
+\hypertarget{class_player_aab4c2c78be24a52f5faeb29e4c04e5f5}{int {\bfseries get\-I\-D} ()}\label{class_player_aab4c2c78be24a52f5faeb29e4c04e5f5}
+
+\item 
+\hypertarget{class_player_af1aa472885d589516f483e26e786600e}{std\-::string {\bfseries get\-Name} ()}\label{class_player_af1aa472885d589516f483e26e786600e}
+
+\item 
+\hypertarget{class_player_a10dad3b41b420fcc88e83370d981d35b}{int {\bfseries get\-Level} ()}\label{class_player_a10dad3b41b420fcc88e83370d981d35b}
+
+\item 
+\hypertarget{class_player_adb81d4193787e61fd964543c1234fba6}{int {\bfseries get\-Exp} ()}\label{class_player_adb81d4193787e61fd964543c1234fba6}
+
+\item 
+\hypertarget{class_player_a8bbc7a52991de5e561ff51b77fc26c2f}{void {\bfseries inc\-Exp} (int value)}\label{class_player_a8bbc7a52991de5e561ff51b77fc26c2f}
+
+\item 
+\hypertarget{class_player_adeecff9c72be7a3a60af19878cb5e4e8}{network\-::\-Packet\-Type\-::\-Packet\-Contents {\bfseries get\-Team} ()}\label{class_player_adeecff9c72be7a3a60af19878cb5e4e8}
+
+\item 
+\hypertarget{class_player_a03fa002bb1981917e81356486b9102aa}{\hyperlink{classutil_1_1_coordinates}{util\-::\-Coord\-Float} {\bfseries get\-Coord} ()}\label{class_player_a03fa002bb1981917e81356486b9102aa}
+
+\item 
+\hypertarget{class_player_aecb311f04143625bff29b70211259cb0}{void {\bfseries set\-Coord} (\hyperlink{classutil_1_1_coordinates}{util\-::\-Coord\-Float} coord)}\label{class_player_aecb311f04143625bff29b70211259cb0}
+
+\item 
+\hypertarget{class_player_ae40dba674aeb688409e3964bf82dc8f5}{int {\bfseries get\-Direction} ()}\label{class_player_ae40dba674aeb688409e3964bf82dc8f5}
+
+\item 
+\hypertarget{class_player_afe992a009cacc83557f2d99a2f2bbbe0}{void {\bfseries set\-Direction} (int direction)}\label{class_player_afe992a009cacc83557f2d99a2f2bbbe0}
+
+\item 
+\hypertarget{class_player_aa64ed43fd47da89b2692882ebab55515}{\hyperlink{class_player_stat}{Player\-Stat} $\ast$ {\bfseries get\-Stat} ()}\label{class_player_aa64ed43fd47da89b2692882ebab55515}
+
+\item 
+\hypertarget{class_player_ab325aacf9cddff02a40eacedc8242972}{void {\bfseries set\-Last\-Target} (\hyperlink{class_player}{Player} $\ast$p)}\label{class_player_ab325aacf9cddff02a40eacedc8242972}
+
+\item 
+\hypertarget{class_player_af4d46eed62c5b71e5e4b775ace3dc517}{void {\bfseries set\-Target} (\hyperlink{class_player}{Player} $\ast$p)}\label{class_player_af4d46eed62c5b71e5e4b775ace3dc517}
+
+\item 
+\hypertarget{class_player_a331b05af9aed6653ed6fd0b5134615fd}{\hyperlink{class_player}{Player} $\ast$ {\bfseries get\-Last\-Target} ()}\label{class_player_a331b05af9aed6653ed6fd0b5134615fd}
+
+\item 
+\hypertarget{class_player_ab08d1228e5cf450b6d4979eeac7d79af}{\hyperlink{class_player}{Player} $\ast$ {\bfseries get\-Target} ()}\label{class_player_ab08d1228e5cf450b6d4979eeac7d79af}
+
+\item 
+\hypertarget{class_player_a722ea421bee14c80ec3e2a6483750d30}{void {\bfseries set\-Alive} (bool state)}\label{class_player_a722ea421bee14c80ec3e2a6483750d30}
+
+\item 
+\hypertarget{class_player_a06e38c0f57e67eb006c9d09779bd8f8f}{bool {\bfseries is\-Alive} ()}\label{class_player_a06e38c0f57e67eb006c9d09779bd8f8f}
+
+\item 
+\hypertarget{class_player_a6d570bc286a2bdeef957163a3428b30b}{\hyperlink{class_client}{Client} $\ast$ {\bfseries get\-Client} ()}\label{class_player_a6d570bc286a2bdeef957163a3428b30b}
+
+\item 
+\hypertarget{class_player_ad80ca388a37acd7a223b7fe5d51a8d48}{void {\bfseries send\-Message} (std\-::string message)}\label{class_player_ad80ca388a37acd7a223b7fe5d51a8d48}
+
+\item 
+\hypertarget{class_player_a3970907e875aee7542243b1205462f23}{void {\bfseries set\-Team} (network\-::\-Packet\-Type\-::\-Packet\-Contents team)}\label{class_player_a3970907e875aee7542243b1205462f23}
+
+\item 
+\hypertarget{class_player_a75eef8dae7f88abf5cf24a1846c6757e}{float {\bfseries get\-Cooldown} (int spell)}\label{class_player_a75eef8dae7f88abf5cf24a1846c6757e}
+
+\item 
+\hypertarget{class_player_ac1218d3d4834df9aec983afb39618d16}{void {\bfseries reset\-Cooldown} (int spell)}\label{class_player_ac1218d3d4834df9aec983afb39618d16}
+
+\item 
+\hypertarget{class_player_a816c221d643257c762200bf00ca91cbe}{void {\bfseries check\-Auto\-Attack} ()}\label{class_player_a816c221d643257c762200bf00ca91cbe}
+
+\item 
+\hypertarget{class_player_a1b97d41f44a63c07032cd5fe8f482a22}{void {\bfseries update\-Coord} ()}\label{class_player_a1b97d41f44a63c07032cd5fe8f482a22}
+
+\item 
+\hypertarget{class_player_a6e35398beaad7a7e3c3756e73bd90ace}{void {\bfseries clear\-Goal} ()}\label{class_player_a6e35398beaad7a7e3c3756e73bd90ace}
+
+\item 
+\hypertarget{class_player_a1ab1a7a3eeafd78e8f5449b4a01b087f}{void {\bfseries add\-Goal} (\hyperlink{classutil_1_1_coordinates}{util\-::\-Coord\-Int} coord)}\label{class_player_a1ab1a7a3eeafd78e8f5449b4a01b087f}
+
+\item 
+\hypertarget{class_player_a0e6df9731182e1e9fb909a2dc922e054}{void {\bfseries set\-State} (int state)}\label{class_player_a0e6df9731182e1e9fb909a2dc922e054}
+
+\item 
+\hypertarget{class_player_adf8431c4d82a51d88c7fc2a72e973ba1}{void {\bfseries update\-Stat} ()}\label{class_player_adf8431c4d82a51d88c7fc2a72e973ba1}
+
+\item 
+\hypertarget{class_player_ad157336ca42792e6e18d5234b2d62fe3}{void {\bfseries add\-Spell} (int id)}\label{class_player_ad157336ca42792e6e18d5234b2d62fe3}
+
+\item 
+\hypertarget{class_player_abbccd20e0643cca907e2ed7734fecd80}{bool {\bfseries has\-Spell} (int id)}\label{class_player_abbccd20e0643cca907e2ed7734fecd80}
+
+\item 
+\hypertarget{class_player_ac1729c2a4693ab5dc10918850bf1e9ec}{int {\bfseries spell\-Size} ()}\label{class_player_ac1729c2a4693ab5dc10918850bf1e9ec}
+
+\item 
+\hypertarget{class_player_ade41a318d1540fc0fb5b59066c0808a8}{int {\bfseries get\-Spell} (int i)}\label{class_player_ade41a318d1540fc0fb5b59066c0808a8}
+
+\item 
+\hypertarget{class_player_aa9e3c957e954f10f349db4a9a285cb0f}{void {\bfseries add\-Skill} (\hyperlink{class_skill}{Skill} $\ast$skill)}\label{class_player_aa9e3c957e954f10f349db4a9a285cb0f}
+
+\item 
+\hypertarget{class_player_ae5c5de0d8b6afb026c705d18ca7f7826}{int {\bfseries skill\-Size} ()}\label{class_player_ae5c5de0d8b6afb026c705d18ca7f7826}
+
+\item 
+\hypertarget{class_player_a03bf82e92f62f528e369b1eed215d0e9}{\hyperlink{class_skill}{Skill} $\ast$ {\bfseries get\-Skill} (int i)}\label{class_player_a03bf82e92f62f528e369b1eed215d0e9}
+
+\item 
+\hypertarget{class_player_aecec584a3bc61d805c14e3772d1dfbde}{void {\bfseries set\-Physical\-Damage} (int n, \hyperlink{class_player}{Player} $\ast$origin)}\label{class_player_aecec584a3bc61d805c14e3772d1dfbde}
+
+\item 
+\hypertarget{class_player_ad385dbbf0ebf4fecefca5e409498a424}{void {\bfseries set\-Magical\-Damage} (int n, \hyperlink{class_player}{Player} $\ast$origin)}\label{class_player_ad385dbbf0ebf4fecefca5e409498a424}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+server/client/Player.\-hpp\item 
+server/client/Player.\-cpp\end{DoxyCompactItemize}
