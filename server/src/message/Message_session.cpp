@@ -38,6 +38,7 @@ namespace network {
 		else if(packet.getType() == PacketType::SESSION_ASKCHARACTER) {
 			ResultQuery* result = Database::query("SELECT Characters_ID, Characters_Name, Characters_Level FROM characters WHERE Characters_Account = '"+util::Cast::intToString(client->getAccountID())+"'");
 			while(result->next()) {
+				std::cout << "--> " << result->get("Characters_Name") << std::endl;
 				Packet answer(client->getSocket(), PacketType::SESSION_ANSWERCHARACTER);
 				answer << util::Cast::stringToInt(result->get("Characters_ID")) << result->get("Characters_Name") <<  util::Cast::stringToInt(result->get("Characters_Level")) << 0; //TODO GET CURREXP FROM DB
 				answer.send();

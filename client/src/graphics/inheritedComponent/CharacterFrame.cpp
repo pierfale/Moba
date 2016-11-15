@@ -49,6 +49,7 @@ namespace graphics {
 		m_selected = false;
 		sf::Text name;
 		name.setString(m_player->getName());
+		name.setFont(*m_style->font());
 		name.setCharacterSize(18);
 		name.setColor(sf::Color::White);
 		sf::FloatRect textSize = name.getGlobalBounds();
@@ -57,6 +58,7 @@ namespace graphics {
 
 		sf::Text level;
 		level.setString("level "+util::Cast::intToString(m_player->getLevel()));
+		level.setFont(*m_style->font());
 		level.setCharacterSize(14);
 		level.setColor(sf::Color::White);
 		textSize = level.getGlobalBounds();
